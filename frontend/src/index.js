@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
+import * as sessionActions from './store/session';
 
 import App from './App';
 import configureStore from './store';
@@ -17,6 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
 
   window.csrfFetch = csrfFetch;
   window.store = store;
+  window.sessionActions = sessionActions;
 }
 
 if (process.env.NODE_ENV !== 'production') {
