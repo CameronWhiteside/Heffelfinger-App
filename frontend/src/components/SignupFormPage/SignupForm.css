@@ -1,0 +1,17 @@
+
+#root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    width: fit-content;
+}
+
+form *{
+    width: fit-content;
+}
