@@ -1,4 +1,6 @@
-const { handleValidationErrors, id } = require('../../utils/validation');
+const { handleValidationErrors, id } = require('./index.js');
+const { check } = require('express-validator');
+
 
 const name = check('name')
     .exists({ checkFalsy: true })

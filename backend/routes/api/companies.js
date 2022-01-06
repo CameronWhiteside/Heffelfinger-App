@@ -1,7 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { requireAuth, restoreUser } = require('../../utils/auth');
 const companyValidations = require('../../utils/validations/companies')
 const db = require('../../db/models');
 const { Company } = db

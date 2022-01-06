@@ -1,10 +1,9 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { requireAuth, restoreUser } = require('../../utils/auth');
 const eventValidations = require('../../utils/validations/events')
 const db = require('../../db/models');
-const { Event, Company, Ticket, Tag } = db
+const { Event, Company, Ticket, Tag, User } = db
 
 const router = express.Router();
 

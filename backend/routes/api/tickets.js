@@ -1,8 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { requireAuth, restoreUser } = require('../../utils/auth');
-const ticketValidations = require('../../utils/validations/tickets')
 const db = require('../../db/models');
 const { Ticket, User, Event } = db
 
@@ -19,13 +17,13 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     return res.json(foundTicket)
 }))
 
-router.post('/', ticketValidations.validateCreate, asyncHandler(async (req, res) => {
+router.post('/', asyncHandler(async (req, res) => {
     const newTicketData = req.body
     const newTicket = await Ticket.create(newTicketData)
     return res.json({newTicket})
 }))
 
-router.put('/:id(\\d+)', ticketValidations.validateUpdate, asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = req.params.id
     const oldTicketData = await Ticket.findByPk(id)
     let updatedTicket = await oldTicketData.update(req.body)

@@ -1,7 +1,7 @@
 const { handleValidationErrors, id } = require('./index.js');
 const { check } = require('express-validator');
 
-const name = check('name')
+const role = check('role')
     .exists({ checkFalsy: true })
     .withMessage('Please enter a role name')
     .isLength({ min: 3, max: 40 })
@@ -10,12 +10,12 @@ const name = check('name')
     .withMessage('Role name may only contain letters and spaces')
 
 exports.validateCreate = [
-    name,
+    role,
     handleValidationErrors
 ];
 
 exports.validateUpdate = [
     id,
-    name,
+    role,
     handleValidationErrors
 ]

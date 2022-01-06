@@ -1,8 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { requireAuth, restoreUser } = require('../../utils/auth');
-const tagValidations = require('../../utils/validations/tags')
+const tagValidations = require('../../utils/validations/tags.js')
 const db = require('../../db/models');
 const { Tag } = db
 
@@ -22,7 +21,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 router.post('/', tagValidations.validateCreate, asyncHandler(async (req, res) => {
     const newTagData = req.body
     const newTag = await Tag.create(newTagData)
-    return res.json({newTag})
+    return res.json(newTag)
 }))
 
 router.put('/:id(\\d+)', tagValidations.validateUpdate, asyncHandler(async (req, res) => {
