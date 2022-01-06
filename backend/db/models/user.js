@@ -46,8 +46,18 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
   });
-  User.associate = function(models) {
-    // associations can be defined here
+  User.associate = function (models) {
+
+    const userRolesMapping = {through: 'UserRoles', otherKey: 'roleId', foreignKey: 'userId'}
+    const userCompanyRolesMapping = { through: 'Employees', otherKey: 'companyRoleId', foreignKey: 'userId' }
+    const userCompaniesMapping = {through: 'Employees', otherKey: 'companyId', foreignKey: 'userId'}
+
+    User.belongsToMany(models.SiteRole, userRolesMapping)
+    User.belongsToMany(models.CompanyRole, userCompanyRolesMapping)
+    User.belongsToMany(models.Company, userCompaniesMapping)
+
+    User.hasMany(models.Ticket, {foreignKey: 'userId', onDelete: 'CASCADE', hooks:true})
+
   };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
