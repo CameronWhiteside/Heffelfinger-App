@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const {validateLogin} = require('../../utils/validations/session')
+const { validateLogin } = require('../../utils/validations/session')
 
 const { User } = require('../../db/models');
 

@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true
     },
   }, {});
+  
   CompanyRole.associate = function(models) {
 
     const companyRolesCompanyMapping = { through: 'Employees', otherKey: 'companyId', foreignKey: 'companyRoleId' }

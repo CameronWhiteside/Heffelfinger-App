@@ -5,7 +5,7 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 
 //Import DB Models
-const { User } = require('../../db/models');
+const { User, Ticket, Company, CompanyRole } = require('../../db/models');
 
 //Import Validation Middleware
 const { validateSignup } = require('../../utils/validations/users')
@@ -27,7 +27,28 @@ router.post(
         user,
       });
     }),
-  );
+);
+
+
+router.get('/', asyncHandler(async (req, res) => {
+    const allUsers = await User.findAll({ include: [{ model: Company, includes: CompanyRole }, Ticket] })
+    res.json(allUsers)
+}))
+
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
+    const id = req.params.id
+    const foundUser = await User.findByPk(id)
+    return res.json(foundUser)
+}))
+
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+    const id = req.params.id
+    const deletedUser = await User.findByPk(id, {include: [{ model: Company, includes: CompanyRole }, Ticket] })
+    deletedUser.destroy();
+    return res.json(deletedUser)
+}))
+
+module.exports = router
 
 
 

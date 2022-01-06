@@ -2,7 +2,7 @@
 const { handleValidationErrors } = require('./utils');
 const { check } = require('express-validator');
 
-export const validateLogin = [
+exports.validateLogin = [
     check('credential')
       .exists({ checkFalsy: true })
       .notEmpty()

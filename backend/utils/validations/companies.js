@@ -11,7 +11,7 @@ const description = check('description')
     .exists({ checkFalsy: true })
     .withMessage('Please enter an event description.')
     .isLength({ max: 1000 })
-    .withMessage(`Keep that description under 1000 characters. Maybe save some of that content for the event, hm?`)
+    .withMessage(`Please keep that desciprition under 1000 characters.`)
 
 const website =  check('website')
     .exists({ checkFalsy: true })

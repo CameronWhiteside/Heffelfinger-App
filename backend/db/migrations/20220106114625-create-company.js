@@ -13,6 +13,14 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true
       },
+      location: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      tagline: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       description: {
         allowNull: false,
         type: Sequelize.STRING,

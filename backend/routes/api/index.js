@@ -1,12 +1,11 @@
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
+const companyRouter = require('./companies.js')
 
 router.use('/session', sessionRouter);
+router.use('/companies', companyRouter);
 router.use('/users', usersRouter);
-router.post('/test', (req, res) => {
-  res.json({ requestBody: req.body });
-});
 
 
 const { restoreUser } = require('../../utils/auth.js');

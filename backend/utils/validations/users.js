@@ -2,7 +2,7 @@ const { handleValidationErrors } = require('./index.js');
 const { check } = require('express-validator');
 
 
-export const validateSignup = [
+exports.validateSignup = [
     check('email')
       .exists({ checkFalsy: true })
       .isEmail()
@@ -37,7 +37,7 @@ export const validateSignup = [
 ];
 
 
-export const loginValidators = [
+exports.loginValidators = [
     check('login')
       .exists({ checkFalsy: true })
       .withMessage('Please provide an email address.'),

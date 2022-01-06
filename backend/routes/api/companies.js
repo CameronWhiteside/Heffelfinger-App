@@ -1,16 +1,12 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { requireAuth } = require('../../utils/auth');
+const { requireAuth, restoreUser } = require('../../utils/auth');
 const companyValidations = require('../../utils/validations/companies')
-
-const db = require('../../db/models')
-
+const db = require('../../db/models');
 const { Company } = db
 
-
 const router = express.Router();
-
 
 router.get('/', asyncHandler(async (req, res) => {
     const allCompanies = await Company.findAll()
@@ -19,7 +15,7 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = req.params.id
-    const foundCompany = await companyValidations.findbyPk(id)
+    const foundCompany = await Company.findByPk(id)
     return res.json(foundCompany)
 }))
 
@@ -30,14 +26,17 @@ router.post('/', companyValidations.validateCreate, asyncHandler(async (req, res
 }))
 
 router.put('/:id(\\d+)', companyValidations.validateUpdate, asyncHandler(async (req, res) => {
-    const udpatedCompanyData = req.body
-    const id = await Company.update(udpatedCompanyData)
-    const updatedCompany = await Company.findbyPk(id)
+    const id = req.params.id
+    const oldCompanyData = await Company.findByPk(id)
+    let updatedCompany = await oldCompanyData.update(req.body)
     return res.json(updatedCompany)
 }))
 
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = req.params.id
-    const deletedCompany = await Company.delete(id)
+    const deletedCompany = await Company.findByPk(id)
+    deletedCompany.destroy();
     return res.json(deletedCompany)
 }))
+
+module.exports = router
