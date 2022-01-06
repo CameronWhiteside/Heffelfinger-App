@@ -6,21 +6,21 @@ const companyValidations = require('../../utils/validations/companies')
 
 const db = require('../../db/models')
 
-const {Company } = db
+const { Company } = db
 
 
 const router = express.Router();
 
 
 router.get('/', asyncHandler(async (req, res) => {
-    const data = await Company.findAll()
-    res.json(data)
+    const allCompanies = await Company.findAll()
+    res.json(allCompanies)
 }))
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = req.params.id
-    const data = await companyValidations.findbyPk(id)
-    return res.json(data)
+    const foundCompany = await companyValidations.findbyPk(id)
+    return res.json(foundCompany)
 }))
 
 router.post('/', companyValidations.validateCreate, asyncHandler(async (req, res) => {
