@@ -1,4 +1,5 @@
-const { validationResult } = require('express-validator');
+const { validationResult, check } = require('express-validator');
+const { handleValidationErrors } = require('./index.js');
 
 const handleValidationErrors = (req, _res, next) => {
   const validationErrors = validationResult(req);
@@ -17,6 +18,11 @@ const handleValidationErrors = (req, _res, next) => {
   next();
 };
 
+const id = check('id')
+    .notEmpty()
+    .isInt({min:0})
+
 module.exports = {
   handleValidationErrors,
+  id
 };
