@@ -30,8 +30,7 @@ const AddCompanyForm = ({ hideForm }) => {
         setDescription(e.target.value)
         setDescriptionLength(e.target.value.length)
     }
-  const updateLocation = (e) => setLocation(e.target.value)
-  const updateTagline = (e) => setTagline(e.target.value)
+
   const updateWebsite = (e) => setWebsite(e.target.value)
   const updateLogo = (e) => setLogo(e.target.value)
 
@@ -49,15 +48,13 @@ const AddCompanyForm = ({ hideForm }) => {
 
       if (!name) errors.push('Please enter a company name.')
       if (name && name.length > 100) errors.push('Company name must be fewer than 100 characters.')
-      if (!tagline) errors.push('Please enter a company tagline.')
-      if (!location) errors.push('Please enter a company location.')
+      if (!name) errors.push('Please enter a company name.')
+      if (name && name.length > 100) errors.push('Company name must be fewer than 100 characters.')
       if (!description) errors.push('Please enter a company description.')
       if (description && description.length > 1000) errors.push('Company description must be fewer than 1000 characters')
-      if (!isWebsite(website)) errors.push('need a webbie pls')
-      if (!isImageUrl(logo)) errors.push('need an img pls')
     setValidationErrors(errors)
 
-  }, [name, tagline, location, description, website, logo])
+  }, [name, tagline, description])
 
 
     const handleSubmit = async (e) => {
@@ -114,7 +111,18 @@ const AddCompanyForm = ({ hideForm }) => {
             />
             <span className='length-counter'>{`${(nameLength ? `${nameLength}/100` : '' )}`}</span>
           </label>
-              </div>
+        </div>
+
+                  <FormInput
+                      labelText='Name'
+                      id='name'
+                      type='text'
+                      stateVar={name}
+                      setStateVar={setName}
+                      maxLength={100}
+                      required={true}
+                      placeholder={'Enter a company name'}
+              />
 
                   <FormInput
                       labelText='Tagline'
@@ -122,33 +130,28 @@ const AddCompanyForm = ({ hideForm }) => {
                       type='text'
                       stateVar={tagline}
                       setStateVar={setTagline}
-                      required={false}
+                      required={true}
+                      maxLength={150}
+                      placeholder={'Enter a short company description'}
+                  />
+
+                  <FormInput
+                      labelText='Tagline'
+                      id='tagline'
+                      type='text'
+                      stateVar={tagline}
+                      setStateVar={setTagline}
+                      required={true}
                       maxLength={25}
                       placeholder={'Enter a short company description'}
                   />
 
               <div>
-          <label htmlFor='tagline'>
-            <input
-                type='text'
-                placeholder='Tagline'
-                id='tagline'
-                value={tagline}
-               onChange={updateTagline}
-            />
-          </label>
+
         </div>
 
         <div>
-          <label htmlFor='location'>
-            <input
-                type='text'
-                placeholder='Location'
-                id='location'
-                value={location}
-               onChange={updateLocation}
-            />
-          </label>
+
         </div>
 
         <div>

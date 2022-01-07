@@ -13,7 +13,7 @@
     padding: 16px 8px;
     border-radius: 4px 4px 0 0;
     border: 2px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1;
     color: #212121;
     transition: all 0.2s ease-in-out;
@@ -36,12 +36,21 @@
   }
 
 
-.form-input .length-counter{
+.form-input input:focus ~ .length-counter{
     color: #909090;
+}
+
+.form-input input ~ .length-counter{
+    color: transparent;
     position: absolute;
     top: 3px;
     right: 8px;
     font-size: 12px;
+    transition: all 0.2s ease-in-out;
+}
+
+.form-input input[data-toolong="true"] ~ .length-counter{
+    color: red;
 }
 
 .form-input label {

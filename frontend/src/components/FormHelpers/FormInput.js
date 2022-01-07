@@ -14,20 +14,16 @@ const FormInput = (
         maxLength,
         placeholder,
         patternMatch,
-        otherValidationConditions
+        validationErrors,
+        setValidationErrors
     }
 
 ) => {
+
     const { isSafe, warningText, suggestion } = unsafeInput(stateVar, id, maxLength)
 
     const updateStateVar = (e) => setStateVar(e.target.value)
-
     const acceptSuggestion = (suggestion) => setStateVar(suggestion)
-
-
-
-    console.log({ isSafe, stateVar })
-
 
     return (
         <>
