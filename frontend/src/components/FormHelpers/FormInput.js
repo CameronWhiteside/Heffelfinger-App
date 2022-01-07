@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react'
 import './FormInput.css'
+import { unsafeInput } from './utils'
+
 
 const FormInput = ({ labelText, id, type, stateVar, setStateVar, required, maxLength, patternMatch, placeholder, validationObj }) => {
 
@@ -6,7 +9,14 @@ const FormInput = ({ labelText, id, type, stateVar, setStateVar, required, maxLe
         setStateVar(e.target.value)
     }
 
+    const [inputSafety, setInputSafety] = useState(unsafeInput(stateVar))
+
+    // useEffect(() => {
+    //     setInputSafety(unsafeInput(stateVar).isSafe)
+    // },[])
+
     return (
+        <>
         <div className='form-input'>
             <input
                 id={id}
@@ -15,9 +25,9 @@ const FormInput = ({ labelText, id, type, stateVar, setStateVar, required, maxLe
                 required={required}
                 onChange={updateStateVar}
                 placeholder={placeholder}
-                maxlength={maxLength}
-                data-hasInput={stateVar.length > 0}
-                data-tooLong={maxLength && stateVar.length > maxLength}
+                data-hasinput={stateVar.length > 0}
+                data-toolong={maxLength && stateVar.length > maxLength}
+                data-issafe={inputSafety}
             />
             <label htmlFor={id}>
                 {labelText}
@@ -25,7 +35,13 @@ const FormInput = ({ labelText, id, type, stateVar, setStateVar, required, maxLe
             <span className='length-counter'>
                 {`${((stateVar.length && maxLength) ? `${stateVar.length}/${maxLength}` : '')}`}
             </span>
-        </div>
+            </div>
+            <div className='error-area'>
+                <ul>
+                    <li>{}</li>
+                </ul>
+            </div>
+        </>
     )
 }
 

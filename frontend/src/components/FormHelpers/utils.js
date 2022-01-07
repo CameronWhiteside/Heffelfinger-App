@@ -5,8 +5,9 @@ export const containsUnsafeCharacters = (str) => {
 }
 
 export const unsafeInput = (str, paramName = 'entry') => {
-    const safePattern = new RegExp(/[<>%$]*$/, 'g')
-    let newStr = str.replace(safePattern, '').trim()
+    const charactersToRemove = new RegExp(/[<>%$]*$/, 'g')
+    let newStr = str.replace(charactersToRemove, '').trim()
+    console.log({newStr})
 
     if (newStr && containsUnsafeCharacters(str)) {
         return {
