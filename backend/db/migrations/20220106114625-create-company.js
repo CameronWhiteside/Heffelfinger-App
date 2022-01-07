@@ -14,7 +14,6 @@ module.exports = {
         unique: true
       },
       location: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       tagline: {
@@ -28,8 +27,19 @@ module.exports = {
       website: {
         type: Sequelize.STRING,
       },
+      twitterUrl: {
+        type: Sequelize.STRING,
+      },
+      facebookUrl: {
+        type: Sequelize.STRING,
+      },
+      instagramUrl: {
+        type: Sequelize.STRING,
+      },
+      linkedinUrl: {
+        type: Sequelize.STRING,
+      },
       logo: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       createdAt: {

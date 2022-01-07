@@ -6,23 +6,30 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true
     },
+    tagline: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
     description: {
       allowNull: false,
       type: DataTypes.STRING,
     },
-    location: {
-      allowNull: false,
+    twitterUrl: {
       type: DataTypes.STRING,
     },
-    tagline: {
-      allowNull: false,
+    facebookUrl: {
+      type: DataTypes.STRING,
+    },
+    instagramUrl: {
+      type: DataTypes.STRING,
+    },
+    linkedinUrl: {
       type: DataTypes.STRING,
     },
     website: {
       type: DataTypes.STRING,
     },
     logo: {
-      allowNull: false,
       type: DataTypes.STRING,
     },
   }, {});

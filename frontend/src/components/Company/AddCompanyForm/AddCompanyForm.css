@@ -19,14 +19,14 @@ textarea
     display: block;
     position: relative;
     width: 100%;
-    min-width: 250px;
+    min-width: 300px;
     color: #212121;
     padding: 16px 8px;
     border-radius: 4px 4px 0 0;
-    border: 2px;
+    border: 0;
     font-size: 14px;
     line-height: 1;
-    outline: 1;
+    outline: 0;
     transition: all 0.2s ease-in-out;
   }
 
@@ -137,7 +137,7 @@ textarea
     font-size: 12px;
     position: relative;
     left: 8px;
-    max-width: 250px;
+    max-width: 300px;
     word-break: break-all;
     word-wrap: break-word;
 }
@@ -146,4 +146,8 @@ textarea
     color: black;
     font-weight: 800;
     cursor: pointer;
+}
+
+.database-errors{
+    padding-top: 2px;
 }

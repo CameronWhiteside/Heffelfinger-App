@@ -40,20 +40,14 @@ const FormInput = (
     }, [validationObject, stateVar])
 
     useEffect(() => {
-
-
         const isValid = okToSubmitField(stateVar, minLength, maxLength, required, patternMatch, additionalValidationArr)
-        // console.log(`New errors before are ${ Object.entries(newErrors) }`)
         newErrors[id] = isValid && isSafe
-        // console.log(`NewErrors after are ${ Object.entries(newErrors)}`)
         setValidationObject({ ...newErrors })
-        // console.log({ validationObject })
     },
         [stateVar]
     )
 
-
-        return (
+    return (
             <>
                 <div className='form-input'>
                     {type === 'textarea' &&
