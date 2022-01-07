@@ -115,13 +115,13 @@ const AddCompanyForm = ({ hideForm }) => {
             <span className='length-counter'>{`${(nameLength ? `${nameLength}/100` : '' )}`}</span>
           </label>
               </div>
-              
+
                   <FormInput
                       labelText='Tagline'
                       id='tagline'
                       type='text'
                       stateVar={tagline}
-                      updateStateVar={updateTagline}
+                      setStateVar={setTagline}
                       required={false}
                       maxLength={25}
                       placeholder={'Enter a short company description'}

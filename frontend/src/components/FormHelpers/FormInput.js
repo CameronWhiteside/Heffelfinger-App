@@ -1,6 +1,11 @@
 import './FormInput.css'
 
-const FormInput = ({ labelText, id, type, stateVar, updateStateVar, required, maxLength, patternMatch, placeholder }) => {
+const FormInput = ({ labelText, id, type, stateVar, setStateVar, required, maxLength, patternMatch, placeholder, validationObj }) => {
+
+    const updateStateVar = (e) => {
+        setStateVar(e.target.value)
+    }
+
     return (
         <div className='form-input'>
             <input
@@ -10,7 +15,8 @@ const FormInput = ({ labelText, id, type, stateVar, updateStateVar, required, ma
                 required={required}
                 onChange={updateStateVar}
                 placeholder={placeholder}
-                data-empty={stateVar.length > 0}
+                maxlength={maxLength}
+                data-hasInput={stateVar.length > 0}
                 data-tooLong={maxLength && stateVar.length > maxLength}
             />
             <label htmlFor={id}>
