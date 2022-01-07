@@ -10,6 +10,8 @@ const FormInput = ({ labelText, id, type, stateVar, updateStateVar, required, ma
                 required={required}
                 onChange={updateStateVar}
                 placeholder={placeholder}
+                data-empty={stateVar.length > 0}
+                data-tooLong={maxLength && stateVar.length > maxLength}
             />
             <label htmlFor={id}>
                 {labelText}

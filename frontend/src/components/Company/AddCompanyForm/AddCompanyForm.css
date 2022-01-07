@@ -3,14 +3,12 @@
     padding: 0;
     border: 0;
     box-sizing: border-box;
-    display: relative;
+    position: relative;
   }
 
   .form-input input{
     display: block;
     width: 100%;
-    font: 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 200;
     color: #212121;
     padding: 16px 8px;
     border-radius: 4px 4px 0 0;
@@ -21,6 +19,12 @@
     background: rgba(255,255,255,0.97);
     color: #212121;
     transition: all 0.2s ease-in-out;
+    outline: 0
+  }
+
+
+  .form-input input::placeholder{
+    color: transparent;
   }
 
 
@@ -29,7 +33,7 @@
     position: absolute;
     top: 2px;
     right: 2px;
-    font-size: 4px;
+    font-size: 12px;
 }
 
 .form-input label {
@@ -41,26 +45,22 @@
     transition: all 0.2s ease-in-out;
 }
 
+.form-input input[data-empty="false"],
+.form-input input:valid,
+.form-input input:focus {
+    padding: 22px 8px 10px;
+}
 
+.form-input input:focus {
+    background: rgba(255,255,255,1);
+}
 
+.form-input input[data-empty="true"] + label,
+.form-input input:focus + label {
+    font-size: 12px;
+    transform: translate3d(0, -10px, 0);
+}
 
-    .form-input input[data-empty="false"],
-    .form-input input:valid,
-    .form-input input:focus {
-        padding: 22px 8px 10px;
-      }
-
-      .form-input input:focus {
-        outline: 0;
-        background: rgba(255,255,255,1);
-      }
-
-      .form-input input[data-empty="false"] + label,
-      .form-input input:focus + label {
-        color: #5856D6;
-        font-weight: 700;
-        font-size: 12px;
-        transform: translate3d(0, -10px, 0);
-     }
-
-
+.form-input input:focus::placeholder {
+    color: rgba(0,0,0,0.2);
+}
