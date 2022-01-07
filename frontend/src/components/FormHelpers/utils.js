@@ -1,17 +1,21 @@
-
 export const containsUnsafeCharacters = (str) => {
-    const safePattern = new RegExp(/^[^<>%$]*$/, 'g')
-    return safePattern.test(str)
+    if(!str) return true
+    const unsafePattern = new RegExp(/[<>%$]/, 'g')
+    return unsafePattern.test(str)
 }
 
-export const unsafeInput = (str, paramName = 'entry') => {
-    const charactersToRemove = new RegExp(/[<>%$]*$/, 'g')
-    let newStr = str.replace(charactersToRemove, '').trim()
-    console.log({newStr})
-
+export const unsafeInput = (str, paramName = 'entry', maxLength) => {
+    const charactersToRemove = new RegExp(/[<>%$]/, 'g')
+    let newStr
+    if (str) {
+        newStr = str.replace(charactersToRemove, '').trim()
+        if (maxLength) {
+            newStr = newStr.slice(0, maxLength)
+        }
+    }
     if (newStr && containsUnsafeCharacters(str)) {
         return {
-            warningText: `${str} is not a valid ${paramName}. Suggested ${paramName}: `,
+            warningText: `Invalid ${paramName}. Suggested: `,
             suggestion: newStr,
             isSafe: false
         }

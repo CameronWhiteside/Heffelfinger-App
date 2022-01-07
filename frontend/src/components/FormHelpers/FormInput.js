@@ -1,19 +1,33 @@
-import { useEffect, useState } from 'react'
+
 import './FormInput.css'
 import { unsafeInput } from './utils'
 
 
-const FormInput = ({ labelText, id, type, stateVar, setStateVar, required, maxLength, patternMatch, placeholder, validationObj }) => {
-
-    const updateStateVar = (e) => {
-        setStateVar(e.target.value)
+const FormInput = (
+    {
+        labelText,
+        id,
+        type,
+        stateVar,
+        setStateVar,
+        required,
+        maxLength,
+        placeholder,
+        patternMatch,
+        otherValidationConditions
     }
 
-    const [inputSafety, setInputSafety] = useState(unsafeInput(stateVar))
+) => {
+    const { isSafe, warningText, suggestion } = unsafeInput(stateVar, id, maxLength)
 
-    // useEffect(() => {
-    //     setInputSafety(unsafeInput(stateVar).isSafe)
-    // },[])
+    const updateStateVar = (e) => setStateVar(e.target.value)
+
+    const acceptSuggestion = (suggestion) => setStateVar(suggestion)
+
+
+
+    console.log({ isSafe, stateVar })
+
 
     return (
         <>
@@ -27,19 +41,25 @@ const FormInput = ({ labelText, id, type, stateVar, setStateVar, required, maxLe
                 placeholder={placeholder}
                 data-hasinput={stateVar.length > 0}
                 data-toolong={maxLength && stateVar.length > maxLength}
-                data-issafe={inputSafety}
-            />
+                data-issafe={isSafe}
+                />
             <label htmlFor={id}>
                 {labelText}
             </label>
             <span className='length-counter'>
                 {`${((stateVar.length && maxLength) ? `${stateVar.length}/${maxLength}` : '')}`}
             </span>
-            </div>
             <div className='error-area'>
-                <ul>
-                    <li>{}</li>
-                </ul>
+                    {warningText && <div>{warningText}
+                        <span
+                            className='suggestion'
+                            onClick={ () => acceptSuggestion(suggestion)}
+                            value={suggestion}
+                        >
+                            {suggestion}
+                        </span>
+                    </div>}
+            </div>
             </div>
         </>
     )

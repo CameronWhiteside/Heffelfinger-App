@@ -15,11 +15,20 @@
     border: 2px;
     font-size: 16px;
     line-height: 1;
-    background: rgba(255,255,255,0.97);
     color: #212121;
     transition: all 0.2s ease-in-out;
     outline: 0
   }
+
+  .form-input input[data-toolong="true"],
+  .form-input input[data-toolong="true"] ~ *
+    {
+      color: red
+    }
+
+  .form-input input[data-toolong="true"] ~ .length-counter{
+    font-weight: 700;
+    }
 
 
   .form-input input::placeholder{
@@ -28,10 +37,10 @@
 
 
 .form-input .length-counter{
-    color: #211111;
+    color: #909090;
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: 3px;
+    right: 8px;
     font-size: 12px;
 }
 
@@ -50,10 +59,6 @@
     padding: 22px 8px 10px;
 }
 
-.form-input input:focus {
-    background: rgba(255,255,255,1);
-}
-
 .form-input input[data-hasinput="true"] + label,
 .form-input input:focus + label {
     font-size: 12px;
@@ -62,4 +67,17 @@
 
 .form-input input:focus::placeholder {
     color: rgba(0,0,0,0.2);
+}
+
+.error-area{
+    color: #909090;
+    font-size: 12px;
+    position: relative;
+    left: 8px;
+}
+
+.suggestion{
+    color: black;
+    font-weight: 800;
+    cursor: pointer;
 }
