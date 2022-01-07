@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { addCompany } from "../../../store/company";
+import FormInput from "../../FormHelpers/FormInput";
 
 import './AddCompanyForm.css';
 
@@ -113,9 +114,20 @@ const AddCompanyForm = ({ hideForm }) => {
             />
             <span className='length-counter'>{`${(nameLength ? `${nameLength}/100` : '' )}`}</span>
           </label>
-        </div>
+              </div>
+              
+                  <FormInput
+                      labelText='Tagline'
+                      id='tagline'
+                      type='text'
+                      stateVar={tagline}
+                      updateStateVar={updateTagline}
+                      required={false}
+                      maxLength={25}
+                      placeholder={'Enter a short company description'}
+                  />
 
-        <div>
+              <div>
           <label htmlFor='tagline'>
             <input
                 type='text'
