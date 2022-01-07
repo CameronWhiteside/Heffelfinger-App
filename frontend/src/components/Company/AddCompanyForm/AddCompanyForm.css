@@ -9,6 +9,7 @@
   .form-input input{
     display: block;
     width: 100%;
+    min-width: 250px;
     color: #212121;
     padding: 16px 8px;
     border-radius: 4px 4px 0 0;

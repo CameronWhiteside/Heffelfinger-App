@@ -21,9 +21,12 @@ const FormInput = (
 ) => {
 
     const { isSafe, warningText, suggestion } = unsafeInput(stateVar, id, maxLength)
-
     const updateStateVar = (e) => setStateVar(e.target.value)
     const acceptSuggestion = (suggestion) => setStateVar(suggestion)
+
+    if (stateVar && stateVar.length > maxLength) {
+        
+    }
 
     return (
         <>

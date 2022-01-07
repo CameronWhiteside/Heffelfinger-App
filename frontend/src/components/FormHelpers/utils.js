@@ -26,6 +26,22 @@ export const unsafeInput = (str, paramName = 'entry', maxLength) => {
     }
 }
 
+export const okToSubmitField = (str, minLength, maxLength, required, pattern, additionalValidations) => {
+    if (!str && !required) return true
+    if (str) {
+        if (minLength && str.length < minLength) return false
+        if (maxLength && str.length > maxLength) return false
+        if (pattern) {
+            const regExp = new RegExp(pattern)
+            if (!regExp.test(str)) return false
+        }
+
+        if (additionalValidations &&  Array.isArray(additionalValidations) && additionalValidations.length) {
+            for (let i = 0; i < Array.additionalValidations.length; i++)
+        }
+    }
+}
+
 
 const isWebsite = (str) => {
     const websiteRegEx = new RegExp(/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/, 'g')

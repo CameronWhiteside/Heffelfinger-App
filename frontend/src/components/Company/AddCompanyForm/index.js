@@ -82,10 +82,7 @@ const AddCompanyForm = ({ hideForm }) => {
   const reset = () => {
     setName('');
     setTagline('');
-    setLocation('');
     setDescription('');
-    setWebsite('');
-    setLogo('');
   };
 
 
@@ -98,31 +95,19 @@ const AddCompanyForm = ({ hideForm }) => {
       <form onSubmit={handleSubmit} className='add-company'>
         <div className='listErrors'>
           {(validationErrors.length > 0) && validationErrors.map(error => <p className='errors' key={error}>{error}</p>)}
-        </div>
-
-        <div>
-                  <label htmlFor='name'>
-            <input
-              type='text'
-              placeholder='Name'
-              id='name'
-              value={name}
-              onChange={updateName}
-            />
-            <span className='length-counter'>{`${(nameLength ? `${nameLength}/100` : '' )}`}</span>
-          </label>
-        </div>
-
-                  <FormInput
-                      labelText='Name'
-                      id='name'
-                      type='text'
-                      stateVar={name}
-                      setStateVar={setName}
-                      maxLength={100}
-                      required={true}
-                      placeholder={'Enter a company name'}
-              />
+                </div>
+                    <FormInput
+                    labelText='Name'
+                    id='name'
+                    type='text'
+                    stateVar={name}
+                    setStateVar={setName}
+                    maxLength={100}
+                    required={true}
+                    placeholder={'Enter a company name'}
+                    validationErrors={validationErrors}
+                    setValidationErrors={setValidationErrors}
+                />
 
                   <FormInput
                       labelText='Tagline'
