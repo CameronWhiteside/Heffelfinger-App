@@ -27,19 +27,23 @@ export const unsafeInput = (str, paramName = 'entry', maxLength) => {
 }
 
 export const okToSubmitField = (str, minLength, maxLength, required, pattern, additionalValidations) => {
-    if (!str && !required) return true
+    if (!str || str.length === 0) return (required !== true)
     if (str) {
-        if (minLength && str.length < minLength) return false
-        if (maxLength && str.length > maxLength) return false
+        if (minLength && str.length < minLength) return false;
+        if (maxLength && str.length > maxLength) return false;
         if (pattern) {
-            const regExp = new RegExp(pattern)
-            if (!regExp.test(str)) return false
+            if (!pattern.test(str)) return false;
         }
 
         if (additionalValidations &&  Array.isArray(additionalValidations) && additionalValidations.length) {
-            for (let i = 0; i < Array.additionalValidations.length; i++)
+            for (let i = 0; i < Array.additionalValidations.length; i++) {
+                let test = additionalValidations[i]
+                if (!test(str)) return false;
+            }
         }
     }
+
+    return true;
 }
 
 
