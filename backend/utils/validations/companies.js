@@ -32,7 +32,7 @@ const website =  check('website')
 const logo = check('logo')
     .exists({ checkFalsy: true })
     .withMessage('Please enter a company logo.')
-    .matches(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|svg)/, 'g')
+    .matches(/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)\.(?:jpg|gif|png|svg)/, 'g')
     .withMessage('Please enter  url for a .jpg, .gif, .png, or .svg logo')
 
 exports.validateCreate = [

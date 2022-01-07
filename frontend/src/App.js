@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import CompanyBrowser from "./components/Company/CompanyBrowser";
+import AddCompanyForm from "./components/Company/AddCompanyForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       <CompanyBrowser />
+      <AddCompanyForm />
       {isLoaded && (
         <Switch>
           {/* <Route path="/login">

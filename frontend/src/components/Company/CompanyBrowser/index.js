@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Route, useParams } from 'react-router-dom';
 import CompanyDetails from '../CompanyDetails'
 
 import './CompanyBrowser.css'
@@ -16,14 +15,10 @@ const CompanyBrowser = () => {
     }, [dispatch])
 
     const companies = useSelector(state => {
-        console.log(state.company)
         return state.company
     })
 
     const companiesArr = Object.values(companies)
-
-
-    console.log({ companiesArr })
 
     return (
         <section className='company-list'>

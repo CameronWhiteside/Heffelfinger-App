@@ -12,15 +12,23 @@ const AddCompanyForm = ({ hideForm }) => {
 
 
   const [name, setName] = useState('');
+  const [nameLength, setNameLength] = useState(0)
   const [description, setDescription] = useState('');
+  const [descriptionLength, setDescriptionLength] = useState(0);
   const [location, setLocation] = useState('');
   const [tagline, setTagline] = useState('');
   const [website, setWebsite] = useState('');
   const [logo, setLogo] = useState('');
   const [validationErrors, setValidationErrors] = useState([]);
 
-  const updateName = (e) => setName(e.target.value)
-  const updateDescription = (e) => setDescription(e.target.value)
+    const updateName = (e) => {
+        setName(e.target.value)
+        setNameLength(e.target.value.length)
+    }
+    const updateDescription = (e) => {
+        setDescription(e.target.value)
+        setDescriptionLength(e.target.value.length)
+    }
   const updateLocation = (e) => setLocation(e.target.value)
   const updateTagline = (e) => setTagline(e.target.value)
   const updateWebsite = (e) => setWebsite(e.target.value)
@@ -30,33 +38,30 @@ const AddCompanyForm = ({ hideForm }) => {
       const errors = [];
 
       const isWebsite = (str) => {
-          const websiteRegEx = new RegExp('(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)', 'g')
+          const websiteRegEx = new RegExp(/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/, 'g')
           return websiteRegEx.test(str)
       }
       const isImageUrl = (str) => {
-          const imageRegEx = new  RegExp('(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|svg)', 'g')
+          const imageRegEx = new  RegExp(/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)\.(?:jpg|gif|png|svg)/, 'g')
           return imageRegEx.test(str)
       }
 
       if (!name) errors.push('Please enter a company name.')
       if (name && name.length > 100) errors.push('Company name must be fewer than 100 characters.')
       if (!tagline) errors.push('Please enter a company tagline.')
-      if (!tagline) errors.push('Please enter a company tagline.')
       if (!location) errors.push('Please enter a company location.')
       if (!description) errors.push('Please enter a company description.')
       if (description && description.length > 1000) errors.push('Company description must be fewer than 1000 characters')
-      if (!isWebsite(website)) errors.push('Please enter a valid website.')
-      if (!isImageUrl(logo)) errors.push('Please enter url ending in a .jpg, .gif, .png, or .svg')
-
-
+      if (!isWebsite(website)) errors.push('need a webbie pls')
+      if (!isImageUrl(logo)) errors.push('need an img pls')
     setValidationErrors(errors)
 
   }, [name, tagline, location, description, website, logo])
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+    const handleSubmit = async (e) => {
 
+    e.preventDefault()
 
     let newCompany = {
         name,
@@ -67,11 +72,11 @@ const AddCompanyForm = ({ hideForm }) => {
         logo
     };
 
-      const createdCompany = dispatch(addCompany(newCompany))
+        let res = await dispatch(addCompany(newCompany))
 
-      if (createdCompany) {
-          history.push(`/companies/${createdCompany.id}`)
-      }
+        if (res) {
+          history.push(`/companies/${res.newCompany.id}`)
+        }
 
       reset();
   }
@@ -89,8 +94,8 @@ const AddCompanyForm = ({ hideForm }) => {
 
 
   return (
-    <div className='issue-container'>
-      <h1>Make A Complaint</h1>
+    <div className='form-container'>
+      <h2>Add A Company</h2>
 
       <form onSubmit={handleSubmit} className='add-company'>
         <div className='listErrors'>
@@ -98,7 +103,7 @@ const AddCompanyForm = ({ hideForm }) => {
         </div>
 
         <div>
-          <label htmlFor='name'>
+                  <label htmlFor='name'>
             <input
               type='text'
               placeholder='Name'
@@ -106,6 +111,7 @@ const AddCompanyForm = ({ hideForm }) => {
               value={name}
               onChange={updateName}
             />
+            <span className='length-counter'>{`${(nameLength ? `${nameLength}/100` : '' )}`}</span>
           </label>
         </div>
 
@@ -143,25 +149,15 @@ const AddCompanyForm = ({ hideForm }) => {
                 value={description}
                 onChange={updateDescription}
             />
+            <span className='length-counter'>{`${(descriptionLength ? `${descriptionLength}/1000` : '' )}`}</span>
           </label>
               </div>
 
-              <div>
-          <label htmlFor='location'>
-            <input
-                type='text'
-                placeholder='Location'
-                id='location'
-                value={location}
-               onChange={updateLocation}
-            />
-          </label>
-              </div>
 
         <div>
           <label htmlFor='website'>
             <input
-                type='url'
+                type='text'
                 placeholder='Website'
                 id='website'
                 value={website}
@@ -173,7 +169,7 @@ const AddCompanyForm = ({ hideForm }) => {
         <div>
           <label htmlFor='logo'>
             <input
-                type='url'
+                type='text'
                 placeholder='Logo URL'
                 id='logo'
                 value={logo}
@@ -185,7 +181,7 @@ const AddCompanyForm = ({ hideForm }) => {
 
 
 
-        <button type='submit'>Submit</button>
+        <button type='submit' disabled={validationErrors.length}>Submit</button>
       </form>
 
     </div>

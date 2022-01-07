@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf"
+
 const LOAD_COMPANIES = 'company/loadCompanies'
 const ADD_COMPANY = 'company/createCompany'
 const EDIT_COMPANY = 'company/editCompany'
@@ -34,42 +36,44 @@ export const deleteCompanyAction = (deletedCompany, id) => {
 }
 
 export const loadCompanies = () => async (dispatch) => {
-    const response = await fetch('/api/companies/');
+    const response = await csrfFetch('/api/companies/');
     const companies = await response.json();
     dispatch(loadCompaniesAction(companies))
+    return companies
+
 }
 
 export const addCompany = (companyData) => async (dispatch) => {
-    const response = await fetch('/api/companies/', {
+    const response = await csrfFetch('/api/companies/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(companyData)
     });
 
     const newCompany = await response.json();
     dispatch(addCompanyAction(newCompany))
+    return newCompany
 }
 
 export const editCompany = (companyData) => async (dispatch) => {
-    const response = await fetch(`/api/companies/${companyData.id}`, {
+    const response = await csrfFetch(`/api/companies/${companyData.id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(companyData)
     });
 
     const editedCompany = await response.json();
-
-    dispatch(editCompanyAction(editedCompany, companyData.id))
+    dispatch(editCompanyAction(editedCompany))
+    return editedCompany
 }
 
 
 export const deleteCompany = (companyData) => async (dispatch) => {
-    const response = await fetch(`/api/companies/${companyData.id}`, {
+    const response = await csrfFetch(`/api/companies/${companyData.id}`, {
         method: 'DELETE',
     });
 
     const deletedCompany = await response.json();
-    dispatch(deleteCompanyAction(deletedCompany, companyData.id))
+    dispatch(deleteCompanyAction(deletedCompany.id))
+    return deletedCompany
 }
 
 const companyReducer = (state = {} , action) => {
