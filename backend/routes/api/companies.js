@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
     const allCompanies = await Company.findAll()
-    res.json(allCompanies)
+    return res.json(allCompanies)
 }))
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {

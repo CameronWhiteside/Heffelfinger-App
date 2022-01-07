@@ -72,7 +72,7 @@ export const deleteCompany = (companyData) => async (dispatch) => {
     dispatch(deleteCompanyAction(deletedCompany, companyData.id))
 }
 
-const companyReducer = (state = {companies: {}} , action) => {
+const companyReducer = (state = {} , action) => {
     let newState = { ...state }
 
     let id
