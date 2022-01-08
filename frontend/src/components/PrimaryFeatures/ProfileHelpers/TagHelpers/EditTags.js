@@ -13,3 +13,5 @@ const EditTags = ({ tags, tagsSize, tagsAlias }) => {
         </div>
     )
 }
+
+export default EditTags

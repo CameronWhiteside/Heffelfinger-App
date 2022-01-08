@@ -1,4 +1,4 @@
-import '../ExternalLinksHelpers/icons/'
+import './icons'
 
 const ExternalLinksList = ({ externalLinksArray }) => {
     return (

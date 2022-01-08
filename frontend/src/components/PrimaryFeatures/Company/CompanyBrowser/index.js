@@ -5,7 +5,7 @@ import CompanyDetails from '../CompanyDetails'
 import './CompanyBrowser.css'
 
 
-import { loadCompanies } from '../../../store/company';
+import { loadCompanies } from '../../../../store/company';
 
 const CompanyBrowser = () => {
     const dispatch = useDispatch();

@@ -4,6 +4,9 @@ import ProfileImage from "./ImageHelpers/ProfileImage"
 import ExternalLinksList from "./ExternalLinksHelpers/ExternalLinksList"
 import EditProfileLink from "./ProfileCRUD/EditProfileLink"
 import DeleteProfileLink from "./ProfileCRUD/DeleteProfileLink"
+import TagsGroup from "./TagHelpers/TagsGroup"
+import CallToAction from "./CTAHelpers/CallToAction"
+import OwnerTaskList from "./OwnerTasksHelpers/OwnerTaskList"
 
 import './ProfileFullPage.css'
 
@@ -19,6 +22,7 @@ const ProfileFullPage = ({
     hasTags,
     tagsAlias,
     tagsSize,
+    ctaType,
     hasUsers,
     usersAlias,
     usersSize,
@@ -41,6 +45,7 @@ const ProfileFullPage = ({
                         <ProfileImage
                             url={imageUrl}
                             size={imageSize}
+                            name={dataObject.name}
                         />
                 </div>
                 <div className='banner-text'>
@@ -50,14 +55,13 @@ const ProfileFullPage = ({
                         <div className='page-short-info'>
                             {pageShortInfo}
                         </div>
-                        {hasTags && <TagGroup
+                        {hasTags && <TagsGroup
                             tagsAlias={tagsAlias}
                             dataObject={dataObject}
                             tagsSize={tagsSize}
+                            isProfileOwner={isProfileOwner}
                         />}
-                        {isProfileOwner && <EditTags
-                            dataObject={dataObject}
-                        />}
+
                 </div>
             </div>
             <div className='page-links'>
@@ -80,9 +84,41 @@ const ProfileFullPage = ({
                 </div>
                 <div className='action-column'>
                     <div className='owner-tasks'>
-                        {isProfileOwner && <OwnerTasks />}
+                        {isProfileOwner && <OwnerTaskList />}
                     </div>
                     <div className='newsfeed'>
+                        {
+                            hasTickets &&
+                            <TicketFeed
+                                dataObject={dataObject}
+                                ticketsSize={ticketsSize}
+                                ticketsAlias={ticketsAlias}
+                            />
+                        }
+                        {
+                            hasEvents &&
+                            <EventFeed
+                                dataObject={dataObject}
+                                eventsSize={eventsSize}
+                                eventsAlias={eventsAlias}
+                            />
+                        }
+                        {
+                            hasUsers &&
+                            <UserFeed
+                                dataObject={dataObject}
+                                usersSize={usersSize}
+                                usersAlias={usersAlias}
+                            />
+                        }
+                        {
+                            hasCompanies &&
+                            <CompanyFeed
+                                dataObject={dataObject}
+                                companiesSize={companiesSize}
+                                companiesAlias={companiesAlias}
+                            />
+                        }
                     </div>
                 </div>
         </div>

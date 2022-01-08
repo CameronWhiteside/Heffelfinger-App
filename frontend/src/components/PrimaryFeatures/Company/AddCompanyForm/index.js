@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { addCompany } from "../../../store/company";
-import FormInput from "../../FormHelpers/FormInput";
+import { addCompany } from "../../../../store/company";
+import FormInput from "../../../Basic/FormHelpers/FormInput";
 
 
 import './AddCompanyForm.css';

@@ -1,4 +1,4 @@
-import { editCompany, deleteCompany } from "../../../store/company"
+import { editCompany, deleteCompany } from "../../../../store/company"
 import { useDispatch } from 'react-redux'
 
 

@@ -1,3 +1,6 @@
+import Tag from "./Tag"
+import EditTags from "./EditTags"
+
 const TagsGroup = ({ dataObject, tagsSize, tagsAlias, isProfileOwner }) => {
     const tags = dataObject.tags
 
@@ -19,3 +22,5 @@ const TagsGroup = ({ dataObject, tagsSize, tagsAlias, isProfileOwner }) => {
     )
 
 }
+
+export default TagsGroup
