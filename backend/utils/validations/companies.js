@@ -10,38 +10,49 @@ const name = check('name')
 const description = check('description')
     .exists({ checkFalsy: true })
     .withMessage('Please enter a company description.')
-    .isLength({ max: 1000 })
+    .isLength({ max: 1500 })
     .withMessage(`Company description must be fewer than 1000 characters.`)
-
-const location = check('location')
-    .exists({ checkFalsy: true })
-    .withMessage('Please enter a company location.')
 
 const tagline = check('tagline')
     .exists({ checkFalsy: true })
     .withMessage('Please enter a company tagline.')
-    .isLength({ max: 100 })
+    .isLength({ max: 150 })
     .withMessage(`Company tagline must be fewer than 100 characters.`)
 
 const website =  check('website')
-    .exists({ checkFalsy: true })
-    .withMessage('Please enter a company website.')
-    .isURL()
+    .optional().isURL()
     .withMessage('Please enter a valid URL')
 
 const logo = check('logo')
-    .exists({ checkFalsy: true })
-    .withMessage('Please enter a company logo.')
-    .matches(/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)\.(?:jpg|gif|png|svg)/, 'g')
-    .withMessage('Please enter  url for a .jpg, .gif, .png, or .svg logo')
+    .optional().matches(/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)\.(?:jpg|gif|png|svg)/, 'g')
+    .withMessage('Logo URL must end in .jpg, .gif, .png, or .svg logo')
+
+const facebookUrl = check('facebookUrl')
+    .optional().matches(/((https?:\/\/)(.+?\.)?facebook\.com(\/[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*)?)/, 'g')
+    .withMessage('Facebook URL must include text "facebook.com"')
+
+const instagramUrl = check('instagramUrl')
+    .optional().matches(/((https?:\/\/)(.+?\.)?instagram\.com(\/[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*)?)/, 'g')
+    .withMessage('Facebook URL must include text "instagram.com"')
+
+const twitterUrl = check('twitterUrl')
+    .optional().matches(/((https?:\/\/)(.+?\.)?twitter\.com(\/[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*)?)/, 'g')
+    .withMessage('Facebook URL must include text "twitter.com"')
+
+const linkedInUrl = check('linkedInUrl')
+    .optional().matches(/((https?:\/\/)(.+?\.)?linkedIn\.com(\/[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*)?)/, 'g')
+    .withMessage('Facebook URL must include text "linkedIn.com"')
 
 exports.validateCreate = [
     name,
     tagline,
-    location,
     description,
     website,
     logo,
+    facebookUrl,
+    instagramUrl,
+    twitterUrl,
+    linkedInUrl,
     handleValidationErrors
 ];
 
@@ -49,9 +60,12 @@ exports.validateUpdate = [
     id,
     name,
     tagline,
-    location,
     description,
     website,
     logo,
+    facebookUrl,
+    instagramUrl,
+    twitterUrl,
+    linkedInUrl,
     handleValidationErrors
 ]
