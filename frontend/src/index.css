@@ -1,36 +1,148 @@
-TODO Add site wide styles
 :root{
-    --deepspace-900:
-    --deepspace-700:
-    --deepspace-500:
-    --deepspace-300:
-    --deepspace-100:
-    --octoporange-900:
-    --octoporange-700:
-    --octoporange-500:
-    --octoporange-300:
-    --octoporange-100:
-    --astrodust-900:
-    --astrodust-700:
-    --astrodust-500:
-    --astrodust-300:
-    --astrodust-100:
-    --slimade-900:
-    --slimade-700:
-    --slimade-500:
-    --slimade-300:
-    --slimade-100:
-    --slimade-900:
-    --slimade-700:
-    --slimade-500:
-    --slimade-300:
-    --slimade-100:
+    --neutral-1000: #161616;
+    --neutral-800: #3d3d3d;
+    --neutral-600: #696969;
+    --neutral-400: #989898;
+    --neutral-200: #CACACA;
+    --neurtal-000: #EFEFEF;
+    --alpha-1000: rgba(61,61,61,1);
+    --alpha-800: rgba(61,61,61,0.8);
+    --alpha-600: rgba(61,61,61,0.6);
+    --alpha-400: rgba(61,61,61,0.4);
+    --alpha-200: rgba(61,61,61,0.2);
+    --neurtal-000: #EFEFEF;
+    --primary-1000: #660000;
+    --primary-800: #B90100;
+    --primary-600: #EC4425;
+    --primary-400: #FF875E;
+    --primary-200: #FFA87B;
+    --primary-000: #FFE5CD;
+    --accent-1000: #423B2B;
+    --accent-800: #7E7665;
+    --accent-600: #B3AA98;
+    --accent-400: #cfc5b3;
+    --accent-200: #ebe2ce;
+    --accent-000: #FFF2D5;
 
-    --title-500: 32px 600
-    --subtitle-500: aviano-slab 12px 400
-    var(--subtitle-500)
+    --title-font: normal 400 tomarik-brush, sans-serif;
+    --accent-font: normal 400 aviano-slab, serif;
+    --main-header-font: normal 400 novecento-slab-narrow, serif;
+    --main-header-wide-font: normal 400 novecento-slab-wide, serif;
+    --sub-header-font: normal 500 halcom, sans-serif;
+    --body-font: normal 400 halcom, sans-serif;
+
+    --h1-size-desktop: 32px;
+    --h1-size-tablet: 32px;
+    --h1-size-mobile: 32px;
+
+    --h2-size-desktop: 24px;
+    --h2-size-tablet: 24px;
+    --h2-size-mobile: 24px;
+
+    --h3-size-desktop: 20px;
+    --h3-size-tablet: 20px;
+    --h3-size-mobile: 20px;
+
+    --h4-size-desktop: 18px;
+    --h4-size-tablet: 18px;
+    --h4-size-mobile: 18px;
+
+    --h5-size-desktop: 16px;
+    --h5-size-tablet: 16px;
+    --h5-size-mobile: 16px;
+
+    --h6-size-desktop: 14px;
+    --h6-size-tablet: 14px;
+    --h6-size-mobile: 14px;
+
+    --p-size-desktop: 12px;
+    --p-size-tablet: 12px;
+    --p-size-mobile: 12px;
+
+    --a-size-desktop: 12px;
+    --a-size-tablet: 12px;
+    --a-size-mobile: 12px;
+
+    --span-size-desktop: 12px;
+    --span-size-tablet: 12px;
+    --span-size-mobile: 12px;
+
+    --button-size-desktop: 12px;
+    --button-size-tablet: 12px;
+    --button-size-mobile: 12px;
+
+    --label-size-desktop: 12px;
+    --label-size-tablet: 12px;
+    --label-size-mobile: 12px;
+
+    --textarea-size-desktop: 12px;
+    --textarea-size-tablet: 12px;
+    --textarea-size-mobile: 12px;
 }
 
-/* body {
-    background-color: antiquewhite;
-} */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: var(--accent-200) var(--body-font)
+}
+
+h1{
+   font-size: var(--h1-size-desktop);
+   font: var(--accent-200) var(--main-header-font)
+}
+
+h2{
+   font-size: var(--h2-size-desktop);
+   font: var(--accent-200) var(--main-header-font)
+}
+
+h3{
+   font-size: var(--h3-size-desktop);
+   font: var(--accent-400) var(--main-header-font)
+}
+
+h4{
+   font-size: var(--h4-size-desktop);
+   font: var(--accent-400) var(--main-header-font)
+}
+
+h5{
+   font-size: var(--h5-size-desktop);
+   font: var(--accent-400) var(--main-header-font)
+}
+
+h6{
+   font-size: var(--h6-size-desktop);
+   font: var(--accent-400) var(--main-header-font)
+}
+
+p{
+   font-size: var(--p-size-desktop);
+   font: var(--accent-400) var(--main-header-font)
+}
+
+a{
+   font-size: var(--a-size-desktop);
+   font: var(--accent-400) var(--main-header-font)
+}
+
+span{
+   font-size: var(--a-size-desktop);
+   font: var(--accent-400) var(--main-header-font)
+}
+
+button{
+   font-size: var(--a-size-desktop);
+   font: var(--accent-400) var(--main-header-font)
+}
+
+label{
+   font-size: var(--a-size-desktop);
+   font: var(--accent-400) var(--main-header-font)
+}
+
+textarea{
+   font-size: var(--a-size-desktop);
+   font: var(--accent-400) var(--main-header-font)
+}
