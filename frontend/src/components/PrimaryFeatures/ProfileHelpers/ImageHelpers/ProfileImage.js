@@ -1,16 +1,19 @@
-
+import './ProfileImage.css'
 
 const ProfileImage = ({ url, size, name }) => {
 
     return (
-    <div className={`profile-image-container ${size}`}>
-            {url && <div className={`profile-image ${size}`} style={{backgroundImage: `url(${url})`}}>
-            </div>}
-            {!url && <div className={`profile-image ${size}`} style={{ backgroundColor: 'green' }}>
-                {name.slice(0).toUpperCase()}
-            </div>
+        <>
+            {url &&
+                <div className={`profile-image-container ${size}`} style={{ backgroundImage: `url(${url})` }}>
+                </div>
             }
-    </div>
+            {!url &&
+                <div className={`profile-image-container ${size}`} style={{ backgroundColor: 'green' }}>
+                    {name.slice(0).toUpperCase()}
+                </div>
+            }
+        </>
     )
 }
 

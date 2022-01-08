@@ -16,22 +16,31 @@ const CompanyProfilePage = () => {
         dispatch(loadCompanyDetail(id))
     },[dispatch, id])
 
-    const foundCompany = useSelector(state => {
+    const dataObject = useSelector(state => {
         return state.company[id]
     })
 
-    console.log(foundCompany)
 
-    let dataObject=foundCompany
+    let { tagline, location, createdAt } = dataObject
+
+    console.log({ tagline })
+    let year = createdAt.slice(0,4);
+    createdAt = `On board since ${year}`
+    console.log({ location })
+
+    let shortInfo = [tagline, location, createdAt].filter(el => !(!el)).join(' · ')
+    console.log({shortInfo})
+
+
     return (
         <>
-        <ProfileFullPage
-        dataObject={dataObject}
-        profileType='company'
-        pageTitle={`She is alive`}
-        imageUrl='https://i.ibb.co/k5Kc5dV/600-px-oxley-logo.jpg'
-        imageSize='large'
-        pageShortInfo='short page info'
+            <ProfileFullPage
+                dataObject={dataObject}
+                profileType='company'
+                pageTitle={dataObject.name}
+                imageUrl={dataObject.logo}
+                imageSize='large'
+                pageShortInfo={shortInfo}
         externalLinksArray={[]}
         isProfileOwner={false}
         hasTags={false}

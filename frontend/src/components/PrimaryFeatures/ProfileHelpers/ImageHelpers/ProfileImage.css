@@ -11,6 +11,7 @@
 
 .profile-image-container{
     border-radius: 50%;
+    background-size: contain;
 }
 
 .profile-image-container.extra-large{
