@@ -1,5 +1,5 @@
 export const containsUnsafeCharacters = (str) => {
-    if(!str) return true
+    if(!str) return false
     const unsafePattern = new RegExp(/[<>%$]/, 'g')
     return unsafePattern.test(str)
 }

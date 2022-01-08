@@ -24,7 +24,7 @@ const CompanyBrowser = () => {
         <section className='company-list'>
             <h2>All Companies</h2>
             {!companiesArr.length && <span>No companies registered yet</span>}
-            {companiesArr.map(company => <CompanyDetails key={company.id} company={company} /> )}
+            {companiesArr && companiesArr.map(company => <CompanyDetails key={company.id} company={company} /> )}
         </section>
     )
 }

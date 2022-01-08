@@ -49,7 +49,7 @@ export const addCompany = (companyData) => async (dispatch) => {
         body: JSON.stringify(companyData)
     });
 
-    const newCompany = await response.json();
+    const {newCompany} = await response.json();
     dispatch(addCompanyAction(newCompany))
     return newCompany
 }
@@ -66,8 +66,8 @@ export const editCompany = (companyData) => async (dispatch) => {
 }
 
 
-export const deleteCompany = (companyData) => async (dispatch) => {
-    const response = await csrfFetch(`/api/companies/${companyData.id}`, {
+export const deleteCompany = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/companies/${id}`, {
         method: 'DELETE',
     });
 
@@ -86,11 +86,13 @@ const companyReducer = (state = {} , action) => {
 
     switch (action.type) {
         case LOAD_COMPANIES:
-            action.companies.forEach(company => {newState[company.id] = company});
+            action.companies.forEach(company => { newState[company.id] = company });
             return newState;
 
         case ADD_COMPANY:
-            newState = { ...newState.entries, [action.newCompany.id]: action.newCompany }
+            console.log({ action })
+            console.log(Object.keys(newState))
+            newState = { ...newState, [action.newCompany.id]: action.newCompany }
             return newState
 
         case EDIT_COMPANY:

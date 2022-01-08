@@ -6,6 +6,7 @@ export const CompanyOwnerButtons = ({ company }) => {
 
     const dispatch = useDispatch();
 
+
     return (
         <span className="company-actions">
             <button
@@ -16,7 +17,10 @@ export const CompanyOwnerButtons = ({ company }) => {
             </button>
             <button
                 className="delete-button"
-                onClick={()=> dispatch(deleteCompany(company.id))}
+                onClick={() => {
+                    console.log(company.id)
+                    dispatch(deleteCompany(company['id']))
+                }}
             >
             <i className="fas fa-trash" />
             </button>

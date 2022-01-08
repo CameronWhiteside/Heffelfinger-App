@@ -32,7 +32,7 @@ const AddCompanyForm = ({ hideForm }) => {
 
         try {
             let res = await dispatch(addCompany(newCompany))
-            history.push(`/companies/${res.newCompany.id}`)
+            history.push(`/companies/${res.id}`)
             reset();
         } catch (e) {
             let res = await e.json()
@@ -45,6 +45,8 @@ const AddCompanyForm = ({ hideForm }) => {
     setName('');
     setTagline('');
     setDescription('');
+    setValidationObject({})
+    setDatabaseErrors('');
   };
 
 
