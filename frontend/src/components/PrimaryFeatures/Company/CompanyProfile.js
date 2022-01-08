@@ -17,16 +17,16 @@ const CompanyProfilePage = () => {
     },[dispatch, id])
 
     const foundCompany = useSelector(state => {
-
         return state.company[id]
     })
 
-    console.log({ foundCompany })
+    console.log(foundCompany)
 
+    let dataObject=foundCompany
     return (
         <>
         <ProfileFullPage
-        dataObject={foundCompany}
+        dataObject={dataObject}
         profileType='company'
         pageTitle={`She is alive`}
         imageUrl='https://i.ibb.co/k5Kc5dV/600-px-oxley-logo.jpg'

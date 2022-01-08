@@ -7,11 +7,6 @@ const { Company, Event, User, CompanyRole } = db
 
 const router = express.Router();
 
-router.get('/', asyncHandler(async (req, res) => {
-    const allCompanies = await Company.findAll()
-    return res.json(allCompanies)
-}))
-
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = req.params.id
     const foundCompany = await Company.findByPk(id, {
@@ -26,6 +21,13 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     })
     return res.json(foundCompany)
 }))
+
+
+router.get('/', asyncHandler(async (req, res) => {
+    const allCompanies = await Company.findAll()
+    return res.json(allCompanies)
+}))
+
 
 router.post('/', companyValidations.validateCreate, asyncHandler(async (req, res) => {
     const newCompanyData = req.body

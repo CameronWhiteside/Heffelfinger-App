@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf"
 
 const LOAD_COMPANIES = 'company/loadCompanies'
-const LOAD_COMPANY_DETAIL = 'company/loadCompany'
+const LOAD_COMPANY_DETAIL = 'company/loadCompanyDetail'
 const ADD_COMPANY = 'company/createCompany'
 const EDIT_COMPANY = 'company/editCompany'
 const DELETE_COMPANY = 'company/deleteCompany'
@@ -12,7 +12,7 @@ export const loadCompaniesAction = (companies) => {
         companies
     }
 }
-export const loadOneCompanyAction = (foundCompany, id) => {
+export const loadCompanyDetailAction = (foundCompany, id) => {
     return {
         type: LOAD_COMPANY_DETAIL,
         foundCompany,
@@ -54,8 +54,7 @@ export const loadCompanies = () => async (dispatch) => {
 export const loadCompanyDetail = (id) => async (dispatch) => {
     const response = await csrfFetch(`/api/companies/${id}`);
     const foundCompany = await response.json();
-    console.log(`in the action we found ${JSON.parse(foundCompany)}`)
-    dispatch(loadCompaniesAction(foundCompany, id))
+    dispatch(loadCompanyDetailAction(foundCompany, id))
     return foundCompany
 
 }
