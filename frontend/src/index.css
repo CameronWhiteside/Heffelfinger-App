@@ -1,29 +1,36 @@
-/* TODO Add site wide styles */
+TODO Add site wide styles
 :root{
     --deepspace-900:
     --deepspace-700:
     --deepspace-500:
     --deepspace-300:
+    --deepspace-100:
     --octoporange-900:
     --octoporange-700:
     --octoporange-500:
     --octoporange-300:
     --octoporange-100:
+    --astrodust-900:
+    --astrodust-700:
     --astrodust-500:
     --astrodust-300:
     --astrodust-100:
+    --slimade-900:
     --slimade-700:
     --slimade-500:
     --slimade-300:
-    --starlight-500:
-    --starlight-300:
-    --starlight-100:
+    --slimade-100:
+    --slimade-900:
+    --slimade-700:
+    --slimade-500:
+    --slimade-300:
+    --slimade-100:
 
     --title-500: 32px 600
     --subtitle-500: aviano-slab 12px 400
     var(--subtitle-500)
 }
 
-body {
+/* body {
     background-color: antiquewhite;
-}
+} */
