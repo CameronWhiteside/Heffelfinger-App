@@ -7,6 +7,10 @@ import DeleteProfileLink from "./ProfileCRUD/DeleteProfileLink"
 import TagsGroup from "./TagHelpers/TagsGroup"
 import CallToAction from "./CTAHelpers/CallToAction"
 import OwnerTaskList from "./OwnerTasksHelpers/OwnerTaskList"
+import EventFeed from "../Event/EventFeed"
+import TicketFeed from "../Ticket/TicketFeed"
+import UserFeed from "../User/UserFeed"
+import CompanyFeed from "../Company/CompanyFeed"
 
 import './ProfileFullPage.css'
 
