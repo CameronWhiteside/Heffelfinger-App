@@ -9,7 +9,7 @@ import CallToAction from "./CTAHelpers/CallToAction"
 import OwnerTaskList from "./OwnerTasksHelpers/OwnerTaskList"
 import EventFeed from "../Event/EventFeed"
 import TicketFeed from "../Ticket/TicketFeed"
-import UserFeed from "../User/UserFeed"
+// import UserFeed from "../User/UserFeed"
 import CompanyFeed from "../Company/CompanyFeed"
 
 import './ProfileFullPage.css'
@@ -40,16 +40,17 @@ const ProfileFullPage = ({
     ticketsAlias,
     ticketsSize,
 }) => {
-
     return (
-    <section className='page-full-page'>
+    <section className='profile full-page'>
         <div className='primary-info'>
             <div className='top-banner'>
                 <div className='image-container'>
                         <ProfileImage
                             url={imageUrl}
                             size={imageSize}
-                            name={dataObject.name}
+                            name={
+                                (dataObject && dataObject.name) || (dataObject && dataObject.userName) || 'H'
+                            }
                         />
                 </div>
                 <div className='banner-text'>
@@ -107,14 +108,14 @@ const ProfileFullPage = ({
                                 eventsAlias={eventsAlias}
                             />
                         }
-                        {
+                        {/* {
                             hasUsers &&
                             <UserFeed
                                 dataObject={dataObject}
                                 usersSize={usersSize}
                                 usersAlias={usersAlias}
                             />
-                        }
+                        } */}
                         {
                             hasCompanies &&
                             <CompanyFeed
@@ -129,3 +130,5 @@ const ProfileFullPage = ({
     </section>
     )
 }
+
+export default ProfileFullPage

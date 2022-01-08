@@ -1,9 +1,6 @@
-const UserFeed = ({ dataObject, usersSize, usersAlias }) => {
-    return (
-        <div className='user-feed'>
-            User Feed
-        </div>
-    )
-}
+// const UserFeed = ({ dataObject, usersSize, usersAlias }) => {
 
-export default UserFeed
+
+// }
+
+// export default UserFeed

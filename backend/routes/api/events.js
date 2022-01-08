@@ -12,8 +12,8 @@ router.get('/', asyncHandler(async (req, res) => {
     res.json(allEvents)
 }))
 
-router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-    const id = req.params.id
+router.get('/:eventId(\\d+)', asyncHandler(async (req, res) => {
+    const id = req.params.eventId
     const foundEvent= await Event.findByPk(id, {include: [Company, {model: Ticket, include: User}, Tag]})
     return res.json(foundEvent)
 }))
@@ -24,18 +24,35 @@ router.post('/', eventValidations.validateCreate, asyncHandler(async (req, res) 
     return res.json({newEvent})
 }))
 
-router.put('/:id(\\d+)', eventValidations.validateUpdate, asyncHandler(async (req, res) => {
-    const id = req.params.id
+router.put('/:eventId(\\d+)', eventValidations.validateUpdate, asyncHandler(async (req, res) => {
+    const id = req.params.eventId
     const oldEventData = await Event.findByPk(id)
     let updatedEvent = await oldEventData.update(req.body)
     return res.json(updatedEvent)
 }))
 
-router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
-    const id = req.params.id
+router.delete('/:eventId(\\d+)', asyncHandler(async (req, res) => {
+    const id = req.params.eventId
     const deletedEvent= await Event.findByPk(id)
     deletedEvent.destroy();
     return res.json(deletedEvent)
 }))
+
+
+// router.get('/:eventId(\\d+)/tags',
+
+// )
+
+
+// router.post('/:eventId(\\d+)/tags/:tagId(\\d+)',
+
+// )
+
+
+// router.delete('/:eventId(\\d+)/tags/:tagId(\\d+)',
+
+// )
+
+
 
 module.exports = router;

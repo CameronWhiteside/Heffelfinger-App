@@ -3,10 +3,10 @@
 const ProfileImage = ({ url, size, name }) => {
 
     return (
-    <div class={`profile-image-container ${size}`}>
-            {url && <div className={`profile-image ${size}`} style={`background-image: url(${url})`}>
+    <div className={`profile-image-container ${size}`}>
+            {url && <div className={`profile-image ${size}`} style={{backgroundImage: `url(${url})`}}>
             </div>}
-            {!url && <div className={`profile-image ${size}`} style={`background-color: 'green'`}>
+            {!url && <div className={`profile-image ${size}`} style={{ backgroundColor: 'green' }}>
                 {name.slice(0).toUpperCase()}
             </div>
             }

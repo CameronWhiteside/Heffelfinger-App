@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf"
 
 const LOAD_COMPANIES = 'company/loadCompanies'
+const LOAD_COMPANY_DETAIL = 'company/loadCompany'
 const ADD_COMPANY = 'company/createCompany'
 const EDIT_COMPANY = 'company/editCompany'
 const DELETE_COMPANY = 'company/deleteCompany'
@@ -9,6 +10,13 @@ export const loadCompaniesAction = (companies) => {
     return {
         type: LOAD_COMPANIES,
         companies
+    }
+}
+export const loadOneCompanyAction = (foundCompany, id) => {
+    return {
+        type: LOAD_COMPANY_DETAIL,
+        foundCompany,
+        id
     }
 }
 
@@ -43,6 +51,15 @@ export const loadCompanies = () => async (dispatch) => {
 
 }
 
+export const loadCompanyDetail = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/companies/${id}`);
+    const foundCompany = await response.json();
+    console.log(`in the action we found ${JSON.parse(foundCompany)}`)
+    dispatch(loadCompaniesAction(foundCompany, id))
+    return foundCompany
+
+}
+
 export const addCompany = (companyData) => async (dispatch) => {
     const response = await csrfFetch('/api/companies/', {
         method: 'POST',
@@ -61,7 +78,8 @@ export const editCompany = (companyData) => async (dispatch) => {
     });
 
     const editedCompany = await response.json();
-    dispatch(editCompanyAction(editedCompany))
+    const id = editedCompany
+    dispatch(editCompanyAction(editedCompany, id))
     return editedCompany
 }
 
@@ -72,7 +90,7 @@ export const deleteCompany = (id) => async (dispatch) => {
     });
 
     const deletedCompany = await response.json();
-    dispatch(deleteCompanyAction(deletedCompany.id))
+    dispatch(deleteCompanyAction(deletedCompany, id))
     return deletedCompany
 }
 
@@ -89,8 +107,11 @@ const companyReducer = (state = {} , action) => {
             action.companies.forEach(company => { newState[company.id] = company });
             return newState;
 
+        case LOAD_COMPANY_DETAIL:
+            newState[id] = action.foundCompany;
+            return newState;
+
         case ADD_COMPANY:
-            console.log({ action })
             console.log(Object.keys(newState))
             newState = { ...newState, [action.newCompany.id]: action.newCompany }
             return newState

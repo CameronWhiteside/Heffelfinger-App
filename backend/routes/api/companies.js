@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const companyValidations = require('../../utils/validations/companies')
 const db = require('../../db/models');
-const { Company } = db
+const { Company, Event, User, CompanyRole } = db
 
 const router = express.Router();
 
@@ -14,7 +14,16 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = req.params.id
-    const foundCompany = await Company.findByPk(id)
+    const foundCompany = await Company.findByPk(id, {
+        include: [
+            Event, {
+                model: User,
+                include: {
+                    model: CompanyRole
+                }
+            }
+        ]
+    })
     return res.json(foundCompany)
 }))
 
@@ -37,5 +46,27 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     deletedCompany.destroy();
     return res.json(deletedCompany)
 }))
+
+
+
+router.get('/:companyId(\\d+)/users/:users(\\d+)/companyroles',
+    //check for user's specific role at a company
+)
+
+
+router.post('/:companyId(\\d+)/users/:users(\\d+)/companyroles/:companyrolesId(\\+)',
+    //create new company role for a user
+)
+
+router.delete('/:companyId(\\d+)/users/:users(\\d+)/companyroles',
+    //remove a user from all company roles
+)
+
+
+router.post('/:companyId(\\d+)/users/:users(\\d+)/companyroles/:companyrolesId(\\+)',
+    //delete a single company role from a user
+)
+
+
 
 module.exports = router

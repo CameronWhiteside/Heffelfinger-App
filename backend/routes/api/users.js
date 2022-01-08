@@ -31,26 +31,21 @@ router.post(
 
 
 router.get('/', asyncHandler(async (req, res) => {
-    const allUsers = await User.findAll({ include: [{ model: Company, includes: CompanyRole }, Ticket] })
+  const allUsers = await User.findAll({ include: [{ model: Company, include: CompanyRole }, { model: Ticket, include: {model: Event, include: Company}}]})
     res.json(allUsers)
 }))
 
-router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-    const id = req.params.id
-    const foundUser = await User.findByPk(id)
+router.get('/:userId(\\d+)', asyncHandler(async (req, res) => {
+    const id = req.params.userId
+  const foundUser = await User.findByPk(id, { include: [{ model: Company, include: CompanyRole }, { model: Ticket, include: {model: Event, include: Company}}]})
     return res.json(foundUser)
 }))
 
-router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
-    const id = req.params.id
-    const deletedUser = await User.findByPk(id, {include: [{ model: Company, includes: CompanyRole }, Ticket] })
+router.delete('/:userId(\\d+)', asyncHandler(async (req, res) => {
+    const id = req.params.userId
+    const deletedUser = await User.findByPk(id, { include: [{ model: Company, include: CompanyRole }, { model: Ticket, include: {model: Event, include: Company}}]})
     deletedUser.destroy();
     return res.json(deletedUser)
 }))
 
 module.exports = router
-
-
-
-
-  module.exports = router;

@@ -18,7 +18,6 @@ export const CompanyOwnerButtons = ({ company }) => {
             <button
                 className="delete-button"
                 onClick={() => {
-                    console.log(company.id)
                     dispatch(deleteCompany(company['id']))
                 }}
             >
