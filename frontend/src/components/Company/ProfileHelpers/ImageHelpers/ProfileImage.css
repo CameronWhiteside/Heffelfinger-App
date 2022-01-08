@@ -1,0 +1,32 @@
+:root{
+    --extra-large-size: 300px;
+    --large-image-size: 132px;
+    --medium-image-size: 60px;
+    --small-image-size: 30px;
+    --extra-small-image-size: 20px;
+}
+
+.profile-image-container.extra-large{
+    width: var(--extra-large-size);
+    height: var(--extra-large-size);
+}
+
+.profile-image-container.large{
+    width: var(--large-image-size);
+    height: var(--large-image-size);
+
+}
+.profile-image-container.medium{
+    width: var(--medium-image-size);
+    height: var(--medium-image-size);
+
+}
+.profile-image-container.small{
+    width: var(--small-image-size);
+    height: var(--small-image-size);
+}
+
+.profile-image-container.extra-small{
+    width: var(--extra-small-image-size);
+    height: var(--extra-small-image-size);
+}
