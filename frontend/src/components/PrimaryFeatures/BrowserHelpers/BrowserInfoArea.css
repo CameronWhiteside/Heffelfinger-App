@@ -1,0 +1,16 @@
+.browser-info-area{
+    width: 400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 500;
+    margin: 10px;
+    padding: 25px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+.browser-info-area > * {
+    margin-bottom: 35px;
+}

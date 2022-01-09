@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import CompanyDetails from '../CompanyDetails'
 import EditCompanyButton from '../CompanyCRUDButtons/EditCompanyButton';
 import DeleteCompanyButton from '../CompanyCRUDButtons/DeleteCompanyButton';
-
+import BrowserInfoArea from '../../BrowserHelpers/BrowserInfoArea';
 
 import BrowserGrid from '../../BrowserHelpers/BrowserGrid';
 
@@ -13,6 +13,7 @@ import './CompanyBrowser.css'
 
 import { loadCompanies } from '../../../../store/company';
 import ViewCompanyButton from '../CompanyCRUDButtons/ViewCompanyButton';
+import AddCompanyButton from '../CompanyCRUDButtons/AddCompanyButton';
 
 const CompanyBrowser = () => {
 
@@ -28,10 +29,37 @@ const CompanyBrowser = () => {
 
     const companiesArr = Object.values(companies)
 
+    const title = `
+        Ready for Liftoff
+    `
+
+    const bodyCopy = `
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+        These are the companies.
+    `
 
     return (
         <div className='company-browser'>
-            <h2>All Companies</h2>
+            <BrowserInfoArea
+                title={title}
+                bodyCopy={bodyCopy}
+            >
+                <AddCompanyButton/>
+            </BrowserInfoArea>
             <BrowserGrid
                 entries={companiesArr}
                 hasUsers={true}

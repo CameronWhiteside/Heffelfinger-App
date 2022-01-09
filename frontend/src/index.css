@@ -16,6 +16,12 @@
     --alpha-dark-600: rgba(0,0,0,0.6);
     --alpha-dark-400: rgba(0,0,0,0.4);
     --alpha-dark-200: rgba(0,0,0,0.2);
+    --alpha-red-1000: rgba(236,68,37,1);
+    --alpha-red-800: rgba(236,68,37,0.8);
+    --alpha-red-600: rgba(236,68,37,0.6);
+    --alpha-red-400: rgba(236,68,37,0.4);
+    --alpha-red-200: rgba(236,68,37,0.2);
+    --alpha-red-250: rgba(236,68,37,0.25);
     --neurtal-000: #EFEFEF;
     --primary-1000: #b90100;
     --primary-800: #d21612;
@@ -147,15 +153,21 @@
    border-radius: var(--button-border-radius)
  }
 
-    .glass{
-        background-image: linear-gradient(var(--alpha-200), var(--alpha-250));
-        box-shadow: 0  8px 25px 0 var(--alpha-dark-400);
-        backdrop-filter: blur(2px);
-        -webkit-backdrop-filter: blur(2px);
-        border-radius: 30px;
-        padding: 10px;
+ .glass,
+ .red-glass{
+    background-image: linear-gradient(var(--alpha-200), var(--alpha-250));
+    box-shadow: 0  8px 25px 0 var(--alpha-dark-400);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 30px;
+    padding: 10px;
+   }
 
-    }
+   .red-glass{
+      background-image: linear-gradient(var(--alpha-red-200), var(--alpha-red-250));
+  }
+
+
 
 *{
     margin: 0;
