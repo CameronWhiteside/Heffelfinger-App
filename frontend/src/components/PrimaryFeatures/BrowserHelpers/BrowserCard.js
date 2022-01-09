@@ -100,7 +100,10 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
                     </div>
                 </NavLink>
                     <div className='browser-card-menu-button'>
-                    <i class="fas fa-chevron-circle-down" onClick={e => {toggleClass(e.target,'show-menu')}}>
+                <i class="fas fa-chevron-circle-down" onClick={e => {
+                    toggleClass(e.target, 'show-menu')
+                    toggleClass(e.target.parentElement, 'show-menu')
+                }}>
                         </i>
                         </div>
                     <div class="card-menu">

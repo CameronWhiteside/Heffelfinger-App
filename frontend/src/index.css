@@ -96,12 +96,12 @@
     --transition-rev-up: all 0.2s cubic-bezier(.5,0,.5,-.75);
 
     --button-padding: 5px 10px;
-    --button-border-radius: 2px;
+    --button-border-radius: 100px;
 
     --glass-padding: 5px;
     --glass-border-radius: 10px;
     --glass-box-shadow-light:  0  8px 25px 0 var(--alpha-dark-400);
-    --glass-box-shadow-light:  box-shadow: 0  8px 25px 0 var(--alpha-dark-800);
+    --glass-box-shadow:  0  8px 25px 0 var(--alpha-dark-800);
 
     --nav-height-desktop: 108px;
     --main-margin: 30px;

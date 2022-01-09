@@ -4,7 +4,7 @@
     max-width: 1000px;
     margin-top: 60px;
     padding-top: 60px;
-    justify-content: space-around;
+    justify-content: flex-start;
     top: 40px;
     box-shadow: inset var(--glass-box-shadow);
 }
