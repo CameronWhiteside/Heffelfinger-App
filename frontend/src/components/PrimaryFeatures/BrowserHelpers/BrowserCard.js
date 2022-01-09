@@ -63,16 +63,15 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
 
     const imageSize = 'medium'
 
-    const toggleClass = (e, className) => {
-        // e.stopPropogation();
+    const toggleClass = (target, className) => {
 
-        console.log('got clicked')
-        if (e.target.className.includes(className)){
-            let result = e.target.className.replace(className, ' ')
-            e.target.className = result
+        if (target.className.includes(className)){
+            let result = target.className.replace(className, '')
+            target.className = result
         } else {
-            e.target.className += ` ${className}`
+            target.className += ` ${className}`
         }
+
     }
 
     return (
@@ -101,7 +100,7 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
                     </div>
                 </NavLink>
                     <div className='browser-card-menu-button'>
-                    <i class="fas fa-chevron-circle-down" onClick={e => {toggleClass(e,'show-menu')}}>
+                    <i class="fas fa-chevron-circle-down" onClick={e => {toggleClass(e.target,'show-menu')}}>
                         </i>
                         </div>
                     <div class="card-menu">

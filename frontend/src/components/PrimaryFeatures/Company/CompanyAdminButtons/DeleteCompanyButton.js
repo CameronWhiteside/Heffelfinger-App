@@ -1,5 +1,7 @@
 import { deleteCompany } from "../../../../store/company"
 import { useDispatch } from 'react-redux'
+import './DeleteCompanyButton.css'
+import { toggleClass } from "../../../utils"
 
 
 export const DeleteCompanyButton = ({ entry }) => {
@@ -9,22 +11,24 @@ export const DeleteCompanyButton = ({ entry }) => {
 
     return (
         <div className="delete-company-button">
-             <button
-                className="delete-start"
-                onClick={() => {
-
-                    dispatch(deleteCompany(entry['id']))
-                }}
-            >
-                 Delete Company
-            </button>
             <button
-                className="delete-confirm"
+                className="delete-confirm hidden"
+                onMouseOut={(e) => {
+                     toggleClass(e.target, 'hidden')
+                }}
                 onClick={() => {
 
                     dispatch(deleteCompany(entry['id']))
                 }}>
                 Are You Sure?
+            </button>
+             <button
+                className="delete-start"
+                onClick={(e) => {
+                    toggleClass(e.target.previousElementSibling, 'hidden')
+                }}
+            >
+                 Delete Company
             </button>
 
         </div>
