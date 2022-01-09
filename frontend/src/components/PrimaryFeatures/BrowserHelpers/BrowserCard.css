@@ -1,0 +1,63 @@
+.browser-card{
+    margin: 8px 4px;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    max-width: 400px;
+    cursor: pointer;
+    flex-shrink:0;
+    flex-basis: auto;
+    justify-content: space-between;
+    transition: space-between;
+    border: 1px solid white;
+}
+
+.browser-card:hover{
+    top: -10px;
+}
+
+.browser-card-menu-button{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border-radius: 50%;
+    padding: 8px;
+    background-color: var(--alpha-400);
+}
+
+
+.browser-card-menu-dots{
+    content: '...';
+    -webkit-tap-highlight-color: transparent;
+    z-index: 1;
+}
+
+.browser-card-menu-dots::after{
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    right: -8px;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 2;
+    color: var(--neutral-200)
+}
+
+.broswer-card-info-area{
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+}
+
+
+@media(min-width: 704px) and (max-width: 1371px){
+    .browser-card{
+        width: calc(100%/2 - 8px);
+    }
+}

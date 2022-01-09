@@ -1,0 +1,17 @@
+.tiny-user-preview{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.tiny-user-preview > a > * {
+    margin: 3px;
+    z-index: 2;
+    transition: var(--transition-explode);
+}
+
+
+.tiny-user-preview > a > *:hover {
+    margin: 3px;
+    top: -3px;
+}

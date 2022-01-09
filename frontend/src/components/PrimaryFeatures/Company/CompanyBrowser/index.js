@@ -3,37 +3,48 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import CompanyDetails from '../CompanyDetails'
 
+
+import BrowserGrid from '../../BrowserHelpers/BrowserGrid';
+
 import './CompanyBrowser.css'
 
 
 import { loadCompanies } from '../../../../store/company';
 
 const CompanyBrowser = () => {
+
     const dispatch = useDispatch();
 
     const companies = useSelector(state => {
         return state.company
     })
 
-
-
     useEffect(() => {
         dispatch(loadCompanies())
     }, [dispatch])
 
-
-
-
     const companiesArr = Object.values(companies)
 
+
     return (
-        <section className='company-list'>
+        <div className='company-browser'>
             <h2>All Companies</h2>
-            <NavLink to='/companies/new' className="like-button">Add A Company</NavLink>
-            {!companiesArr.length && <span>No companies registered yet</span>}
-            {companiesArr && companiesArr.map(company => <CompanyDetails key={company.id} company={company} /> )}
-        </section>
+            <BrowserGrid
+                entries={companiesArr}
+                hasUsers={true}
+                usersAlias={'Contributors'}
+            />
+        </div>
     )
+
+    // return (
+    //     <section className='company-list'>
+    //         <h2>All Companies</h2>
+    //         <NavLink to='/companies/new' className="like-button">Add Company</NavLink>
+    //         {!companiesArr.length && <span>No companies registered yet</span>}
+    //         {companiesArr && companiesArr.map(company => <CompanyDetails key={company.id} company={company} /> )}
+    //     </section>
+    // )
 }
 
 export default CompanyBrowser
