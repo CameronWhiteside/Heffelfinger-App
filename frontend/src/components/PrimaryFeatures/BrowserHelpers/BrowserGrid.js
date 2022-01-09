@@ -10,7 +10,7 @@ const BroswerGrid = (props) => {
     let returnedEntries = entries.slice(0, maxEntries)
 
     return (
-        <div className="browser-grid">
+        <div className="browser-grid glass">
             {returnedEntries.map(entry => (
                 <BrowserCard
                     key={entry.id}

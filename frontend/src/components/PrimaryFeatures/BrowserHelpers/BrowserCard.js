@@ -38,10 +38,12 @@ export const BrowserCard = ( props ) => {
     if (entry.location) location = entry.location
 
     let host
-    if (hasHost && entry.Company) host = entry.Company
+    if (hasHost && entry.Companies) host = entry.Companies
+
+    console.log({entry})
 
     let users
-    if(hasUsers) users=entry.User
+    if(hasUsers) users=entry.Users
 
     let companies
     if (hasCompanies) companies = entry.Company
@@ -72,10 +74,10 @@ export const BrowserCard = ( props ) => {
                     </div>
 
                     <div className='browser-card-tiny-preview'>
-                    {usersAlias && <h6 className='user-alias'>{usersAlias}</h6>}
-                    {users && <TinyUserPreview type='users' data={users} />}
+                    {users && users.Length && usersAlias && <h6 className='user-alias'>{usersAlias}</h6>}
+                    {users && users.length && <TinyUserPreview type='users' users={users} />}
                     {companiesAlias &&  <h6>{companiesAlias}</h6>}
-                    {companies && <TinyCompanyPreview type='users' data={companies} />}
+                    {companies && <TinyCompanyPreview type='users' companies={companies} />}
                     </div>
                     <div className='tagList'>
                         {tags && <StaticTagList tags={tags} />}
