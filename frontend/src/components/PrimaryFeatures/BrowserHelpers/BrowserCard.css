@@ -74,8 +74,17 @@ text-align: center;
     margin-bottom: 5px;
 }
 
-.rotate180{
+.show-menu{
     transform: rotate(180deg);
+    color: var(--primary-600);
+}
+
+.show-menu > *{
+    color: var(--primary--600);
+}
+
+.show-menu::before{
+    color: var(--primary--600);
 }
 
 

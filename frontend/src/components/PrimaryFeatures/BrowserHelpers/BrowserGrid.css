@@ -4,7 +4,6 @@
     max-width: 1000px;
     margin-top: 60px;
     padding-top: 60px;
-    position: fixed;
     justify-content: space-around;
     top: 40px;
     box-shadow: inset var(--glass-box-shadow);

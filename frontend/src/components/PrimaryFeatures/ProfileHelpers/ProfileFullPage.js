@@ -42,8 +42,8 @@ const ProfileFullPage = ({
 }) => {
     return (
     <section className='profile-full-page'>
-        <div className='primary-info'>
-            <div className='top-banner glass'>
+        <div className='primary-info glass'>
+            <div className='top-banner'>
                 <div className='image-container'>
                         <ProfileImage
                             url={imageUrl}
@@ -69,12 +69,12 @@ const ProfileFullPage = ({
 
                 </div>
             </div>
-            <div className='page-links glass'>
+            <div className='page-links'>
                 <div className='external-links'>
                     <ExternalLinksList externalLinksArray={externalLinksArray}/>
                 </div>
                     <div className='interact-links'>
-                        <CallToAction dataObject={dataObject} ctaType={ctaType}/>
+                        <CallToAction className='glass' dataObject={dataObject} ctaType={ctaType}/>
                         <div className="menu-icon">
                             {isProfileOwner && <EditProfileLink />}
                             {isProfileOwner && <DeleteProfileLink />}
@@ -123,7 +123,7 @@ const ProfileFullPage = ({
                         {
                             hasCompanies &&
                             <CompanyFeed
-                 
+
                                 dataObject={dataObject}
                                 companiesSize={companiesSize}
                                 companiesAlias={companiesAlias}

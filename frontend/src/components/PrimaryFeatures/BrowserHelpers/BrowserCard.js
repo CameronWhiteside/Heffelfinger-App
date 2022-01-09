@@ -57,9 +57,16 @@ export const BrowserCard = ( props ) => {
 
     const imageSize = 'medium'
 
-    const menuReveal = (e) => {
-        e.stopPropogation();
-        e.target.addClass('rotate180')
+    const toggleClass = (e, className) => {
+        // e.stopPropogation();
+
+        console.log('got clicked')
+        if (e.target.className.includes(className)){
+            let result = e.target.className.replace(className, ' ')
+            e.target.className = result
+        } else {
+            e.target.className += ` ${className}`
+        }
     }
 
     return (
@@ -86,12 +93,15 @@ export const BrowserCard = ( props ) => {
                     <div className='tagList'>
                         {tags && <StaticTagList tags={tags} />}
                     </div>
-                    <div className='browser-card-menu-button'>
-                    </div>
                 </NavLink>
-                    <i class="fas fa-chevron-circle-down" onClick={e => e.target.addClass('rotate190')}>
-                        {props.children}
-                    </i>
+                    <div className='browser-card-menu-button'>
+                    <i class="fas fa-chevron-circle-down" onClick={e => {toggleClass(e,'show-menu')}}>
+                        </i>
+                        </div>
+                    <div class="card-menu">
+                    {props.children}
+                    </div>
+
         </div>
   );
 }
