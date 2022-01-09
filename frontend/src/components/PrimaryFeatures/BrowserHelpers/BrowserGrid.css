@@ -7,4 +7,5 @@
     position: fixed;
     justify-content: space-around;
     top: 40px;
+    box-shadow: inset var(--glass-box-shadow);
 }

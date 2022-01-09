@@ -8,6 +8,8 @@ import PrettyHost from '../../Basic/PrettyData/PrettyHost';
 import TinyCompanyPreview from '../Company/TinyCompanyPreview';
 import TinyUserPreview from '../User/TinyUserPreview';
 import StaticTagList from '../ProfileHelpers/TagHelpers/StaticTagList'
+// import e from 'express';
+
 
 
 
@@ -43,7 +45,8 @@ export const BrowserCard = ( props ) => {
     console.log({entry})
 
     let users
-    if(hasUsers) users=entry.Users
+    if (hasUsers) users = entry.Users
+    if (users.length < 1) users = false
 
     let companies
     if (hasCompanies) companies = entry.Company
@@ -54,12 +57,13 @@ export const BrowserCard = ( props ) => {
 
     const imageSize = 'medium'
 
+    const menuReveal = (e) => {
+        e.stopPropogation();
+        e.target.addClass('rotate180')
+    }
+
     return (
         <div className='browser-card glass'>
-            <div className='browser-card-menu-button'>
-                <i class="fas fa-chevron-circle-down"></i>
-                { props.children}
-            </div>
                 <NavLink to={`/companies/${id}`}>
                     <div className='browser-card-overlay'></div>
                     <div className='browser-card-image-area'>
@@ -74,16 +78,20 @@ export const BrowserCard = ( props ) => {
                     </div>
 
                     <div className='browser-card-tiny-preview'>
-                    {users && users.Length && usersAlias && <h6 className='user-alias'>{usersAlias}</h6>}
-                    {users && users.length && <TinyUserPreview type='users' users={users} />}
-                    {companiesAlias &&  <h6>{companiesAlias}</h6>}
-                    {companies && <TinyCompanyPreview type='users' companies={companies} />}
+                    {users && <h6 className='user-alias'>{usersAlias}</h6>}
+                    {users && <TinyUserPreview type='users' users={users} />}
+                    {companiesAlias &&  <h6 className='company-alias'>{companiesAlias}</h6>}
+                    {companies && <TinyCompanyPreview type='companies' companies={companies} />}
                     </div>
                     <div className='tagList'>
                         {tags && <StaticTagList tags={tags} />}
                     </div>
+                    <div className='browser-card-menu-button'>
+                    </div>
                 </NavLink>
-
+                    <i class="fas fa-chevron-circle-down" onClick={e => e.target.addClass('rotate190')}>
+                        {props.children}
+                    </i>
         </div>
   );
 }

@@ -1,9 +1,14 @@
 :root{
-    --extra-large-size: 300px;
+    --extra-large-image-size: 300px;
     --large-image-size: 132px;
-    --medium-image-size: 90px;
-    --small-image-size: 30px;
-    --extra-small-image-size: 20px;
+    --medium-image-size: 135px;
+    --small-image-size: 40px;
+    --extra-small-image-size: 30px;
+    --extra-large-font-size: 300px;
+    --large-font-size: 120px;
+    --medium-font-size: 120px;
+    --small-font-size: 28px;
+    --extra-small-font-size: 24px;
 }
 
 .profile-image-container{
@@ -17,8 +22,8 @@
 }
 
 .profile-image-container.extra-large{
-    width: var(--extra-large-size);
-    height: var(--extra-large-size);
+    width: var(--extra-large-image-size);
+    height: var(--extra-large-image-size);
 }
 
 .profile-image-container.large{
@@ -46,19 +51,22 @@
 
 }
 
-span.fake-image.extra-small{
+span.fake-image{
+    font-weight: 700
+}
 
+span.fake-image.extra-small{
+    font-size: var(--extra-small-font-size)
 }
 span.fake-image.small{
-
+    font-size: var(--small-font-size)
 }
 span.fake-image.medium{
-    font-size: 48px;
-    font-weight:700;
+    font-size: var(--medium-font-size)
 }
 span.fake-image.large{
-
+    font-size: var(--large-font-size)
 }
 span.fake-image.extra-large{
-
+    font-size: var(--extra-large-font-size)
 }
