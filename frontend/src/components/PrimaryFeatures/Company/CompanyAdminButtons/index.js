@@ -13,15 +13,16 @@ export const CompanyOwnerButtons = ({ company }) => {
             className="edit-button icon-holder"
             onClick={() => dispatch(editCompany(company.id))}
             >
-                    <i className={"fas fa-edit"} />
+                    Edit Company
             </button>
             <button
                 className="delete-button icon-holder"
                 onClick={() => {
+
                     dispatch(deleteCompany(company['id']))
                 }}
             >
-            <i className="fas fa-trash" />
+                Delete Company
             </button>
         </span>
     );

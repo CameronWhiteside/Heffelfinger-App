@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import CompanyDetails from '../CompanyDetails'
+import EditCompanyButton from '../CompanyAdminButtons/EditCompanyButton';
+import DeleteCompanyButton from '../CompanyAdminButtons/DeleteCompanyButton';
 
 
 import BrowserGrid from '../../BrowserHelpers/BrowserGrid';
@@ -33,7 +35,11 @@ const CompanyBrowser = () => {
                 entries={companiesArr}
                 hasUsers={true}
                 usersAlias={'Contributors'}
-            />
+            >
+                <EditCompanyButton />
+                <DeleteCompanyButton />
+                
+            </BrowserGrid>
         </div>
     )
 

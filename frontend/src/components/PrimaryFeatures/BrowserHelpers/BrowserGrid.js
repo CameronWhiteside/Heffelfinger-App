@@ -2,11 +2,8 @@ import './BrowserGrid.css'
 import BrowserCard from "./BrowserCard"
 
 
-const BroswerGrid = (props) => {
+const BroswerGrid = ({ children, entries,  maxEntries = entries.length, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias }) => {
 
-    let { entries,  maxEntries, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias } = props
-
-    if (!maxEntries) maxEntries = entries.length
     let returnedEntries = entries.slice(0, maxEntries)
 
     return (
@@ -21,7 +18,7 @@ const BroswerGrid = (props) => {
                     hasCompanies={hasCompanies}
                     companiesAlias={companiesAlias}
                 >
-                    {props.children}
+                    {children}
                 </BrowserCard>
             ))}
         </div>

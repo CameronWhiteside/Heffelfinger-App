@@ -1,5 +1,6 @@
 // import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { Children, cloneElement, isValidElement } from 'react';
 // import CompanyOwnerButtons from '../CompanyOwnerButtons'
 import './BrowserCard.css'
 import ProfileImage from '../ProfileHelpers/ImageHelpers/ProfileImage';
@@ -11,13 +12,18 @@ import StaticTagList from '../ProfileHelpers/TagHelpers/StaticTagList'
 // import e from 'express';
 
 
+// https://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children
 
-
-export const BrowserCard = ( props ) => {
-
-    const  { entry, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias } = props
+export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias } ) => {
 
     let id = entry.id
+
+    const childrenWithProps = Children.map(children, child => {
+        if (isValidElement(child)) {
+            return cloneElement(child, { entry })
+        }
+        return child;
+    })
 
     //account for different 'name' variable aliases
     let name
@@ -99,7 +105,7 @@ export const BrowserCard = ( props ) => {
                         </i>
                         </div>
                     <div class="card-menu">
-                    {props.children}
+                        {childrenWithProps}
                     </div>
 
         </div>

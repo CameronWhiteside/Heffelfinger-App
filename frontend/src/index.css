@@ -79,9 +79,9 @@
     --span-size-tablet: 15px;
     --span-size-mobile: 15px;
 
-    --button-size-desktop: 12px;
-    --button-size-tablet: 12px;
-    --button-size-mobile: 12px;
+    --button-size-desktop: 16px;
+    --button-size-tablet: 16px;
+    --button-size-mobile: 16px;
 
     --label-size-desktop: 12px;
     --label-size-tablet: 12px;
@@ -268,9 +268,8 @@ button,
 a.like-button
 {
     font-size: var(--button-size-desktop);
-    font-family: var(--accent-family);
+    font-family: var(--header-family);
     font-weight: var(--heavy-weight);
-    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--neutral-1000);
     background-color: var(--primary-600);

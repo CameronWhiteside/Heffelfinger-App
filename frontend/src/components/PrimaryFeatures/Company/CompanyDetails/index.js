@@ -1,7 +1,7 @@
 
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import CompanyOwnerButtons from '../CompanyOwnerButtons'
+import CompanyOwnerButtons from '../CompanyAdminButtons'
 import './CompanyDetails.css'
 
 export const CompanyDetails = ({ company }) => {
