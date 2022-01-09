@@ -48,27 +48,33 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <div className='session-links'>
+        <ProfileButton user={sessionUser} />
+      </div>
     );
   } else {
     sessionLinks = (
-      <>
+      <div className='session-links'>
         <LoginFormModal />
         <NavLink to="/signup">Sign Up</NavLink>
-      </>
+      </div>
     );
   }
 
   return (
-    <ul>
-      <li>
+    <div className='navigation glass'>
+      <div className='site-logo'>
+      </div>
+      <div className='text-links'>
+        <NavLink exact to="/welcome">00_Welcome</NavLink>
         <NavLink exact to="/">01_Octopus Den</NavLink>
         <NavLink exact to="/companies">02_Launchpad</NavLink>
         <NavLink exact to="/events">03_Mess Hall</NavLink>
         <NavLink exact to="/users">04_Free Donuts</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      </div>
+      {isLoaded && sessionLinks}
+
+    </div>
   );
 }
 

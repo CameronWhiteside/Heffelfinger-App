@@ -10,7 +10,7 @@ export const CompanyDetails = ({ company }) => {
   return (
     <NavLink to={`/companies/${id}`}>
     <div className="company-details">
-      <h3>{name}</h3>
+      <h4>{name}</h4>
         <CompanyOwnerButtons company={company} />
       </div>
     </NavLink>

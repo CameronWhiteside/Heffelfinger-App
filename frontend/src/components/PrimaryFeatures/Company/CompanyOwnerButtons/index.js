@@ -10,13 +10,13 @@ export const CompanyOwnerButtons = ({ company }) => {
     return (
         <span className="company-actions">
             <button
-            className="edit-button"
+            className="edit-button icon-holder"
             onClick={() => dispatch(editCompany(company.id))}
             >
                     <i className={"fas fa-edit"} />
             </button>
             <button
-                className="delete-button"
+                className="delete-button icon-holder"
                 onClick={() => {
                     dispatch(deleteCompany(company['id']))
                 }}

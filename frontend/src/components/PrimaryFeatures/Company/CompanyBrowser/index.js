@@ -29,7 +29,7 @@ const CompanyBrowser = () => {
     return (
         <section className='company-list'>
             <h2>All Companies</h2>
-            <NavLink to='/companies/new'>Add A Company</NavLink>
+            <NavLink to='/companies/new' className="like-button">Add A Company</NavLink>
             {!companiesArr.length && <span>No companies registered yet</span>}
             {companiesArr && companiesArr.map(company => <CompanyDetails key={company.id} company={company} /> )}
         </section>

@@ -19,6 +19,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <main>
       {isLoaded && (
         <Switch>
           {/* <Route path="/login">
@@ -38,6 +39,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      </main>
     </>
   );
 }
