@@ -1,0 +1,6 @@
+.browser-grid{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin-top: 60px;
+}

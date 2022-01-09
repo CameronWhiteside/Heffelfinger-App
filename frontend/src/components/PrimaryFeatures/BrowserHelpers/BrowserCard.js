@@ -10,7 +10,10 @@ import TinyUserPreview from '../User/TinyUserPreview';
 import StaticTagList from '../ProfileHelpers/TagHelpers/StaticTagList'
 
 
-export const BrowserCard = ({ entry, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias }) => {
+
+export const BrowserCard = ( props ) => {
+
+    const  { entry, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias } = props
 
     let id = entry.id
 
@@ -47,11 +50,14 @@ export const BrowserCard = ({ entry, hasUsers, usersAlias, hasHost, hasCompanies
     if (entry.Tag) tags = entry.Tag
 
 
-    const imageSize = 'large'
+    const imageSize = 'medium'
 
     return (
-        <div className='browser-card'>
+        <div className='browser-card glass'>
             <div className='browser-card-menu-button'>
+                <i class="fas fa-chevron-circle-down"></i>
+                { props.children}
+            </div>
                 <NavLink to={`/companies/${id}`}>
                     <div className='browser-card-overlay'></div>
                     <div className='browser-card-image-area'>
@@ -59,15 +65,14 @@ export const BrowserCard = ({ entry, hasUsers, usersAlias, hasHost, hasCompanies
                     </div>
                     <div className='browser-card-info-area'>
                         {startDateTime && <PrettyDate date={startDateTime} />}
-                        {name && <h3 className='broswer-card-name'>{name}</h3>}
-                        {tagline && <h4 className='browser-short-details'>{tagline}</h4>}
-                        {location && <h4 className='browser-short-details'>{location}</h4>}
-                        {location && <h4 className='browser-short-details'>{location}</h4>}
+                        {name && <h2 className='browser-card-name'>{name}</h2>}
+                        {tagline && <p className='tagline'>{tagline}</p>}
+                        {location && <p className='browser-short-details'>{location}</p>}
                         {hasHost && <PrettyHost event={host} />}
                     </div>
 
                     <div className='browser-card-tiny-preview'>
-                    {usersAlias && <h6>{usersAlias}</h6>}
+                    {usersAlias && <h6 className='user-alias'>{usersAlias}</h6>}
                     {users && <TinyUserPreview type='users' data={users} />}
                     {companiesAlias &&  <h6>{companiesAlias}</h6>}
                     {companies && <TinyCompanyPreview type='users' data={companies} />}
@@ -76,7 +81,7 @@ export const BrowserCard = ({ entry, hasUsers, usersAlias, hasHost, hasCompanies
                         {tags && <StaticTagList tags={tags} />}
                     </div>
                 </NavLink>
-            </div>
+
         </div>
   );
 }

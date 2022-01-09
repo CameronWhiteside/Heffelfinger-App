@@ -36,7 +36,7 @@
     --header-family: tomarik-introvert, serif;
     --header-wide-family: novecento-slab-wide, serif;
     --subheader-family: 'Courier New', 'Courier', monospace;
-    --body-family: halcom, serif;
+    --body-family: 'Courier New', Courier, monospace;
     --digital-family: 'Courier New', Courier, monospace;
 
     --standard-weight: 400;
@@ -47,37 +47,37 @@
     --h1-size-tablet: 36px;
     --h1-size-mobile: 36px;
 
-    --h2-size-desktop: 32px;
-    --h2-size-tablet: 32px;
-    --h2-size-mobile: 32px;
+    --h2-size-desktop: 30px;
+    --h2-size-tablet: 30px;
+    --h2-size-mobile: 30px;
 
-    --h3-size-desktop: 20px;
-    --h3-size-tablet: 20px;
-    --h3-size-mobile: 20px;
+    --h3-size-desktop: 22px;
+    --h3-size-tablet: 22px;
+    --h3-size-mobile: 22px;
 
-    --h4-size-desktop: 18px;
-    --h4-size-tablet: 18px;
-    --h4-size-mobile: 18px;
+    --h4-size-desktop: 20px;
+    --h4-size-tablet: 20px;
+    --h4-size-mobile: 20px;
 
-    --h5-size-desktop: 16px;
-    --h5-size-tablet: 16px;
-    --h5-size-mobile: 16px;
+    --h5-size-desktop: 18px;
+    --h5-size-tablet: 18px;
+    --h5-size-mobile: 18px;
 
-    --h6-size-desktop: 14px;
-    --h6-size-tablet: 14px;
-    --h6-size-mobile: 14px;
+    --h6-size-desktop: 16px;
+    --h6-size-tablet: 16px;
+    --h6-size-mobile: 16px;
 
-    --p-size-desktop: 12px;
-    --p-size-tablet: 12px;
-    --p-size-mobile: 12px;
+    --p-size-desktop: 15px;
+    --p-size-tablet: 15px;
+    --p-size-mobile: 15px;
 
     --a-size-desktop: 18px;
     --a-size-tablet: 18px;
     --a-size-mobile: 18px;
 
-    --span-size-desktop: 12px;
-    --span-size-tablet: 12px;
-    --span-size-mobile: 12px;
+    --span-size-desktop: 15px;
+    --span-size-tablet: 15px;
+    --span-size-mobile: 15px;
 
     --button-size-desktop: 12px;
     --button-size-tablet: 12px;
@@ -100,6 +100,7 @@
 
     --glass-padding: 5px;
     --glass-border-radius: 10px;
+    --glass-box-shadow:  box-shadow: 0  8px 25px 0 var(--alpha-dark-400);
 
     --nav-height-desktop: 108px;
     --main-margin: 30px;
@@ -169,22 +170,22 @@ h3{
 
 h4{
    font-size: var(--h4-size-desktop);
-   font-family: var(--subheader-family);
-   font-weight: var(--subheader-weight);
+   font-family: var(--header-family);
+   font-weight: var(--header-weight);
    color: var(--accent-200);
 }
 
 h5{
    font-size: var(--h5-size-desktop);
-   font-family: var(--subheader-family);
-   font-weight: var(--subheader-weight);
+   font-family: var(--header-family);
+   font-weight: var(--header-weight);
    color: var(--accent-200);
 }
 
 h6{
    font-size: var(--h6-size-desktop);
-   font-family: var(--subheader-family);
-   font-weight: var(--subheader-weight);
+   font-family: var(--header-family);
+   font-weight: var(--header-weight);
    color: var(--accent-200);
 }
 

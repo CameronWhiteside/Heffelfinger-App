@@ -1,23 +1,42 @@
 .browser-card{
-    margin: 8px 4px;
-    flex-wrap: wrap;
+    margin: 30px 15px 45px;
+    padding: 10px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    overflow: hidden;
-    width: 100%;
+    align-items: center;
     position: relative;
-    max-width: 400px;
+    max-width: 275px;
+    height: 200px;
     cursor: pointer;
-    flex-shrink:0;
-    flex-basis: auto;
-    justify-content: space-between;
-    transition: space-between;
-    border: 1px solid white;
+    transition: var(--transition-easy);
+}
+
+
+.browser-card *{
+text-align: center;
+}
+
+.browser-card .browser-card-info-area p{
+    /* font-family: 'Courier New', Courier, monospace; */
+    /* font-style: italic; */
+    text-transform: none;
+    margin: 5px 0px 10px;
+    font-size: 10px;
+}
+
+
+.browser-card-image-area{
+    position: relative;
+    top: -60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -40px;
 }
 
 .browser-card:hover{
-    top: -10px;
+    transform: translate3d(0,-10px, 2px) scale(1.05);
 }
 
 .browser-card-menu-button{
@@ -25,35 +44,25 @@
     top: 12px;
     right: 12px;
     border-radius: 50%;
-    padding: 8px;
-    background-color: var(--alpha-400);
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-600);
+    z-index: 3;
 }
 
-
-.browser-card-menu-dots{
-    content: '...';
-    -webkit-tap-highlight-color: transparent;
-    z-index: 1;
-}
-
-.browser-card-menu-dots::after{
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-    right: -8px;
-    position: absolute;
-    border-radius: 50%;
-    z-index: 2;
-    color: var(--neutral-200)
-}
-
-.broswer-card-info-area{
+.browser-card-info-area{
     height: 110px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     padding: 12px;
 }
+
+
 
 
 @media(min-width: 704px) and (max-width: 1371px){

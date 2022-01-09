@@ -24,7 +24,16 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 
 router.get('/', asyncHandler(async (req, res) => {
-    const allCompanies = await Company.findAll()
+    const allCompanies = await Company.findAll({
+        include: [
+            Event, {
+                model: User,
+                include: {
+                    model: CompanyRole
+                }
+            }
+        ]
+    })
     return res.json(allCompanies)
 }))
 

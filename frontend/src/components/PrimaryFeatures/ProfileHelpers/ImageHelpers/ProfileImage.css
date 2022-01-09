@@ -1,46 +1,64 @@
 :root{
     --extra-large-size: 300px;
     --large-image-size: 132px;
-    --medium-image-size: 60px;
+    --medium-image-size: 90px;
     --small-image-size: 30px;
     --extra-small-image-size: 20px;
-    --heavy-border: 5px solid green;
-    --medium-border: 2px solid green;
-    --light-border: 1px solid green;
 }
 
 .profile-image-container{
     border-radius: 50%;
-    background-size: contain;
+    background-size: cover;
+    background-repeat: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--glass-box-shadow);
 }
 
 .profile-image-container.extra-large{
     width: var(--extra-large-size);
     height: var(--extra-large-size);
-    border: var(--heavy-border)
 }
 
 .profile-image-container.large{
     width: var(--large-image-size);
     height: var(--large-image-size);
-    border: var(--heavy-border);
+
 
 }
 .profile-image-container.medium{
     width: var(--medium-image-size);
     height: var(--medium-image-size);
-    border: var(--heavy-border)
+
 
 }
 .profile-image-container.small{
     width: var(--small-image-size);
     height: var(--small-image-size);
-    border: var(--light-border);
+
 }
 
 
 .profile-image-container.extra-small{
     width: var(--extra-small-image-size);
     height: var(--extra-small-image-size);
-    border: var(--light-border);
+
+}
+
+span.fake-image.extra-small{
+
+}
+span.fake-image.small{
+
+}
+span.fake-image.medium{
+    font-size: 48px;
+    font-weight:700;
+}
+span.fake-image.large{
+
+}
+span.fake-image.extra-large{
+
 }
