@@ -10,9 +10,12 @@
 
 .delete-company-button > .delete-confirm{
     position: absolute;
-    background-color: var(--primary-800);
+    background-color: var(--neutral-1000);
+    color: var(--primary-800);
+    border: 1px solid var(--primary-800);
+    box-shadow: none;
     z-index: 3;
     opacity: 1;
     transition: var(--transition-easy);
-
+    cursor: pointer;
 }

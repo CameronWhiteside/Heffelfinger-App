@@ -7,7 +7,7 @@ const BroswerGrid = ({ children, entries,  maxEntries = entries.length, hasUsers
     let returnedEntries = entries.slice(0, maxEntries)
 
     return (
-        <div className="browser-grid glass">
+        <div className="browser-grid glass scroll-area">
             {returnedEntries.map(entry => (
                 <BrowserCard
                     key={entry.id}

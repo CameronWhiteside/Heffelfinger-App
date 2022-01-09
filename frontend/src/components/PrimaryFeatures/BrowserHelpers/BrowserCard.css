@@ -47,19 +47,6 @@ text-align: center;
     background-color:var(--alpha-400);
 }
 
-.browser-card-menu-button{
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-600);
-    z-index: 3;
-}
 
 .browser-card-info-area{
     height: 110px;
@@ -74,6 +61,20 @@ text-align: center;
     margin-bottom: 5px;
 }
 
+.browser-card-menu-button{
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-600);
+    z-index: 3;
+}
+
 i.show-menu{
     transform: rotate(180deg);
     color: var(--primary-600);
@@ -85,6 +86,10 @@ i.show-menu > *{
 
 i.show-menu::before{
     color: var(--primary--600);
+}
+
+i.show-menu:hover::before{
+    color: var(--primary--800);
 }
 
 .card-menu{

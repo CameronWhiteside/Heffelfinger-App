@@ -79,7 +79,7 @@
     --span-size-tablet: 15px;
     --span-size-mobile: 15px;
 
-    --button-size-desktop: 16px;
+    --button-size-desktop: 19px;
     --button-size-tablet: 16px;
     --button-size-mobile: 16px;
 
@@ -90,6 +90,10 @@
     --textarea-size-desktop: 12px;
     --textarea-size-tablet: 12px;
     --textarea-size-mobile: 12px;
+
+    --favicon-size-desktop: 25px;
+    --favicon-size-tablet: 16px;
+    --favicon-size-mobile: 16px;
 
     --transition-easy: all 0.2s ease-in-out;
     --transition-explode: all 0.2s cubic-bezier(.5,1.75,0,1.0);
@@ -107,7 +111,39 @@
     --main-margin: 30px;
     --full-width-minus-main-margin: calc(100vw - 60px);
 
+    --inner-scroll-box-shadow:  inset 0  8px 25px 0 var(--alpha-dark-800);
+
 }
+
+   .scroll-area:hover{
+      overflow-y: scroll;
+   }
+
+   .scroll-area{
+      overflow:hidden;
+   }
+
+     /* Firefox */
+  * {
+   scrollbar-width: 15px;
+   scrollbar-color: var(--alpha-dark-800) transparent;
+   scroll-behavior: smooth;
+ }
+
+ /* Chrome, Edge, and Safari */
+ *::-webkit-scrollbar {
+   width: 15px;
+   margin: 5px;
+ }
+
+ *::-webkit-scrollbar-track {
+   background: transparent;
+ }
+
+ *::-webkit-scrollbar-thumb {
+   background-color: var(--alpha-dark-800);
+   border-radius: var(--button-border-radius)
+ }
 
     .glass{
         background-image: linear-gradient(var(--alpha-200), var(--alpha-250));
@@ -213,6 +249,10 @@ button.icon-holder
    transition:var(--transition-easy);
 }
 
+i{
+   font-size: var(--favicon-size-desktop);
+}
+
 
 a:visited{
 
@@ -280,8 +320,9 @@ a.like-button
  }
 
 
- button:hover{
-    background-color: var(--primary-600);
+ button:hover,
+ a.like-button:hover{
+    background-color: var(--primary-800);
     transition: var(--transition-easy);
  }
 

@@ -1,6 +1,7 @@
 import { editCompany } from "../../../../store/company"
 import { useDispatch } from 'react-redux'
 
+import './EditCompanyButton.css'
 
 export const EditCompanyButton = ({ entry }) => {
 

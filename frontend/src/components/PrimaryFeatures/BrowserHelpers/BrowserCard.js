@@ -10,6 +10,8 @@ import TinyCompanyPreview from '../Company/TinyCompanyPreview';
 import TinyUserPreview from '../User/TinyUserPreview';
 import StaticTagList from '../ProfileHelpers/TagHelpers/StaticTagList'
 // import e from 'express';
+import { toggleClass } from '../../utils';
+import DropDownMenu from '../../Basic/Navigation/Menus/DropDownMenu';
 
 
 // https://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children
@@ -63,16 +65,16 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
 
     const imageSize = 'medium'
 
-    const toggleClass = (target, className) => {
+    // const toggleClass = (target, className) => {
 
-        if (target.className.includes(className)){
-            let result = target.className.replace(className, '')
-            target.className = result
-        } else {
-            target.className += ` ${className}`
-        }
+    //     if (target.className.includes(className)){
+    //         let result = target.className.replace(className, '')
+    //         target.className = result
+    //     } else {
+    //         target.className += ` ${className}`
+    //     }
 
-    }
+    // }
 
     return (
         <div className='browser-card glass'>
@@ -99,7 +101,7 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
                         {tags && <StaticTagList tags={tags} />}
                     </div>
                 </NavLink>
-                    <div className='browser-card-menu-button'>
+                    {/* <div className='browser-card-menu-button'>
                 <i class="fas fa-chevron-circle-down" onClick={e => {
                     toggleClass(e.target, 'show-menu')
                     toggleClass(e.target.parentElement, 'show-menu')
@@ -108,8 +110,10 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
                         </div>
                     <div class="card-menu">
                         {childrenWithProps}
-                    </div>
-
+                    </div> */}
+            <DropDownMenu >
+                    {children}
+            </DropDownMenu>
         </div>
   );
 }
