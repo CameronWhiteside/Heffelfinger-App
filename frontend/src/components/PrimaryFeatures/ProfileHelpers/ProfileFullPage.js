@@ -41,9 +41,9 @@ const ProfileFullPage = ({
     ticketsSize,
 }) => {
     return (
-    <section className='profile full-page'>
+    <section className='profile-full-page'>
         <div className='primary-info'>
-            <div className='top-banner'>
+            <div className='top-banner glass'>
                 <div className='image-container'>
                         <ProfileImage
                             url={imageUrl}
@@ -69,7 +69,7 @@ const ProfileFullPage = ({
 
                 </div>
             </div>
-            <div className='page-links'>
+            <div className='page-links glass'>
                 <div className='external-links'>
                     <ExternalLinksList externalLinksArray={externalLinksArray}/>
                 </div>
@@ -88,13 +88,16 @@ const ProfileFullPage = ({
                     <div className='detailed-description'></div>
                 </div>
                 <div className='action-column'>
-                    <div className='owner-tasks'>
+                    {isProfileOwner &&
+                        (<div className='owner-tasks glass'>
                         {isProfileOwner && <OwnerTaskList />}
-                    </div>
+                        </div>)
+                    }
                     <div className='newsfeed'>
                         {
                             hasTickets &&
                             <TicketFeed
+
                                 dataObject={dataObject}
                                 ticketsSize={ticketsSize}
                                 ticketsAlias={ticketsAlias}
@@ -103,6 +106,7 @@ const ProfileFullPage = ({
                         {
                             hasEvents &&
                             <EventFeed
+
                                 dataObject={dataObject}
                                 eventsSize={eventsSize}
                                 eventsAlias={eventsAlias}
@@ -119,6 +123,7 @@ const ProfileFullPage = ({
                         {
                             hasCompanies &&
                             <CompanyFeed
+                 
                                 dataObject={dataObject}
                                 companiesSize={companiesSize}
                                 companiesAlias={companiesAlias}

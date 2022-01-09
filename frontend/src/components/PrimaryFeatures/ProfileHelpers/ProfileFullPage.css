@@ -1,0 +1,25 @@
+.profile-full-page{
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+
+.primary-info > .top-banner{
+    width: 1000px;
+    display: flex;
+    align-items: center;
+}
+
+.top-banner{
+    overflow: visible;
+    height: 75px;
+}
+
+
+.top-banner .image-container{
+   margin: 60px;
+}

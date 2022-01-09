@@ -1,6 +1,6 @@
 const EventFeed = ({ dataObject, eventsSize, eventsAlias }) => {
     return (
-        <div className='event-feed'>
+        <div className='event-feed glass'>
             Event Feed
         </div>
     )

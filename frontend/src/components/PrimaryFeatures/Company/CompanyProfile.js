@@ -14,7 +14,7 @@ const CompanyProfilePage = () => {
 
     useEffect(() => {
         dispatch(loadCompanyDetail(id))
-    },[dispatch, id])
+    },[dispatch])
 
     const dataObject = useSelector(state => {
         return state.company[id]
