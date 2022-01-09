@@ -9,7 +9,7 @@ export const EditCompanyButton = ({ entry }) => {
 
 
     return (
-        <div className="edit-company-button menu-button">
+        <div className="edit-company-button">
             <button
             onClick={() => dispatch(editCompany(entry.id))}
             >

@@ -22,24 +22,28 @@ const DropDownMenu =
             return child;
         })
 
-        return (
+        console.log(childrenWithProps)
+
+         return (
 
             //browser-card-menu-button = menu-button
             //card-menu = menu-area
 
-            <div className="drop-down-menu">
+            <div className="drop-down-menu" >
                 <div className="menu-button">
                         <i
                             className={iconClassString}
-                            onClick={e => {
+                        onClick={e => {
+                                e.stopPropagation()
                                 toggleClass(e.target, 'show-menu')
                                 toggleClass(e.target.parentElement, 'show-menu')
+                                toggleClass(e.target.parentElement.parentElement, 'show-menu')
                                 toggleClass(e.target, 'rotate180')
                             }}
                         ></i>
                 </div>
 
-                <div class="menu-area">
+                <div className="menu-area">
                         {childrenWithProps}
                     </div>
             </div>

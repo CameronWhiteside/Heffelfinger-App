@@ -96,6 +96,8 @@
     --favicon-size-mobile: 16px;
 
     --transition-easy: all 0.2s ease-in-out;
+    --transition-very-easy: all 0.8s ease-in-out;
+    --transition-after-easy-delay: all 0.8s ease-in-out 0.8s;
     --transition-explode: all 0.2s cubic-bezier(.5,1.75,0,1.0);
     --transition-rev-up: all 0.2s cubic-bezier(.5,0,.5,-.75);
 
@@ -305,7 +307,7 @@ span{
 
 
 button,
-a.like-button
+.like-button
 {
     font-size: var(--button-size-desktop);
     font-family: var(--header-family);
@@ -321,9 +323,10 @@ a.like-button
 
 
  button:hover,
- a.like-button:hover{
+ .like-button:hover{
     background-color: var(--primary-800);
     transition: var(--transition-easy);
+    color: var(--neutral-1000)
  }
 
 label{

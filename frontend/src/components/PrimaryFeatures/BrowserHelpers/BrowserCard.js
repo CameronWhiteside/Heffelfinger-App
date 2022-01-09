@@ -1,5 +1,5 @@
 // import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { Children, cloneElement, isValidElement } from 'react';
 // import CompanyOwnerButtons from '../CompanyOwnerButtons'
 import './BrowserCard.css'
@@ -17,15 +17,16 @@ import DropDownMenu from '../../Basic/Navigation/Menus/DropDownMenu';
 // https://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children
 
 export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias } ) => {
+    useHistory();
 
     let id = entry.id
 
-    const childrenWithProps = Children.map(children, child => {
-        if (isValidElement(child)) {
-            return cloneElement(child, { entry })
-        }
-        return child;
-    })
+    // const childrenWithProps = Children.map(children, child => {
+    //     if (isValidElement(child)) {
+    //         return cloneElement(child, { entry })
+    //     }
+    //     return child;
+    // })
 
     //account for different 'name' variable aliases
     let name
@@ -49,8 +50,6 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
 
     let host
     if (hasHost && entry.Companies) host = entry.Companies
-
-    console.log({entry})
 
     let users
     if (hasUsers) users = entry.Users
@@ -111,9 +110,11 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
                     <div class="card-menu">
                         {childrenWithProps}
                     </div> */}
-            <DropDownMenu >
-                    {children}
-            </DropDownMenu>
+            <div className='browser-card-menu-adjuster'>
+                <DropDownMenu entry={entry}>
+                        {children}
+                </DropDownMenu>
+            </div>
         </div>
   );
 }

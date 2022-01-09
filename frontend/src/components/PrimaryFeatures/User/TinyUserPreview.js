@@ -4,7 +4,6 @@ import './TinyUserPreview.css'
 
 const TinyUserPreview = ({ users, maxLength }) => {
     let trimmedUsers = users
-    console.log(users.length)
     if(maxLength) trimmedUsers = users.slice(0, maxLength)
     const size = 'small'
     return (
