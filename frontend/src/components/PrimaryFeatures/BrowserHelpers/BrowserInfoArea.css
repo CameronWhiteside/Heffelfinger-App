@@ -1,16 +1,4 @@
-.browser-info-area{
-    width: 400px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    z-index: 500;
-    margin: 20px;
-    padding: 25px;
-    height: 500px;
-    justify-content: center;
-    align-items: center;
-}
 
-.browser-info-area > * {
+/* .browser-info-area > * {
     margin-bottom: 35px;
-}
+} */

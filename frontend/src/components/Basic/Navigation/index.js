@@ -117,7 +117,7 @@ function Navigation({ isLoaded }){
     <div className='navigation glass'>
       <div className='site-logo'>
         <NavLink exact to="/">
-        <img src='../../../../../../../../../../../assets/logo-300.png' alt='logo' />
+        <img src='/assets/logo-300.png' alt='logo' />
         </NavLink>
 
       </div>

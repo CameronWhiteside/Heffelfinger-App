@@ -1,7 +1,7 @@
 const CompanyFeed = ({ dataObject, companiesSize, companiesAlias }) => {
     return (
         <div className='company-feed glass'>
-            Company Feed
+            <h5>Temp Company Feed</h5>
         </div>
     )
 }

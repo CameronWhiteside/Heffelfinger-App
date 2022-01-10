@@ -5,17 +5,18 @@
     --neutral-400: #989898;
     --neutral-200: #CACACA;
     --neutral-000: #EFEFEF;
-    --alpha-1000: rgba(100,100,100,1);
-    --alpha-800: rgba(100,100,100,0.8);
-    --alpha-600: rgba(100,100,100,0.6);
-    --alpha-400: rgba(100,100,100,0.4);
-    --alpha-250: rgba(100,100,100,0.25);
-    --alpha-200: rgba(100,100,100,0.2);
-    --alpha-dark-1000: rgba(0,0,0,1);
-    --alpha-dark-800: rgba(0,0,0,0.8);
-    --alpha-dark-600: rgba(0,0,0,0.6);
-    --alpha-dark-400: rgba(0,0,0,0.4);
-    --alpha-dark-200: rgba(0,0,0,0.2);
+    --alpha-1000: rgba(58,52,42,1);
+    --alpha-800: rgba(58,52,42,0.8);
+    --alpha-600: rgba(58,52,42,0.6);
+    --alpha-400: rgba(58,52,42,0.4);
+    --alpha-250: rgba(58,52,42,0.25);
+    --alpha-200: rgba(58,52,42,0.2);
+    --alpha-dark-1000: rgba(48,45,40,1);
+    --alpha-dark-800: rgba(48,45,40,0.8);
+    --alpha-dark-600: rgba(48,45,40,0.6);
+    --alpha-dark-400: rgba(48,45,40,0.4);
+    --alpha-dark-250: rgba(48,45,40,0.25);
+    --alpha-dark-200: rgba(48,45,40,0.2);
     --alpha-red-1000: rgba(236,68,37,1);
     --alpha-red-800: rgba(236,68,37,0.8);
     --alpha-red-600: rgba(236,68,37,0.6);
@@ -49,9 +50,9 @@
     --subheader-weight: 500;
     --heavy-weight: 900;
 
-      --h1-size-desktop: 36px;
-    --h1-size-tablet: 36px;
-    --h1-size-mobile: 36px;
+   --h1-size-desktop: 50px;
+    --h1-size-tablet: 50px;
+    --h1-size-mobile: 50px;
 
     --h2-size-desktop: 30px;
     --h2-size-tablet: 30px;
@@ -111,10 +112,10 @@
     --button-border-radius: 100px;
 
     --glass-padding: 5px;
-    --glass-border-radius: 10px;
-    --glass-box-shadow-light:  0  8px 25px 0 var(--alpha-dark-400);
-    --glass-box-shadow:  0  8px 25px 0 var(--alpha-dark-800);
-    --glass-background-image: linear-gradient(var(--alpha-200), var(--alpha-250));
+    --glass-border-radius: 30px;
+    --glass-box-shadow-light:  0  8px 25px 0 rgba(0,0,0,0.2);
+    --glass-box-shadow:  0  8px 25px 0 rgba(0,0,0,0.4);
+    --glass-background-image: linear-gradient(var(--alpha-dark-200), var(--alpha-dark-250));
 
     --nav-height-desktop: 108px;
     --main-margin: 30px;
@@ -124,12 +125,8 @@
 
 }
 
-   .scroll-area:hover{
-      overflow-y: scroll;
-   }
-
    .scroll-area{
-      overflow:hidden;
+      overflow-y: scroll;
       box-shadow: var(--inner-scroll-box-shadow);
    }
 
@@ -156,18 +153,24 @@
  }
 
  .glass,
- .red-glass{
-    background-image: linear-gradient(var(--alpha-200), var(--alpha-250));
-    box-shadow: 0  8px 25px 0 var(--alpha-dark-400);
+ .red-glass,
+ .bright-red-glass
+ {
+    background-image: var(--glass-background-image);
+    box-shadow: var(--glass-box-shadow);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-    border-radius: 30px;
+    border-radius: var(--glass-border-radius);
     padding: 10px;
    }
 
-   .red-glass{
+   /* .red-glass{
       background-image: linear-gradient(var(--alpha-red-200), var(--alpha-red-250));
   }
+
+  .bright-red-glass{
+   background-image: linear-gradient(var(--alpha-dark-1000), var(--alpha-dark-800));
+   } */
 
 
 
@@ -197,52 +200,36 @@ main{
 
 }
 
-h1{
-   font-size: var(--h1-size-desktop);
+h1, h2, h3, h4, h5, h6 {
    font-family: var(--header-family);
-   color: var(--accent-200);
-   text-transform: uppercase;
+   font-weight: 100;
+   color: var(--accent-600);
    letter-spacing: 0.8px;
 }
 
+h1{
+   font-size: var(--h1-size-desktop);
+
+}
+
 h2{
-    text-transform: uppercase;
    font-size: var(--h2-size-desktop);
-   font-family: var(--header-family);
-   color: var(--accent-200);
-   letter-spacing: 0.5px;
 }
 
 h3{
    font-size: var(--h3-size-desktop);
-   font-family: var(--header-family);
-   font-weight: var(--standard-weight);
-   color: var(--accent-200);
-   letter-spacing: 0.8px;
 }
 
 h4{
    font-size: var(--h4-size-desktop);
-   font-family: var(--header-family);
-   font-weight: var(--header-weight);
-   color: var(--accent-200);
-   letter-spacing: 0.8px;
 }
 
 h5{
    font-size: var(--h5-size-desktop);
-   font-family: var(--header-family);
-   font-weight: var(--header-weight);
-   color: var(--accent-200);
-   letter-spacing: 0.8px;
 }
 
 h6{
    font-size: var(--h6-size-desktop);
-   font-family: var(--body-family);
-   font-weight: var(--header-weight);
-   color: var(--accent-200);
-   letter-spacing: 0.8px;
 }
 
 

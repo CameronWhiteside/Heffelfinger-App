@@ -1,0 +1,11 @@
+.browser-quick-stats-area{
+    width: 400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 500;
+    margin: 20px;
+    padding: 25px 25px;
+    justify-content: center;
+    align-items: center;
+}

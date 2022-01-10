@@ -14,6 +14,8 @@ import './CompanyBrowser.css'
 import { loadCompanies } from '../../../../store/company';
 import ViewCompanyButton from '../CompanyCRUDButtons/ViewCompanyButton';
 import AddCompanyButton from '../CompanyCRUDButtons/AddCompanyButton';
+import BrowserQuickStatsArea from '../../BrowserHelpers/BrowserQuickStats';
+import BrowserCTAArea from '../../BrowserHelpers/BrowserCTAArea';
 
 const CompanyBrowser = () => {
 
@@ -33,16 +35,26 @@ const CompanyBrowser = () => {
         LAUNCHPAD
     `
 
-    const bodyCopy = `n venture hearts of the stars dream of the mind's eye the sky calls to us Sea of Tranquility? Brain is the seed of intelligence laws of physics consciousness extraplanetary concept of the number one great turbulent clouds? The only home we've ever known tingling of the spine rich in heavy atoms great turbulent clouds made in the interiors of collapsing stars two ghostly white figures in coveralls and helmets are softly dancing and billions upon billions upon billions`
+    const bodyCopy = `Venture hearts of the stars dream of the mind's eye the sky calls to us Sea of Tranquility? Brain is the seed of intelligence laws of physics consciousness extraplanetary concept of the number one great turbulent clouds? The only home we've ever known tingling of the spine rich in heavy atoms great turbulent clouds made in the interiors of collapsing stars two ghostly white figures in coveralls and helmets are softly dancing and billions upon billions upon billions`
 
     return (
         <div className='company-browser'>
-            <BrowserInfoArea
-                title={title}
-                bodyCopy={bodyCopy}
-            >
-                <AddCompanyButton/>
-            </BrowserInfoArea>
+            <div className='browser-left-col scroll-area'>
+                <BrowserQuickStatsArea
+                    title={title}
+                />
+
+                <BrowserInfoArea
+                    bodyCopy={bodyCopy}
+                >
+
+                </BrowserInfoArea>
+
+                <BrowserCTAArea>
+                    <AddCompanyButton/>
+                </BrowserCTAArea>
+            </div>
+            <div className='browser-right-col'>
             <BrowserGrid
                 entries={companiesArr}
                 hasUsers={true}
@@ -52,7 +64,8 @@ const CompanyBrowser = () => {
                 <EditCompanyButton />
                 <DeleteCompanyButton />
 
-            </BrowserGrid>
+                </BrowserGrid>
+                </div>
         </div>
     )
 

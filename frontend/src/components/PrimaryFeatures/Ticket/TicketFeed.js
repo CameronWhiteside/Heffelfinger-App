@@ -1,7 +1,7 @@
 const TicketFeed = ({ dataObject, ticketsSize, ticketsAlias }) => {
     return (
         <div className='ticket-feed glass'>
-            Ticket Feed
+            <h5>Temp Ticket Feed</h5>
         </div>
     )
 }

@@ -6,6 +6,7 @@ const TagsGroup = ({ dataObject, tagsSize, tagsAlias, isProfileOwner }) => {
 
     return (
         <div className="tag-group">
+            <h5>Temp Tag Group</h5>
 
             {!isProfileOwner && tags.map(tag => (
                 <Tag key={tag.id} tagSize={tagsSize} tagName={tag.name}/>
