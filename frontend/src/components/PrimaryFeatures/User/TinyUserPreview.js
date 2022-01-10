@@ -10,7 +10,7 @@ const TinyUserPreview = ({ users, maxLength }) => {
         <div className="tiny-user-preview">
             {trimmedUsers.map(user => (
                 <NavLink key={user.id} to={`/users/${user.id}`}>
-                    <ProfileImage key={user.id} url={user.imageUrl} name={user.username} size={size}></ProfileImage>
+                    <ProfileImage key={user.id} url={user.imageUrl} name={user.firstName} size={size}></ProfileImage>
                 </NavLink>
             ))}
         </div>

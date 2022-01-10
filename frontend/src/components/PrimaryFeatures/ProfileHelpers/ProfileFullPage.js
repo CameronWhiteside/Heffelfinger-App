@@ -49,7 +49,7 @@ const ProfileFullPage = ({
                             url={imageUrl}
                             size={imageSize}
                             name={
-                                (dataObject && dataObject.name) || (dataObject && dataObject.userName) || 'H'
+                                (dataObject && dataObject.name) || (dataObject && dataObject.firstName) || 'H'
                             }
                         />
                 </div>

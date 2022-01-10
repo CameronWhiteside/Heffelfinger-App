@@ -82,6 +82,7 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     logInMenu = (
       <div className='log-in-menu'>
+        <NavLink className='hello-user' to={`/users/${sessionUser.id}`}>{`HELLO ${sessionUser.firstName}`}</NavLink>
           <DropDownMenu
           iconClassString='fas fa-user-astronaut'
           rotateToShow={false}

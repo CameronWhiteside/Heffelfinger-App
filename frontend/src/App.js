@@ -9,6 +9,7 @@ import CompanyBrowser from "./components/PrimaryFeatures/Company/CompanyBrowser"
 import AddCompanyForm from "./components/PrimaryFeatures/Company/AddCompanyForm";
 import CompanyProfilePage from "./components/PrimaryFeatures/Company/CompanyProfile";
 import WelcomePage from "./components/RegisterLogin/Splash/WelcomePage";
+import AddCompanyButton from "./components/PrimaryFeatures/Company/CompanyCRUDButtons/AddCompanyButton";
 
 
 function App() {
@@ -37,10 +38,13 @@ function App() {
             <CompanyProfilePage />
           </Route>
           <Route path="/signup">
-            <SignupFormPage />
-            </Route>
+            <WelcomePage newUserDefault={true} />
+          </Route>
+          <Route path="/login">
+            <WelcomePage newUserDefault={false} />
+          </Route>
             <Route path="/">
-            <WelcomePage />
+            <AddCompanyForm/>
           </Route>
         </Switch>
       )}

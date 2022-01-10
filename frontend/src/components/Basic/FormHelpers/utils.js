@@ -15,7 +15,7 @@ export const unsafeInput = (str, paramName = 'entry', maxLength) => {
     }
     if (newStr && containsUnsafeCharacters(str)) {
         return {
-            warningText: `Invalid ${paramName}. Suggested: `,
+            warningText: `Invalid entry. Try: `,
             suggestion: newStr,
             isSafe: false
         }

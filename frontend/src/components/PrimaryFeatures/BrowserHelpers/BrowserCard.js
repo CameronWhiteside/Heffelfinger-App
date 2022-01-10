@@ -31,7 +31,8 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
     //account for different 'name' variable aliases
     let name
     if (entry.name) name = entry.name
-    if (entry.username) name = entry.username
+    if (entry.firstName) name = entry.firstName
+    // if (entry.username) name = entry.username
 
     //acount for different 'url' variable aliases
     let url

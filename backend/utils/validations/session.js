@@ -3,7 +3,7 @@ const { handleValidationErrors } = require('./utils');
 const { check } = require('express-validator');
 
 exports.validateLogin = [
-    check('credential')
+    check('email')
       .exists({ checkFalsy: true })
       .notEmpty()
       .withMessage('Please provide a valid email or username.'),

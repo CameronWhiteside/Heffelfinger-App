@@ -7,32 +7,31 @@ exports.validateSignup = [
       .exists({ checkFalsy: true })
       .isEmail()
       .withMessage('Please provide a valid email.'),
-    check('username')
+    check('firstName')
       .exists({ checkFalsy: true })
-      .isLength({ min: 4 })
-      .withMessage('Please provide a username with at least 4 characters.'),
-    check('username')
+      .isLength({ min: 2 })
+      .withMessage('Please provide a first name with at least 4 characters.'),
+    check('firstName')
       .not()
       .isEmail()
-      .withMessage('Username cannot be an email.'),
+      .withMessage('First name cannot be an email.'),
+    check('lastName')
+      .exists({ checkFalsy: true })
+      .isLength({ min: 2 })
+      .withMessage('Please provide a last ame with at least 4 characters.'),
+    check('lastName')
+      .not()
+      .isEmail()
+      .withMessage('Last name cannot be an email.'),
     check('password')
         .exists({ checkFalsy: true })
         .withMessage('Please enter a password.')
         .isLength({ min: 8 })
         .withMessage('Password must be 8 characters or more.')
-        .isLength({ max: 30 })
-        .withMessage(`Try and keep that password under 30 characters. I promise we're encrypting this in our database.`)
+        .isLength({ max: 40 })
+        .withMessage(`Try and keep that password under 40 characters. I promise we're encrypting this in our database.`)
         .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*.])/, 'g')
         .withMessage('Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&.*")'),
-    check('confirmPassword')
-        .exists({ checkFalsy: true })
-        .withMessage('Please confirm your password.')
-        .custom((value, { req }) => {
-            if (value !== req.body.password) {
-                throw new Error('Provided passwords do not match.');
-            }
-            return true;
-        }),
     handleValidationErrors,
 ];
 

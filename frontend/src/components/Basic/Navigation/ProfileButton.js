@@ -10,7 +10,14 @@ function LogInMenu() {
 
   const user = useSelector(state => state.session.user)
   let loggedIn = false;
-  if (user) loggedIn=true
+  if (user) loggedIn = true
+
+  let helloName = user.firstName
+
+  useEffect(() => {
+    console.log('testing')
+    helloName = user.firstName
+  },[user])
 
   const dispatch = useDispatch();
 
@@ -21,7 +28,7 @@ function LogInMenu() {
 
   return (
     <div className="log-in-menu">
-      {loggedIn && <NavLink to={`/users/${user.id}`}>{`HELLO ${user.firstName}`}</NavLink>}
+      {helloName && <NavLink key={user.firstName} to={`/users/${user.id}`}>{`HELLO ${helloName}`}</NavLink>}
       <DropDownMenu
         icon='fas fa-user-astronaut'
         rotateToShow={false}

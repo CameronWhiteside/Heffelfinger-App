@@ -114,6 +114,7 @@
     --glass-border-radius: 10px;
     --glass-box-shadow-light:  0  8px 25px 0 var(--alpha-dark-400);
     --glass-box-shadow:  0  8px 25px 0 var(--alpha-dark-800);
+    --glass-background-image: linear-gradient(var(--alpha-200), var(--alpha-250));
 
     --nav-height-desktop: 108px;
     --main-margin: 30px;
@@ -360,4 +361,216 @@ label{
 textarea{
    font-size: var(--textarea-size-desktop);
    font: var(--accent-400) var(--main-header-font)
+}
+
+
+.form-container{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+form,
+textarea
+{
+    font-family: var(--body-family);
+    font-weight: 900;
+    color: var(--accent-200);
+    padding: 15px;
+}
+
+.form-input, textarea {
+    margin: 15px 0;
+    border: 0;
+    padding: 0px 0px 0px 20px;
+    box-sizing: border-box;
+    position: relative;
+    background-image: var(--glass-background-image);
+    border-radius: var(--button-border-radius);
+
+  }
+
+  .form-input input,
+  .form-input textarea
+  {
+    display: block;
+    position: relative;
+    width: 100%;
+    min-width: 320px;
+    color: var(--accent-600);
+    padding: 16px 8px;
+    border-radius: 4px 4px 0 0;
+    border: 0;
+    font-size: 14px;
+    line-height: 1;
+    outline: 0;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+  }
+
+form button{
+      padding: 8px;
+  }
+
+  .form-input input[data-toolong="true"],
+  .form-input input[data-toolong="true"] ~ label,
+  .form-input textarea[data-toolong="true"],
+  .form-input textarea[data-toolong="true"] ~ label
+    {
+      color: var(--primary-800)
+    }
+
+  .form-input input[data-toolong="true"] ~ .length-counter,
+  .form-input textarea[data-toolong="true"] ~ .length-counter
+  {
+    font-weight: 700;
+    }
+
+
+  .form-input input::placeholder,
+  .form-input textarea::placeholder
+  {
+    color: transparent;
+  }
+
+
+.form-input input:focus ~ .length-counter,
+.form-input textarea:focus ~ .length-counter
+{
+    color: var(--neutral-600)
+}
+
+.form-input input ~ .length-counter,
+.form-input textarea ~ .length-counter
+{
+    color: transparent;
+    position: absolute;
+    font-size: 12px;
+    padding-right: 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.form-input textarea ~ .length-counter,
+.form-input input ~ .length-counter
+{
+
+    top: 3px;
+    right: 8px;
+
+}
+
+
+
+
+.form-input input[data-toolong="true"] ~ .length-counter,
+.form-input textarea[data-toolong="true"] ~ .length-counter
+{
+    color: var(--primary-800)
+}
+
+.form-input label
+ {
+    position: absolute;
+    color: var(--neutral-600);
+    margin-left: 15px;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease-in-out;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.form-input label
+ {
+    top: 15px;
+    left: 8px;
+}
+
+/* .form-input textarea
+ {
+    position: absolute;
+    top: 0px;
+    left: 8px;
+} */
+
+.form-input input[data-hasinput="false"],
+.form-input input:valid,
+.form-input input:focus,
+.form-input textarea[data-hasinput="false"],
+.form-input textarea:valid,
+.form-input textarea:focus
+
+{
+    padding: 22px 8px 10px;
+}
+
+.form-input input[data-hasinput="true"] + label,
+.form-input input:focus + label,
+.form-input textarea[data-hasinput="true"] + label,
+.form-input textarea:focus + label
+{
+    font-size: 12px;
+    transform: translate3d(0, -10px, 0);
+}
+
+.form-input input:focus::placeholder,
+.form-input textarea:focus::placeholder {
+    color: var(--neutral-600)
+   }
+
+.error-area > div{
+   color: var(--neutral-200);
+   text-transform: uppercase;
+    font-size: 12px;
+    position: relative;
+    left: 8px;
+    max-width: 300px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.error-area{
+    position: relative;
+    left: -10px;
+    max-width: 300px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+
+.suggestion{
+    color: var(--neutral-200);
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    padding: 0px 10px;
+    background-color: var(--alpha-red-600);
+}
+
+.database-errors{
+    padding-top: 2px;
+}
+
+form{
+   display: flex;
+   flex-direction: column;
+   align-items: stretch;
+   justify-content: center;
+}
+
+button:disabled,
+button[disabled]{
+  /* border: 1px solid red;
+  background-color: pink;
+  color: #666666; */
+}
+
+
+
+input:-internal-autofill-selected {
+   appearance: menulist-button;
+   background-image: none !important;
+   background-color: inherit !important;
+   color: inherit !important;
 }

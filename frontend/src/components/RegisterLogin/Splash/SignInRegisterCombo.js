@@ -1,44 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../../store/session";
+import * as sessionActions from '../../../store/session';
 
-import { addCompany } from "../../../../store/company";
-import FormInput from "../../../Basic/FormHelpers/FormInput";
+import { NavLink, useHistory } from "react-router-dom";
+
+import FormInput from "../../Basic/FormHelpers/FormInput";
 
 
 import './SignInRegisterCombo.css';
 
-  const SignInRegisterCombo = () => {
-  const dispatch = useDispatch()
+const SignInRegisterCombo = ({ newUserDefault }) => {
 
-  const sessionUser = useSelector((state) => state.session.user);
+    const dispatch = useDispatch()
+    const history = useHistory()
 
-  const [newUser, setNewUser] = useState(false)
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [validationObject, setValidationObject] = useState({ test: true });
-  const [databaseErrors, setDatabaseErrors] = useState([])
+    const sessionUser = useSelector((state) => state.session.user);
 
-    const handleSignUpSubmit = (e, newUser) => {
+
+    useEffect(() => {
+        setNewUser(newUserDefault)
+    }, [newUserDefault])
+
+    const [newUser, setNewUser] = useState(newUserDefault)
+    const [email, setEmail] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [validationObject, setValidationObject] = useState({ test: true });
+    const [databaseErrors, setDatabaseErrors] = useState([])
+
+    const handleSignUpSubmit = (e) => {
+
+
         e.preventDefault();
 
         if (newUser) {
+            console.log(`Registration Form`)
             if (password === confirmPassword) {
                 setValidationObject({ test: true });
-                return dispatch(sessionActions.signupCombined({ email, firstName, lastName, password }))
+                return dispatch(sessionActions.signup({ email, firstName, lastName, password, confirmPassword }))
                     .catch(async (res) => {
+                        console.log(`sign up problem`)
                         const data = await res.json();
                         if (data && data.errors) setDatabaseErrors(data.errors);
                     });
             }
             return setDatabaseErrors(['Confirm Password field must be the same as the Password field']);
         } else {
+            console.log(`Login`)
+            console.log({email, password})
             setValidationObject({ test: true });
-            return dispatch(sessionActions.loginCombined({ email, password })).catch(
+
+            return dispatch(sessionActions.login({ email, password })).catch(
                 async (res) => {
                     const data = await res.json();
                     if (data && data.errors) setDatabaseErrors(data.errors);
@@ -48,52 +62,17 @@ import './SignInRegisterCombo.css';
     }
 
 
-//     const handleSubmit = async (e) => {
-
-//     e.preventDefault()
-
-//         let newCompany = {
-//             name,
-//             tagline,
-//             description,
-//         }
-
-//         try {
-//             let res = await dispatch(addCompany(newCompany))
-//             history.push(`/companies/${res.id}`)
-//             reset();
-//         } catch (e) {
-//             let res = await e.json()
-//             let errors = res.errors
-//             setDatabaseErrors([...errors])
-//         }
-//   }
-
-
-
-
-  const reset = () => {
-    setNewUser(false)
-    setEmail("");
-    setFirstName("");
-    setLastName("");
-    setPassword("");
-    setConfirmPassword("");
-    setValidationObject({ test: true });
-    setDatabaseErrors([])
-  };
-
-
-
 
     return (
     <div className='form-container'>
-      <h2>Add A Company</h2>
+            <h2>
+                {newUser ? 'Sign Up' : 'Log In'}
+      </h2>
 
       <form onSubmit={handleSignUpSubmit} className='sign-in-register-combo'>
                 <div className="all-inputs">
 
-                    {newUser &&
+                {newUser &&
                         <FormInput
                             labelText='First Name'
                             id='firstName'
@@ -101,13 +80,13 @@ import './SignInRegisterCombo.css';
                             stateVar={firstName}
                             setStateVar={setFirstName}
                             required={true}
-                            isSafe={true}
+                            restrictSafe={true}
                             placeholder={`Don't think too hard.`}
                             validationObject={validationObject}
                             setValidationObject={setValidationObject}
                         />
                     }
-                    { newUser &&
+                { newUser &&
                     <FormInput
                     labelText='Last Name'
                     id='lastName'
@@ -115,7 +94,7 @@ import './SignInRegisterCombo.css';
                     stateVar={lastName}
                     setStateVar={setLastName}
                     required={true}
-                    isSafe={true}
+                    restrictSafe={true}
                     placeholder={`Sometimes we're formal here.`}
                     validationObject={validationObject}
                     setValidationObject={setValidationObject}
@@ -137,12 +116,12 @@ import './SignInRegisterCombo.css';
                 />
                  <FormInput
                       labelText='Password'
-                      id='email'
-                      type='text'
+                      id='password'
+                      type='password'
                       stateVar={password}
                       setStateVar={setPassword}
                       required={true}
-                      isSafe={false}
+                      restrictSafe={false}
                       placeholder={'I promise we encrypt this'}
                       validationObject={validationObject}
                     setValidationObject={setValidationObject}
@@ -151,12 +130,11 @@ import './SignInRegisterCombo.css';
                     {newUser &&
                         <FormInput
                             labelText='Confirm Password'
-                            id='email'
-                            type='text'
+                            id='confirmPassword'
+                            type='password'
                             stateVar={confirmPassword}
                             setStateVar={setConfirmPassword}
-                            required={true}
-                            isSafe={false}
+                            restrictSafe={false}
                             placeholder={`Remember 2 seconds ago?`}
                             validationObject={validationObject}
                             setValidationObject={setValidationObject}
@@ -165,13 +143,23 @@ import './SignInRegisterCombo.css';
 
                 <div className="error-area">
                     {databaseErrors && databaseErrors.map(error => (
-                        <div className="database-errors" key={error}>{error}</div>
+                        <div className="database-errors">{error}</div>
                         ))}
                 </div>
-        </div>
-                <input type='submit' disabled={Object.values(validationObject).includes(false)} value='Submit' />
-        </form>
+                </div>
+                <button type='submit'>Submit</button>
+            </form>
+            <div onClick={() => {
 
+                let booleanValue = !newUser
+                setNewUser(booleanValue)
+
+            }}>
+                {newUser && <NavLink to='/login'>Visiting again? Log in here</NavLink>}
+                {!newUser && <NavLink to='/signup'>First time? Sign up here</NavLink>}
+
+
+            </div>
       </div>
   );
 };

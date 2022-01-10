@@ -5,56 +5,47 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Companies', [
       {
-        name: faker.company.companyName(),
-        description: faker.commerce.productDescription(),
-        website: faker.internet.url(),
-        location: faker.address.cityName(),
-        tagline: faker.company.catchPhrase(),
-        instagramUrl: faker.internet.url(),
-        facebookUrl: faker.internet.url(),
-        linkedinUrl: faker.internet.url(),
-        logo: faker.image.imageUrl()
+        name: 'AirCnD',
+        description: 'sampleDescription',
+        location: 'sampleCity',
+        tagline: 'sampleTagline sampleTagline',
+        logo: 'https://i.ibb.co/BgBRsvf/placeholder2.jpg'
       },
       {
-        name: faker.company.companyName(),
-        description: faker.commerce.productDescription(),
-        website: faker.internet.url(),
-        twitterUrl: faker.internet.url(),
-        instagramUrl: faker.internet.url(),
-        facebookUrl: faker.internet.url(),
-        linkedinUrl: faker.internet.url(),
-        location: faker.address.cityName(),
-        tagline: faker.company.catchPhrase(),
-        logo: faker.image.imageUrl()
+        name: 'Gotta Latte Do',
+        description: 'sampleDescription',
+        location: 'sampleCity',
+        tagline: 'sampleTagline sampleTagline',
+        logo: 'https://i.ibb.co/zPF1bz6/gotta-latte-do.jpg'
       },
       {
-        name: faker.company.companyName(),
-        description: faker.commerce.productDescription(),
-        website: faker.internet.url(),
-        location: faker.address.cityName(),
-        tagline: faker.company.catchPhrase(),
-        logo: faker.image.imageUrl()
+        name: 'Recipeople',
+        description: 'sampleDescription',
+        location: 'sampleCity',
+        tagline: 'sampleTagline sampleTagline',
+        logo: 'https://i.ibb.co/qMqtCbR/recipeople.jpg'
       },
       {
-        name: faker.company.companyName(),
-        description: faker.commerce.productDescription(),
-        website: faker.internet.url(),
-        instagramUrl: faker.internet.url(),
-        facebookUrl: faker.internet.url(),
-        twitterUrl: faker.internet.url(),
-        location: faker.address.cityName(),
-        tagline: faker.company.catchPhrase(),
-        logo: faker.image.imageUrl()
+        name: 'Heffelfinger Business Studios',
+        description: 'sampleDescription',
+        location: 'sampleCity',
+        tagline: 'sampleTagline sampleTagline',
+        logo: 'https://i.ibb.co/BgBRsvf/placeholder2.jpg'
+      },
+
+      {
+        name: 'Inkr',
+        description: 'sampleDescription',
+        location: 'sampleCity',
+        tagline: 'sampleTagline sampleTagline',
+        logo: 'https://cdn.discordapp.com/attachments/909939496378855424/929132224836677652/black-and-white.png'
       },
       {
-        name: faker.company.companyName(),
-        description: faker.commerce.productDescription(),
-        website: faker.internet.url(),
-        facebookUrl: faker.internet.url(),
-        linkedinUrl: faker.internet.url(),
-        location: faker.address.cityName(),
-        tagline: faker.company.catchPhrase(),
-        logo: faker.image.imageUrl()
+        name: 'Carpe Diem',
+        description: 'sampleDescription',
+        location: 'sampleCity',
+        tagline: 'sampleTagline sampleTagline',
+        logo: 'https://i.ibb.co/9G6LLCQ/logo-sq-plain.jpg'
       },
     ])
   },

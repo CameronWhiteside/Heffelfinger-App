@@ -6,6 +6,7 @@ import { useFormValidation } from './FormValidationContext'
 
 
 
+
 const FormInput = (
 
     {
@@ -21,16 +22,35 @@ const FormInput = (
         patternMatch,
         additionalValidationArr,
         validationObject,
-        setValidationObject
+        setValidationObject,
+        restrictSafe
     }
 
 ) => {
 
+    // useEffect(() => {
+    //     console.log({validationObject})
+    //     if (required && !stateVar) {
+    //         let currentValidationObject = { ...validationObject }
+    //         currentValidationObject[id] = false
+    //         setValidationObject(currentValidationObject)
+    //     }
+    // },[])
+
     const acceptSuggestion = (suggestion) => setStateVar(suggestion)
     const updateStateVar = (e) => setStateVar(e.target.value)
+
+
     let { isSafe, warningText, suggestion } = unsafeInput(stateVar, id, maxLength)
+
     if (type === 'textarea' && warningText) {
         warningText = 'Input includes forbidden characters (<>$#)'
+    }
+
+    if (!restrictSafe) {
+        isSafe = true;
+        warningText = ''
+        suggestion = ''
     }
 
     let newErrors
@@ -83,7 +103,10 @@ const FormInput = (
                     {`${((stateVar.length && maxLength) ? `${stateVar.length}/${maxLength}` : '')}`}
                 </span>
                 <div className='error-area'>
-                        {warningText && <div>{warningText}
+                    {warningText && <div className='warning'>
+                        <span>
+                            {warningText}
+                        </span>
                             {type !== 'textarea' && <span
                                 className='suggestion'
                                 onClick={() => acceptSuggestion(suggestion)}

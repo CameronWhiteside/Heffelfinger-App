@@ -35,13 +35,20 @@
 
 .log-in-menu{
     position: relative;
+    width: 300px;
 }
 
 
 .log-in-menu > .drop-down-menu{
-    left: -228px;
+    right: 13px;
     top: 9px;
     width: 200px;
+}
+
+.hello-user{
+    position: absolute;
+    right: 60px;
+    top: 14px;
 }
 
 .fa-user-astronaut:before{

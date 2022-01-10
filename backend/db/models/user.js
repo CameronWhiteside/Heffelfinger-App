@@ -4,7 +4,19 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    username: {
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [3, 30],
+        isNotEmail(value) {
+          if (Validator.isEmail(value)) {
+            throw new Error('Cannot be an email.');
+          }
+        },
+      },
+    },
+    lastName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -61,8 +73,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
-    return { id, username, email };
+    const { id, firstName, lastName, email } = this; // context will be the User instance
+    return { id, firstName, lastName, email };
   };
 
   User.prototype.validatePassword = function (password) {
@@ -75,13 +87,13 @@ module.exports = (sequelize, DataTypes) => {
   };
 
 
-  User.login = async function ({ credential, password }) {
+  User.login = async function ({ email, password }) {
+    console.log(`made it to the user model here`)
     const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
       where: {
         [Op.or]: {
-          username: credential,
-          email: credential,
+          email
         },
       },
     });
@@ -91,10 +103,11 @@ module.exports = (sequelize, DataTypes) => {
   };
 
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ firstName, lastName, email, password }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
-      username,
+      firstName,
+      lastName,
       email,
       hashedPassword,
     });
