@@ -39,17 +39,17 @@
 
     --title-family: tomarik-brush, sans-serif;
     --accent-family: aviano-slab, serif;
-    --header-family: tomarik-introvert, serif;
-    --header-wide-family: novecento-slab-wide, serif;
-    --subheader-family: orbitron, 'Courier New', Courier, monospace;
-    --body-family: orbitron, 'Courier New', Courier, monospace;
-    --digital-family: orbitron, 'Courier New', Courier, monospace;
+    --header-family: tomarik-brush, serif;
+    --header-wide-family: tomarik-brush, serif;
+    --subheader-family: 'Courier New', Courier, monospace;
+    --body-family: 'Courier New', Courier, monospace;
+    --digital-family: 'Courier New', Courier, monospace;
 
     --standard-weight: 400;
     --subheader-weight: 500;
-    --heavy-weight: 700;
+    --heavy-weight: 900;
 
-    --h1-size-desktop: 36px;
+      --h1-size-desktop: 36px;
     --h1-size-tablet: 36px;
     --h1-size-mobile: 36px;
 
@@ -69,7 +69,7 @@
     --h5-size-tablet: 18px;
     --h5-size-mobile: 18px;
 
-    --h6-size-desktop: 16px;
+    --h6-size-desktop: 20px;
     --h6-size-tablet: 16px;
     --h6-size-mobile: 16px;
 
@@ -129,6 +129,7 @@
 
    .scroll-area{
       overflow:hidden;
+      box-shadow: var(--inner-scroll-box-shadow);
    }
 
      /* Firefox */
@@ -174,8 +175,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: var(--body-font);
-    font-weight: var(--standard-weight);
     color: var(--accent-400);
+    letter-spacing: 0.8px;
 }
 
 
@@ -198,16 +199,15 @@ main{
 h1{
    font-size: var(--h1-size-desktop);
    font-family: var(--header-family);
-   font-weight: var(--heavy-weight);
    color: var(--accent-200);
    text-transform: uppercase;
+   letter-spacing: 0.8px;
 }
 
 h2{
     text-transform: uppercase;
    font-size: var(--h2-size-desktop);
    font-family: var(--header-family);
-   font-weight: var(--heavy-weight);
    color: var(--accent-200);
    letter-spacing: 0.5px;
 }
@@ -217,6 +217,7 @@ h3{
    font-family: var(--header-family);
    font-weight: var(--standard-weight);
    color: var(--accent-200);
+   letter-spacing: 0.8px;
 }
 
 h4{
@@ -224,6 +225,7 @@ h4{
    font-family: var(--header-family);
    font-weight: var(--header-weight);
    color: var(--accent-200);
+   letter-spacing: 0.8px;
 }
 
 h5{
@@ -231,21 +233,25 @@ h5{
    font-family: var(--header-family);
    font-weight: var(--header-weight);
    color: var(--accent-200);
+   letter-spacing: 0.8px;
 }
 
 h6{
    font-size: var(--h6-size-desktop);
-   font-family: var(--header-family);
+   font-family: var(--body-family);
    font-weight: var(--header-weight);
    color: var(--accent-200);
+   letter-spacing: 0.8px;
 }
 
 
 p{
     font-size: var(--p-size-desktop);
     font-family: var(--body-family);
-    font-weight: var(--standard-weight);
+    font-weight: var(--heavy-weight);
     color: var(--accent-400);
+    letter-spacing: 0.8px;
+    line-height: 1.3;
  }
 
 
@@ -261,10 +267,12 @@ button.icon-holder
    text-transform: uppercase;
    text-decoration: none;
    transition:var(--transition-easy);
+   letter-spacing: 0.8px;
 }
 
 i{
    font-size: var(--favicon-size-desktop);
+   letter-spacing: 0.8px;
 }
 
 
@@ -295,16 +303,18 @@ i:hover
 span{
     font-size: var(--span-size-desktop);
     font-family: var(--body-family);
-    font-weight: var(--standard-weight);
+    font-weight: var(--heavy-weight);
     color: var(--accent-400);
+    letter-spacing: 0.8px;
  }
 
  li{
      list-style: none;
      font-size: var(--span-size-desktop);
      font-family: var(--body-family);
-     font-weight: var(--standard-weight);
+     font-weight: var(--heavy-weight);
      color: var(--accent-400);
+     letter-spacing: 0.8px;
  }
 
  button.icon-holder{
@@ -322,8 +332,9 @@ button,
 .like-button
 {
     font-size: var(--button-size-desktop);
-    font-family: var(--header-family);
+    font-family: var(--body-family);
     font-weight: var(--heavy-weight);
+    letter-spacing: 0.8px;
     text-transform: uppercase;
     color: var(--neutral-1000);
     background-color: var(--primary-600);

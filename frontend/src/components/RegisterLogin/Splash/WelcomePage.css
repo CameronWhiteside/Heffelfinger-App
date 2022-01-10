@@ -1,0 +1,27 @@
+.welcome-page{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+
+}
+
+.welcome-content-area{
+    top: -40px;
+    position: relative;
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-left{
+    height: 925px
+}
+
+.welcome-left img{
+    height: 100%;
+}

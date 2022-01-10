@@ -8,6 +8,8 @@ import Navigation from "./components/Basic/Navigation";
 import CompanyBrowser from "./components/PrimaryFeatures/Company/CompanyBrowser";
 import AddCompanyForm from "./components/PrimaryFeatures/Company/AddCompanyForm";
 import CompanyProfilePage from "./components/PrimaryFeatures/Company/CompanyProfile";
+import WelcomePage from "./components/RegisterLogin/Splash/WelcomePage";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +38,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+            </Route>
+            <Route path="/">
+            <WelcomePage />
           </Route>
         </Switch>
       )}

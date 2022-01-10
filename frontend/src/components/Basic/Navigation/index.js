@@ -66,11 +66,11 @@ function Navigation({ isLoaded }){
       <div className='site-logo'>
       </div>
       <div className='text-links'>
-        <NavLink exact to="/welcome">00_Welcome</NavLink>
-        <NavLink exact to="/">01_Octopus Den</NavLink>
+        <NavLink exact to="/">00_Welcome</NavLink>
+        <NavLink exact to="/users">01_Octopus Den</NavLink>
         <NavLink exact to="/companies">02_Launchpad</NavLink>
         <NavLink exact to="/events">03_Mess Hall</NavLink>
-        <NavLink exact to="/users">04_Free Donuts</NavLink>
+        <NavLink exact to="/about">04_Free Donuts</NavLink>
       </div>
       {isLoaded && sessionLinks}
 
