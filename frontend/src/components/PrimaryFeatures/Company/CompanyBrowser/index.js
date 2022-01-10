@@ -30,27 +30,10 @@ const CompanyBrowser = () => {
     const companiesArr = Object.values(companies)
 
     const title = `
-        Ready for Liftoff
+        LAUNCHPAD
     `
 
-    const bodyCopy = `
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-        These are the companies.
-    `
+    const bodyCopy = `n venture hearts of the stars dream of the mind's eye the sky calls to us Sea of Tranquility? Brain is the seed of intelligence laws of physics consciousness extraplanetary concept of the number one great turbulent clouds? The only home we've ever known tingling of the spine rich in heavy atoms great turbulent clouds made in the interiors of collapsing stars two ghostly white figures in coveralls and helmets are softly dancing and billions upon billions upon billions`
 
     return (
         <div className='company-browser'>
@@ -73,14 +56,14 @@ const CompanyBrowser = () => {
         </div>
     )
 
-    return (
-        <section className='company-list'>
-            <h2>All Companies</h2>
-            <NavLink to='/companies/new' className="like-button">Add Company</NavLink>
-            {!companiesArr.length && <span>No companies registered yet</span>}
-            {companiesArr && companiesArr.map(company => <CompanyDetails key={company.id} company={company} /> )}
-        </section>
-    )
+    // return (
+    //     <section className='company-list'>
+    //         <h2>All Companies</h2>
+    //         <NavLink to='/companies/new' className="like-button">Add Company</NavLink>
+    //         {!companiesArr.length && <span>No companies registered yet</span>}
+    //         {companiesArr && companiesArr.map(company => <CompanyDetails key={company.id} company={company} /> )}
+    //     </section>
+    // )
 }
 
 export default CompanyBrowser

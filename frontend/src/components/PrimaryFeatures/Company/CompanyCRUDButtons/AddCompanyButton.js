@@ -26,7 +26,7 @@ const AddCompanyButton = () => {
     return (
         <div className="view-company-button">
             <button onClick={()=>goToNewCompanyForm()}>
-                    REGISTER YOUR COMPANY
+                    PREPARE FOR LIFTOFF
            </button>
         </div>
     )

@@ -44,7 +44,7 @@ function App() {
             <WelcomePage newUserDefault={false} />
           </Route>
             <Route path="/">
-            <AddCompanyForm/>
+            <WelcomePage newUserDefault={true} />
           </Route>
         </Switch>
       )}
