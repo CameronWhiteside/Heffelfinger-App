@@ -12,7 +12,29 @@ const DropDownMenu =
     }) => {
 
         if (!iconClassString) iconClassString = "fas fa-chevron-circle-down";
-        if (!rotateToShow) rotateToShow = true;
+        if (rotateToShow === undefined) rotateToShow = false;
+
+        let clickFunction
+
+        if (rotateToShow) {
+            clickFunction =
+                e => {
+                    e.stopPropagation()
+                    toggleClass(e.target, 'show-menu')
+                    toggleClass(e.target.parentElement, 'show-menu')
+                    toggleClass(e.target.parentElement.parentElement, 'show-menu')
+                    toggleClass(e.target, 'rotate180')
+                }
+        } else {
+            clickFunction =
+            e => {
+                e.stopPropagation()
+                toggleClass(e.target, 'show-menu')
+                toggleClass(e.target.parentElement, 'show-menu')
+                toggleClass(e.target.parentElement.parentElement, 'show-menu')
+            }
+        }
+    
 
 
         const childrenWithProps = Children.map(children, child => {
@@ -33,13 +55,7 @@ const DropDownMenu =
                 <div className="menu-button">
                         <i
                             className={iconClassString}
-                        onClick={e => {
-                                e.stopPropagation()
-                                toggleClass(e.target, 'show-menu')
-                                toggleClass(e.target.parentElement, 'show-menu')
-                                toggleClass(e.target.parentElement.parentElement, 'show-menu')
-                                toggleClass(e.target, 'rotate180')
-                            }}
+                        onClick={e => clickFunction(e)}
                         ></i>
                 </div>
 

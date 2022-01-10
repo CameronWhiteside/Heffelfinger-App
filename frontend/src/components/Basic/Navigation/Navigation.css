@@ -13,6 +13,14 @@
     align-items: center;
 }
 
+.site-logo{
+    padding: 5px 10px;
+}
+
+.site-logo img{
+    width: 80%;
+}
+
 .session-links{
     justify-content: flex-end;
     align-items: center;
@@ -23,4 +31,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.log-in-menu{
+    position: relative;
+}
+
+
+.log-in-menu > .drop-down-menu{
+    left: -228px;
+    top: 9px;
+    width: 200px;
+}
+
+.fa-user-astronaut:before{
+    font-size: 30px;
 }
