@@ -41,9 +41,9 @@
     --accent-family: aviano-slab, serif;
     --header-family: tomarik-introvert, serif;
     --header-wide-family: novecento-slab-wide, serif;
-    --subheader-family: 'Courier New', 'Courier', monospace;
-    --body-family: 'Courier New', Courier, monospace;
-    --digital-family: 'Courier New', Courier, monospace;
+    --subheader-family: orbitron, 'Courier New', Courier, monospace;
+    --body-family: orbitron, 'Courier New', Courier, monospace;
+    --digital-family: orbitron, 'Courier New', Courier, monospace;
 
     --standard-weight: 400;
     --subheader-weight: 500;
