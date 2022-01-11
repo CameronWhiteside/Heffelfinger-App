@@ -1,25 +1,103 @@
 .profile-full-page{
-    width: 1000px;
+    width: 1400px;
+    padding: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 0 auto;
     position: relative;
 }
 
 
 
-.primary-info > .top-banner{
+.page-short-info p{
+    text-transform: uppercase;
+}
+
+.primary-info-col {
     width: 1000px;
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
 .top-banner{
-    overflow: visible;
-    height: 75px;
+    width: 100%;
+    padding:20px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.image-container{
+   margin-right: 35px;
+}
+
+.banner-text{
+    height: 100%;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    justify-content: flex-start;
+}
+
+.page-links{
+    margin: 20px 0px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 
-.top-banner .image-container{
-   margin: 60px;
+.owner-menu-container{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 250px;
+}
+
+
+.secondary-info {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+}
+
+.static-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 25%;
+    margin-right: 20px;
+}
+
+.detailed-description{
+    width: 100%;
+    padding: 20px;
+
+}
+
+.owner-tasks{
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.action-column{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.newsfeed{
+    width: 100%;
+}
+
+.newsfeed > div {
+    margin-bottom: 20px;
+    width: 100%;
 }

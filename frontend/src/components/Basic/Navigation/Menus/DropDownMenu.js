@@ -12,7 +12,7 @@ const DropDownMenu =
     }) => {
 
         if (!iconClassString) iconClassString = "fas fa-chevron-circle-down";
-        if (rotateToShow === undefined) rotateToShow = false;
+        if (rotateToShow === undefined) rotateToShow = true;
 
         let clickFunction
 

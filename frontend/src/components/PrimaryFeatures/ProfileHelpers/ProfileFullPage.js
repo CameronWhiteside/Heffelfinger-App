@@ -21,6 +21,7 @@ const ProfileFullPage = ({
     dataObject,
     profileType,
     pageTitle,
+    pageDescription,
     imageUrl,
     imageSize,
     pageShortInfo,
@@ -45,20 +46,25 @@ const ProfileFullPage = ({
     hasCrud,
     children,
 }) => {
+
+    const menuChildren = children[0]
+    console.log(menuChildren)
+
+
     return (
     <section className='profile-full-page'>
 
 
 
             { hasCrud && <div className="crud-left-col">
-                {children}
+                {children[2]}
             </div>}
-            <div className="non-crud-left-col">
 
 
-                        <div className='primary-info-col glass'>
 
-                        <div className='top-banner'>
+                    <div className='primary-info-col'>
+
+                        <div className='top-banner glass'>
                             <div className='image-container'>
                                     <ProfileImage
                                         url={imageUrl}
@@ -86,7 +92,8 @@ const ProfileFullPage = ({
                             {isProfileOwner &&
                                 <div className="owner-menu-container">
                                     <DropDownMenu entry={dataObject}>
-                                        {children}
+                                        {children[0]}
+                                        {children[1]}
                                     </DropDownMenu>
                                 </div>
                             }
@@ -97,7 +104,7 @@ const ProfileFullPage = ({
                                     </div> */}
                             </div>
                         </div>
-                        <div className='page-links'>
+                        <div className='page-links glass'>
                             <div className='external-links'>
                                 <ExternalLinksList
                                     externalLinksArray={externalLinksArray}
@@ -110,30 +117,28 @@ const ProfileFullPage = ({
                                     />
                                 </div>
                             </div>
-                    </div>
 
-                    <div className='secondary-info'>
-                    <div className='detail-column'>
-                            {dataObject.decription &&
-                                <div className='detailed-description'>
-                                    <p>{dataObject.description}</p>
+
+                    <div className='secondary-info glass'>
+                    <div className='static-column'>
+                                <div className='detailed-description glass'>
+                            {pageDescription && <p>{pageDescription}</p>}
                                 </div>
-                            }
-                            </div>
-                            <div className='action-column'>
-                                {isProfileOwner &&
-                                    (<div className='owner-tasks glass'>
+                            {isProfileOwner &&
+                                (<div className='owner-tasks'>
                                     <OwnerTaskList
                                         dataObject={dataObject}
                                         profileType={profileType}
                                     />
-                                    </div>)
-                                }
+                                </div>)
+                            }
+                    </div>
+                    <div className='action-column'>
+
                                 <div className='newsfeed'>
                                     {
                                         hasTickets &&
                                         <TicketFeed
-
                                             dataObject={dataObject}
                                             ticketsSize={ticketsSize}
                                             ticketsAlias={ticketsAlias}
@@ -167,9 +172,10 @@ const ProfileFullPage = ({
                                     }
                                 </div>
                             </div>
-                    </div>
+                </div>
                 {hasCrud && <div className="cover-up" />}
-            </div>
+                </div>
+
 
     </section>
     )

@@ -6,7 +6,8 @@ import ProfileFullPage from "../ProfileHelpers/ProfileFullPage";
 import { useSelector } from "react-redux";
 import EditCompanyButton from "./CompanyCRUDButtons/EditCompanyButton";
 import DeleteCompanyButton from "./CompanyCRUDButtons/DeleteCompanyButton";
-
+import AddCompanyForm from "./AddCompanyForm";
+import AddCompanyButton from "./CompanyCRUDButtons/AddCompanyButton";
 
 const CompanyProfilePage = () => {
 
@@ -36,8 +37,7 @@ const CompanyProfilePage = () => {
     //     setDataObject(Object.values(dispatch(loadCompanies()))[id])
     // })
 
-
-    let { tagline, location, createdAt } = dataObject
+    let { tagline, location, createdAt, description } = dataObject
 
     // console.log({ tagline })
     let year = createdAt.slice(0,4);
@@ -57,6 +57,7 @@ const CompanyProfilePage = () => {
                 imageUrl={dataObject.logo}
                 imageSize='large'
                 pageShortInfo={shortInfo}
+                pageDescription={description}
         externalLinksArray={[]}
         isProfileOwner={true}
         hasTags={false}
@@ -74,10 +75,13 @@ const CompanyProfilePage = () => {
         companiesSize={false}
         hasTickets={false}
         ticketsAlias={false}
-        ticketsSize={false}
+                ticketsSize={false}
+                hasCrud={true}
             >
-                <EditCompanyButton entry={dataObject}/>
-                <DeleteCompanyButton entry={dataObject}/>
+                <EditCompanyButton entry={dataObject} />
+                <DeleteCompanyButton entry={dataObject} />
+                <AddCompanyForm />
+
             </ProfileFullPage>
         </>
     )
