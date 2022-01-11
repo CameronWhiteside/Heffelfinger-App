@@ -22,23 +22,16 @@ const CompanyBrowser = () => {
 
     const dispatch = useDispatch();
 
-
     useEffect(() => {
+        console.log('browser use effect running')
         dispatch(loadCompanies())
-    },[])
+    },[dispatch])
 
     const companyState = useSelector(state => {
         return state.company
     })
-    
-    // useEffect(() => {
-    // }, [dispatch])
 
-    // useEffect(() => {
-    //     // dispatch(loadCompanies())
-    // }, [companyState])
-
-    const companiesArr = Object.values(companyState.companyList)
+    const companiesArr = Object.values(companyState)
 
     const title = `
         LAUNCHPAD

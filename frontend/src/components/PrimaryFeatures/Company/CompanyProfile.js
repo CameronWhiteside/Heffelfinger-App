@@ -1,35 +1,51 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { loadCompanyDetail } from "../../../store/company";
+import { loadCompanies } from "../../../store/company";
 import ProfileFullPage from "../ProfileHelpers/ProfileFullPage";
 import { useSelector } from "react-redux";
+import EditCompanyButton from "./CompanyCRUDButtons/EditCompanyButton";
+import DeleteCompanyButton from "./CompanyCRUDButtons/DeleteCompanyButton";
 
 
 const CompanyProfilePage = () => {
 
-    const history = useHistory();
+
+    console.log('Rendering Company Profile Page Component')
+
     const dispatch = useDispatch();
     const { id } = useParams();
 
-    useEffect(() => {
-        dispatch(loadCompanyDetail(id))
-    },[dispatch])
-
-    const dataObject = useSelector(state => {
-        return state.company[id]
+    const companyState = useSelector(state => {
+        return state.company
     })
+
+    useEffect(() => {
+        dispatch(loadCompanies)
+    }, [dispatch])
+
+    let dataObject = Object.values(companyState)[id]
+
+    //****LATEST ATTEMPT */
+
+
+    // const [dataObject, setDataObject] = useState({})
+
+
+    // useEffect(() => {
+    //     setDataObject(Object.values(dispatch(loadCompanies()))[id])
+    // })
 
 
     let { tagline, location, createdAt } = dataObject
 
-    console.log({ tagline })
+    // console.log({ tagline })
     let year = createdAt.slice(0,4);
     createdAt = `On board since ${year}`
-    console.log({ location })
+    // console.log({ location })
 
     let shortInfo = [tagline, location, createdAt].filter(el => !(!el)).join(' · ')
-    console.log({shortInfo})
+    // console.log({shortInfo})
 
 
     return (
@@ -42,12 +58,12 @@ const CompanyProfilePage = () => {
                 imageSize='large'
                 pageShortInfo={shortInfo}
         externalLinksArray={[]}
-        isProfileOwner={false}
+        isProfileOwner={true}
         hasTags={false}
-        tagsAlias={false}
-        tagsSize={false}
+        tagsAlias='Tags'
+        tagsSize='small'
         ctaType={false}
-        hasUsers={false}
+        hasUsers={true}
         usersAlias='Contributors'
         usersSize='medium'
         hasEvents={true}
@@ -59,7 +75,10 @@ const CompanyProfilePage = () => {
         hasTickets={false}
         ticketsAlias={false}
         ticketsSize={false}
-        />
+            >
+                <EditCompanyButton entry={dataObject}/>
+                <DeleteCompanyButton entry={dataObject}/>
+            </ProfileFullPage>
         </>
     )
 }

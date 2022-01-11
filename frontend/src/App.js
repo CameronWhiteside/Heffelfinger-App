@@ -37,7 +37,8 @@ function App() {
           <Route exact path="/companies/new">
             <AddCompanyForm />
           </Route>
-          <Route path="/companies/:id">
+            <Route path="/companies/:id">
+              {console.log('loading company page')}
             <CompanyProfilePage />
           </Route>
           <Route path="/signup">

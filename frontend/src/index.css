@@ -109,7 +109,7 @@
     --transition-rev-up: all 0.2s cubic-bezier(.5,0,.5,-.75);
 
     --button-padding: 5px 10px;
-    --button-border-radius: 100px;
+    --button-border-radius: 30px;
 
     --glass-padding: 5px;
     --glass-border-radius: 30px;
@@ -193,6 +193,7 @@ body{
     background-position: center;
     background-attachment: fixed;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 main{
@@ -367,8 +368,8 @@ textarea
     padding: 15px;
 }
 
-.form-input, textarea {
-    margin: 15px 0;
+.form-input {
+     margin: 15px 0;
     border: 0;
     padding: 0px 0px 0px 20px;
     box-sizing: border-box;
@@ -382,7 +383,7 @@ textarea
   .form-input textarea
   {
     display: block;
-    position: relative;
+    height: fit-content;
     width: 100%;
     min-width: 320px;
     color: var(--accent-600);
@@ -396,6 +397,9 @@ textarea
     transition: all 0.2s ease-in-out;
   }
 
+  .form-input textarea {
+     min-height: 150px;
+  }
 form button{
       padding: 8px;
   }
@@ -509,20 +513,23 @@ form button{
 .error-area > div{
    color: var(--neutral-200);
    text-transform: uppercase;
+   text-align: center;
     font-size: 12px;
     position: relative;
-    left: 8px;
-    max-width: 300px;
+    /* left: 8px; */
+    width: 100%;
     word-break: break-all;
     word-wrap: break-word;
 }
 
 .error-area{
-    position: relative;
-    left: -10px;
-    max-width: 300px;
-    word-break: break-all;
-    word-wrap: break-word;
+   position: relative;
+   /* left: -10px; */
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin: 0px 0px 20px;
 }
 
 

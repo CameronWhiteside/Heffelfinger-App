@@ -34,7 +34,7 @@ const DropDownMenu =
                 toggleClass(e.target.parentElement.parentElement, 'show-menu')
             }
         }
-    
+
 
 
         const childrenWithProps = Children.map(children, child => {
@@ -44,7 +44,6 @@ const DropDownMenu =
             return child;
         })
 
-        console.log(childrenWithProps)
 
          return (
 

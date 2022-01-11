@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf"
 
 const LOAD_COMPANIES = 'company/loadCompanies'
-const LOAD_COMPANY_DETAIL = 'company/loadCompanyDetail'
+// const LOAD_COMPANY_DETAIL = 'company/loadCompanyDetail'
 const ADD_COMPANY = 'company/createCompany'
 const EDIT_COMPANY = 'company/editCompany'
 const DELETE_COMPANY = 'company/deleteCompany'
@@ -12,13 +12,14 @@ export const loadCompaniesAction = (companies) => {
         companies
     }
 }
-export const loadCompanyDetailAction = (foundCompany, id) => {
-    return {
-        type: LOAD_COMPANY_DETAIL,
-        foundCompany,
-        id
-    }
-}
+
+// export const loadCompanyDetailAction = (foundCompany, id) => {
+//     return {
+//         type: LOAD_COMPANY_DETAIL,
+//         foundCompany,
+//         id
+//     }
+// }
 
 export const addCompanyAction = (newCompany) => {
     return {
@@ -51,13 +52,13 @@ export const loadCompanies = () => async (dispatch) => {
 
 }
 
-export const loadCompanyDetail = (id) => async (dispatch) => {
-    const response = await csrfFetch(`/api/companies/${id}`);
-    const foundCompany = await response.json();
-    dispatch(loadCompanyDetailAction(foundCompany, id))
-    return foundCompany
+// export const loadCompanyDetail = (id) => async (dispatch) => {
+//     const response = await csrfFetch(`/api/companies/${id}`);
+//     const foundCompany = await response.json();
+//     dispatch(loadCompanyDetailAction(foundCompany, id))
+//     return foundCompany
 
-}
+// }
 
 export const addCompany = (companyData) => async (dispatch) => {
     const response = await csrfFetch('/api/companies/', {
@@ -93,7 +94,7 @@ export const deleteCompany = (id) => async (dispatch) => {
     return deletedCompany
 }
 
-const companyReducer = (state = { companyList: {} } , action) => {
+const companyReducer = (state = {} , action) => {
 // const companyReducer = (state = { } , action) => {
     let newState = { ...state }
 
@@ -104,12 +105,12 @@ const companyReducer = (state = { companyList: {} } , action) => {
 
     switch (action.type) {
         case LOAD_COMPANIES:
-            action.companies.forEach(company => { newState.companyList[company.id] = company });
+            action.companies.forEach(company => { newState[company.id] = company });
             return newState;
 
-        case LOAD_COMPANY_DETAIL:
-            newState['company'][id] = action.foundCompany;
-            return newState;
+        // case LOAD_COMPANY_DETAIL:
+        //     newState[id] = action.foundCompany;
+        //     return newState;
 
         case ADD_COMPANY:
             console.log(Object.keys(newState))
@@ -117,12 +118,12 @@ const companyReducer = (state = { companyList: {} } , action) => {
             return newState
 
         case EDIT_COMPANY:
-            newState = { ...newState.entries, [id]: action.editedCompany }
+            newState[id] = action.editedCompany
             return newState
 
         case DELETE_COMPANY:
 
-            delete newState.companyList[id]
+            delete newState[id]
             return newState
 
         default:

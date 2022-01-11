@@ -13,6 +13,7 @@ import UserFeed from "../User/UserFeed"
 import CompanyFeed from "../Company/CompanyFeed"
 
 import './ProfileFullPage.css'
+import DropDownMenu from "../../Basic/Navigation/Menus/DropDownMenu"
 
 //pass in CRUD form as TRUE and include as child element
 
@@ -72,7 +73,9 @@ const ProfileFullPage = ({
                                         {pageTitle}
                                     </h1>
                                     <div className='page-short-info'>
+                                        <p>
                                         {pageShortInfo}
+                                        </p>
                                     </div>
                                     {hasTags && <TagsGroup
                                         tagsAlias={tagsAlias}
@@ -80,7 +83,18 @@ const ProfileFullPage = ({
                                         tagsSize={tagsSize}
                                         isProfileOwner={isProfileOwner}
                                     />}
-
+                            {isProfileOwner &&
+                                <div className="owner-menu-container">
+                                    <DropDownMenu entry={dataObject}>
+                                        {children}
+                                    </DropDownMenu>
+                                </div>
+                            }
+                                {/* REPLACE WITH MENU COMP */}
+                                {/* <div className="menu-icon">
+                                        {isProfileOwner && <EditProfileLink />}
+                                        {isProfileOwner && <DeleteProfileLink />}
+                                    </div> */}
                             </div>
                         </div>
                         <div className='page-links'>
@@ -94,28 +108,25 @@ const ProfileFullPage = ({
                                         dataObject={dataObject}
                                         ctaType={ctaType}
                                     />
-                                {/* REPLACE WITH MENU COMP */}
-                                {/* <div className="menu-icon">
-                                        {isProfileOwner && <EditProfileLink />}
-                                        {isProfileOwner && <DeleteProfileLink />}
-                                    </div> */}
                                 </div>
                             </div>
                     </div>
 
                     <div className='secondary-info'>
-                            <div className='detail-column'>
-                                <div className='detailed-description'></div>
+                    <div className='detail-column'>
+                            {dataObject.decription &&
+                                <div className='detailed-description'>
+                                    <p>{dataObject.description}</p>
+                                </div>
+                            }
                             </div>
                             <div className='action-column'>
                                 {isProfileOwner &&
                                     (<div className='owner-tasks glass'>
-                                {isProfileOwner &&
                                     <OwnerTaskList
                                         dataObject={dataObject}
                                         profileType={profileType}
                                     />
-                                }
                                     </div>)
                                 }
                                 <div className='newsfeed'>
