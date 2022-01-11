@@ -63,7 +63,7 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
     if (entry.Tag) tags = entry.Tag
 
 
-    const imageSize = 'medium'
+    const imageSize = 'large'
 
     // const toggleClass = (target, className) => {
 

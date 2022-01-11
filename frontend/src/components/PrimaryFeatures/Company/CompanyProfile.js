@@ -21,12 +21,14 @@ const CompanyProfilePage = () => {
         return state.company
     })
 
+    // const [dataObject, setDataObject] = useState();
+
     useEffect(() => {
-        dispatch(loadCompanies)
+        dispatch(loadCompanies())
     }, [dispatch])
 
-    let dataObject = Object.values(companyState)[id]
 
+    const dataObject = Object.values(companyState)[id-1]
     //****LATEST ATTEMPT */
 
 
@@ -37,54 +39,66 @@ const CompanyProfilePage = () => {
     //     setDataObject(Object.values(dispatch(loadCompanies()))[id])
     // })
 
-    let { tagline, location, createdAt, description } = dataObject
+    let tagline, location, createdAt, description, year, shortInfo;
 
-    // console.log({ tagline })
-    let year = createdAt.slice(0,4);
-    createdAt = `On board since ${year}`
-    // console.log({ location })
+    if (dataObject) {
+        tagline = dataObject.tagline
+        location = dataObject.location
+        createdAt = dataObject.createdAt
+        description = dataObject.description
+        year = createdAt.slice(0,4);
+        createdAt = `On board since ${year}`
+        shortInfo = [tagline, location, createdAt].filter(el => !(!el)).join(' · ')
+    }
 
-    let shortInfo = [tagline, location, createdAt].filter(el => !(!el)).join(' · ')
-    // console.log({shortInfo})
+
+
+    // // console.log({ tagline })
+    // createdAt = `On board since ${year}`
+    // // console.log({ location })
+
+    // // console.log({shortInfo})
 
 
     return (
         <>
-            <ProfileFullPage
-                dataObject={dataObject}
-                profileType='company'
-                pageTitle={dataObject.name}
-                imageUrl={dataObject.logo}
-                imageSize='large'
-                pageShortInfo={shortInfo}
-                pageDescription={description}
-        externalLinksArray={[]}
-        isProfileOwner={true}
-        hasTags={false}
-        tagsAlias='Tags'
-        tagsSize='small'
-        ctaType={false}
-        hasUsers={true}
-        usersAlias='Contributors'
-        usersSize='medium'
-        hasEvents={true}
-        eventsAlias='Events'
-        eventsSize='medium'
-        hasCompanies={false}
-        companiesAlias={false}
-        companiesSize={false}
-        hasTickets={false}
-        ticketsAlias={false}
-                ticketsSize={false}
-                hasCrud={true}
-            >
-                <EditCompanyButton entry={dataObject} />
-                <DeleteCompanyButton entry={dataObject} />
-                <AddCompanyForm />
+            {dataObject &&
+                <ProfileFullPage
+                    dataObject={dataObject}
+                    profileType='company'
+                    pageTitle={dataObject.name}
+                    imageUrl={dataObject.logo}
+                    imageSize='medium'
+                    pageShortInfo={shortInfo}
+                    pageDescription={description}
+                    externalLinksArray={[]}
+                    isProfileOwner={true}
+                    hasTags={false}
+                    tagsAlias='Tags'
+                    tagsSize='small'
+                    ctaType={false}
+                    hasUsers={true}
+                    usersAlias='Contributors'
+                    usersSize='medium'
+                    hasEvents={true}
+                    eventsAlias='Events'
+                    eventsSize='medium'
+                    hasCompanies={false}
+                    companiesAlias={false}
+                    companiesSize={false}
+                    hasTickets={false}
+                    ticketsAlias={false}
+                    ticketsSize={false}
+                    hasCrud={false}
+                >
+                    <EditCompanyButton entry={dataObject} />
+                    <DeleteCompanyButton entry={dataObject} />
+                    <AddCompanyForm />
 
-            </ProfileFullPage>
+                </ProfileFullPage>
+            }
         </>
-    )
+        )
 }
 
 

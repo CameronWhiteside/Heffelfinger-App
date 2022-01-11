@@ -11,6 +11,8 @@ import EventFeed from "../Event/EventFeed"
 import TicketFeed from "../Ticket/TicketFeed"
 import UserFeed from "../User/UserFeed"
 import CompanyFeed from "../Company/CompanyFeed"
+import FeedArea from './FeedHelpers/FeedArea'
+// import FeedArea from "."
 
 import './ProfileFullPage.css'
 import DropDownMenu from "../../Basic/Navigation/Menus/DropDownMenu"
@@ -104,7 +106,7 @@ const ProfileFullPage = ({
                                     </div> */}
                             </div>
                         </div>
-                        <div className='page-links glass'>
+                        {/* <div className='page-links glass'>
                             <div className='external-links'>
                                 <ExternalLinksList
                                     externalLinksArray={externalLinksArray}
@@ -116,7 +118,7 @@ const ProfileFullPage = ({
                                         ctaType={ctaType}
                                     />
                                 </div>
-                            </div>
+                        </div> */}
 
 
                     <div className='secondary-info glass'>
@@ -146,11 +148,14 @@ const ProfileFullPage = ({
                                     }
                                     {
                                         hasEvents &&
-                                        <EventFeed
+                                        <FeedArea
 
-                                            dataObject={dataObject}
-                                            eventsSize={eventsSize}
-                                            eventsAlias={eventsAlias}
+                                        entries={dataObject.Events}
+                                        urlPathName='events'
+                                        alias='Event Feed'
+                                            // dataObject={dataObject}
+                                            // eventsSize={eventsSize}
+                                            // eventsAlias={eventsAlias}
                                         />
                                     }
                                     {
@@ -163,7 +168,11 @@ const ProfileFullPage = ({
                                     }
                                     {
                                         hasCompanies &&
-                                        <CompanyFeed
+                                <CompanyFeed
+
+                                    entries
+                                    urlPathName
+                                    alias
 
                                             dataObject={dataObject}
                                             companiesSize={companiesSize}
