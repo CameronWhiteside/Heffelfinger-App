@@ -93,7 +93,8 @@ export const deleteCompany = (id) => async (dispatch) => {
     return deletedCompany
 }
 
-const companyReducer = (state = {} , action) => {
+const companyReducer = (state = { companyList: {} } , action) => {
+// const companyReducer = (state = { } , action) => {
     let newState = { ...state }
 
     let id
@@ -103,11 +104,11 @@ const companyReducer = (state = {} , action) => {
 
     switch (action.type) {
         case LOAD_COMPANIES:
-            action.companies.forEach(company => { newState[company.id] = company });
+            action.companies.forEach(company => { newState.companyList[company.id] = company });
             return newState;
 
         case LOAD_COMPANY_DETAIL:
-            newState[id] = action.foundCompany;
+            newState['company'][id] = action.foundCompany;
             return newState;
 
         case ADD_COMPANY:
@@ -120,7 +121,8 @@ const companyReducer = (state = {} , action) => {
             return newState
 
         case DELETE_COMPANY:
-            delete newState[id]
+
+            delete newState.companyList[id]
             return newState
 
         default:

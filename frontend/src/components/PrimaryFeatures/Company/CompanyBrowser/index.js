@@ -1,35 +1,44 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import CompanyDetails from '../CompanyDetails'
-import EditCompanyButton from '../CompanyCRUDButtons/EditCompanyButton';
-import DeleteCompanyButton from '../CompanyCRUDButtons/DeleteCompanyButton';
-import BrowserInfoArea from '../../BrowserHelpers/BrowserInfoArea';
 
-import BrowserGrid from '../../BrowserHelpers/BrowserGrid';
+import { loadCompanies } from '../../../../store/company';
 
 import './CompanyBrowser.css'
 
-
-import { loadCompanies } from '../../../../store/company';
+import EditCompanyButton from '../CompanyCRUDButtons/EditCompanyButton';
+import DeleteCompanyButton from '../CompanyCRUDButtons/DeleteCompanyButton';
+import BrowserInfoArea from '../../BrowserHelpers/BrowserInfoArea';
+import BrowserGrid from '../../BrowserHelpers/BrowserGrid';
 import ViewCompanyButton from '../CompanyCRUDButtons/ViewCompanyButton';
 import AddCompanyButton from '../CompanyCRUDButtons/AddCompanyButton';
 import BrowserQuickStatsArea from '../../BrowserHelpers/BrowserQuickStats';
 import BrowserCTAArea from '../../BrowserHelpers/BrowserCTAArea';
 
+
+
 const CompanyBrowser = () => {
 
     const dispatch = useDispatch();
 
-    const companies = useSelector(state => {
-        return state.company
-    })
 
     useEffect(() => {
         dispatch(loadCompanies())
-    }, [dispatch])
+    },[])
 
-    const companiesArr = Object.values(companies)
+    const companyState = useSelector(state => {
+        return state.company
+    })
+    
+    // useEffect(() => {
+    // }, [dispatch])
+
+    // useEffect(() => {
+    //     // dispatch(loadCompanies())
+    // }, [companyState])
+
+    const companiesArr = Object.values(companyState.companyList)
 
     const title = `
         LAUNCHPAD
@@ -63,20 +72,11 @@ const CompanyBrowser = () => {
                 <ViewCompanyButton />
                 <EditCompanyButton />
                 <DeleteCompanyButton />
-
                 </BrowserGrid>
-                </div>
+            </div>
         </div>
     )
 
-    // return (
-    //     <section className='company-list'>
-    //         <h2>All Companies</h2>
-    //         <NavLink to='/companies/new' className="like-button">Add Company</NavLink>
-    //         {!companiesArr.length && <span>No companies registered yet</span>}
-    //         {companiesArr && companiesArr.map(company => <CompanyDetails key={company.id} company={company} /> )}
-    //     </section>
-    // )
 }
 
 export default CompanyBrowser

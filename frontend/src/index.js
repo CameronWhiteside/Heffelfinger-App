@@ -25,7 +25,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 function Root() {
+  console.log('hey root')
   return (
+      // <h2>THIS IS MY APP</h2>
     <Provider store={store}>
       <ModalProvider>
         <BrowserRouter>
