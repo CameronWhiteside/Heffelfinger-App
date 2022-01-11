@@ -1,5 +1,6 @@
 .profile-full-page{
     width: 1400px;
+    height: calc(100vh - 108px);
     padding: 20px;
     display: flex;
     flex-direction: row;
@@ -7,6 +8,37 @@
     position: relative;
 }
 
+.crud-left-col{
+    width: 400px;
+    margin-right: 20px;
+    padding-top: 80px;
+    position: relative;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+}
+
+.cover-up{
+    position: absolute;
+    width: 1000px;
+    height: 100%;
+    bottom: 0px;
+    background-image: var(--alpha-dark-250);
+    border: 5px solid red;
+    backdrop-filter: blur(2px) brightness(80%) saturate(80%);
+}
+
+.crud-left-col .form-container{
+    background-image: var(--glass-background-image);
+    box-shadow: var(--glass-box-shadow);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: var(--glass-border-radius);
+    padding: 10px;
+    position: absolute;
+    z-index: 100;
+}
 
 
 .page-short-info p{
@@ -18,6 +50,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .top-banner{
@@ -62,6 +95,7 @@
     display: flex;
     width: 100%;
     padding: 20px;
+    height: 100%;
 }
 
 .static-column{

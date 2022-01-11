@@ -18,6 +18,7 @@ import DropDownMenu from "../../Basic/Navigation/Menus/DropDownMenu"
 //pass in CRUD form as TRUE and include as child element
 
 const ProfileFullPage = ({
+    hasCrud,
     dataObject,
     profileType,
     pageTitle,
@@ -43,7 +44,6 @@ const ProfileFullPage = ({
     hasTickets,
     ticketsAlias,
     ticketsSize,
-    hasCrud,
     children,
 }) => {
 
@@ -173,7 +173,7 @@ const ProfileFullPage = ({
                                 </div>
                             </div>
                 </div>
-                {hasCrud && <div className="cover-up" />}
+                    { hasCrud && <div className="cover-up" /> }
                 </div>
 
 

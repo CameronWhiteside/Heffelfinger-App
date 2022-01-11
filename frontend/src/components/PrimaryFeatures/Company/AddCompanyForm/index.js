@@ -104,8 +104,9 @@ const AddCompanyForm = ({ hideForm }) => {
                         <div className="database-errors" key={error}>{error}</div>
                         ))}
                 </div>
-        </div>
-                <input type='submit' disabled={Object.values(validationObject).includes(false)} value='Submit' />
+          </div>
+                <button type="submit" disabled={Object.values(validationObject).includes(false)}>Add Company</button>
+                {/* <input type='submit' disabled={Object.values(validationObject).includes(false)} value='Submit' /> */}
         </form>
 
       </div>
