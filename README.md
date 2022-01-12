@@ -1,3 +1,10 @@
+<!-- git push heroku master
+
+heroku run npm run sequelize db:seed:undo:all
+heroku run npm run sequelize db:migrate:undo:all
+heroku run npm run sequelize db:migrate
+heroku run npm run sequelize db:seed:all -->
+
 # Heffelfinger Business Studios
 
 <a href="https://recipeople.herokuapp.com/">Live Site</a>  |  <a href="https://github.com/MeiMeiYS/group-9-best-group/wiki"> Project Wiki</a> | <a href="https://github.com/MeiMeiYS/group-9-best-group/issue">Report Bug</a>
