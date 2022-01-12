@@ -5,7 +5,7 @@ import './TinyUserPreview.css'
 const TinyUserPreview = ({ users, maxLength }) => {
     let trimmedUsers = users
     if(maxLength) trimmedUsers = users.slice(0, maxLength)
-    const size = 'small'
+    const size = 'extra-small'
     return (
         <div className="tiny-user-preview">
             {trimmedUsers.map(user => (

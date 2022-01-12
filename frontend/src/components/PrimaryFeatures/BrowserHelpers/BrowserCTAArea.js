@@ -2,7 +2,7 @@ import './BrowserCTAArea.css'
 
 const BrowserCTAArea = ({children}) => {
     return (
-        <div className='browser-cta-area glass'>
+        <div className='browser-cta-area'>
             <div className='action-button'>
                 {children}
             </div>

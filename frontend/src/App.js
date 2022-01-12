@@ -6,7 +6,7 @@ import SignupFormPage from "./components/RegisterLogin/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Basic/Navigation";
 import CompanyBrowser from "./components/PrimaryFeatures/Company/CompanyBrowser";
-import AddCompanyForm from "./components/PrimaryFeatures/Company/AddCompanyForm";
+import AddCompanyForm from "./components/PrimaryFeatures/Company/AddCompanyForm/AddCompanyForm";
 import CompanyProfilePage from "./components/PrimaryFeatures/Company/CompanyProfile";
 import WelcomePage from "./components/RegisterLogin/Splash/WelcomePage";
 import AddCompanyButton from "./components/PrimaryFeatures/Company/CompanyCRUDButtons/AddCompanyButton";

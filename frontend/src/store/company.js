@@ -113,8 +113,7 @@ const companyReducer = (state = {} , action) => {
         //     return newState;
 
         case ADD_COMPANY:
-            console.log(Object.keys(newState))
-            newState = { ...newState, [action.newCompany.id]: action.newCompany }
+            newState = { ...newState, [action.id]: action.newCompany }
             return newState
 
         case EDIT_COMPANY:

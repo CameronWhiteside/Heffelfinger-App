@@ -116,6 +116,7 @@
     --glass-box-shadow-light:  0  8px 25px 0 rgba(0,0,0,0.2);
     --glass-box-shadow:  0  8px 25px 0 rgba(0,0,0,0.4);
     --glass-background-image: linear-gradient(var(--alpha-dark-200), var(--alpha-dark-250));
+    --light-glass-background-image: linear-gradient(var(--alpha-200), var(--alpha-250));
 
     --nav-height-desktop: 108px;
     --main-margin: 30px;
@@ -167,6 +168,15 @@
     border-radius: var(--glass-border-radius);
     padding: 10px;
    }
+
+  .light-glass {
+      background-image: var(--light-glass-background-image);
+      box-shadow: var(--glass-box-shadow);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: var(--glass-border-radius);
+      padding: 10px;
+     }
 
    /* .red-glass{
       background-image: linear-gradient(var(--alpha-red-200), var(--alpha-red-250));

@@ -1,11 +1,8 @@
-.browser-cta-area{
-    width: 400px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    z-index: 500;
-    margin: 20px;
-    padding: 25px 25px;
-    justify-content: center;
-    align-items: center;
+.company-browser > .browser-left-col > .browser-cta-area{
+    padding: 0px;
+}
+
+.company-browser > .browser-left-col > .browser-cta-area  *{
+    width: 100%;
+    height: 40px;
 }

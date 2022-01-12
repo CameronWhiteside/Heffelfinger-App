@@ -4,6 +4,9 @@ import { useHistory } from "react-router-dom";
 
 import { addCompany } from "../../../../store/company";
 import FormInput from "../../../Basic/FormHelpers/FormInput";
+import ProfileFullPage from "../../ProfileHelpers/ProfileFullPage";
+import EditCompanyButton from "../CompanyCRUDButtons/EditCompanyButton";
+import DeleteCompanyButton from "../CompanyCRUDButtons/DeleteCompanyButton";
 
 
 import './AddCompanyForm.css';
@@ -49,11 +52,48 @@ const AddCompanyForm = ({ hideForm }) => {
     setDatabaseErrors('');
   };
 
+  const dataObject = { name, tagline, description }
+
+  console.log({ dataObject })
+
+  // let shortInfo = [tagline, location, createdAt].filter(el => !(!el)).join(' · ')
 
 
 
-    return (
-    <div className='form-container'>
+  return (
+
+    <div className="company-profile">
+    {dataObject &&
+        <ProfileFullPage
+        dataObject={dataObject}
+            profileType='company'
+            pageTitle={name || ' '}
+            imageSize='medium'
+            pageShortInfo={tagline || ''}
+            pageDescription={description || ' '}
+            externalLinksArray={[]}
+            isProfileOwner={true}
+            hasTags={false}
+            tagsAlias='Tags'
+            tagsSize='small'
+            ctaType={false}
+            hasUsers={true}
+            usersAlias='Contributors'
+            usersSize='medium'
+            hasEvents={true}
+            eventsAlias='Events'
+            eventsSize='medium'
+            hasCompanies={false}
+            companiesAlias={false}
+            companiesSize={false}
+            hasTickets={false}
+            ticketsAlias={false}
+            ticketsSize={false}
+            hasCrud={true}
+        >
+          <EditCompanyButton entry={dataObject || {id: 0}} />
+          <DeleteCompanyButton entry={dataObject || {id: 0}}  />
+            <div className='form-container'>
       <h2>Add A Company</h2>
 
       <form onSubmit={handleSubmit} className='add-company'>
@@ -109,7 +149,28 @@ const AddCompanyForm = ({ hideForm }) => {
                 {/* <input type='submit' disabled={Object.values(validationObject).includes(false)} value='Submit' /> */}
         </form>
 
-      </div>
+    </div>
+
+
+
+
+        </ProfileFullPage>
+    }
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   );
 };
 

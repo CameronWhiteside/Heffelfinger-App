@@ -6,13 +6,10 @@ import ProfileFullPage from "../ProfileHelpers/ProfileFullPage";
 import { useSelector } from "react-redux";
 import EditCompanyButton from "./CompanyCRUDButtons/EditCompanyButton";
 import DeleteCompanyButton from "./CompanyCRUDButtons/DeleteCompanyButton";
-import AddCompanyForm from "./AddCompanyForm";
-import AddCompanyButton from "./CompanyCRUDButtons/AddCompanyButton";
+import AddCompanyForm from "./AddCompanyForm/AddCompanyForm";
+// import AddCompanyButton from "./CompanyCRUDButtons/AddCompanyButton";
 
 const CompanyProfilePage = () => {
-
-
-    console.log('Rendering Company Profile Page Component')
 
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -21,23 +18,13 @@ const CompanyProfilePage = () => {
         return state.company
     })
 
-    // const [dataObject, setDataObject] = useState();
 
     useEffect(() => {
         dispatch(loadCompanies())
     }, [dispatch])
 
 
-    const dataObject = Object.values(companyState)[id-1]
-    //****LATEST ATTEMPT */
-
-
-    // const [dataObject, setDataObject] = useState({})
-
-
-    // useEffect(() => {
-    //     setDataObject(Object.values(dispatch(loadCompanies()))[id])
-    // })
+    const dataObject = companyState[id]
 
     let tagline, location, createdAt, description, year, shortInfo;
 
@@ -53,15 +40,8 @@ const CompanyProfilePage = () => {
 
 
 
-    // // console.log({ tagline })
-    // createdAt = `On board since ${year}`
-    // // console.log({ location })
-
-    // // console.log({shortInfo})
-
-
     return (
-        <>
+        <div className="company-profile">
             {dataObject &&
                 <ProfileFullPage
                     dataObject={dataObject}
@@ -89,7 +69,7 @@ const CompanyProfilePage = () => {
                     hasTickets={false}
                     ticketsAlias={false}
                     ticketsSize={false}
-                    hasCrud={true}
+                    hasCrud={false}
                 >
                     <EditCompanyButton entry={dataObject} />
                     <DeleteCompanyButton entry={dataObject} />
@@ -97,7 +77,7 @@ const CompanyProfilePage = () => {
 
                 </ProfileFullPage>
             }
-        </>
+        </div>
         )
 }
 
