@@ -36,6 +36,8 @@ const CompanyProfilePage = () => {
         createdAt = `On board since ${year}`
         console.log(defaultDescription)
     }
+
+    
     const [hasCrud, setHasCrud] = useState(
             !defaultName || defaultName.length < 2 ||
             !defaultDescription || defaultDescription.length < 2 ||
@@ -73,6 +75,7 @@ const CompanyProfilePage = () => {
         <div className="company-profile">
             {dataObject &&
                 <ProfileFullPage
+                    id={id}
                     dataObject={dataObject}
                     profileType='company'
                     pageTitle={name}
@@ -104,6 +107,7 @@ const CompanyProfilePage = () => {
                     <EditCompanyButton entry={dataObject} />
                     <DeleteCompanyButton entry={dataObject} />
                     <AddCompanyForm
+                        id={id}
                         name={name}
                         setName={setName}
                         description={description}

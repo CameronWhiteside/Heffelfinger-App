@@ -13,7 +13,7 @@ import OwnerTaskList from "./OwnerTasksHelpers/OwnerTaskList"
 // import CompanyFeed from "../Company/CompanyFeed"
 import FeedArea from './FeedHelpers/FeedArea'
 import AddEventButton from "../Event/EventCRUDButtons/AddEventButton"
-import AddEmployeeButton from "../Employee/EventCRUDButtons/AddEventButton"
+import AddEmployeeButton from "../Employee/EmployeeCRUDButtons/AddEventButton"
 // import FeedArea from "."
 
 import './ProfileFullPage.css'
@@ -65,8 +65,7 @@ const ProfileFullPage = ({
                                     <ProfileImage
                                         url={imageUrl}
                                         size={imageSize}
-                                        name={
-                                            (dataObject && dataObject.name) || (dataObject && dataObject.firstName) || 'H'
+                                        name={ pageTitle || (dataObject && dataObject.name) || (dataObject && dataObject.firstName) || 'H'
                                         }
                                     />
                             </div>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
-import { addCompany, deleteCompany } from "../../../../store/company";
+import { addCompany, deleteCompany, editCompany } from "../../../../store/company";
 import FormInput from "../../../Basic/FormHelpers/FormInput";
 import ProfileFullPage from "../../ProfileHelpers/ProfileFullPage";
 import EditCompanyButton from "../CompanyCRUDButtons/EditCompanyButton";
@@ -12,6 +12,7 @@ import DeleteCompanyButton from "../CompanyCRUDButtons/DeleteCompanyButton";
 import './AddCompanyForm.css';
 
 const AddCompanyForm = ({
+          id,
           hideForm,
           name,
           setName,
@@ -30,7 +31,8 @@ const AddCompanyForm = ({
   const dispatch = useDispatch()
   const history = useHistory()
   console.log({ name, tagline, description })
-  const { id } = useParams()
+  // const { id } = useParams()
+  // console.log(useParams)
 
 
   // const [name, setName] = useState('');
@@ -44,18 +46,16 @@ const AddCompanyForm = ({
 
     e.preventDefault()
 
-        let newCompany = {
+      let editedCompany = {
+            id,
             name,
             tagline,
             description,
         }
 
-
         try {
-            let res = await dispatch(addCompany(newCompany))
-            history.push(`/companies/${res.id}`)
+            dispatch(editCompany(editedCompany))
             setHasCrud(false)
-            reset();
         } catch (e) {
             let res = await e.json()
             let errors = res.errors
@@ -63,21 +63,17 @@ const AddCompanyForm = ({
         }
   }
 
-  const reset = () => {
-    setName('');
-    setTagline('');
-    setDescription('');
-    setValidationObject({})
-    setDatabaseErrors('');
-  };
+  // const reset = () => {
+  //   setName('');
+  //   setTagline('');
+  //   setDescription('');
+  //   setValidationObject({})
+  //   setDatabaseErrors('');
+  // };
 
   const dataObject = { name, tagline, description }
 
   console.log({ dataObject })
-
-  // let shortInfo = [tagline, location, createdAt].filter(el => !(!el)).join(' · ')
-
-
 
   return (
 
@@ -167,7 +163,10 @@ const AddCompanyForm = ({
                 </div>
           </div>
                 {/* <button type="submit" disabled={Object.values(validationObject).includes(false)}>Add Company</button> */}
-                <button className='fake-submit' onClick={()=>setHasCrud(false)} disabled={Object.values(validationObject).includes(false)}>Add Company</button>
+            <button
+              className='fake-submit'
+              type='submit'
+              disabled={Object.values(validationObject).includes(false)}>Add Company</button>
                 {/* <input type='submit' disabled={Object.values(validationObject).includes(false)} value='Submit' /> */}
         </form>
           <button
