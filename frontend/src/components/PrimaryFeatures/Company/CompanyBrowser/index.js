@@ -66,7 +66,8 @@ const CompanyBrowser = () => {
             <BrowserGrid
                 entries={companiesArr}
                 hasUsers={true}
-                usersAlias={'Contributors'}
+                    usersAlias={'Contributors'}
+                    urlPath={'companies'}
             >
                 <ViewCompanyButton />
                 <EditCompanyButton />

@@ -34,10 +34,10 @@ const CompanyProfilePage = () => {
         defaultDescription = dataObject.description
         year = createdAt.slice(0, 4);
         createdAt = `On board since ${year}`
-        console.log(defaultDescription)
+        // console.log(defaultDescription)
     }
 
-    
+
     const [hasCrud, setHasCrud] = useState(
             !defaultName || defaultName.length < 2 ||
             !defaultDescription || defaultDescription.length < 2 ||
@@ -49,7 +49,7 @@ const CompanyProfilePage = () => {
     //     console.log('needs crud')
     //     // setHasCrud(true)
     // }
-    console.log({hasCrud})
+    // console.log({hasCrud})
 
     if (!defaultName || defaultName.length < 2) defaultName = ''
     if (!defaultDescription || defaultDescription.length < 2) defaultDescription = ''

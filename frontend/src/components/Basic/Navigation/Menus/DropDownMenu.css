@@ -13,6 +13,9 @@
     transform: translate3d(0, -10px, 0)
 }
 
+.drop-down-menu .menu-area:empty{
+    display: none;
+}
 
 .menu-area{
     width: 100%;
@@ -60,4 +63,12 @@ i.show-menu::before{
 }
 i.show-menu:hover::before{
     color: var(--primary-800);
+}
+
+.hideTest{
+    display: none;
+}
+
+.hideTest:empty ~ *{
+    display: none;
 }

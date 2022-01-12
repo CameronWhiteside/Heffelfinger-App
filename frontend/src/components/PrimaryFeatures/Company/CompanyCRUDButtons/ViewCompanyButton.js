@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom"
 
-const ViewCompanyButton = ({entry}) => {
+const ViewCompanyButton = ({entry, sessionUser}) => {
 
     const history = useHistory()
 

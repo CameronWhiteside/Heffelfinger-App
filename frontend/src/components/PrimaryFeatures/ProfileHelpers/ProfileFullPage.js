@@ -44,7 +44,7 @@ const ProfileFullPage = ({
 }) => {
 
     const menuChildren = children[0]
-    console.log(menuChildren)
+    // console.log(menuChildren)
 
 
     return (

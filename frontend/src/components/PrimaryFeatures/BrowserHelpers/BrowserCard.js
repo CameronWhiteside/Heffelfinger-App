@@ -16,17 +16,11 @@ import DropDownMenu from '../../Basic/Navigation/Menus/DropDownMenu';
 
 // https://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children
 
-export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias } ) => {
+export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias, urlPath } ) => {
     useHistory();
 
     let id = entry.id
 
-    // const childrenWithProps = Children.map(children, child => {
-    //     if (isValidElement(child)) {
-    //         return cloneElement(child, { entry })
-    //     }
-    //     return child;
-    // })
 
     //account for different 'name' variable aliases
     let name
@@ -66,21 +60,9 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
 
     const imageSize = 'large'
 
-    // const toggleClass = (target, className) => {
-
-    //     if (target.className.includes(className)){
-    //         let result = target.className.replace(className, '')
-    //         target.className = result
-    //     } else {
-    //         target.className += ` ${className}`
-    //     }
-
-    // }
-
-
     return (
         <div className='browser-card glass'>
-                <NavLink to={`/companies/${id}`}>
+                <NavLink to={`/${urlPath}/${id}`}>
                     <div className='browser-card-overlay'></div>
                     <div className='browser-card-image-area'>
                         <ProfileImage url={url} size={imageSize} name={name}/>
@@ -103,16 +85,6 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
                         {tags && <StaticTagList tags={tags} />}
                     </div>
                 </NavLink>
-                    {/* <div className='browser-card-menu-button'>
-                <i class="fas fa-chevron-circle-down" onClick={e => {
-                    toggleClass(e.target, 'show-menu')
-                    toggleClass(e.target.parentElement, 'show-menu')
-                }}>
-                        </i>
-                        </div>
-                    <div class="card-menu">
-                        {childrenWithProps}
-                    </div> */}
             <div className='browser-card-menu-adjuster'>
                 <DropDownMenu entry={entry}>
                         {children}

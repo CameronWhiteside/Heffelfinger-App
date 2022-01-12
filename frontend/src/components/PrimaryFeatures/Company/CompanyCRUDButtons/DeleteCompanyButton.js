@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deleteCompany } from "../../../../store/company"
 import './DeleteCompanyButton.css'
 import { toggleClass } from "../../../utils"
@@ -11,6 +11,11 @@ export const DeleteCompanyButton = ({ entry }) => {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    const sessionUser = useSelector(state => state.session.user);
+    let hasPermission = false
+    if (entry && entry.Users && entry.Users.map(user => user.id).includes(sessionUser.id)) hasPermission = true;
+    if (!hasPermission) return null
+
     const handleDelete = () => {
 
         const currentPlace = location.pathname
@@ -21,25 +26,26 @@ export const DeleteCompanyButton = ({ entry }) => {
     }
 
     return (
-        <div className="delete-company-button">
-            <button
-                className="delete-confirm hidden"
-                onMouseOut={(e) => {
-                     toggleClass(e.target, 'hidden')
-                }}
-                onClick={handleDelete}>
-                Are You Sure?
-            </button>
-             <button
-                className="delete-start"
-                onClick={(e) => {
-                    toggleClass(e.target.previousElementSibling, 'hidden')
-                }}
-            >
-                 Delete Company
-            </button>
+        <div keep='true' className="delete-company-button">
+                    <button
+                        className="delete-confirm hidden"
+                        onMouseOut={(e) => {
+                            toggleClass(e.target, 'hidden')
+                        }}
+                        onClick={handleDelete}>
+                        Are You Sure?
+                    </button>
+                    <button
+                        className="delete-start"
+                        onClick={(e) => {
+                            toggleClass(e.target.previousElementSibling, 'hidden')
+                        }}
+                    >
+                        Delete Company
+                    </button>
 
-        </div>
+                </div>
+
     );
 }
 

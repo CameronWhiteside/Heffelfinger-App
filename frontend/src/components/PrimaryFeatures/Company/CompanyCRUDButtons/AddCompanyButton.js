@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux"
-import { NavLink } from "react-router-dom"
 import { useHistory } from "react-router-dom"
 import { addCompany } from "../../../../store/company"
 import { addEmployee } from "../../../../store/employee"
