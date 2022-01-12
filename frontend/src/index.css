@@ -178,6 +178,10 @@
       padding: 10px;
      }
 
+     .cancel-button{
+        width: 100%;
+     }
+
    /* .red-glass{
       background-image: linear-gradient(var(--alpha-red-200), var(--alpha-red-250));
   }
