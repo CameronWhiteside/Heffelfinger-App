@@ -31,7 +31,7 @@ const CompanyBrowser = () => {
         return state.company
     })
 
-    console.log(companyState)
+    const sessionUser = useSelector(state => state.session.user);
 
     const companiesArr =
         //remove all non-number keys that got added to the company state erroneously
@@ -59,7 +59,7 @@ const CompanyBrowser = () => {
                 </BrowserInfoArea>
 
                 <BrowserCTAArea>
-                    <AddCompanyButton/>
+                    {sessionUser && <AddCompanyButton />}
                 </BrowserCTAArea>
             </div>
             <div className='browser-right-col'>

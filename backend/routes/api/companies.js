@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const companyValidations = require('../../utils/validations/companies')
 const db = require('../../db/models');
-const { Company, Event, User, CompanyRole } = db
+const { Company, Event, User, CompanyRole, Employee } = db
 
 const router = express.Router();
 
@@ -53,6 +53,11 @@ router.put('/:id(\\d+)', companyValidations.validateUpdate, asyncHandler(async (
 
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = req.params.id
+    await Employee.destroy({
+        where: {
+            companyId: id
+        }
+    })
     const deletedCompany = await Company.findByPk(id)
     deletedCompany.destroy();
     return res.json(deletedCompany)

@@ -1,13 +1,24 @@
-import { deleteCompany } from "../../../../store/company"
 import { useDispatch } from 'react-redux'
+import { deleteCompany } from "../../../../store/company"
 import './DeleteCompanyButton.css'
 import { toggleClass } from "../../../utils"
+import { useLocation, Redirect, useHistory } from 'react-router-dom'
 
 
 export const DeleteCompanyButton = ({ entry }) => {
 
+    const location = useLocation()
+    const history = useHistory();
     const dispatch = useDispatch();
 
+    const handleDelete = () => {
+
+        const currentPlace = location.pathname
+        dispatch(deleteCompany(entry['id']))
+        if (currentPlace !== '/companies') {
+            history.push('/companies')
+        }
+    }
 
     return (
         <div className="delete-company-button">
@@ -16,10 +27,7 @@ export const DeleteCompanyButton = ({ entry }) => {
                 onMouseOut={(e) => {
                      toggleClass(e.target, 'hidden')
                 }}
-                onClick={() => {
-
-                    dispatch(deleteCompany(entry['id']))
-                }}>
+                onClick={handleDelete}>
                 Are You Sure?
             </button>
              <button
