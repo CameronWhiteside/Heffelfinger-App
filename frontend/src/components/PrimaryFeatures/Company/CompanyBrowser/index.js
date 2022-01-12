@@ -31,10 +31,7 @@ const CompanyBrowser = () => {
         return state.company
     })
 
-    console.log({ companyState })
-
     const companiesArr = Object.values(companyState)
-    console.log({companiesArr})
 
     const title = `
         LAUNCHPAD

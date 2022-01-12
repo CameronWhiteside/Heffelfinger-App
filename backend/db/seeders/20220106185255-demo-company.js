@@ -49,7 +49,7 @@ module.exports = {
       },
       {
         name: 'SpareBnB',
-        description: 'sampleDescription',
+        description: 'Combine butter, honey, orange zest, and cardamom in a bowl. Remove 1 tablespoon of the sauce to a separate bowl and set aside. Add carrots to the remaining sauce and toss until all are well coated. Transfer carrots to the air fryer basket.',
         location: 'sampleCity',
         tagline: 'sampleTagline sampleTagline',
         logo: 'https://i.ibb.co/wBypLXM/Logo.jpg'

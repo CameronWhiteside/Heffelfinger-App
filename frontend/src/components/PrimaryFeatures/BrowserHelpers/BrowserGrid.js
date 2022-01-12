@@ -8,7 +8,7 @@ const BroswerGrid = ({ children, entries,  maxEntries = entries.length, hasUsers
 
     return (
         <div className="browser-grid glass scroll-area">
-            {returnedEntries.map(entry => (
+            {returnedEntries.filter(entry=> entry.name && entry.name.length > 1).map(entry => (
                 <BrowserCard
                     key={entry.id}
                     entry={entry}

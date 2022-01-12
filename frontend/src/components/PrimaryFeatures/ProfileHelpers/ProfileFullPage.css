@@ -31,7 +31,7 @@
 }
 
 
-.cover-up ~ .form-container{
+.cover-up ~ * > .form-container{
     /* background-image: var(--light-glass-background-image);
     box-shadow: var(--glass-box-shadow);
     backdrop-filter: blur(4px); */

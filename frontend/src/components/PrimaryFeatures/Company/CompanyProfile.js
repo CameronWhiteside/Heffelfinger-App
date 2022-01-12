@@ -18,27 +18,56 @@ const CompanyProfilePage = () => {
         return state.company
     })
 
-
     useEffect(() => {
         dispatch(loadCompanies())
     }, [dispatch])
 
-
     const dataObject = companyState[id]
 
-    let tagline, location, createdAt, description, year, shortInfo;
+    let defaultName, defaultTagline, location, createdAt, defaultDescription, year, shortInfo;
 
     if (dataObject) {
-        tagline = dataObject.tagline
+        defaultName = dataObject.name
+        defaultTagline = dataObject.tagline
         location = dataObject.location
         createdAt = dataObject.createdAt
-        description = dataObject.description
-        year = createdAt.slice(0,4);
+        defaultDescription = dataObject.description
+        year = createdAt.slice(0, 4);
         createdAt = `On board since ${year}`
-        shortInfo = [tagline, location, createdAt].filter(el => !(!el)).join(' · ')
+        console.log(defaultDescription)
     }
+    const [hasCrud, setHasCrud] = useState(
+            !defaultName || defaultName.length < 2 ||
+            !defaultDescription || defaultDescription.length < 2 ||
+            !defaultTagline || defaultTagline.length < 2
+        )
+
+    // if (!defaultName || defaultName.length < 2) {
+    //     defaultName = ''
+    //     console.log('needs crud')
+    //     // setHasCrud(true)
+    // }
+    console.log({hasCrud})
+
+    if (!defaultName || defaultName.length < 2) defaultName = ''
+    if (!defaultDescription || defaultDescription.length < 2) defaultDescription = ''
+    if (!defaultTagline || defaultTagline.length < 2) defaultTagline=('')
 
 
+    const [name, setName] = useState(defaultName);
+    const [description, setDescription] = useState(defaultDescription);
+    const [tagline, setTagline] = useState(defaultTagline);
+    const [validationObject, setValidationObject] = useState({ test: true });
+    const [databaseErrors, setDatabaseErrors] = useState([])
+
+    // if (!name || name.length < 2) {
+    //     setName('')
+    //     setHasCrud(true)
+    // }
+
+    // if (!description || description.length < 2) setDescription('')
+
+    shortInfo = [tagline, location, createdAt].filter(el => !(!el)).join(' · ')
 
     return (
         <div className="company-profile">
@@ -46,7 +75,7 @@ const CompanyProfilePage = () => {
                 <ProfileFullPage
                     dataObject={dataObject}
                     profileType='company'
-                    pageTitle={dataObject.name}
+                    pageTitle={name}
                     imageUrl={dataObject.logo}
                     imageSize='medium'
                     pageShortInfo={shortInfo}
@@ -69,11 +98,25 @@ const CompanyProfilePage = () => {
                     hasTickets={false}
                     ticketsAlias={false}
                     ticketsSize={false}
-                    hasCrud={false}
+                    hasCrud={hasCrud}
+                    setHasCrud={setHasCrud}
                 >
                     <EditCompanyButton entry={dataObject} />
                     <DeleteCompanyButton entry={dataObject} />
-                    <AddCompanyForm />
+                    <AddCompanyForm
+                        name={name}
+                        setName={setName}
+                        description={description}
+                        setDescription={setDescription}
+                        tagline={tagline}
+                        setTagline={setTagline}
+                        validationObject={validationObject}
+                        setValidationObject={setValidationObject}
+                        databaseErrors={databaseErrors}
+                        setDatabaseErrors={setDatabaseErrors}
+                        hasCrud={hasCrud}
+                        setHasCrud={setHasCrud}
+                    />
 
                 </ProfileFullPage>
             }

@@ -11,16 +11,32 @@ import DeleteCompanyButton from "../CompanyCRUDButtons/DeleteCompanyButton";
 
 import './AddCompanyForm.css';
 
-const AddCompanyForm = ({ hideForm }) => {
+const AddCompanyForm = ({
+          hideForm,
+          name,
+          setName,
+          description,
+          setDescription,
+          tagline,
+          setTagline,
+          validationObject,
+          setValidationObject,
+          databaseErrors,
+          setDatabaseErrors,
+          hasCrud,
+          setHasCrud
+}) => {
+
   const dispatch = useDispatch()
   const history = useHistory()
+  console.log({ name, tagline, description })
 
 
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [tagline, setTagline] = useState('');
-  const [validationObject, setValidationObject] = useState({ test: true });
-  const [databaseErrors, setDatabaseErrors] = useState([])
+  // const [name, setName] = useState('');
+  // const [description, setDescription] = useState('');
+  // const [tagline, setTagline] = useState('');
+  // const [validationObject, setValidationObject] = useState({ test: true });
+  // const [databaseErrors, setDatabaseErrors] = useState([])
 
 
     const handleSubmit = async (e) => {
@@ -33,9 +49,11 @@ const AddCompanyForm = ({ hideForm }) => {
             description,
         }
 
+
         try {
             let res = await dispatch(addCompany(newCompany))
             history.push(`/companies/${res.id}`)
+            setHasCrud(false)
             reset();
         } catch (e) {
             let res = await e.json()
@@ -64,36 +82,36 @@ const AddCompanyForm = ({ hideForm }) => {
 
     <div className="company-profile">
     {dataObject &&
-        <ProfileFullPage
-        dataObject={dataObject}
-            profileType='company'
-            pageTitle={name || ' '}
-            imageSize='medium'
-            pageShortInfo={tagline || ''}
-            pageDescription={description || ' '}
-            externalLinksArray={[]}
-            isProfileOwner={true}
-            hasTags={false}
-            tagsAlias='Tags'
-            tagsSize='small'
-            ctaType={false}
-            hasUsers={true}
-            usersAlias='Contributors'
-            usersSize='medium'
-            hasEvents={true}
-            eventsAlias='Events'
-            eventsSize='medium'
-            hasCompanies={false}
-            companiesAlias={false}
-            companiesSize={false}
-            hasTickets={false}
-            ticketsAlias={false}
-            ticketsSize={false}
-            hasCrud={true}
-        >
-          <EditCompanyButton entry={dataObject || {id: 0}} />
-          <DeleteCompanyButton entry={dataObject || {id: 0}}  />
-          <div className='form-container'>
+        // <ProfileFullPage
+        // dataObject={dataObject}
+        //     profileType='company'
+        //     pageTitle={name || ' '}
+        //     imageSize='medium'
+        //     pageShortInfo={tagline || ''}
+        //     pageDescription={description || ' '}
+        //     externalLinksArray={[]}
+        //     isProfileOwner={true}
+        //     hasTags={false}
+        //     tagsAlias='Tags'
+        //     tagsSize='small'
+        //     ctaType={false}
+        //     hasUsers={true}
+        //     usersAlias='Contributors'
+        //     usersSize='medium'
+        //     hasEvents={true}
+        //     eventsAlias='Events'
+        //     eventsSize='medium'
+        //     hasCompanies={false}
+        //     companiesAlias={false}
+        //     companiesSize={false}
+        //     hasTickets={false}
+        //     ticketsAlias={false}
+        //     ticketsSize={false}
+        //     hasCrud={true}
+        // >
+        //   <EditCompanyButton entry={dataObject || {id: 0}} />
+        //   <DeleteCompanyButton entry={dataObject || {id: 0}}  />
+      <div className='form-container'>
 
 
       <form onSubmit={handleSubmit} className='add-company'>
@@ -147,7 +165,8 @@ const AddCompanyForm = ({ hideForm }) => {
                         ))}
                 </div>
           </div>
-                <button type="submit" disabled={Object.values(validationObject).includes(false)}>Add Company</button>
+                {/* <button type="submit" disabled={Object.values(validationObject).includes(false)}>Add Company</button> */}
+                <button className='fake-submit' onClick={()=>setHasCrud(false)} disabled={Object.values(validationObject).includes(false)}>Add Company</button>
                 {/* <input type='submit' disabled={Object.values(validationObject).includes(false)} value='Submit' /> */}
         </form>
                 <button className="cancel-button">Cancel</button>
@@ -157,7 +176,7 @@ const AddCompanyForm = ({ hideForm }) => {
 
 
 
-        </ProfileFullPage>
+        // </ProfileFullPage>
     }
 </div>
 

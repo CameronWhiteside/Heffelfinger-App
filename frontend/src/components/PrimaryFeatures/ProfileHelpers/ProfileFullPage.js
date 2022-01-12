@@ -37,17 +37,9 @@ const ProfileFullPage = ({
     tagsSize,
     ctaType,
     hasUsers,
-    usersAlias,
-    usersSize,
     hasEvents,
-    eventsAlias,
-    eventsSize,
     hasCompanies,
-    companiesAlias,
-    companiesSize,
     hasTickets,
-    ticketsAlias,
-    ticketsSize,
     children,
 }) => {
 

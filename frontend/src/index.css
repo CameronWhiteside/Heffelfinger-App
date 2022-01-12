@@ -355,7 +355,9 @@ button,
  }
 
  button[type="submit"]:disabled,
- button[type="submit"]:disabled:hover{
+ button[type="submit"]:disabled:hover,
+ button.fake-submit:disabled,
+ button.fake-submit:disabled:hover{
     opacity: 50%;
     /* background-color: var(--primary-600); */
     background-color: var(--neutral-600);
