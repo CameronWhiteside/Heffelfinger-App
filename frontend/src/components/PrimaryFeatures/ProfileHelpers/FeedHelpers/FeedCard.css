@@ -5,21 +5,26 @@
 }
 
 .feed-card{
-    margin: 15px;
-    padding: 5px;
+    margin: 15px 0px;
+    padding: 0px;
     position: relative;
     height: 50px;
     cursor: pointer;
     transition: var(--transition-easy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 .feed-card > a {
     display: flex;
     flex-direction: row;
+    padding: 0px 20px;
     justify-content: space-between;
-    align-items: space-evenly;
+    align-items: center;
     height: 100%;
+    width: 100%
 }
 
 /* .feed-card > a *{
@@ -31,6 +36,9 @@ text-align: center;
     margin: 5px 0px 10px;
 }
 
+.feed-card .profile-image-container{
+    margin-right: 15px;
+}
 
 .feed-card-image-area{
     position: relative;
@@ -38,6 +46,10 @@ text-align: center;
     align-items: center;
     justify-content: center;
 }
+
+/* .feed-area h2, h4{
+    color: var(--accent-400)
+} */
 
 .feed-card:hover{
     transform: translate3d(0,-2px, 0) scale(1.01);

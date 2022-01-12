@@ -7,11 +7,13 @@ import DeleteProfileLink from "./ProfileCRUD/DeleteProfileLink"
 import TagsGroup from "./TagHelpers/TagsGroup"
 import ProfileCallToAction from "./CTAHelpers/ProfileCallToAction"
 import OwnerTaskList from "./OwnerTasksHelpers/OwnerTaskList"
-import EventFeed from "../Event/EventFeed"
-import TicketFeed from "../Ticket/TicketFeed"
-import UserFeed from "../User/UserFeed"
-import CompanyFeed from "../Company/CompanyFeed"
+// import EventFeed from "../Event/EventFeed"
+// import TicketFeed from "../Ticket/TicketFeed"
+// import UserFeed from "../User/UserFeed"
+// import CompanyFeed from "../Company/CompanyFeed"
 import FeedArea from './FeedHelpers/FeedArea'
+import AddEventButton from "../Event/EventCRUDButtons/AddEventButton"
+import AddEmployeeButton from "../Employee/EventCRUDButtons/AddEventButton"
 // import FeedArea from "."
 
 import './ProfileFullPage.css'
@@ -59,7 +61,7 @@ const ProfileFullPage = ({
 
 
             { hasCrud && <div className="crud-left-col">
-                {children[2]}
+
             </div>}
 
 
@@ -99,93 +101,84 @@ const ProfileFullPage = ({
                                     </DropDownMenu>
                                 </div>
                             }
-                                {/* REPLACE WITH MENU COMP */}
-                                {/* <div className="menu-icon">
-                                        {isProfileOwner && <EditProfileLink />}
-                                        {isProfileOwner && <DeleteProfileLink />}
-                                    </div> */}
+
                             </div>
                         </div>
-                        {/* <div className='page-links glass'>
-                            <div className='external-links'>
-                                <ExternalLinksList
-                                    externalLinksArray={externalLinksArray}
-                                />
-                            </div>
-                                <div className='interact-links'>
-                                    <ProfileCallToAction className='glass'
-                                        dataObject={dataObject}
-                                        ctaType={ctaType}
-                                    />
-                                </div>
-                        </div> */}
 
 
-                    <div className='secondary-info glass'>
+                    <div className='secondary-info'>
                     <div className='static-column'>
-                                <div className='detailed-description glass'>
-                            {pageDescription && <p>{pageDescription}</p>}
-                                </div>
-                            {isProfileOwner &&
-                                (<div className='owner-tasks'>
-                                    <OwnerTaskList
-                                        dataObject={dataObject}
-                                        profileType={profileType}
-                                    />
-                                </div>)
-                            }
+                        {externalLinksArray.length > 0 && <ExternalLinksList
+                            externalLinksArray={externalLinksArray}
+                        />
+                        }
+                        {pageDescription &&
+
+                            <div className='detailed-description glass'>
+                                <p>{pageDescription}</p>
+                            </div>
+                        }
+                                <ProfileCallToAction className='glass'
+                                    dataObject={dataObject}
+                                    ctaType={ctaType}
+                                />
                     </div>
-                    <div className='action-column'>
+                    <div className='action-column glass'>
 
                                 <div className='newsfeed'>
                                     {
-                                        hasTickets &&
-                                        <TicketFeed
-                                            dataObject={dataObject}
-                                            ticketsSize={ticketsSize}
-                                            ticketsAlias={ticketsAlias}
-                                        />
+                                        // hasTickets &&
+                                        //     <FeedArea
+                                        //         entries={dataObject.Tickets}
+                                        //         urlPathName='events'
+                                        //         alias={`Contributors`}
+                                        //     >
+                                        // </FeedArea>
                                     }
                                     {
                                         hasEvents &&
                                         <FeedArea
-
-                                        entries={dataObject.Events}
-                                        urlPathName='events'
-                                        alias='Event Feed'
-                                            // dataObject={dataObject}
-                                            // eventsSize={eventsSize}
-                                            // eventsAlias={eventsAlias}
-                                        />
+                                            entries={dataObject.Events}
+                                            urlPathName='events'
+                                            alias={`${pageTitle}'s Events`}
+                                        >
+                                            {
+                                                isProfileOwner && dataObject.tagline &&
+                                                <AddEventButton />
+                                            }
+                                        </FeedArea>
                                     }
                                     {
                                         hasUsers &&
-                                        <UserFeed
-                                            dataObject={dataObject}
-                                            usersSize={usersSize}
-                                            usersAlias={usersAlias}
-                                        />
+                                        <FeedArea
+                                            entries={dataObject.Users}
+                                            urlPathName='users'
+                                            alias={`Contributors`}
+                                        >
+                                             {
+                                                isProfileOwner && dataObject.tagline &&
+                                                <AddEmployeeButton />
+                                            }
+                                        </FeedArea>
+
                                     }
                                     {
                                         hasCompanies &&
-                                <CompanyFeed
-
-                                    entries
-                                    urlPathName
-                                    alias
-
-                                            dataObject={dataObject}
-                                            companiesSize={companiesSize}
-                                            companiesAlias={companiesAlias}
-                                        />
+                                            <FeedArea
+                                                      entries={dataObject.Companies}
+                                                      urlPathName='companies'
+                                                      alias={`Contributors`}
+                                            >
+                                            </FeedArea>
                                     }
                                 </div>
                             </div>
                 </div>
-                    { hasCrud && <div className="cover-up" /> }
+                    <div className='crud-area'>
+                        {hasCrud && <div className="cover-up" /> }
+                        {hasCrud && children[2]}
+                    </div>
                 </div>
-
-
     </section>
     )
 }

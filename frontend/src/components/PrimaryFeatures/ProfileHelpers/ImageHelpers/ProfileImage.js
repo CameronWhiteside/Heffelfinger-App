@@ -9,7 +9,7 @@ const ProfileImage = ({ url, size, name }) => {
                 </div>
             }
             {!url &&
-                <div className={`profile-image-container empty ${size}`} style={{ backgroundColor: 'var(--primary-600)' }}>
+                <div className={`profile-image-container empty ${size}`} style={{ backgroundColor: 'var(--primary-800)' }}>
                     <span className={`fake-image ${size}`}>
                         {name[0].toUpperCase()}
                     </span>

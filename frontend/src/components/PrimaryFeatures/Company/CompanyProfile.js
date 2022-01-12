@@ -89,7 +89,7 @@ const CompanyProfilePage = () => {
                     hasTickets={false}
                     ticketsAlias={false}
                     ticketsSize={false}
-                    hasCrud={false}
+                    hasCrud={true}
                 >
                     <EditCompanyButton entry={dataObject} />
                     <DeleteCompanyButton entry={dataObject} />

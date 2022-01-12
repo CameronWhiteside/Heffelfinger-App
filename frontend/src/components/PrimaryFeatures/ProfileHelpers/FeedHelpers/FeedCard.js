@@ -32,7 +32,7 @@ export const FeedCard = ( {  entry, urlPathName } ) => {
     if (entry.location) location = entry.location
 
     let attendees
-    if (entry.Users && urlPathName === 'events' && entry.Users.length > 0) attendees = entry.Users.length
+    if (entry.Tickets && urlPathName === 'events' && entry.Tickets.length > 0) attendees = entry.Tickets.length
 
     let contributors
     if (entry.Users && urlPathName === 'companies' && entry.Users.length > 0) contributors = entry.Users.length
@@ -50,7 +50,7 @@ export const FeedCard = ( {  entry, urlPathName } ) => {
                 <div className='primary-feed-info' >
                     <div className='feed-card-image-area'>
                         <ProfileImage url={url} size={imageSize} name={name}/>
-                        {name && <h2 className='feed-card-name'>{name}</h2>}
+                        {name && <h4 className='feed-card-name'>{name}</h4>}
                 </div>
                 </div>
                     <div className='feed-card-info-area'>

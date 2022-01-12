@@ -4,6 +4,8 @@
     width: var(--full-width-minus-main-margin);
     margin: var(--main-margin);
     position: fixed;
+    z-index: 10000;
+    top: 0px;
 }
 
 .site-logo,
@@ -25,6 +27,7 @@
     justify-content: flex-end;
     align-items: center;
 }
+
 
 .text-links{
     width: 1000px;

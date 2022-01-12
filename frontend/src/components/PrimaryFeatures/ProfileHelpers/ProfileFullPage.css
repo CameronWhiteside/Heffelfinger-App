@@ -10,8 +10,8 @@
 }
 
 .crud-left-col{
-    width: 400px;
-    margin-right: 20px;
+    width: 0px;
+    margin-right: 0px;
     padding-top: 80px;
     position: relative;
     /* display: flex;
@@ -21,13 +21,14 @@
 }
 
 .cover-up{
-    position: absolute;
-    width: 1000px;
-    height: 100%;
+    position: fixed;
+    width: 200vw;
+    height: 100vh;
+    left: -50vw;
     bottom: 0px;
     background-image: var(--alpha-dark-250);
     border: 5px solid red;
-    backdrop-filter: blur(2px) brightness(80%) saturate(80%);
+    backdrop-filter: blur(3px) brightness(110%) saturate(80%);
 }
 
 .crud-left-col .form-container{
@@ -96,7 +97,6 @@
 .secondary-info {
     display: flex;
     width: 100%;
-    padding: 20px;
     height: 100%;
     margin-top: 20px;
 }
@@ -106,7 +106,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 25%;
+    width: 30%;
     margin-right: 20px;
 }
 
@@ -122,11 +122,12 @@
 }
 
 .action-column{
-    width: 75%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    padding: 20px;
 }
 
 
@@ -134,7 +135,7 @@
     width: 100%;
 }
 
-.newsfeed > div {
-    margin-bottom: 20px;
-    width: 100%;
+
+.add-event-button {
+    margin: 0px 0px 0px 80px;
 }

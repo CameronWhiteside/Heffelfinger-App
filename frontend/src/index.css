@@ -125,6 +125,10 @@
 
 }
 
+#root{
+   position: relative;
+}
+
    .scroll-area{
       overflow-y: scroll;
       box-shadow: var(--inner-scroll-box-shadow);
@@ -208,21 +212,26 @@ h1, h2, h3, h4, h5, h6 {
    letter-spacing: 0.8px;
 }
 
+
 h1{
    font-size: var(--h1-size-desktop);
+   color: var(--accent-000);
 
 }
 
 h2{
    font-size: var(--h2-size-desktop);
+   color: var(--accent-400);
 }
 
 h3{
    font-size: var(--h3-size-desktop);
+   color: var(--accent-400);
 }
 
 h4{
    font-size: var(--h4-size-desktop);
+   color: var(--accent-400);
 }
 
 h5{
@@ -326,7 +335,7 @@ button,
     letter-spacing: 0.8px;
     text-transform: uppercase;
     color: var(--neutral-1000);
-    background-color: var(--primary-600);
+    background-color: var(--primary-800);
     border: none;
     border-radius: var(--button-border-radius);
     padding: var(--button-padding);
@@ -345,9 +354,10 @@ button,
 
  button:hover,
  .like-button:hover{
-    background-color: var(--primary-800);
+    background-color: var(--primary-1000);
     transition: var(--transition-easy);
-    color: var(--neutral-1000)
+    color: var(--neutral-1000);
+    cursor: pointer;
  }
 
 label{
