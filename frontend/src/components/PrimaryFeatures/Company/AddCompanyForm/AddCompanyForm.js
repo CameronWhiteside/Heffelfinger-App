@@ -108,6 +108,7 @@ const AddCompanyForm = ({ hideForm }) => {
                     minLength={2}
                     maxLength={50}
                     required={true}
+                    restrictSafe={true}
                     placeholder={'Enter a company name'}
                     validationObject={validationObject}
                     setValidationObject={setValidationObject}

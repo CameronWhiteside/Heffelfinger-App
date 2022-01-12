@@ -9,7 +9,7 @@ module.exports = {
         description: 'sampleDescription',
         location: 'sampleCity',
         tagline: 'sampleTagline sampleTagline',
-        logo: 'https://i.ibb.co/BgBRsvf/placeholder2.jpg'
+        logo: 'https://i.ibb.co/4FSBBv1/aircnd-logo-with-background.png'
       },
       {
         name: 'Gotta Latte Do',

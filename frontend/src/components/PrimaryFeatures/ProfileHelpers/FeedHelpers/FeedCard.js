@@ -13,7 +13,7 @@ export const FeedCard = ( {  entry, urlPathName } ) => {
 
     let name
     if (entry.name) name = entry.name
-    if (entry.firstName) name = entry.firstName
+    if (entry.firstName) name = `${entry.firstName} ${entry.lastName}`
     // if (entry.username) name = entry.username
 
     //acount for different 'url' variable aliases
