@@ -32,9 +32,9 @@
 
 
 .cover-up ~ .form-container{
-    background-image: var(--light-glass-background-image);
+    /* background-image: var(--light-glass-background-image);
     box-shadow: var(--glass-box-shadow);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px); */
     -webkit-backdrop-filter: blur(2px);
     border-radius: var(--glass-border-radius);
     padding: 10px;
@@ -46,7 +46,7 @@
 
 
     .cover-up ~ .form-container .form-input{
-        background-image: var(--light-glass-background-image);
+        background-image: var(--glass-background-image);
         box-shadow: var(--glass-box-shadow);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(2px);

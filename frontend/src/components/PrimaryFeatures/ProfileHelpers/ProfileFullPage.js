@@ -143,7 +143,7 @@ const ProfileFullPage = ({
                                             alias={`${pageTitle}'s Events`}
                                         >
                                             {
-                                                isProfileOwner && dataObject.tagline &&
+                                                isProfileOwner && profileType === 'company' &&
                                                 <AddEventButton />
                                             }
                                         </FeedArea>
@@ -156,7 +156,7 @@ const ProfileFullPage = ({
                                             alias={`Contributors`}
                                         >
                                              {
-                                                isProfileOwner && dataObject.tagline &&
+                                                isProfileOwner && profileType === 'company' &&
                                                 <AddEmployeeButton />
                                             }
                                         </FeedArea>

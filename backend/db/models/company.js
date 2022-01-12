@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     description: {
       allowNull: false,
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1500),
     },
     twitterUrl: {
       type: DataTypes.STRING,

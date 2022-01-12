@@ -93,8 +93,8 @@ const AddCompanyForm = ({ hideForm }) => {
         >
           <EditCompanyButton entry={dataObject || {id: 0}} />
           <DeleteCompanyButton entry={dataObject || {id: 0}}  />
-            <div className='form-container'>
-      <h2>Add A Company</h2>
+          <div className='form-container'>
+
 
       <form onSubmit={handleSubmit} className='add-company'>
       <div className="all-inputs">
@@ -105,7 +105,8 @@ const AddCompanyForm = ({ hideForm }) => {
                     type='text'
                     stateVar={name}
                     setStateVar={setName}
-                    maxLength={100}
+                    minLength={2}
+                    maxLength={50}
                     required={true}
                     placeholder={'Enter a company name'}
                     validationObject={validationObject}
