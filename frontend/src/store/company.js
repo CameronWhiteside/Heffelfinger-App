@@ -106,7 +106,7 @@ const companyReducer = (state = {} , action) => {
     switch (action.type) {
         case LOAD_COMPANIES:
             action.companies.forEach(company => {
-                if (company.name.length > 4) {
+                if (company.name.length > 1) {
                     newState[company.id] = company;
                 } else {
                     delete newState[id]

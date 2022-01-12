@@ -23,7 +23,7 @@ module.exports = {
         description: 'sampleDescription',
         location: 'sampleCity',
         tagline: 'sampleTagline sampleTagline',
-        logo: 'https://i.ibb.co/qMqtCbR/recipeople.jpg'
+        logo: 'https://i.ibb.co/L5pyC7X/recipeoplelogo.jpg'
       },
       {
         name: 'Heffelfinger Business Studios',
@@ -38,14 +38,21 @@ module.exports = {
         description: 'sampleDescription',
         location: 'sampleCity',
         tagline: 'sampleTagline sampleTagline',
-        logo: 'https://cdn.discordapp.com/attachments/909939496378855424/929132224836677652/black-and-white.png'
+        logo: 'https://i.ibb.co/nR149gr/heff-site-logo.png'
       },
       {
         name: 'Carpe Diem',
         description: 'sampleDescription',
         location: 'sampleCity',
         tagline: 'sampleTagline sampleTagline',
-        logo: 'https://i.ibb.co/9G6LLCQ/logo-sq-plain.jpg'
+        logo: 'https://i.ibb.co/Q86yqd2/carpediem-logo.jpg'
+      },
+      {
+        name: 'SpareBnB',
+        description: 'sampleDescription',
+        location: 'sampleCity',
+        tagline: 'sampleTagline sampleTagline',
+        logo: 'https://i.ibb.co/wBypLXM/Logo.jpg'
       },
     ])
   },

@@ -75,6 +75,7 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
     //     }
 
     // }
+    console.log(`card for ${name}...`)
 
     return (
         <div className='browser-card glass'>
