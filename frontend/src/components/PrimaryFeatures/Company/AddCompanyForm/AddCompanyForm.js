@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
-import { addCompany } from "../../../../store/company";
+import { addCompany, deleteCompany } from "../../../../store/company";
 import FormInput from "../../../Basic/FormHelpers/FormInput";
 import ProfileFullPage from "../../ProfileHelpers/ProfileFullPage";
 import EditCompanyButton from "../CompanyCRUDButtons/EditCompanyButton";
@@ -30,6 +30,7 @@ const AddCompanyForm = ({
   const dispatch = useDispatch()
   const history = useHistory()
   console.log({ name, tagline, description })
+  const { id } = useParams()
 
 
   // const [name, setName] = useState('');
@@ -169,7 +170,14 @@ const AddCompanyForm = ({
                 <button className='fake-submit' onClick={()=>setHasCrud(false)} disabled={Object.values(validationObject).includes(false)}>Add Company</button>
                 {/* <input type='submit' disabled={Object.values(validationObject).includes(false)} value='Submit' /> */}
         </form>
-                <button className="cancel-button">Cancel</button>
+          <button
+            className="cancel-button"
+            onClick={(e) => {
+                dispatch(deleteCompany(id))
+                history.push('/companies')
+            }
+            }
+          >Cancel</button>
 
     </div>
 

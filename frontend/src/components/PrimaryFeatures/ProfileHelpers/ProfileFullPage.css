@@ -27,14 +27,14 @@
     left: -50vw;
     bottom: 0px;
     background-image: var(--alpha-dark-600);
-    backdrop-filter: blur(1px) brightness(20%)  grayscale(10%) contrast(80%) saturate(80%);
+    backdrop-filter: blur(1px) brightness(80%)  grayscale(10%) contrast(90%) saturate(80%);
 }
 
 
 .cover-up ~ * > .form-container{
-    /* background-image: var(--light-glass-background-image);
+    background-image: var(--light-glass-background-image);
     box-shadow: var(--glass-box-shadow);
-    backdrop-filter: blur(4px); */
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(2px);
     border-radius: var(--glass-border-radius);
     padding: 10px;
@@ -45,10 +45,10 @@
 }
 
 
-    .cover-up ~ .form-container .form-input{
-        background-image: var(--glass-background-image);
+    .cover-up ~ * > .form-container .form-input{
+        background-image: var(--light-glass-background-image);
         box-shadow: var(--glass-box-shadow);
-        backdrop-filter: blur(4px);
+        backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(2px);
         border-radius: var(--glass-border-radius);
 
