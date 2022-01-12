@@ -73,7 +73,7 @@ const AddCompanyForm = ({
 
   const dataObject = { name, tagline, description }
 
-  console.log({ dataObject })
+
 
   return (
 

@@ -2,9 +2,10 @@ import './BrowserGrid.css'
 import BrowserCard from "./BrowserCard"
 
 
-const BroswerGrid = ({ children, entries,  maxEntries = entries.length, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias }) => {
+const BroswerGrid = ({ children, entries, maxEntries = entries.length, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias }) => {
 
     let returnedEntries = entries.slice(0, maxEntries)
+    console.log({returnedEntries})
 
     return (
         <div className="browser-grid glass scroll-area">

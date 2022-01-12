@@ -53,8 +53,9 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
     if (hasHost && entry.Companies) host = entry.Companies
 
     let users
-    if (hasUsers) users = entry.Users
-    if (users.length < 1) users = false
+    // if(!entry.users)
+    if (hasUsers && entry.Users) users = entry.Users
+    if (!entry.Users || users.length < 1) users = false
 
     let companies
     if (hasCompanies) companies = entry.Company

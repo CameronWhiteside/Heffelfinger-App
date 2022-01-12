@@ -31,7 +31,13 @@ const CompanyBrowser = () => {
         return state.company
     })
 
-    const companiesArr = Object.values(companyState)
+    console.log(companyState)
+
+    const companiesArr =
+        //remove all non-number keys that got added to the company state erroneously
+        Object.entries(companyState)
+            .filter(pair => parseInt(pair[0]))
+            .map(pair => pair[1])
 
     const title = `
         LAUNCHPAD

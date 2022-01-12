@@ -1,13 +1,21 @@
 import { useContext, useEffect, useState } from "react"
+import { Redirect, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginFormPage from "../LoginFormPage";
 import SignInRegisterCombo from "./SignInRegisterCombo";
 
 import './WelcomePage.css'
 
-const WelcomePage = ({newUserDefault}) => {
+const WelcomePage = ({ newUserDefault }) => {
+
+    console.log(`you've got welcome page`)
 
     const sessionUser = useSelector(state => state.session.user);
+    const location = useLocation()
+
+    if (sessionUser && (location.pathname !== '/')) return (
+        <Redirect to="/" />
+      );
 
     return (
         <div className="welcome-page">
