@@ -43,7 +43,11 @@ const CompanyProfilePage = () => {
         defaultImageUrl = dataObject.imageUrl
         year = createdAt.slice(0, 4);
         createdAt = `On board since ${year}`
-        isProfileOwner = dataObject.Users.map(user => user.id).includes(sessionUser.id)
+        if (dataObject.Users && sessionUser) {
+            console.log(dataObject.Users)
+            isProfileOwner = dataObject.Users.map(user => user.id).includes(sessionUser.id)
+        }
+        // isProfileOwner = dataObject.Users.map(user => user.id).includes(sessionUser.id)
     } else {
         console.log(`no data obj sorry`)
     }

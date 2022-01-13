@@ -47,7 +47,7 @@ exports.validateCreate = [
     name,
     headline,
     description,
-    imageUrl,
+    // imageUrl,
     handleValidationErrors
 ];
 
@@ -56,6 +56,6 @@ exports.validateUpdate = [
     name,
     headline,
     description,
-    imageUrl,
+    // imageUrl,
     handleValidationErrors
 ]
