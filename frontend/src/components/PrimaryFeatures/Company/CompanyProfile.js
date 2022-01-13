@@ -23,7 +23,6 @@ const CompanyProfilePage = () => {
 
     dataObject = companyState[id]
 
-
     useEffect(() => {
          dispatch(loadCompanies()).then(res => console.log('dispatch response', res))
     }, [dispatch])
@@ -36,7 +35,6 @@ const CompanyProfilePage = () => {
     isProfileOwner, defaultImageUrl
 
     if (dataObject) {
-        console.log(`data is getting reassigned because dataObj is true`)
         defaultName = dataObject.name
         defaultHeadline = dataObject.headline
         location = dataObject.location
@@ -47,16 +45,8 @@ const CompanyProfilePage = () => {
         createdAt = `On board since ${year}`
         isProfileOwner = dataObject.Users.map(user => user.id).includes(sessionUser.id)
     } else {
-        console.log('failure to reassign')
+        console.log(`no data obj sorry`)
     }
-
-
-
-    // if (!name || name.length < 2) setName('')
-    // if (!description || description.length < 2) setDescription('')
-    // if (!headline || headline.length < 2) setHeadline('')
-
-
     const StatefulCompany = () => {
 
             const [name, setName] = useState(defaultName);
@@ -73,7 +63,6 @@ const CompanyProfilePage = () => {
                     !defaultName || defaultName.length < 2 ||
                     !defaultDescription || defaultDescription.length < 2 ||
                     !defaultHeadline || defaultHeadline.length < 2
-                    // false
             )
 
 
