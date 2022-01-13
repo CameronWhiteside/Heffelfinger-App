@@ -11,11 +11,14 @@ const BroswerGrid = ({ children, entries, maxEntries = entries.length, hasUsers,
     const sessionUser = useSelector(state => state.session.user);
 
     let returnedEntries = entries.slice(0, maxEntries)
-    console.log({returnedEntries})
+    console.log({ returnedEntries })
+
+    let renderedEntries = returnedEntries.filter(entry => entry.name && entry.name.length > 1)
+    let totalEntries = returnedEntries.length
 
     return (
         <div className="browser-grid glass scroll-area">
-            {returnedEntries.filter(entry=> entry.name && entry.name.length > 1).map(entry => (
+            {renderedEntries.map((entry, index) => (
                 <BrowserCard
                     key={entry.id}
                     entry={entry}
@@ -25,6 +28,7 @@ const BroswerGrid = ({ children, entries, maxEntries = entries.length, hasUsers,
                     hasCompanies={hasCompanies}
                     companiesAlias={companiesAlias}
                     urlPath={urlPath}
+                    renderOrder={totalEntries-index}
                 >
                     {children}
                 </BrowserCard>

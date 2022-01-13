@@ -17,10 +17,12 @@ import './ProfileFullPage.css'
 import DropDownMenu from "../../Basic/Navigation/Menus/DropDownMenu"
 import AddCompanyButton from "../Company/CompanyCRUDButtons/AddCompanyButton"
 import ExternalLinksForm from "./ExternalLinksHelper/ExternalLinksForm"
+import ImageForm from './ImageHelpers/ImageForm'
 
 //pass in CRUD form as TRUE and include as child element
 
 const ProfileFullPage = ({
+    id,
     hasCrud,
     setHasCrud,
     editInfoMode,
@@ -35,7 +37,6 @@ const ProfileFullPage = ({
     profileType,
     pageTitle,
     pageDescription,
-    imageUrl,
     imageSize,
     pageShortInfo,
     isProfileOwner,
@@ -49,6 +50,8 @@ const ProfileFullPage = ({
     hasTickets,
     children,
 }) => {
+
+    const [imageUrl, setImageUrl] = useState(dataObject.imageUrl)
 
     const [social1, setSocial1] = useState('')
     const [social2, setSocial2] = useState('')
@@ -83,12 +86,12 @@ const ProfileFullPage = ({
 
                         <div className='top-banner glass'>
                             <div className='image-container'>
-                                    <ProfileImage
-                                        url={imageUrl}
-                                        size={imageSize}
-                                        name={ pageTitle || (dataObject && dataObject.name) || (dataObject && dataObject.firstName) || 'H'
-                                        }
-                                    />
+                        <ProfileImage
+                            imageUrl={imageUrl}
+                            setImageUrl={setImageUrl}
+                            size={imageSize}
+                            defaultName={pageTitle || (dataObject && dataObject.name) || (dataObject && dataObject.firstName) || 'H'}
+                        />
                             </div>
                             <div className='banner-text'>
                                     <h1 className='page-title'>
@@ -286,7 +289,20 @@ const ProfileFullPage = ({
 
                         />
 
-                        }
+                    }
+
+                    {editImageMode &&
+
+                    <ImageForm
+                        pageTitle={pageTitle}
+                        imageUrl={imageUrl}
+                        setImageUrl={setImageUrl}
+                        setEditImageMode={setEditImageMode}
+                        profileType={profileType}
+                        id={id}
+                    />
+
+}
                     </div>
                 </div>
     </section>

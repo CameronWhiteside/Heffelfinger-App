@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING,
     },
-    tagline: {
+    headline: {
       allowNull: false,
       type: DataTypes.STRING,
     },
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     website: {
       type: DataTypes.STRING,
     },
-    logo: {
+    imageUrl: {
       type: DataTypes.STRING,
     },
   }, {});

@@ -111,8 +111,7 @@ const companyReducer = (state = {} , action) => {
                 // } else {
                 //     delete newState[id]
                 // }
-
-                newState[company.id] = company
+                    newState[company.id] = company
                 }
                 )
             return newState;

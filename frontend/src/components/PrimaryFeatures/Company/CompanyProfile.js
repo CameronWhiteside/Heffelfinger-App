@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, useHistory } from "react-router-dom";
 import { loadCompanies } from "../../../store/company";
 import ProfileFullPage from "../ProfileHelpers/ProfileFullPage";
 import { useSelector } from "react-redux";
@@ -15,36 +15,57 @@ const CompanyProfilePage = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
 
+    let dataObject
+
     const companyState = useSelector(state => {
         return state.company
     })
 
-    // const currentCompanies = dispatch(loadCompanies())
+    dataObject = companyState[id]
+
+    console.log(dataObject)
+
     useEffect(() => {
         dispatch(loadCompanies())
-    }, [])
+    }, [dispatch])
 
-    const dataObject = companyState[id]
 
-    let defaultName, defaultTagline, location, createdAt, defaultDescription, year, shortInfo;
+    const sessionUser = useSelector(state => state.session.user);
+
+
+    let defaultName, defaultHeadline, location, createdAt, defaultDescription, year, shortInfo,
+    isProfileOwner, defaultImageUrl
 
     if (dataObject) {
+        console.log(`data is getting reassigned because dataObj is true`)
         defaultName = dataObject.name
-        defaultTagline = dataObject.tagline
+        defaultHeadline = dataObject.headline
         location = dataObject.location
         createdAt = dataObject.createdAt
         defaultDescription = dataObject.description
+        defaultImageUrl = dataObject.imageUrl
         year = createdAt.slice(0, 4);
         createdAt = `On board since ${year}`
+        isProfileOwner = dataObject.Users.map(user => user.id).includes(sessionUser.id)
+    } else {
+        console.log('failure to reassign')
     }
 
+    const [name, setName] = useState(defaultName);
+    const [description, setDescription] = useState(defaultDescription);
+    const [headline, setHeadline] = useState(defaultHeadline);
+    const [imageUrl, setImageUrl] = useState(defaultImageUrl);
+    const [validationObject, setValidationObject] = useState({ test: true });
+    const [databaseErrors, setDatabaseErrors] = useState([])
+
+    shortInfo = [headline, location, createdAt].filter(el => !(!el)).join(' · ')
 
     const [editInfoMode, setEditInfoMode] = useState(
-            !defaultName || defaultName.length < 2 ||
-            !defaultDescription || defaultDescription.length < 2 ||
-            !defaultTagline || defaultTagline.length < 2
+            // !defaultName || defaultName.length < 2 ||
+            // !defaultDescription || defaultDescription.length < 2 ||
+            // !defaultHeadline || defaultHeadline.length < 2
+            false
     )
-
 
 
     const [editImageMode, setEditImageMode] = useState(false)
@@ -52,23 +73,12 @@ const CompanyProfilePage = () => {
     const [editEmployeesMode, setEditEmployeesMode] = useState(false)
 
 
+    // if (!defaultName || defaultName.length < 2) defaultName = ''
+    // if (!defaultDescription || defaultDescription.length < 2) defaultDescription = ' '
+    // if (!defaultHeadline || defaultHeadline.length < 2) defaultHeadline=(' ')
 
-    if (!defaultName || defaultName.length < 2) defaultName = ''
-    if (!defaultDescription || defaultDescription.length < 2) defaultDescription = ''
-    if (!defaultTagline || defaultTagline.length < 2) defaultTagline=('')
 
 
-    const [name, setName] = useState(defaultName);
-    const [description, setDescription] = useState(defaultDescription);
-    const [tagline, setTagline] = useState(defaultTagline);
-    const [validationObject, setValidationObject] = useState({ test: true });
-    const [databaseErrors, setDatabaseErrors] = useState([])
-
-    const sessionUser = useSelector(state => state.session.user);
-
-    let isProfileOwner = (dataObject && dataObject.Users.map(user => user.id).includes(sessionUser.id))
-
-    shortInfo = [tagline, location, createdAt].filter(el => !(!el)).join(' · ')
 
     return (
         <div className="company-profile">
@@ -78,7 +88,8 @@ const CompanyProfilePage = () => {
                     dataObject={dataObject}
                     profileType='company'
                     pageTitle={name}
-                    imageUrl={dataObject.logo}
+                    imageUrl={imageUrl}
+                    setImageUrl={setImageUrl}
                     imageSize='medium'
                     pageShortInfo={shortInfo}
                     pageDescription={description}
@@ -121,8 +132,8 @@ const CompanyProfilePage = () => {
                         setName={setName}
                         description={description}
                         setDescription={setDescription}
-                        tagline={tagline}
-                        setTagline={setTagline}
+                        headline={headline}
+                        setHeadline={setHeadline}
                         validationObject={validationObject}
                         setValidationObject={setValidationObject}
                         databaseErrors={databaseErrors}

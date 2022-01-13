@@ -14,7 +14,7 @@ const AddCompanyButton = () => {
 
         let newCompany = {
             name: ' ',
-            tagline: ' ',
+            headline: ' ',
             description:' '
         }
 

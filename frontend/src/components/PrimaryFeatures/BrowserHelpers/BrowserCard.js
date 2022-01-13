@@ -16,7 +16,7 @@ import DropDownMenu from '../../Basic/Navigation/Menus/DropDownMenu';
 
 // https://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children
 
-export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias, urlPath } ) => {
+export const BrowserCard = ( { children, renderOrder, entry, hasUsers, usersAlias, hasHost, hasCompanies, companiesAlias, urlPath } ) => {
     useHistory();
 
     let id = entry.id
@@ -29,16 +29,14 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
     // if (entry.username) name = entry.username
 
     //acount for different 'url' variable aliases
-    let url
-    if (entry.logo) url = entry.logo
-    if (entry.imageUrl) url = entry.imageUrl
-    if (entry.picture) url = entry.imageUrl
+    let imageUrl
+    if (entry.imageUrl) imageUrl = entry.imageUrl
 
     let startDateTime
     if (entry.startDateTime) startDateTime = entry.startDateTime
 
-    let tagline
-    if (entry.tagline) tagline = entry.tagline
+    let headline
+    if (entry.headline) headline = entry.headline
 
     let location
     if (entry.location) location = entry.location
@@ -61,16 +59,16 @@ export const BrowserCard = ( { children, entry, hasUsers, usersAlias, hasHost, h
     const imageSize = 'large'
 
     return (
-        <div className='browser-card glass'>
+        <div className='browser-card glass' style={{ order: `${renderOrder}` }}>
                 <NavLink to={`/${urlPath}/${id}`}>
                     <div className='browser-card-overlay'></div>
                     <div className='browser-card-image-area'>
-                        <ProfileImage url={url} size={imageSize} name={name}/>
+                        <ProfileImage imageUrl={imageUrl} size={imageSize} defaultName={name}/>
                     </div>
                     <div className='browser-card-info-area'>
                         {startDateTime && <PrettyDate date={startDateTime} />}
                         {name && <h2 className='browser-card-name'>{name}</h2>}
-                        {tagline && <p className='tagline'>{tagline}</p>}
+                        {headline && <p className='headline'>{headline}</p>}
                         {location && <p className='browser-short-details'>{location}</p>}
                         {hasHost && <PrettyHost event={host} />}
                     </div>

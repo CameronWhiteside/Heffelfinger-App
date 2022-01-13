@@ -36,10 +36,7 @@ function App() {
           <Route exact path="/companies">
             <CompanyBrowser />
           </Route>
-          <Route exact path="/companies/new">
-            <AddCompanyForm />
-          </Route>
-            <Route path="/companies/:id">
+          <Route path="/companies/:id">
             <CompanyProfilePage />
           </Route>
           <Route path="/signup">
@@ -48,9 +45,7 @@ function App() {
           <Route path="/login">
             <WelcomePage newUserDefault={false} />
           </Route>
-          <Route path="/social">
-            <ExternalLinksForm />
-          </Route>
+
             <Route path="/">
             <WelcomePage newUserDefault={true} />
           </Route>

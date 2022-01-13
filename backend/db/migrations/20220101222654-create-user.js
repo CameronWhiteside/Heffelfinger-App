@@ -21,6 +21,15 @@ module.exports = {
         type: Sequelize.STRING(256),
         unique: true,
       },
+      location: {
+        type: Sequelize.STRING(256),
+      },
+      biography: {
+        type: Sequelize.STRING(1500),
+      },
+      imageUrl: {
+        type: Sequelize.STRING,
+      },
       hashedPassword: {
         allowNull: false,
         type: Sequelize.STRING.BINARY,

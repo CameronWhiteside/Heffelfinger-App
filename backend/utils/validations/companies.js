@@ -13,19 +13,19 @@ const description = check('description')
     .isLength({ max: 1500 })
     .withMessage(`Company description must be fewer than 1000 characters.`)
 
-const tagline = check('tagline')
+const headline = check('headline')
     .exists({ checkFalsy: true })
-    .withMessage('Please enter a company tagline.')
+    .withMessage('Please enter a company headline.')
     .isLength({ max: 150 })
-    .withMessage(`Company tagline must be fewer than 100 characters.`)
+    .withMessage(`Company headline must be fewer than 100 characters.`)
 
 const website =  check('website')
     .optional().isURL()
     .withMessage('Please enter a valid URL')
 
-const logo = check('logo')
+const imageUrl = check('imageUrl')
     .optional().matches(/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)\.(?:jpg|gif|png|svg)/, 'g')
-    .withMessage('Logo URL must end in .jpg, .gif, .png, or .svg logo')
+    .withMessage('URL must end in .jpg, .gif, .png, or .svg imageUrl')
 
 const facebookUrl = check('facebookUrl')
     .optional().matches(/((https?:\/\/)(.+?\.)?facebook\.com(\/[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*)?)/, 'g')
@@ -45,10 +45,10 @@ const linkedInUrl = check('linkedInUrl')
 
 exports.validateCreate = [
     name,
-    tagline,
+    headline,
     description,
     website,
-    logo,
+    imageUrl,
     facebookUrl,
     instagramUrl,
     twitterUrl,
@@ -59,10 +59,10 @@ exports.validateCreate = [
 exports.validateUpdate = [
     id,
     name,
-    tagline,
+    headline,
     description,
     website,
-    logo,
+    imageUrl,
     facebookUrl,
     instagramUrl,
     twitterUrl,

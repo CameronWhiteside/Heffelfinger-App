@@ -28,6 +28,15 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
+    location: {
+      type: DataTypes.STRING(256),
+    },
+    biography: {
+      type: DataTypes.STRING(1500),
+    },
+    imageUrl: {
+      type: DataTypes.STRING,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,

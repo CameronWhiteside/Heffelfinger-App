@@ -1,0 +1,23 @@
+.image-form{
+    display: flex;
+    /* justify-content: flex-end; */
+    width: fit-content;
+}
+
+.image-form .form-input {
+    height: 50px;
+    margin: 0px 0px 12px;
+
+}
+
+.image-form .form-input input{
+    padding: 20px 8px;
+    margin: 4px 0px;
+}
+
+.image-preview{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0px;
+}

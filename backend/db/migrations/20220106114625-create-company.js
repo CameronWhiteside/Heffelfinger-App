@@ -15,7 +15,7 @@ module.exports = {
       location: {
         type: Sequelize.STRING,
       },
-      tagline: {
+      headline: {
         allowNull: false,
         type: Sequelize.STRING,
       },
@@ -38,7 +38,7 @@ module.exports = {
       linkedinUrl: {
         type: Sequelize.STRING,
       },
-      logo: {
+      imageUrl: {
         type: Sequelize.STRING,
       },
       createdAt: {

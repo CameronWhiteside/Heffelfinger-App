@@ -1,17 +1,17 @@
 import './ProfileImage.css'
 
-const ProfileImage = ({ url, size, name }) => {
+const ProfileImage = ({ imageUrl,  size, defaultName }) => {
 
     return (
         <>
-            {url &&
-                <div className={`profile-image-container ${size}`} style={{ backgroundImage: `url(${url})`,  backgroundColor: 'var(--neutral-1000)' }}>
+            {imageUrl &&
+                <div className={`profile-image-container ${size}`} style={{ backgroundImage: `url(${imageUrl})`,  backgroundColor: 'var(--neutral-1000)' }}>
                 </div>
             }
-            {!url &&
+            {!imageUrl &&
                 <div className={`profile-image-container empty ${size}`} style={{ backgroundColor: 'var(--primary-800)' }}>
                     <span className={`fake-image ${size}`}>
-                        {name[0].toUpperCase()}
+                        {defaultName[0].toUpperCase()}
                     </span>
                 </div>
             }

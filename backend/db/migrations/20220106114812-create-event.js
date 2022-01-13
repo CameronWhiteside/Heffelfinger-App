@@ -28,6 +28,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      imageUrl: {
+        type: Sequelize.STRING,
+      },
       hostId: {
         allowNull: false,
         type: Sequelize.INTEGER,

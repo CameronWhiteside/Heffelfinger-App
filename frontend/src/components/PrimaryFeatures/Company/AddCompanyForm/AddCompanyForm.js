@@ -18,8 +18,8 @@ const AddCompanyForm = ({
           setName,
           description,
           setDescription,
-          tagline,
-          setTagline,
+          headline,
+          setHeadline,
           validationObject,
           setValidationObject,
           databaseErrors,
@@ -40,7 +40,7 @@ const AddCompanyForm = ({
       let editedCompany = {
             id,
             name,
-            tagline,
+            headline,
             description,
         }
 
@@ -55,7 +55,7 @@ const AddCompanyForm = ({
   }
 
 
-  const dataObject = { name, tagline, description }
+  const dataObject = { name, headline, description }
 
 
 
@@ -86,11 +86,11 @@ const AddCompanyForm = ({
                 />
 
                   <FormInput
-                      labelText='Tagline'
-                      id='tagline'
+                      labelText='Headline'
+                      id='headline'
                       type='text'
-                      stateVar={tagline}
-                      setStateVar={setTagline}
+                      stateVar={headline}
+                      setStateVar={setHeadline}
                       required={true}
                       maxLength={150}
                       placeholder={'Enter a short company description'}

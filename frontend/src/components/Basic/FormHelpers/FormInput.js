@@ -93,7 +93,7 @@ const FormInput = (
                         required={required}
                         onChange={updateStateVar}
                         placeholder={placeholder}
-                        data-hasinput={stateVar.length > 0}
+                        data-hasinput={stateVar && stateVar.length > 0}
                         data-toolong={maxLength && stateVar.length > maxLength}
                         data-issafe={isSafe}
                     />
@@ -102,7 +102,7 @@ const FormInput = (
                     {labelText}
                 </label>
                 <span className='length-counter'>
-                    {`${((stateVar.length && maxLength) ? `${stateVar.length}/${maxLength}` : '')}`}
+                    {`${((stateVar && stateVar.length && maxLength) ? `${stateVar.length}/${maxLength}` : '')}`}
                 </span>
                 <div className='error-area'>
                     {warningText && <div className='warning'>

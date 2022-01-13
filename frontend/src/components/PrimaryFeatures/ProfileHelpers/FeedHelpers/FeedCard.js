@@ -25,8 +25,8 @@ export const FeedCard = ( {  entry, urlPathName } ) => {
     let startDateTime
     if (entry.startDateTime) startDateTime = entry.startDateTime
 
-    let tagline
-    if (entry.tagline) tagline = entry.tagline
+    let headline
+    if (entry.headline) headline = entry.headline
 
     let location
     if (entry.location) location = entry.location
@@ -49,7 +49,7 @@ export const FeedCard = ( {  entry, urlPathName } ) => {
             <NavLink to={`/${urlPathName}/${id}`}>
                 <div className='primary-feed-info' >
                     <div className='feed-card-image-area'>
-                        <ProfileImage url={url} size={imageSize} name={name}/>
+                        <ProfileImage url={url} size={imageSize} defaultName={name}/>
                         {name && <h4 className='feed-card-name'>{name}</h4>}
                 </div>
                 </div>
@@ -61,7 +61,7 @@ export const FeedCard = ( {  entry, urlPathName } ) => {
                         {contributors && <p className='contributors'>{attendees} Attending</p>}
 
 
-                        {tagline && <p className='tagline'>{tagline}</p>}
+                        {headline && <p className='headline'>{headline}</p>}
                         {contributors && <p className='contributors'>{contributors} Contributors</p>}
                     </div>
 

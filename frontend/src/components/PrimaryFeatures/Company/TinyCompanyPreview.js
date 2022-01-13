@@ -8,7 +8,7 @@ const TinyCompanyPreview = ({ companies, maxLength = 5 }) => {
         <div className="tiny-company-preview">
             {trimmedCompanies.map(company => (
                 <NavLink key={company.id} to={`/companies/${company.id}`}>
-                    <ProfileImage key={company.id} url={company.logo} name={company.name} size={size}></ProfileImage>
+                    <ProfileImage key={company.id} imageUrl={company.imageUrl} defaultName={company.name} size={size}></ProfileImage>
                 </NavLink>
             ))}
         </div>
