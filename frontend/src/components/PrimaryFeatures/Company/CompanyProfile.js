@@ -7,7 +7,8 @@ import { useSelector } from "react-redux";
 import EditCompanyButton from "./CompanyCRUDButtons/EditCompanyButton";
 import DeleteCompanyButton from "./CompanyCRUDButtons/DeleteCompanyButton";
 import AddCompanyForm from "./AddCompanyForm/AddCompanyForm";
-// import AddCompanyButton from "./CompanyCRUDButtons/AddCompanyButton";
+import EditLinksButton from "../ProfileHelpers/ProfileCRUD/EditLinksButton";
+import EditImageButton from '../ProfileHelpers/ProfileCRUD/EditImageButton'
 
 const CompanyProfilePage = () => {
 
@@ -18,9 +19,10 @@ const CompanyProfilePage = () => {
         return state.company
     })
 
+    // const currentCompanies = dispatch(loadCompanies())
     useEffect(() => {
         dispatch(loadCompanies())
-    }, [dispatch])
+    }, [])
 
     const dataObject = companyState[id]
 
@@ -37,11 +39,18 @@ const CompanyProfilePage = () => {
     }
 
 
-    const [hasCrud, setHasCrud] = useState(
+    const [editInfoMode, setEditInfoMode] = useState(
             !defaultName || defaultName.length < 2 ||
             !defaultDescription || defaultDescription.length < 2 ||
             !defaultTagline || defaultTagline.length < 2
-        )
+    )
+
+
+
+    const [editImageMode, setEditImageMode] = useState(false)
+    const [editLinksMode, setEditLinksMode] = useState(false)
+    const [editEmployeesMode, setEditEmployeesMode] = useState(false)
+
 
 
     if (!defaultName || defaultName.length < 2) defaultName = ''
@@ -91,10 +100,20 @@ const CompanyProfilePage = () => {
                     hasTickets={false}
                     ticketsAlias={false}
                     ticketsSize={false}
-                    hasCrud={hasCrud}
-                    setHasCrud={setHasCrud}
+
+                    editInfoMode={editInfoMode}
+                    setEditInfoMode={setEditInfoMode}
+                    editImageMode={editImageMode}
+                    setEditImageMode={setEditImageMode}
+                    editLinksMode={editLinksMode}
+                    setEditLinksMode={setEditLinksMode}
+                    editEmployeesMode={editEmployeesMode}
+                    setEditEmployeesMode={setEditEmployeesMode}
+
                 >
-                    <EditCompanyButton entry={dataObject} />
+                    <EditCompanyButton entry={dataObject} setEditInfoMode={setEditInfoMode} />
+                    <EditImageButton entry={dataObject} setEditImageMode={setEditImageMode} />
+                    <EditLinksButton entry={dataObject} setEditLinksMode={setEditLinksMode} />
                     <DeleteCompanyButton entry={dataObject} />
                     <AddCompanyForm
                         id={id}
@@ -108,8 +127,8 @@ const CompanyProfilePage = () => {
                         setValidationObject={setValidationObject}
                         databaseErrors={databaseErrors}
                         setDatabaseErrors={setDatabaseErrors}
-                        hasCrud={hasCrud}
-                        setHasCrud={setHasCrud}
+                        editInfoMode={editInfoMode}
+                        setEditInfoMode={setEditInfoMode}
                     />
 
                 </ProfileFullPage>

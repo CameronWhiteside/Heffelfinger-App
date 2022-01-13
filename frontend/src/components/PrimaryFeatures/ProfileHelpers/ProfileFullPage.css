@@ -112,6 +112,14 @@
     width: 250px;
 }
 
+.owner-menu-container .menu-area{
+    /* position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 250px; */
+    height: fit-content;
+}
+
 
 .secondary-info {
     display: flex;

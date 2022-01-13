@@ -1,4 +1,4 @@
-
+import { useState } from "react"
 
 import ProfileImage from "./ImageHelpers/ProfileImage"
 import EditProfileLink from "./ProfileCRUD/EditProfileLink"
@@ -16,11 +16,21 @@ import ExternalLinks from "./ExternalLinksHelper/ExternalLinks"
 import './ProfileFullPage.css'
 import DropDownMenu from "../../Basic/Navigation/Menus/DropDownMenu"
 import AddCompanyButton from "../Company/CompanyCRUDButtons/AddCompanyButton"
+import ExternalLinksForm from "./ExternalLinksHelper/ExternalLinksForm"
 
 //pass in CRUD form as TRUE and include as child element
 
 const ProfileFullPage = ({
     hasCrud,
+    setHasCrud,
+    editInfoMode,
+    setEditInfoMode,
+    editImageMode,
+    setEditImageMode,
+    editLinksMode,
+    setEditLinksMode,
+    editEmployeesMode,
+    setEditEmployeesMode,
     dataObject,
     profileType,
     pageTitle,
@@ -28,8 +38,6 @@ const ProfileFullPage = ({
     imageUrl,
     imageSize,
     pageShortInfo,
-    primaryLink,
-    socialLinksArray,
     isProfileOwner,
     hasTags,
     tagsAlias,
@@ -42,6 +50,23 @@ const ProfileFullPage = ({
     children,
 }) => {
 
+    const [social1, setSocial1] = useState('')
+    const [social2, setSocial2] = useState('')
+    const [social3, setSocial3] = useState('')
+    const [social4, setSocial4] = useState('')
+    const [social5, setSocial5] = useState('')
+    const [social1Icon, setSocial1Icon] = useState(``)
+    const [social2Icon, setSocial2Icon] = useState(``)
+    const [social3Icon, setSocial3Icon] = useState(``)
+    const [social4Icon, setSocial4Icon] = useState(``)
+    const [social5Icon, setSocial5Icon] = useState(``)
+    const [primaryExternalLink, setPrimaryExternalLink] = useState(``)
+    const [primaryExternalLabel, setPrimaryExternalLabel] = useState(``)
+
+    let routeName
+    if(profileType === 'company') routeName='companies'
+    if(profileType === 'user') routeName='users'
+    if(profileType === 'event') routeName='events'
 
     return (
     <section className='profile-full-page'>
@@ -80,14 +105,6 @@ const ProfileFullPage = ({
                                         tagsSize={tagsSize}
                                         isProfileOwner={isProfileOwner}
                                     />}
-                            {isProfileOwner &&
-                                <div className="owner-menu-container">
-                                    <DropDownMenu entry={dataObject}>
-                                        {children[0]}
-                                        {children[1]}
-                                    </DropDownMenu>
-                                </div>
-                            }
 
                             </div>
                         </div>
@@ -95,41 +112,61 @@ const ProfileFullPage = ({
 
                     <div className='secondary-info'>
                     <div className='static-column'>
-                       <ExternalLinks
-                            socialLinksArray={socialLinksArray}
-                            primaryLink={primaryLink}
-                        ></ExternalLinks>
+                        {(
+
+                            social1 ||
+                            social2 ||
+                            social3 ||
+                            social4 ||
+                            social5 ||
+                            primaryExternalLabel
+                        ) && <ExternalLinks
+                            social1={social1}
+                            social2={social2}
+                            social3={social3}
+                            social4={social4}
+                            social5={social5}
+                            social1Icon={social1Icon}
+                            social2Icon={social2Icon}
+                            social3Icon={social3Icon}
+                            social4Icon={social4Icon}
+                            social5Icon={social5Icon}
+                            primaryExternalLink={primaryExternalLink}
+                            primaryExternalLabel={primaryExternalLabel}
+                        />}
 
                         {pageDescription &&
 
-                            <div className='detailed-description glass'>
+<div className='detailed-description glass'>
                                 <p>{pageDescription}</p>
                             </div>
                         }
-                                <ProfileCallToAction className='glass'
-                                    dataObject={dataObject}
-                                    ctaType={ctaType}
-                                />
+                        {ctaType &&<ProfileCallToAction className='glass'
+                            dataObject={dataObject}
+                            ctaType={ctaType}
+                        />
+                        }
                     </div>
                     <div className='action-column glass scroll-area'>
+
 
                                 <div className='newsfeed'>
                                     {
                                         hasTickets &&
-                                            <FeedArea
-                                                entries={dataObject.Tickets}
-                                                urlPathName='events'
-                                                alias={`tickets`}
-                                            >
+                                        <FeedArea
+                                        entries={dataObject.Tickets}
+                                        urlPathName='events'
+                                        alias={`tickets`}
+                                        >
                                         </FeedArea>
                                     }
                                     {
                                         hasEvents &&
                                         <FeedArea
-                                            entries={dataObject.Events}
-                                            urlPathName='events'
-                                            alias={`${pageTitle}'s Events`}
-                                            profileType={profileType}
+                                        entries={dataObject.Events}
+                                        urlPathName='events'
+                                        alias={`${pageTitle}'s Events`}
+                                        profileType={profileType}
                                         >
                                             {
                                                 isProfileOwner && profileType === 'company' &&
@@ -141,13 +178,13 @@ const ProfileFullPage = ({
                                         hasUsers &&
                                         profileType == 'company' &&
                                         <FeedArea
-                                            entries={dataObject.Users}
-                                            urlPathName='users'
-                                            alias={`Contributors`}
-                                            profileType={profileType}
+                                        entries={dataObject.Users}
+                                        urlPathName='users'
+                                        alias={`Contributors`}
+                                        profileType={profileType}
                                         >
                                              {
-                                                isProfileOwner  &&
+                                                 isProfileOwner  &&
                                                 <AddEmployeeButton />
                                              }
                                         </FeedArea>
@@ -187,9 +224,69 @@ const ProfileFullPage = ({
                                 </div>
                             </div>
                 </div>
+                {
+                    isProfileOwner &&
+                    !(
+                        editInfoMode ||
+                        editEmployeesMode ||
+                        editLinksMode ||
+                        editImageMode
+                    ) &&
+                        <div className="owner-menu-container">
+                            <DropDownMenu entry={dataObject}>
+                                {children[0]}
+                                {children[1]}
+                                {children[2]}
+                                {children[3]}
+                            </DropDownMenu>
+                        </div>
+                }
                     <div className='crud-area'>
-                        {hasCrud && <div className="cover-up" /> }
-                        {hasCrud && children[2]}
+                        {(
+                            editInfoMode ||
+                            editEmployeesMode ||
+                            editLinksMode ||
+                            editImageMode
+                        ) && <div className="cover-up" />
+                        }
+
+                        {editInfoMode && children[4]}
+                        {editLinksMode &&
+
+                        <ExternalLinksForm
+                        idRowName={profileType}
+                        idValue={dataObject.id}
+                        routeName={routeName}
+                        setHasCrud={setHasCrud}
+                        social1={social1}
+                        setSocial1={setSocial1}
+                        social2={social2}
+                        setSocial2={setSocial2}
+                        social3={social3}
+                        setSocial3={setSocial3}
+                        social4={social4}
+                        setSocial4={setSocial4}
+                        social5={social5}
+                        setSocial5={setSocial5}
+                        social1Icon={social1Icon}
+                        setSocial1Icon={setSocial1Icon}
+                        social2Icon={social2Icon}
+                        setSocial2Icon={setSocial2Icon}
+                        social3Icon={social3Icon}
+                        setSocial3Icon={setSocial3Icon}
+                        social4Icon={social4Icon}
+                        setSocial4Icon={setSocial4Icon}
+                        social5Icon={social5Icon}
+                        setSocial5Icon={setSocial5Icon}
+                        primaryExternalLink={primaryExternalLink}
+                        setPrimaryExternalLink={setPrimaryExternalLink}
+                        primaryExternalLabel={primaryExternalLabel}
+                        setPrimaryExternalLabel={setPrimaryExternalLabel}
+                        setEditLinksMode={setEditLinksMode}
+
+                        />
+
+                        }
                     </div>
                 </div>
     </section>

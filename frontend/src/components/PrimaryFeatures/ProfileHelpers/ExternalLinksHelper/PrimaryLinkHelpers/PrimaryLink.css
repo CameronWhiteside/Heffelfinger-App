@@ -1,0 +1,12 @@
+.primary-link .like-button{
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    margin: 8px 0px;
+    color: var(--neutral-1000)
+}
+
+.primary-link{
+    width: 100%;
+}

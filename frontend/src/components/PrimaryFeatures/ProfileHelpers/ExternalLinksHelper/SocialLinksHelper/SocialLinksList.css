@@ -1,0 +1,9 @@
+.social-links-list{
+    display: flex;
+    justify-content: center;
+}
+
+
+.social-links-list > .icon-holder{
+    margin: 5px;
+}

@@ -24,22 +24,13 @@ const AddCompanyForm = ({
           setValidationObject,
           databaseErrors,
           setDatabaseErrors,
-          hasCrud,
-          setHasCrud
+          editInfoMode,
+          setEditInfoMode,
+          newCompany
 }) => {
 
   const dispatch = useDispatch()
   const history = useHistory()
-  // console.log({ name, tagline, description })
-  // const { id } = useParams()
-  // console.log(useParams)
-
-
-  // const [name, setName] = useState('');
-  // const [description, setDescription] = useState('');
-  // const [tagline, setTagline] = useState('');
-  // const [validationObject, setValidationObject] = useState({ test: true });
-  // const [databaseErrors, setDatabaseErrors] = useState([])
 
 
     const handleSubmit = async (e) => {
@@ -55,7 +46,7 @@ const AddCompanyForm = ({
 
         try {
             dispatch(editCompany(editedCompany))
-            setHasCrud(false)
+            setEditInfoMode(false)
         } catch (e) {
             let res = await e.json()
             let errors = res.errors
@@ -63,13 +54,6 @@ const AddCompanyForm = ({
         }
   }
 
-  // const reset = () => {
-  //   setName('');
-  //   setTagline('');
-  //   setDescription('');
-  //   setValidationObject({})
-  //   setDatabaseErrors('');
-  // };
 
   const dataObject = { name, tagline, description }
 
@@ -79,35 +63,7 @@ const AddCompanyForm = ({
 
     <div className="company-profile">
     {dataObject &&
-        // <ProfileFullPage
-        // dataObject={dataObject}
-        //     profileType='company'
-        //     pageTitle={name || ' '}
-        //     imageSize='medium'
-        //     pageShortInfo={tagline || ''}
-        //     pageDescription={description || ' '}
-        //     externalLinksArray={[]}
-        //     isProfileOwner={true}
-        //     hasTags={false}
-        //     tagsAlias='Tags'
-        //     tagsSize='small'
-        //     ctaType={false}
-        //     hasUsers={true}
-        //     usersAlias='Contributors'
-        //     usersSize='medium'
-        //     hasEvents={true}
-        //     eventsAlias='Events'
-        //     eventsSize='medium'
-        //     hasCompanies={false}
-        //     companiesAlias={false}
-        //     companiesSize={false}
-        //     hasTickets={false}
-        //     ticketsAlias={false}
-        //     ticketsSize={false}
-        //     hasCrud={true}
-        // >
-        //   <EditCompanyButton entry={dataObject || {id: 0}} />
-        //   <DeleteCompanyButton entry={dataObject || {id: 0}}  />
+
       <div className='form-container'>
 
 
@@ -166,17 +122,21 @@ const AddCompanyForm = ({
             <button
               className='fake-submit'
               type='submit'
-              disabled={Object.values(validationObject).includes(false)}>Add Company</button>
+              disabled={Object.values(validationObject).includes(false)}>Submit</button>
                 {/* <input type='submit' disabled={Object.values(validationObject).includes(false)} value='Submit' /> */}
         </form>
-          <button
+          {/* <button
             className="cancel-button"
             onClick={(e) => {
+              if (newCompany === true) {
                 dispatch(deleteCompany(id))
                 history.push('/companies')
+              } else {
+                setEditInfoMode(false)
+              }
             }
             }
-          >Cancel</button>
+          >Cancel</button> */}
 
     </div>
 

@@ -1,6 +1,12 @@
-const PrimaryLink = ({primaryLink}) => {
+import './PrimaryLink.css'
+
+const PrimaryLink = ({ primaryLink, primaryLinkLabel }) => {
     return (
-        <h3>Primary Link Component</h3>
+        <div className="primary-link">
+            <a target="_blank" className="like-button" rel="noreferrer noopener" href={primaryLink}>
+                {primaryLinkLabel}
+            </a>
+        </div>
     )
 }
 

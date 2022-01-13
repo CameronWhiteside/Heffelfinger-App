@@ -18,6 +18,16 @@ const linkMatch = [
         backgroundImage: `url('/assets/icons/angellist.svg')`
     },
     {
+        name: 'behance',
+        pattern: /^\S*behance[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
+        backgroundImage: `url('/assets/icons/behance.svg')`
+    },
+    {
+        name: 'dribbble',
+        pattern: /^\S*dribbble[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
+        backgroundImage: `url('/assets/icons/dribbble.svg')`
+    },
+    {
         name: 'facebook',
         pattern: /^\S*facebook[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
         backgroundImage: `url('/assets/icons/facebook.svg')`
@@ -31,6 +41,11 @@ const linkMatch = [
         name: 'google',
         pattern: /^\S*google[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
         backgroundImage: `url('/assets/icons/google.svg')`
+    },
+    {
+        name: 'heroku',
+        pattern: /^\S*heroku[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
+        backgroundImage: `url('/assets/icons/heroku.svg')`
     },
     {
         name: 'instagram',
@@ -73,9 +88,19 @@ const linkMatch = [
         backgroundImage: `url('/assets/icons/snapchat.svg')`
     },
     {
+        name: 'stackoverflow',
+        pattern: /^\S*stacko[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
+        backgroundImage: `url('/assets/icons/stackoverflow.svg')`
+    },
+    {
         name: 'stackshare',
         pattern: /^\S*stackshare[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
         backgroundImage: `url('/assets/icons/stackshare.svg')`
+    },
+    {
+        name: 'tableau',
+        pattern: /^\S*tableau[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
+        backgroundImage: `url('/assets/icons/tableau.svg')`
     },
     {
         name: 'tiktok',
@@ -98,33 +123,64 @@ const linkMatch = [
         backgroundImage: `url('/assets/icons/udemy.svg')`
     },
     {
+        name: 'vercel',
+        pattern: /^\S*vercel[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
+        backgroundImage: `url('/assets/icons/vercel.svg')`
+    },
+    {
         name: 'vimeo',
         pattern: /^\S*vimeo[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
         backgroundImage: `url('/assets/icons/vimeo.svg')`
     },
     {
+        name: 'wordpress',
+        pattern: /^\S*wordpress[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
+        backgroundImage: `url('/assets/icons/wordpress.svg')`
+    },
+    {
         name: 'youtube',
         pattern: /^\S*youtu[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
         backgroundImage: `url('/assets/icons/youtube.svg')`
+    },
+    {
+        name: 'default',
+        pattern: /^\S+$/,
+        backgroundImage: `url('/assets/icons/default.svg')`
     }
 ]
 
-const ExternalLinksForm = ({idRowName, idValue, routeName, setHasCrud}) => {
+const ExternalLinksForm = ({
+    idRowName,
+    idValue,
+    routeName,
+    social1,
+    setSocial1,
+    social2,
+    setSocial2,
+    social3,
+    setSocial3,
+    social4,
+    setSocial4,
+    social5,
+    setSocial5,
+    social1Icon,
+    setSocial1Icon,
+    social2Icon,
+    setSocial2Icon,
+    social3Icon,
+    setSocial3Icon,
+    social4Icon,
+    setSocial4Icon,
+    social5Icon,
+    setSocial5Icon,
+    primaryExternalLink,
+    setPrimaryExternalLink,
+    primaryExternalLabel,
+    setPrimaryExternalLabel,
+    setEditLinksMode
+}) => {
+
     const dispatch = useDispatch();
-
-    const [social1, setSocial1] = useState('')
-    const [social2, setSocial2] = useState('')
-    const [social3, setSocial3] = useState('')
-    const [social4, setSocial4] = useState('')
-    const [social5, setSocial5] = useState('')
-    const [social1Icon, setSocial1Icon] = useState(``)
-    const [social2Icon, setSocial2Icon] = useState(``)
-    const [social3Icon, setSocial3Icon] = useState(``)
-    const [social4Icon, setSocial4Icon] = useState(``)
-    const [social5Icon, setSocial5Icon] = useState(``)
-
-    const [primaryLink, setPrimaryLink] = useState()
-    const [primaryLabel, setPrimaryLabel] = useState()
 
     const findMatchingUrl = (str) => {
         for (let i = 0; i < linkMatch.length; i++) {
@@ -133,7 +189,7 @@ const ExternalLinksForm = ({idRowName, idValue, routeName, setHasCrud}) => {
             if (pattern.test(str)) return backgroundImage
         }
 
-        return `url('/assets/icons/default.svg')`
+        return ``
     }
 
     useEffect(() => {
@@ -141,19 +197,19 @@ const ExternalLinksForm = ({idRowName, idValue, routeName, setHasCrud}) => {
     }, [social1])
 
     useEffect(() => {
-        setSocial1Icon(findMatchingUrl(social2))
+        setSocial2Icon(findMatchingUrl(social2))
     }, [social2])
 
     useEffect(() => {
-        setSocial1Icon(findMatchingUrl(social3))
+        setSocial3Icon(findMatchingUrl(social3))
     }, [social3])
 
     useEffect(() => {
-        setSocial1Icon(findMatchingUrl(social4))
+        setSocial4Icon(findMatchingUrl(social4))
     }, [social4])
 
     useEffect(() => {
-        setSocial1Icon(findMatchingUrl(social5))
+        setSocial5Icon(findMatchingUrl(social5))
     },[social5])
 
     let userId, companyId, eventId
@@ -176,7 +232,7 @@ const ExternalLinksForm = ({idRowName, idValue, routeName, setHasCrud}) => {
             },
             {
                 url: social2,
-                icon: social1Icon,
+                icon: social2Icon,
                 primaryLink: false,
                 primaryLinkName: null,
                 userId,
@@ -186,7 +242,7 @@ const ExternalLinksForm = ({idRowName, idValue, routeName, setHasCrud}) => {
             },
             {
                 url: social3,
-                icon: social1Icon,
+                icon: social3Icon,
                 primaryLink: false,
                 primaryLinkName: null,
                 userId,
@@ -196,7 +252,7 @@ const ExternalLinksForm = ({idRowName, idValue, routeName, setHasCrud}) => {
             },
             {
                 url: social4,
-                icon: social1Icon,
+                icon: social4Icon,
                 primaryLink: false,
                 primaryLinkName: null,
                 userId,
@@ -206,7 +262,7 @@ const ExternalLinksForm = ({idRowName, idValue, routeName, setHasCrud}) => {
             },
             {
                 url: social5,
-                icon: social1Icon,
+                icon: social5Icon,
                 primaryLink: false,
                 primaryLinkName: null,
                 userId,
@@ -215,10 +271,10 @@ const ExternalLinksForm = ({idRowName, idValue, routeName, setHasCrud}) => {
 
             },
             {
-                url: primaryLink,
-                icon: social1Icon,
+                url: primaryExternalLink,
+                icon: null,
                 primaryLink: true,
-                primaryLinkName: primaryLabel,
+                primaryLinkName: primaryExternalLabel,
                 userId,
                 eventId,
                 companyId
@@ -229,46 +285,165 @@ const ExternalLinksForm = ({idRowName, idValue, routeName, setHasCrud}) => {
 
         try {
             // dispatch(addExternalLinks(submission))
-            setHasCrud(false)
+            setEditLinksMode(false)
         } catch (e) {
             console.log(e)
         }
     }
 
     return (
-        <div className="external-links-form form-container">
-            <h3>ExternalLinksForm</h3>
-            <div className="form-container"/>
+        <div className="external-links-form">
+            <div className="form-container">
             <form
                 className="add-external-links"
                 onSubmit={handleSubmit}
             >
                 <div className="all-inputs">
+                        <FormInput
+                            labelText={'CALL TO ACTION LABEL'}
+                            id={1}
+                            type={'text'}
+                            stateVar={primaryExternalLabel}
+                            maxLength={40}
+                            setStateVar={setPrimaryExternalLabel}
+                            required={false}
+                            placeholder={`i.e WEBSITE or PORTFOLIO`}
+                            >
+                        </FormInput>
+                        <FormInput
+                            labelText={'CALL TO ACTION URL'}
+                            id={1}
+                            type={'url'}
+                            stateVar={primaryExternalLink}
+                            setStateVar={setPrimaryExternalLink}
+                            required={false}
+                            placeholder={''}
+                            >
+                        </FormInput>
 
                     <div className="input-line">
+                        {
+                            social1Icon.length>0 &&
                     <div className="icon-holder"
                         >
-                        <div className="icon-image"
+                                <div className="icon-image"
                             style={{backgroundImage: social1Icon}}
-                        >
+                                    >
+                            </div>
                         </div>
-                        </div>
+                            }
                         <FormInput
-                            labelText={'Social Link'}
+                            labelText={'SOCIAL URL (OPTIONAL)'}
                             id={1}
                             type={'url'}
                             stateVar={social1}
                             setStateVar={setSocial1}
                             required={false}
-                            placeholder={'Yay Social Media'}
+                            placeholder={''}
                             >
                         </FormInput>
-
+                    </div>
+                    <div className="input-line">
+                        {
+                            social2Icon.length>0 &&
+                    <div className="icon-holder"
+                        >
+                                <div className="icon-image"
+                            style={{backgroundImage: social2Icon}}
+                                    >
+                            </div>
+                        </div>
+                            }
+                        <FormInput
+                            labelText={'SOCIAL URL (OPTIONAL)'}
+                            id={1}
+                            type={'url'}
+                            stateVar={social2}
+                            setStateVar={setSocial2}
+                            required={false}
+                            placeholder={''}
+                            >
+                        </FormInput>
+                    </div>
+                    <div className="input-line">
+                        {
+                            social3Icon.length>0 &&
+                    <div className="icon-holder"
+                        >
+                                <div className="icon-image"
+                            style={{backgroundImage: social3Icon}}
+                                    >
+                            </div>
+                        </div>
+                            }
+                        <FormInput
+                            labelText={'SOCIAL URL (OPTIONAL)'}
+                            id={1}
+                            type={'url'}
+                            stateVar={social3}
+                            setStateVar={setSocial3}
+                            required={false}
+                            placeholder={''}
+                            >
+                        </FormInput>
+                    </div>
+                    <div className="input-line">
+                        {
+                            social4Icon.length>0 &&
+                    <div className="icon-holder"
+                        >
+                                <div className="icon-image"
+                            style={{backgroundImage: social4Icon}}
+                                    >
+                            </div>
+                        </div>
+                            }
+                        <FormInput
+                            labelText={'SOCIAL URL (OPTIONAL)'}
+                            id={1}
+                            type={'url'}
+                            stateVar={social4}
+                            setStateVar={setSocial4}
+                            required={false}
+                            placeholder={''}
+                            >
+                        </FormInput>
                     </div>
 
 
-           </div>
-            </form>
+                    <div className="input-line">
+                        {
+                            social5Icon.length>0 &&
+                    <div className="icon-holder"
+                        >
+                                <div className="icon-image"
+                            style={{backgroundImage: social5Icon}}
+                                    >
+                            </div>
+                        </div>
+                            }
+                        <FormInput
+                            labelText={'SOCIAL URL (OPTIONAL)'}
+                            id={1}
+                            type={'url'}
+                            stateVar={social5}
+                            setStateVar={setSocial5}
+                            required={false}
+                            placeholder={''}
+                            >
+                        </FormInput>
+                    </div>
+
+
+
+                </div>
+
+                <button
+              className='fake-submit'
+              type='submit'
+              >UPDATE SOCIAL LINKS</button>
+                </form>
+                </div>
             </div>
 
     )

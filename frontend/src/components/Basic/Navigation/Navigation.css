@@ -30,15 +30,17 @@
 
 
 .text-links{
-    width: 1000px;
+    width: 500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 30px;
 }
+
 
 .log-in-menu{
     position: relative;
-    width: 301px;
+    width: 500px;
 }
 
 

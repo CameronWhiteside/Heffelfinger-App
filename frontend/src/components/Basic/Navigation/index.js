@@ -115,18 +115,18 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='navigation glass'>
+      <div className='text-links'>
+        {/* <NavLink exact to="/">Home</NavLink> */}
+        <NavLink exact to="/users">Users</NavLink>
+        <NavLink exact to="/companies">Companies</NavLink>
+        <NavLink exact to="/events">Events</NavLink>
+        <NavLink exact to="/about">About</NavLink>
+      </div>
       <div className='site-logo'>
         <NavLink exact to="/">
         <img src='/assets/logo-300.png' alt='logo' />
         </NavLink>
 
-      </div>
-      <div className='text-links'>
-        <NavLink exact to="/">00_Welcome</NavLink>
-        <NavLink exact to="/users">01_Octopus Den</NavLink>
-        <NavLink exact to="/companies">02_Launchpad</NavLink>
-        <NavLink exact to="/events">03_Mess Hall</NavLink>
-        <NavLink exact to="/about">04_Free Donuts</NavLink>
       </div>
       {/* <div className="log-in-menu">
         {<DropDownMenu
