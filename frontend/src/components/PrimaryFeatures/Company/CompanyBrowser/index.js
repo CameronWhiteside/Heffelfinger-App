@@ -70,8 +70,9 @@ const CompanyBrowser = () => {
                     urlPath={'companies'}
             >
                 {/* <ViewCompanyButton /> */}
-                <EditCompanyButton />
-                <DeleteCompanyButton />
+                {/* <EditCompanyButton />
+                <DeleteCompanyButton /> */}
+                     {/* <i class="fas fa-user-check"></i> */}
                 </BrowserGrid>
             </div>
         </div>

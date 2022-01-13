@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     Event.belongsToMany(models.Tag, eventTagsMapping)
 
     Event.hasMany(models.Ticket, { foreignKey: 'eventId', onDelete: 'CASCADE', hooks: true })
-
+    Event.hasMany(models.ExternalLink, { foreignKey: 'eventId', onDelete: 'CASCADE', hooks: true })
     Event.belongsTo(models.Company, {foreignKey: 'hostId'})
 
   };

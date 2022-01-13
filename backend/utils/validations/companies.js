@@ -47,12 +47,7 @@ exports.validateCreate = [
     name,
     headline,
     description,
-    website,
     imageUrl,
-    facebookUrl,
-    instagramUrl,
-    twitterUrl,
-    linkedInUrl,
     handleValidationErrors
 ];
 
@@ -61,11 +56,6 @@ exports.validateUpdate = [
     name,
     headline,
     description,
-    website,
     imageUrl,
-    facebookUrl,
-    instagramUrl,
-    twitterUrl,
-    linkedInUrl,
     handleValidationErrors
 ]

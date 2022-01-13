@@ -79,8 +79,8 @@ const FormInput = (
                             required={required}
                             onChange={updateStateVar}
                             placeholder={placeholder}
-                            data-hasinput={stateVar.length > 0}
-                            data-toolong={maxLength && stateVar.length > maxLength}
+                            data-hasinput={stateVar && stateVar.length > 0}
+                            data-toolong={maxLength && stateVar && stateVar.length > maxLength}
                             data-issafe={isSafe}
                         ></textarea>
                     }
@@ -94,7 +94,7 @@ const FormInput = (
                         onChange={updateStateVar}
                         placeholder={placeholder}
                         data-hasinput={stateVar && stateVar.length > 0}
-                        data-toolong={maxLength && stateVar.length > maxLength}
+                        data-toolong={maxLength && stateVar && stateVar.length > maxLength}
                         data-issafe={isSafe}
                     />
                     }

@@ -5,6 +5,7 @@ const LOAD_COMPANIES = 'company/loadCompanies'
 const ADD_COMPANY = 'company/createCompany'
 const EDIT_COMPANY = 'company/editCompany'
 const DELETE_COMPANY = 'company/deleteCompany'
+const DELETE_COMPANY_LINKS = 'company/deleteCompanyLinks'
 
 export const loadCompaniesAction = (companies) => {
     return {
@@ -43,6 +44,14 @@ export const deleteCompanyAction = (deletedCompany, id) => {
         id
     }
 }
+
+export const deleteCompanyLinksAction = (id) => {
+    return {
+        type: DELETE_COMPANY_LINKS,
+        id
+    }
+}
+
 
 export const loadCompanies = () => async (dispatch) => {
     const response = await csrfFetch('/api/companies/');
@@ -94,6 +103,17 @@ export const deleteCompany = (id) => async (dispatch) => {
     return deletedCompany
 }
 
+export const deleteCompanyLinks = (id) => async (dispatch) => {
+    console.log(`THE ID IS DEFINTED AND IT IS ${id}`)
+    const response = await csrfFetch(`/api/externallinks/companies/${id}`, {
+        method: 'DELETE',
+    });
+
+    const deletedLinks = await response.json();
+    dispatch(deleteCompanyLinksAction(id))
+    return deletedLinks
+}
+
 const companyReducer = (state = {} , action) => {
 // const companyReducer = (state = { } , action) => {
     let newState = { ...state }
@@ -127,6 +147,11 @@ const companyReducer = (state = {} , action) => {
         case DELETE_COMPANY:
 
             delete newState[id]
+            return newState
+
+        case DELETE_COMPANY_LINKS:
+
+            delete newState[id]['ExternalLinks']
             return newState
 
         default:

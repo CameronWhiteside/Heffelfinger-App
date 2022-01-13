@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import ProfileImage from "./ImageHelpers/ProfileImage"
 import EditProfileLink from "./ProfileCRUD/EditProfileLink"
@@ -19,12 +19,14 @@ import AddCompanyButton from "../Company/CompanyCRUDButtons/AddCompanyButton"
 import ExternalLinksForm from "./ExternalLinksHelper/ExternalLinksForm"
 import ImageForm from './ImageHelpers/ImageForm'
 
+import { linkMatch } from "./ExternalLinksHelper/ExternalLinksForm"
+
 //pass in CRUD form as TRUE and include as child element
 
 const ProfileFullPage = ({
     id,
-    hasCrud,
-    setHasCrud,
+    // hasCrud,
+    // setHasCrud,
     editInfoMode,
     setEditInfoMode,
     editImageMode,
@@ -51,20 +53,139 @@ const ProfileFullPage = ({
     children,
 }) => {
 
+    console.log({
+        id,
+        // hasCrud,
+        // setHasCrud,
+        editInfoMode,
+        setEditInfoMode,
+        editImageMode,
+        setEditImageMode,
+        editLinksMode,
+        setEditLinksMode,
+        editEmployeesMode,
+        setEditEmployeesMode,
+        dataObject,
+        profileType,
+        pageTitle,
+        pageDescription,
+        imageSize,
+        pageShortInfo,
+        isProfileOwner,
+        hasTags,
+        tagsAlias,
+        tagsSize,
+        ctaType,
+        hasUsers,
+        hasEvents,
+        hasCompanies,
+        hasTickets,
+        children
+    })
+
+    const findMatchingUrl = (str) => {
+        console.log(str)
+        for (let i = 0; i < linkMatch.length; i++) {
+            let pattern = linkMatch[i].pattern
+            let backgroundImage = linkMatch[i].backgroundImage
+            if (pattern.test(str)) return backgroundImage
+        }
+    }
+
+    let
+        social1Default,
+        social2Default,
+        social3Default,
+        social4Default,
+        social5Default,
+        social1IconDefault,
+        social2IconDefault,
+        social3IconDefault,
+        social4IconDefault,
+        social5IconDefault,
+        primaryExternalLinkDefault,
+        primaryExternalLabelDefault
+
+
+        if (dataObject && dataObject.ExternalLinks) {
+
+            let fullLinksArray = dataObject.ExternalLinks
+
+            if (dataObject.ExternalLinks.length) {
+                let linksArray = []
+                for (let i = 0; i < fullLinksArray.length; i++) {
+                    if (fullLinksArray[i].isPrimary) {
+                        primaryExternalLinkDefault = fullLinksArray[i].url
+                        primaryExternalLabelDefault = fullLinksArray[i].primaryLabel
+                    } else {
+                        linksArray.push(fullLinksArray[i])
+                    }
+                }
+
+                console.log({linksArray})
+
+                     if (linksArray[0]) {
+                        social1Default = linksArray[0].url
+                        social1IconDefault = findMatchingUrl(social1Default)
+                     }
+
+                    if (linksArray[1]) {
+                        social2Default = linksArray[1].url
+                        social2IconDefault = findMatchingUrl(social2Default)
+                    }
+
+                    if (linksArray[2]) {
+                        social3Default = linksArray[2].url
+                        social3IconDefault = findMatchingUrl(social3Default)
+                    }
+
+                    if (linksArray[3]) {
+                        social4Default = linksArray[3].url
+                        social4IconDefault = findMatchingUrl(social4Default)
+                    }
+
+                    if (linksArray[4]) {
+                        social5Default = linksArray[4].url
+                        social5IconDefault = findMatchingUrl(social5Default)
+                    }
+                }
+            }
+
     const [imageUrl, setImageUrl] = useState(dataObject.imageUrl)
 
-    const [social1, setSocial1] = useState('')
-    const [social2, setSocial2] = useState('')
-    const [social3, setSocial3] = useState('')
-    const [social4, setSocial4] = useState('')
-    const [social5, setSocial5] = useState('')
-    const [social1Icon, setSocial1Icon] = useState(``)
-    const [social2Icon, setSocial2Icon] = useState(``)
-    const [social3Icon, setSocial3Icon] = useState(``)
-    const [social4Icon, setSocial4Icon] = useState(``)
-    const [social5Icon, setSocial5Icon] = useState(``)
-    const [primaryExternalLink, setPrimaryExternalLink] = useState(``)
-    const [primaryExternalLabel, setPrimaryExternalLabel] = useState(``)
+    const [social1, setSocial1] = useState(social1Default)
+    const [social2, setSocial2] = useState(social2Default)
+    const [social3, setSocial3] = useState(social3Default)
+    const [social4, setSocial4] = useState(social4Default)
+    const [social5, setSocial5] = useState(social5Default)
+    const [social1Icon, setSocial1Icon] = useState(social1IconDefault)
+    const [social2Icon, setSocial2Icon] = useState(social2IconDefault)
+    const [social3Icon, setSocial3Icon] = useState(social3IconDefault)
+    const [social4Icon, setSocial4Icon] = useState(social4IconDefault)
+    const [social5Icon, setSocial5Icon] = useState(social5IconDefault)
+
+    // useEffect(() => {
+    //     setSocial1Icon(findMatchingUrl(social1))
+    // }, [social1])
+
+    // useEffect(() => {
+    //     setSocial2Icon(findMatchingUrl(social2))
+    // }, [social2])
+
+    // useEffect(() => {
+    //     setSocial3Icon(findMatchingUrl(social3))
+    // }, [social3])
+
+    // useEffect(() => {
+    //     setSocial4Icon(findMatchingUrl(social4))
+    // }, [social4])
+
+    // useEffect(() => {
+    //     setSocial5Icon(findMatchingUrl(social5))
+    // },[social5])
+
+    const [primaryExternalLink, setPrimaryExternalLink] = useState(primaryExternalLinkDefault)
+    const [primaryExternalLabel, setPrimaryExternalLabel] = useState(primaryExternalLabelDefault)
 
     let routeName
     if(profileType === 'company') routeName='companies'
@@ -72,16 +193,16 @@ const ProfileFullPage = ({
     if(profileType === 'event') routeName='events'
 
     return (
-    <section className='profile-full-page'>
 
 
-
-            { hasCrud && <div className="crud-left-col">
-
-            </div>}
+        <section className='profile-full-page'>
 
 
+            {dataObject &&
+                <div className="crud-left-col"></div>
+            }
 
+            {dataObject &&
                     <div className='primary-info-col'>
 
                         <div className='top-banner glass'>
@@ -90,7 +211,7 @@ const ProfileFullPage = ({
                             imageUrl={imageUrl}
                             setImageUrl={setImageUrl}
                             size={imageSize}
-                            defaultName={pageTitle || (dataObject && dataObject.name) || (dataObject && dataObject.firstName) || 'H'}
+                            defaultName={pageTitle}
                         />
                             </div>
                             <div className='banner-text'>
@@ -179,6 +300,7 @@ const ProfileFullPage = ({
                                     }
                                     {
                                         hasUsers &&
+                                        dataObject.Users &&
                                         profileType == 'company' &&
                                         <FeedArea
                                         entries={dataObject.Users}
@@ -197,6 +319,7 @@ const ProfileFullPage = ({
                             {/* //event attendee list */}
                                 {
                                         hasUsers &&
+                                        dataObject.Tickets &&
                                         (profileType === 'event') &&
                                         <FeedArea
                                             entries={dataObject.Tickets.map(ticket => ticket.User)}
@@ -214,6 +337,7 @@ const ProfileFullPage = ({
                             {/* //event attendee list */}
                                     {
                                         hasCompanies &&
+                                        dataObject.Companies &&
                                             <FeedArea
                                                       entries={dataObject.Companies}
                                                       urlPathName='companies'
@@ -257,10 +381,9 @@ const ProfileFullPage = ({
                         {editLinksMode &&
 
                         <ExternalLinksForm
-                        idRowName={profileType}
-                        idValue={dataObject.id}
+                        profileType={profileType}
+                        id={id}
                         routeName={routeName}
-                        setHasCrud={setHasCrud}
                         social1={social1}
                         setSocial1={setSocial1}
                         social2={social2}
@@ -299,12 +422,15 @@ const ProfileFullPage = ({
                         setImageUrl={setImageUrl}
                         setEditImageMode={setEditImageMode}
                         profileType={profileType}
+                        dataObject={dataObject}
                         id={id}
                     />
 
 }
                     </div>
-                </div>
+            </div>
+            }
+
     </section>
     )
 }

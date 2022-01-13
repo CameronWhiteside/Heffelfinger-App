@@ -23,7 +23,6 @@ const CompanyProfilePage = () => {
 
     dataObject = companyState[id]
 
-    console.log(dataObject)
 
     useEffect(() => {
         dispatch(loadCompanies())
@@ -33,7 +32,7 @@ const CompanyProfilePage = () => {
     const sessionUser = useSelector(state => state.session.user);
 
 
-    let defaultName, defaultHeadline, location, createdAt, defaultDescription, year, shortInfo,
+    let defaultName, defaultHeadline, location, createdAt, defaultDescription, year, shortInfo, requirementsObject,
     isProfileOwner, defaultImageUrl
 
     if (dataObject) {
@@ -61,10 +60,10 @@ const CompanyProfilePage = () => {
     shortInfo = [headline, location, createdAt].filter(el => !(!el)).join(' · ')
 
     const [editInfoMode, setEditInfoMode] = useState(
-            // !defaultName || defaultName.length < 2 ||
-            // !defaultDescription || defaultDescription.length < 2 ||
-            // !defaultHeadline || defaultHeadline.length < 2
-            false
+            !defaultName || defaultName.length < 2 ||
+            !defaultDescription || defaultDescription.length < 2 ||
+            !defaultHeadline || defaultHeadline.length < 2
+            // false
     )
 
 
@@ -73,9 +72,9 @@ const CompanyProfilePage = () => {
     const [editEmployeesMode, setEditEmployeesMode] = useState(false)
 
 
-    // if (!defaultName || defaultName.length < 2) defaultName = ''
-    // if (!defaultDescription || defaultDescription.length < 2) defaultDescription = ' '
-    // if (!defaultHeadline || defaultHeadline.length < 2) defaultHeadline=(' ')
+    // if (!name || name.length < 2) setName('')
+    // if (!description || description.length < 2) setDescription('')
+    // if (!headline || headline.length < 2) setHeadline('')
 
 
 

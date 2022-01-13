@@ -84,6 +84,7 @@ export const BrowserCard = ( { children, renderOrder, entry, hasUsers, usersAlia
                     </div>
                 </NavLink>
             <div className='browser-card-menu-adjuster'>
+               
                 <DropDownMenu entry={entry}>
                         {children}
                 </DropDownMenu>

@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
+import { deleteCompanyLinks, loadCompanies } from "../../../../store/company"
+import { addExternalLinks } from "../../../../store/externallinks"
 
 import FormInput from "../../../Basic/FormHelpers/FormInput"
 import './ExternalLinksForm.css'
 
 
 
-const linkMatch = [
+export const linkMatch = [
     {
         name: 'alibaba',
         pattern: /^\S*alibaba[A-Za-z0-9\-\._~:\/\?#\[\]@!$&'\(\)\*\+,;\=]*?$/,
@@ -150,8 +152,8 @@ const linkMatch = [
 ]
 
 const ExternalLinksForm = ({
-    idRowName,
-    idValue,
+    profileType,
+    id,
     routeName,
     social1,
     setSocial1,
@@ -188,7 +190,6 @@ const ExternalLinksForm = ({
             let backgroundImage = linkMatch[i].backgroundImage
             if (pattern.test(str)) return backgroundImage
         }
-
         return ``
     }
 
@@ -213,9 +214,9 @@ const ExternalLinksForm = ({
     },[social5])
 
     let userId, companyId, eventId
-    if (idRowName === 'user') userId = idValue
-    if (idRowName === 'company') companyId = idValue
-    if (idRowName === 'event') eventId = idValue
+    if (profileType === 'user') userId = id
+    if (profileType === 'company') companyId = id
+    if (profileType === 'event') eventId = id
 
 
     const handleSubmit = async (e) => {
@@ -274,17 +275,24 @@ const ExternalLinksForm = ({
                 url: primaryExternalLink,
                 icon: null,
                 primaryLink: true,
-                primaryLinkName: primaryExternalLabel,
+                primaryLabel: primaryExternalLabel,
                 userId,
                 eventId,
                 companyId
             }
         ]
 
-        let submission = newLinks.filter(link => link.url)
 
         try {
             // dispatch(addExternalLinks(submission))
+            let submission = newLinks.filter(link => link.url)
+            if (profileType === 'company') {
+                dispatch(deleteCompanyLinks(id))
+                for (let i = 0; i < submission.length; i++) {
+                    dispatch(addExternalLinks(submission[i]))
+                }
+                dispatch(loadCompanies())
+            }
             setEditLinksMode(false)
         } catch (e) {
             console.log(e)
@@ -323,7 +331,7 @@ const ExternalLinksForm = ({
 
                     <div className="input-line">
                         {
-                            social1Icon.length>0 &&
+                            social1Icon && social1Icon.length>0 &&
                     <div className="icon-holder"
                         >
                                 <div className="icon-image"
@@ -345,7 +353,7 @@ const ExternalLinksForm = ({
                     </div>
                     <div className="input-line">
                         {
-                            social2Icon.length>0 &&
+                            social2Icon && social2Icon.length>0 &&
                     <div className="icon-holder"
                         >
                                 <div className="icon-image"
@@ -367,7 +375,7 @@ const ExternalLinksForm = ({
                     </div>
                     <div className="input-line">
                         {
-                            social3Icon.length>0 &&
+                            social3Icon && social3Icon.length>0 &&
                     <div className="icon-holder"
                         >
                                 <div className="icon-image"
@@ -389,7 +397,7 @@ const ExternalLinksForm = ({
                     </div>
                     <div className="input-line">
                         {
-                            social4Icon.length>0 &&
+                            social4Icon && social4Icon.length>0 &&
                     <div className="icon-holder"
                         >
                                 <div className="icon-image"
@@ -413,7 +421,7 @@ const ExternalLinksForm = ({
 
                     <div className="input-line">
                         {
-                            social5Icon.length>0 &&
+                            social5Icon && social5Icon.length>0 &&
                     <div className="icon-holder"
                         >
                                 <div className="icon-image"

@@ -78,6 +78,7 @@ module.exports = (sequelize, DataTypes) => {
     User.belongsToMany(models.Company, userCompaniesMapping)
 
     User.hasMany(models.Ticket, {foreignKey: 'userId', onDelete: 'CASCADE', hooks:true})
+    User.hasMany(models.ExternalLink, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: true })
 
   };
 

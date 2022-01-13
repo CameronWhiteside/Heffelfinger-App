@@ -13,7 +13,8 @@ const ImageForm = ({
     imageUrl,
     setImageUrl,
     setEditImageMode,
-    profileType
+    profileType,
+    dataObject
 }) => {
 
     const dispatch = useDispatch();
@@ -21,28 +22,30 @@ const ImageForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        dataObject.imageUrl = imageUrl
 
-        let editedItem = {
-              id,
-              imageUrl,
-          }
+        // let editedItem = {
+        //       id,
+        //       imageUrl: `${imageUrl}`,
+        //   }
 
         try {
-              if (profileType === 'company') dispatch(editCompany(editedItem))
+            if (profileType === 'company') {
+                // name,
+                // headline,
+                // description,
+                dispatch(editCompany(dataObject))
+
+            }
             //   if (profileType === 'user') dispatch(editUser(editedItem))
             //   if (profileType === 'event') dispatch(editEventCompany(editedItem))
               setEditImageMode(false)
           } catch (e) {
-              let res = await e.json()
+            let res = await e.json()
+            console.log({e})
             //   let errors = res.errors
             //   setDatabaseErrors([...errors])
           }
-        try {
-            // dispatch(addExternalLinks(submission))
-            setEditImageMode(false)
-        } catch (e) {
-            console.log(e)
-        }
     }
 
     return (

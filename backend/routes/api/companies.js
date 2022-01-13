@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const companyValidations = require('../../utils/validations/companies')
 const db = require('../../db/models');
-const { Company, Event, User, CompanyRole, Employee } = db
+const { Company, Event, User, CompanyRole, Employee, ExternalLink } = db
 
 const router = express.Router();
 
@@ -16,7 +16,8 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
                 include: {
                     model: CompanyRole
                 }
-            }
+            },
+            ExternalLink
         ]
     })
     return res.json(foundCompany)
@@ -31,6 +32,10 @@ router.get('/', asyncHandler(async (req, res) => {
                 include: {
                     model: CompanyRole
                 }
+            },
+            {
+                model: ExternalLink,
+                order: ('isPrimary', 'DESC')
             }
         ]
     })
@@ -54,6 +59,11 @@ router.put('/:id(\\d+)', companyValidations.validateUpdate, asyncHandler(async (
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = req.params.id
     await Employee.destroy({
+        where: {
+            companyId: id
+        }
+    })
+    await ExternalLink.destroy({
         where: {
             companyId: id
         }

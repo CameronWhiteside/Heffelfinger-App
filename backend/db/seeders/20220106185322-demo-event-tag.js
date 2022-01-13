@@ -11,46 +11,54 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('EventTags', [
+    await queryInterface.bulkInsert('ExternalLinks', [
       {
-        eventId: 1,
-        tagId: 1
+        isPrimary: true,
+        primaryLabel: 'yay label',
+        url: 'facebook.com',
+        userId: null,
+        companyId: 3,
+        eventId: null
       },
       {
-        eventId: 1,
-        tagId: 2
+        isPrimary: false,
+        primaryLabel: 'yay label',
+        url: 'facebook.com',
+        userId: null,
+        companyId: 3,
+        eventId: null
       },
       {
-        eventId: 1,
-        tagId: 3
+        isPrimary: false,
+        primaryLabel: 'yay label',
+        url: 'twitter.com',
+        userId: null,
+        companyId: 3,
+        eventId: null
       },
       {
-        eventId: 1,
-        tagId: 4
+        isPrimary: false,
+        primaryLabel: 'yay label',
+        url: 'linkedin.com',
+        userId: null,
+        companyId: 3,
+        eventId: null
       },
       {
-        eventId: 2,
-        tagId: 5
+        isPrimary: false,
+        primaryLabel: 'yay label',
+        url: 'angel.com',
+        userId: null,
+        companyId: 3,
+        eventId: null
       },
       {
-        eventId: 2,
-        tagId: 6
-      },
-      {
-        eventId: 2,
-        tagId: 7
-      },
-      {
-        eventId: 3,
-        tagId: 8
-      },
-      {
-        eventId: 3,
-        tagId: 1
-      },
-      {
-        eventId: 3,
-        tagId: 5
+        isPrimary: false,
+        primaryLabel: 'yay label',
+        url: 'tiktok.com',
+        userId: null,
+        companyId: 3,
+        eventId: null
       },
     ])
   },
