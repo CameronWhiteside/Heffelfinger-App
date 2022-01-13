@@ -39,8 +39,8 @@ module.exports = (sequelize, DataTypes) => {
 
     Company.belongsToMany(models.CompanyRole, companyCompanyRoleMapping)
     Company.belongsToMany(models.User, companyUserMapping)
-    Company.hasMany(models.Event, { foreignKey: 'hostId', onDelete: 'CASCADE', hooks: true })
-    Company.hasMany(models.ExternalLink, { foreignKey: 'companyId', onDelete: 'CASCADE', hooks: true })
+    Company.hasMany(models.Event, { foreignKey: 'hostId', onDelete: 'cascade', hooks: true })
+    Company.hasMany(models.ExternalLink, { foreignKey: 'companyId', onDelete: 'cascade', hooks: true })
 
   };
   return Company;

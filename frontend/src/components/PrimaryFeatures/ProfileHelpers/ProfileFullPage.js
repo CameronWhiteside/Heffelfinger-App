@@ -55,8 +55,6 @@ const ProfileFullPage = ({
 
     console.log({
         id,
-        // hasCrud,
-        // setHasCrud,
         editInfoMode,
         setEditInfoMode,
         editImageMode,
@@ -84,7 +82,6 @@ const ProfileFullPage = ({
     })
 
     const findMatchingUrl = (str) => {
-        console.log(str)
         for (let i = 0; i < linkMatch.length; i++) {
             let pattern = linkMatch[i].pattern
             let backgroundImage = linkMatch[i].backgroundImage
@@ -105,7 +102,6 @@ const ProfileFullPage = ({
         social5IconDefault,
         primaryExternalLinkDefault,
         primaryExternalLabelDefault
-
 
         if (dataObject && dataObject.ExternalLinks) {
 
@@ -152,7 +148,6 @@ const ProfileFullPage = ({
             }
 
     const [imageUrl, setImageUrl] = useState(dataObject.imageUrl)
-
     const [social1, setSocial1] = useState(social1Default)
     const [social2, setSocial2] = useState(social2Default)
     const [social3, setSocial3] = useState(social3Default)
@@ -164,27 +159,7 @@ const ProfileFullPage = ({
     const [social4Icon, setSocial4Icon] = useState(social4IconDefault)
     const [social5Icon, setSocial5Icon] = useState(social5IconDefault)
 
-    // useEffect(() => {
-    //     setSocial1Icon(findMatchingUrl(social1))
-    // }, [social1])
-
-    // useEffect(() => {
-    //     setSocial2Icon(findMatchingUrl(social2))
-    // }, [social2])
-
-    // useEffect(() => {
-    //     setSocial3Icon(findMatchingUrl(social3))
-    // }, [social3])
-
-    // useEffect(() => {
-    //     setSocial4Icon(findMatchingUrl(social4))
-    // }, [social4])
-
-    // useEffect(() => {
-    //     setSocial5Icon(findMatchingUrl(social5))
-    // },[social5])
-
-    const [primaryExternalLink, setPrimaryExternalLink] = useState(primaryExternalLinkDefault)
+       const [primaryExternalLink, setPrimaryExternalLink] = useState(primaryExternalLinkDefault)
     const [primaryExternalLabel, setPrimaryExternalLabel] = useState(primaryExternalLabelDefault)
 
     let routeName
@@ -193,7 +168,6 @@ const ProfileFullPage = ({
     if(profileType === 'event') routeName='events'
 
     return (
-
 
         <section className='profile-full-page'>
 

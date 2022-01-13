@@ -1,10 +1,7 @@
 import { csrfFetch } from "./csrf"
 
 const LOAD_EXTERNAL_LINKS = 'externalLinks/loadExternalLinks'
-// const LOAD_EXternalLinks_DETAIL = 'externalLinks/loadExternalLinksDetail'
 const ADD_EXTERNAL_LINKS = 'externalLinks/createExternalLinks'
-// const EDIT_EXTERNAL_LINKS = 'externalLinks/editExternalLinks'
-// const DELETE_EXTERNAL_LINKS = 'externalLinks/deleteExternalLinks'
 
 export const loadExternalLinksAction = (externalLinks) => {
     return {
@@ -13,13 +10,6 @@ export const loadExternalLinksAction = (externalLinks) => {
     }
 }
 
-// export const loadExternalLinksDetailAction = (foundExternalLinks, id) => {
-//     return {
-//         type: LOAD_EXternalLinks_DETAIL,
-//         foundExternalLinks,
-//         id
-//     }
-// }
 
 export const addExternalLinksAction = (newExternalLinks) => {
     return {
@@ -28,21 +18,6 @@ export const addExternalLinksAction = (newExternalLinks) => {
     }
 }
 
-// export const editExternalLinksAction = (editedExternalLinks, id) => {
-//     return {
-//         type: EDIT_EXTERNAL_LINKS,
-//         editedExternalLinks,
-//         id
-//     }
-// }
-
-// export const deleteExternalLinksAction = (deletedExternalLinks, id) => {
-//     return {
-//         type: DELETE_EXTERNAL_LINKS,
-//         deletedExternalLinks,
-//         id
-//     }
-// }
 
 export const loadExternalLinks = () => async (dispatch) => {
     const response = await csrfFetch('/api/externallinks/');
@@ -64,27 +39,7 @@ export const addExternalLinks = (externalLinksData) => async (dispatch) => {
     return newExternalLinks
 }
 
-// export const editExternalLinks = (externalLinksData) => async (dispatch) => {
-//     const response = await csrfFetch(`/api/externalLinks/${externalLinksData.id}`, {
-//         method: 'PUT',
-//         body: JSON.stringify(externalLinksData)
-//     });
 
-//     const editedExternalLinks = await response.json();
-//     const id = editedExternalLinks
-//     dispatch(editExternalLinksAction(editedExternalLinks, id))
-//     return editedExternalLinks
-// }
-
-// export const deleteCompanyLinks = (id) => async (dispatch) => {
-//     const response = await csrfFetch(`/api/externallinks/companies/${id}`, {
-//         method: 'DELETE',
-//     });
-
-//     const deletedCompanyLink = await response.json();
-//     dispatch(deleteCompanyAction(id))
-//     return deletedCompanyLink
-// }
 
 const externalLinksReducer = (state = {} , action) => {
 

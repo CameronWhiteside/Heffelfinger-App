@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose, subscribe } fro
 import thunk from 'redux-thunk';
 import session from './session';
 import company from './company'
+import externallink from './externallinks'
 
 const rootReducer = combineReducers({
   session,
-  company
+  company,
+  externallink
 });
 
 let enhancer;

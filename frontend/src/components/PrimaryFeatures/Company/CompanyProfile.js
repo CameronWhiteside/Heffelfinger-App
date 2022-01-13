@@ -25,7 +25,7 @@ const CompanyProfilePage = () => {
 
 
     useEffect(() => {
-        dispatch(loadCompanies())
+         dispatch(loadCompanies()).then(res => console.log('dispatch response', res))
     }, [dispatch])
 
 
@@ -50,26 +50,6 @@ const CompanyProfilePage = () => {
         console.log('failure to reassign')
     }
 
-    const [name, setName] = useState(defaultName);
-    const [description, setDescription] = useState(defaultDescription);
-    const [headline, setHeadline] = useState(defaultHeadline);
-    const [imageUrl, setImageUrl] = useState(defaultImageUrl);
-    const [validationObject, setValidationObject] = useState({ test: true });
-    const [databaseErrors, setDatabaseErrors] = useState([])
-
-    shortInfo = [headline, location, createdAt].filter(el => !(!el)).join(' · ')
-
-    const [editInfoMode, setEditInfoMode] = useState(
-            !defaultName || defaultName.length < 2 ||
-            !defaultDescription || defaultDescription.length < 2 ||
-            !defaultHeadline || defaultHeadline.length < 2
-            // false
-    )
-
-
-    const [editImageMode, setEditImageMode] = useState(false)
-    const [editLinksMode, setEditLinksMode] = useState(false)
-    const [editEmployeesMode, setEditEmployeesMode] = useState(false)
 
 
     // if (!name || name.length < 2) setName('')
@@ -77,11 +57,32 @@ const CompanyProfilePage = () => {
     // if (!headline || headline.length < 2) setHeadline('')
 
 
+    const StatefulCompany = () => {
+
+            const [name, setName] = useState(defaultName);
+            const [description, setDescription] = useState(defaultDescription);
+            const [headline, setHeadline] = useState(defaultHeadline);
+            const [imageUrl, setImageUrl] = useState(defaultImageUrl);
+            const [validationObject, setValidationObject] = useState({ test: true });
+            const [databaseErrors, setDatabaseErrors] = useState([])
 
 
-    return (
-        <div className="company-profile">
-            {dataObject &&
+            shortInfo = [headline, location, createdAt].filter(el => !(!el)).join(' · ')
+
+            const [editInfoMode, setEditInfoMode] = useState(
+                    !defaultName || defaultName.length < 2 ||
+                    !defaultDescription || defaultDescription.length < 2 ||
+                    !defaultHeadline || defaultHeadline.length < 2
+                    // false
+            )
+
+
+            const [editImageMode, setEditImageMode] = useState(false)
+            const [editLinksMode, setEditLinksMode] = useState(false)
+            const [editEmployeesMode, setEditEmployeesMode] = useState(false)
+
+        return (
+            <div className="company-profile">
                 <ProfileFullPage
                     id={id}
                     dataObject={dataObject}
@@ -142,9 +143,17 @@ const CompanyProfilePage = () => {
                     />
 
                 </ProfileFullPage>
-            }
         </div>
         )
+    }
+
+    return (
+        <>
+            {dataObject &&
+                <StatefulCompany/>
+            }
+        </>
+    )
 }
 
 

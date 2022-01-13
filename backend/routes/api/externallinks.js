@@ -24,7 +24,6 @@ router.get('/', asyncHandler(async (req, res) => {
 router.post('/', asyncHandler(async (req, res) => {
     const newLinkData = req.body
     const newLinks = await ExternalLink.create(newLinkData)
-    console.log(newLinks)
     return res.json({newLinks})
 }))
 
@@ -42,14 +41,15 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     return res.json(deletedLink)
 }))
 
-router.delete('/companies/:id(\\d+)', asyncHandler(async (req, res) => {
-    console.log(`ATTEMPTING DESTRUCTION`)
-    await ExternalLink.destroy({
+router.delete('/companies/:companyId(\\d+)', asyncHandler(async (req, res) => {
+    const companyId = req.params.companyId
+    console.log(`ATTEMPTING DESTRUCTION and the id is thissssss ${companyId}.`)
+    let destruction = await ExternalLink.destroy({
         where: {
-            companyId: id
+            companyId
         }
     })
-    return res.json(ExternalLink)
+    return res.json(destruction)
 }))
 
 router.delete('/users/:userId(\\d+)', asyncHandler(async (req, res) => {

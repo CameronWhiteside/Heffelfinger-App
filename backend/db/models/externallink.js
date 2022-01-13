@@ -26,8 +26,9 @@ module.exports = (sequelize, DataTypes) => {
   ExternalLink.associate = function (models) {
 
     ExternalLink.belongsTo(models.User, {foreignKey: 'userId'})
-    ExternalLink.belongsTo(models.Event, {foreignKey: 'eventId'})
-    ExternalLink.belongsTo(models.Company, {foreignKey: 'companyId'})
+      ExternalLink.belongsTo(models.Event, { foreignKey: 'eventId' })
+      ExternalLink.belongsTo(models.Company, { foreignKey: 'eventId', onDelete: 'CASCADE', hooks: true })
+
 
   };
   return ExternalLink;
