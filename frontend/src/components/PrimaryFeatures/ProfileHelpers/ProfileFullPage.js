@@ -1,23 +1,21 @@
 
 
 import ProfileImage from "./ImageHelpers/ProfileImage"
-import ExternalLinksList from "./ExternalLinksHelpers/ExternalLinksList"
 import EditProfileLink from "./ProfileCRUD/EditProfileLink"
 import DeleteProfileLink from "./ProfileCRUD/DeleteProfileLink"
 import TagsGroup from "./TagHelpers/TagsGroup"
 import ProfileCallToAction from "./CTAHelpers/ProfileCallToAction"
 import OwnerTaskList from "./OwnerTasksHelpers/OwnerTaskList"
-// import EventFeed from "../Event/EventFeed"
-// import TicketFeed from "../Ticket/TicketFeed"
-// import UserFeed from "../User/UserFeed"
-// import CompanyFeed from "../Company/CompanyFeed"
+
 import FeedArea from './FeedHelpers/FeedArea'
 import AddEventButton from "../Event/EventCRUDButtons/AddEventButton"
 import AddEmployeeButton from "../Employee/EmployeeCRUDButtons/AddEventButton"
-// import FeedArea from "."
+// import SocialLinksForm from "./ExternalLinksHelper/SocialLinksHelper/SocialLinksForm"
+import ExternalLinks from "./ExternalLinksHelper/ExternalLinks"
 
 import './ProfileFullPage.css'
 import DropDownMenu from "../../Basic/Navigation/Menus/DropDownMenu"
+import AddCompanyButton from "../Company/CompanyCRUDButtons/AddCompanyButton"
 
 //pass in CRUD form as TRUE and include as child element
 
@@ -30,7 +28,8 @@ const ProfileFullPage = ({
     imageUrl,
     imageSize,
     pageShortInfo,
-    externalLinksArray,
+    primaryLink,
+    socialLinksArray,
     isProfileOwner,
     hasTags,
     tagsAlias,
@@ -42,9 +41,6 @@ const ProfileFullPage = ({
     hasTickets,
     children,
 }) => {
-
-    const menuChildren = children[0]
-    // console.log(menuChildren)
 
 
     return (
@@ -99,10 +95,11 @@ const ProfileFullPage = ({
 
                     <div className='secondary-info'>
                     <div className='static-column'>
-                        {externalLinksArray.length > 0 && <ExternalLinksList
-                            externalLinksArray={externalLinksArray}
-                        />
-                        }
+                       <ExternalLinks
+                            socialLinksArray={socialLinksArray}
+                            primaryLink={primaryLink}
+                        ></ExternalLinks>
+
                         {pageDescription &&
 
                             <div className='detailed-description glass'>
@@ -114,17 +111,17 @@ const ProfileFullPage = ({
                                     ctaType={ctaType}
                                 />
                     </div>
-                    <div className='action-column glass'>
+                    <div className='action-column glass scroll-area'>
 
                                 <div className='newsfeed'>
                                     {
-                                        // hasTickets &&
-                                        //     <FeedArea
-                                        //         entries={dataObject.Tickets}
-                                        //         urlPathName='events'
-                                        //         alias={`Contributors`}
-                                        //     >
-                                        // </FeedArea>
+                                        hasTickets &&
+                                            <FeedArea
+                                                entries={dataObject.Tickets}
+                                                urlPathName='events'
+                                                alias={`tickets`}
+                                            >
+                                        </FeedArea>
                                     }
                                     {
                                         hasEvents &&
@@ -132,6 +129,7 @@ const ProfileFullPage = ({
                                             entries={dataObject.Events}
                                             urlPathName='events'
                                             alias={`${pageTitle}'s Events`}
+                                            profileType={profileType}
                                         >
                                             {
                                                 isProfileOwner && profileType === 'company' &&
@@ -141,18 +139,39 @@ const ProfileFullPage = ({
                                     }
                                     {
                                         hasUsers &&
+                                        profileType == 'company' &&
                                         <FeedArea
                                             entries={dataObject.Users}
                                             urlPathName='users'
                                             alias={`Contributors`}
+                                            profileType={profileType}
                                         >
                                              {
-                                                isProfileOwner && profileType === 'company' &&
+                                                isProfileOwner  &&
                                                 <AddEmployeeButton />
-                                            }
+                                             }
                                         </FeedArea>
 
-                                    }
+                            }
+
+                            {/* //event attendee list */}
+                                {
+                                        hasUsers &&
+                                        (profileType === 'event') &&
+                                        <FeedArea
+                                            entries={dataObject.Tickets.map(ticket => ticket.User)}
+                                            urlPathName='users'
+                                            alias={`Attendees`}
+                                        >
+                                             {/* {
+                                                isProfileOwner  &&
+                                                <AddEmployeeButton />
+                                             } */}
+                                        </FeedArea>
+
+                            }
+
+                            {/* //event attendee list */}
                                     {
                                         hasCompanies &&
                                             <FeedArea
@@ -160,6 +179,9 @@ const ProfileFullPage = ({
                                                       urlPathName='companies'
                                                       alias={`Contributors`}
                                             >
+                                                {isProfileOwner && profileType === 'user'
+                                                && <AddCompanyButton/>
+                                                }
                                             </FeedArea>
                                     }
                                 </div>

@@ -10,7 +10,7 @@
 .company-browser > .browser-right-col {
     height: calc(100vh - 178px);
     box-shadow: none;
-    margin-right: -10px;
+    /* margin-right: -10px; */
     border-radius: calc(var(--glass-border-radius) * 2);
 }
 

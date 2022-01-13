@@ -12,15 +12,6 @@ const DropDownMenu =
         rotateToShow
     }) => {
 
-        // if (entry && entry.name) console.log(entry.name)
-        // console.log(children[2])
-
-        // for (let child in children){
-        //     console.log((children[child].type) )
-        //   }
-
-
-
 
         if (!iconClassString) iconClassString = "fas fa-chevron-circle-down";
         if (rotateToShow === undefined) rotateToShow = true;
@@ -53,18 +44,14 @@ const DropDownMenu =
             }
             return child;
         })
-        console.log(children)
 
-        const validateChildren = Children.toArray(childrenWithProps).map(child => child.props)
-            // .map(child => child.type())
 
-        console.log({validateChildren})
 
 
          return (
             <>{
                  <div className="drop-down-menu" >
-                     <div className='hideTest'>
+                     <div className='hide-menu-check'>
                          {childrenWithProps}
                      </div>
                         <div className="menu-button">

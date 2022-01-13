@@ -62,7 +62,9 @@ const FormInput = (
     useEffect(() => {
         const isValid = okToSubmitField(stateVar, minLength, maxLength, required, patternMatch, additionalValidationArr)
         newErrors[id] = isValid && isSafe
-        setValidationObject({ ...newErrors })
+        if (setValidationObject) {
+            setValidationObject({ ...newErrors })
+        }
     },
         [stateVar]
     )

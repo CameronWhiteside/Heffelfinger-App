@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom"
 
-const AddEventButton = () => {
+const AddEventButton = ({companyId, userId, }) => {
 
     const history = useHistory()
 

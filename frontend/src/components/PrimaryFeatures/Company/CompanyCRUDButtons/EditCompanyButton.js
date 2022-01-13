@@ -9,7 +9,7 @@ export const EditCompanyButton = ({ entry }) => {
 
         const sessionUser = useSelector(state => state.session.user);
         let hasPermission = false
-        if (entry && entry.Users && entry.Users.map(user => user.id).includes(sessionUser.id)) hasPermission = true;
+        if (entry && entry.Users && sessionUser && entry.Users.map(user => user.id).includes(sessionUser.id)) hasPermission = true;
         if (!hasPermission) return null
 
 

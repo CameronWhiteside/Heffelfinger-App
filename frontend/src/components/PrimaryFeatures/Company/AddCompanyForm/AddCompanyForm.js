@@ -30,7 +30,7 @@ const AddCompanyForm = ({
 
   const dispatch = useDispatch()
   const history = useHistory()
-  console.log({ name, tagline, description })
+  // console.log({ name, tagline, description })
   // const { id } = useParams()
   // console.log(useParams)
 

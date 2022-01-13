@@ -65,10 +65,10 @@ i.show-menu:hover::before{
     color: var(--primary-800);
 }
 
-.hideTest{
+.hide-menu-check{
     display: none;
 }
 
-.hideTest:empty ~ *{
+.hide-menu-check:empty ~ *{
     display: none;
 }

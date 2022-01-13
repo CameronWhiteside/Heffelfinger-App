@@ -47,7 +47,7 @@ const CompanyBrowser = () => {
 
     return (
         <div className='company-browser'>
-            <div className='browser-left-col scroll-area'>
+            <div className='browser-left-col'>
                 <BrowserQuickStatsArea
                     title={title}
                 />
@@ -69,7 +69,7 @@ const CompanyBrowser = () => {
                     usersAlias={'Contributors'}
                     urlPath={'companies'}
             >
-                <ViewCompanyButton />
+                {/* <ViewCompanyButton /> */}
                 <EditCompanyButton />
                 <DeleteCompanyButton />
                 </BrowserGrid>

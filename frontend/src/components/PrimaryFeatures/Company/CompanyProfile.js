@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { loadCompanies } from "../../../store/company";
 import ProfileFullPage from "../ProfileHelpers/ProfileFullPage";
 import { useSelector } from "react-redux";
@@ -34,7 +34,6 @@ const CompanyProfilePage = () => {
         defaultDescription = dataObject.description
         year = createdAt.slice(0, 4);
         createdAt = `On board since ${year}`
-        // console.log(defaultDescription)
     }
 
 
@@ -44,12 +43,6 @@ const CompanyProfilePage = () => {
             !defaultTagline || defaultTagline.length < 2
         )
 
-    // if (!defaultName || defaultName.length < 2) {
-    //     defaultName = ''
-    //     console.log('needs crud')
-    //     // setHasCrud(true)
-    // }
-    // console.log({hasCrud})
 
     if (!defaultName || defaultName.length < 2) defaultName = ''
     if (!defaultDescription || defaultDescription.length < 2) defaultDescription = ''
@@ -62,12 +55,9 @@ const CompanyProfilePage = () => {
     const [validationObject, setValidationObject] = useState({ test: true });
     const [databaseErrors, setDatabaseErrors] = useState([])
 
-    // if (!name || name.length < 2) {
-    //     setName('')
-    //     setHasCrud(true)
-    // }
+    const sessionUser = useSelector(state => state.session.user);
 
-    // if (!description || description.length < 2) setDescription('')
+    let isProfileOwner = (dataObject && dataObject.Users.map(user => user.id).includes(sessionUser.id))
 
     shortInfo = [tagline, location, createdAt].filter(el => !(!el)).join(' · ')
 
@@ -84,7 +74,7 @@ const CompanyProfilePage = () => {
                     pageShortInfo={shortInfo}
                     pageDescription={description}
                     externalLinksArray={[]}
-                    isProfileOwner={true}
+                    isProfileOwner={isProfileOwner}
                     hasTags={false}
                     tagsAlias='Tags'
                     tagsSize='small'

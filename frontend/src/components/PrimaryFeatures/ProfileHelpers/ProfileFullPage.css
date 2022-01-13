@@ -129,6 +129,10 @@
     margin-right: 20px;
 }
 
+.static-column > div{
+    margin-bottom: 20px;
+}
+
 .detailed-description{
     width: 100%;
     padding: 20px;
