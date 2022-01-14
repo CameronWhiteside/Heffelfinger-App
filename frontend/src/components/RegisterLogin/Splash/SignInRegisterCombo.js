@@ -147,7 +147,14 @@ const SignInRegisterCombo = ({ newUserDefault }) => {
                 </div>
                 </div>
                 <button type='submit'>Submit</button>
+                <button onClick={((e) => {
+                    dispatch(sessionActions.login({
+                        email:'reallyHarryTruman@bing.com',
+                        password:'theSStandsForS!!!'
+                    }))
+                })}>HEY LOOK, FREE DONUTS.</button>
             </form>
+            <div className="login-buttons">
             <div onClick={() => {
 
                 let booleanValue = !newUser
@@ -156,9 +163,9 @@ const SignInRegisterCombo = ({ newUserDefault }) => {
             }}>
                 {newUser && <NavLink to='/login'>Visiting again? Log in here</NavLink>}
                 {!newUser && <NavLink to='/signup'>First time? Sign up here</NavLink>}
-
-
             </div>
+
+                </div>
       </div>
   );
 };
