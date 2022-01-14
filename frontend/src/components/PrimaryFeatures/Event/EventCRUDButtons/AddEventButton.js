@@ -10,8 +10,10 @@ const AddEventButton = ({companyId, userId, }) => {
 
     return (
         <div className="add-event-button">
-            <button onClick={()=>goToNewEventForm()}>
-                    CREATE EVENT
+            <button
+                onClick={() => goToNewEventForm()}
+            disabled>
+                {`CREATE A NEW EVENT (COMING SOON)`}
            </button>
         </div>
     )

@@ -6,13 +6,13 @@ import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Basic/Navigation";
 import CompanyBrowser from "./components/PrimaryFeatures/Company/CompanyBrowser";
-import AddCompanyForm from "./components/PrimaryFeatures/Company/AddCompanyForm/AddCompanyForm";
+// import AddCompanyForm from "./components/PrimaryFeatures/Company/AddCompanyForm/AddCompanyForm";
 import CompanyProfilePage from "./components/PrimaryFeatures/Company/CompanyProfile";
 import WelcomePage from "./components/RegisterLogin/Splash/WelcomePage";
 // import AddCompanyButton from "./components/PrimaryFeatures/Company/CompanyCRUDButtons/AddCompanyButton";
 // import SocialLinksForm from "./components/PrimaryFeatures/ProfileHelpers/ExternalLinksHelper/SocialLinksHelper/SocialLinksForm";
-import ExternalLinksForm from "./components/PrimaryFeatures/ProfileHelpers/ExternalLinksHelper/ExternalLinksForm";
-
+// import ExternalLinksForm from "./components/PrimaryFeatures/ProfileHelpers/ExternalLinksHelper/ExternalLinksForm";
+import AboutPage from './components/RegisterLogin/Splash/AboutPage'
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +44,9 @@ function App() {
           </Route>
           <Route path="/login">
             <WelcomePage newUserDefault={false} />
+          </Route>
+          <Route path="/about">
+            <AboutPage />
           </Route>
 
             <Route path="/">

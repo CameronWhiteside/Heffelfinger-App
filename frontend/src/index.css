@@ -588,12 +588,14 @@ form{
 
 button:disabled,
 button[disabled]{
-  /* border: 1px solid red;
-  background-color: pink;
-  color: #666666; */
+  background-color: var(--neutral-600);
+  color: var(--neutral-800);
+  pointer-events: none;
 }
 
-
+.disabledLink{
+   pointer-events: none;
+}
 
 input:-internal-autofill-selected {
    appearance: menulist-button;

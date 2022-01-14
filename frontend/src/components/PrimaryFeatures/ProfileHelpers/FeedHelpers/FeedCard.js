@@ -46,7 +46,10 @@ export const FeedCard = ( {  entry, urlPathName } ) => {
 
     return (
         <div className='feed-card glass'>
-            <NavLink to={`/${urlPathName}/${id}`}>
+            <NavLink
+                className='disabledLink'
+                // to={`/${urlPathName}/${id}`}>
+                to={``}>
                 <div className='primary-feed-info' >
                     <div className='feed-card-image-area'>
                         <ProfileImage url={url} size={imageSize} defaultName={name}/>

@@ -11,10 +11,11 @@ const AddEmployeeButton = () => {
     return (
         <div className="add-event-button">
             <button
+                disabled
                 ////reveal form on click to enter email address
                 // onClick={() => goToNewEventForm()}
             >
-                    ADD CONTRIBUTOR
+                    {'ADD CONTRIBUTOR (COMING SOON)'}
            </button>
         </div>
     )

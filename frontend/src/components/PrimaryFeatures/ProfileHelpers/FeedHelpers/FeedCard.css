@@ -51,9 +51,13 @@ text-align: center;
     color: var(--accent-400)
 } */
 
-.feed-card:hover{
+/* .feed-card:hover{
     transform: translate3d(0,-2px, 0) scale(1.01);
     background-color:var(--alpha-400);
+} */
+
+.feed-card:hover{
+    cursor: context-menu;
 }
 
 
