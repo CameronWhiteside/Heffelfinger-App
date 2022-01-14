@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteCompany } from "../../../../store/company"
+import { deleteCompany, loadCompanies } from "../../../../store/company"
 import './DeleteCompanyButton.css'
 import { toggleClass } from "../../../utils"
 import { useLocation, Redirect, useHistory } from 'react-router-dom'
@@ -21,6 +21,7 @@ export const DeleteCompanyButton = ({ entry }) => {
         const currentPlace = location.pathname
         try {
             dispatch(deleteCompany(entry['id']))
+            dispatch(loadCompanies())
             if (currentPlace !== '/companies') {
                 history.push('/companies')
             }
