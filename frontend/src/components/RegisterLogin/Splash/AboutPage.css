@@ -52,8 +52,10 @@
     font-size: 24px;
 }
 
-h6.sign-off{
+h2.sign-off{
     margin: 0px 10px 0px 0px;
+    font-size: 36px;
+    text-transform: uppercase;
 }
 
 
@@ -62,17 +64,22 @@ h6.sign-off{
     width: 100%;
     display: flex;
     align-items: center;
+    margin-top: -19px;
+}
+
+.sign-off{
+    margin-top: 20px;
 }
 
 
 
 .about-page  .icon-holder{
-    height: 30px;
-    width: 30px;
+    height: 28px;
+    width: 28px;
     margin: 0 8px;
     position: relative;
     top: -2px;
-    background-color: var(--primary-800);
+    background-color: var(--primary-000);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -82,7 +89,7 @@ h6.sign-off{
 }
 
 .about-page  .icon-holder:hover{
-    background-color: var(--primary-1000);
+    background-color: var(--primary-600);
 }
 .about-page  .icon-image{
     height: 20px;
