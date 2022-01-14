@@ -117,7 +117,7 @@ Logged-in users can navigate to site features via the welcome screen.
 <br/>
 </div>
 
-All users can view site information on the 'About Page' which has links to connect with the site's creator. Who would like you to hire him please.
+All users can view site information on the 'About Page' which has links to connect with the site's creator. Who would like you to hire him, please.
 
 <div align="center">
 <br/>
