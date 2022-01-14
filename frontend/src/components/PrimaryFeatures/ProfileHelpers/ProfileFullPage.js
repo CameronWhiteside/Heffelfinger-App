@@ -159,7 +159,7 @@ const ProfileFullPage = ({
     const [social4Icon, setSocial4Icon] = useState(social4IconDefault)
     const [social5Icon, setSocial5Icon] = useState(social5IconDefault)
 
-       const [primaryExternalLink, setPrimaryExternalLink] = useState(primaryExternalLinkDefault)
+    const [primaryExternalLink, setPrimaryExternalLink] = useState(primaryExternalLinkDefault)
     const [primaryExternalLabel, setPrimaryExternalLabel] = useState(primaryExternalLabelDefault)
 
     let routeName

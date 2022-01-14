@@ -197,8 +197,8 @@
     font-family: var(--body-font);
     color: var(--accent-400);
     letter-spacing: 0.8px;
-}
-
+    overflow-wrap: break-word;
+  }
 
 
 body{

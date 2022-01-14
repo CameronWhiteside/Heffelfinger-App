@@ -1,19 +1,17 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-import { addCompany, deleteCompany, editCompany } from "../../../../store/company";
+import { editCompany, loadCompanies } from "../../../../store/company";
 import FormInput from "../../../Basic/FormHelpers/FormInput";
-import ProfileFullPage from "../../ProfileHelpers/ProfileFullPage";
-import EditCompanyButton from "../CompanyCRUDButtons/EditCompanyButton";
-import DeleteCompanyButton from "../CompanyCRUDButtons/DeleteCompanyButton";
+// import ProfileFullPage from "../../ProfileHelpers/ProfileFullPage";
+// import EditCompanyButton from "../CompanyCRUDButtons/EditCompanyButton";
+// import DeleteCompanyButton from "../CompanyCRUDButtons/DeleteCompanyButton";
 
 
 import './AddCompanyForm.css';
 
 const AddCompanyForm = ({
           id,
-          hideForm,
           name,
           setName,
           description,
@@ -32,7 +30,6 @@ const AddCompanyForm = ({
   const dispatch = useDispatch()
   const history = useHistory()
 
-
     const handleSubmit = async (e) => {
 
     e.preventDefault()
@@ -44,8 +41,15 @@ const AddCompanyForm = ({
             description,
         }
 
-        try {
-            dispatch(editCompany(editedCompany))
+      try {
+        await dispatch(editCompany(editedCompany))
+          dispatch(loadCompanies())
+          .then(setTimeout(() => {
+            setEditInfoMode(false)
+          }, 1000))
+
+          // let newLoad = await dispatch(loadCompanies())
+          // console.log({newLoad})
             setEditInfoMode(false)
         } catch (e) {
             let res = await e.json()

@@ -9,6 +9,10 @@
     transition: var(--transition-easy);
 }
 
+.browser-card *{
+    max-width: 100%;
+}
+
 
 .browser-card > a {
     display: flex;

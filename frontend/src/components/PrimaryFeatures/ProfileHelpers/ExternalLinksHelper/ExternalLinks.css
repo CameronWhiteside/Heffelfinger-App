@@ -1,3 +1,8 @@
+
+.external-links{
+    width: 100%
+}
+
 .external-links-form{
     display: flex;
     /* justify-content: flex-end; */

@@ -53,7 +53,7 @@ const CompanyProfilePage = () => {
     }
     const StatefulCompany = () => {
 
-            const [name, setName] = useState(defaultName);
+            const [pageTitle, setPageTitle] = useState(defaultName);
             const [description, setDescription] = useState(defaultDescription);
             const [headline, setHeadline] = useState(defaultHeadline);
             const [imageUrl, setImageUrl] = useState(defaultImageUrl);
@@ -80,7 +80,7 @@ const CompanyProfilePage = () => {
                     id={id}
                     dataObject={dataObject}
                     profileType='company'
-                    pageTitle={name}
+                    pageTitle={pageTitle}
                     imageUrl={imageUrl}
                     setImageUrl={setImageUrl}
                     imageSize='medium'
@@ -121,8 +121,8 @@ const CompanyProfilePage = () => {
                     <DeleteCompanyButton entry={dataObject} />
                     <AddCompanyForm
                         id={id}
-                        name={name}
-                        setName={setName}
+                        name={pageTitle}
+                        setName={setPageTitle}
                         description={description}
                         setDescription={setDescription}
                         headline={headline}
