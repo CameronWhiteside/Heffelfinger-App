@@ -8,8 +8,6 @@ import './WelcomePage.css'
 
 const WelcomePage = ({ newUserDefault }) => {
 
-    console.log(`you've got welcome page`)
-
     const sessionUser = useSelector(state => state.session.user);
     const location = useLocation()
 
@@ -22,8 +20,8 @@ const WelcomePage = ({ newUserDefault }) => {
             <div className="welcome-content-area">
                 <div className="welcome-left">
                     <div className="welcome image-container">
-                        {!sessionUser && <img onMouseDown={(e)=> e.preventDefault()} src="../../../../../assets/greeting-letter-925.png" alt='weclome letter'/>}
-                        {sessionUser && <img onMouseDown={(e)=> e.preventDefault()} src="../../../../../assets/handshake.png" alt='handshake'/>}
+                        {!sessionUser && <img onMouseDown={(e)=> e.preventDefault()} src="/assets/greeting-letter-925.png" alt='weclome letter'/>}
+                        {sessionUser && <img onMouseDown={(e)=> e.preventDefault()} src="/assets/handshake.png" alt='handshake'/>}
                     </div>
                 </div>
                 <div className="welcome-right">

@@ -24,7 +24,8 @@ const CompanyProfilePage = () => {
     // dataObject = companyState[id]
 
     useEffect(() => {
-         dispatch(loadCompanies()).then(res => console.log('dispatch response', res))
+        dispatch(loadCompanies())
+            // .then(res => console.log('dispatch response', res))
     }, [dispatch])
 
 

@@ -85,14 +85,10 @@ const ProfileFullPage = ({
                     if (fullLinksArray[i].isPrimary) {
                         primaryExternalLinkDefault = fullLinksArray[i].url
                         primaryExternalLabelDefault = fullLinksArray[i].primaryLabel
-                        console.log(`found the primary`, fullLinksArray[i])
                     } else {
                         linksArray.push(fullLinksArray[i])
                     }
                 }
-
-                console.log({linksArray})
-
                      if (linksArray[0]) {
                         social1Default = linksArray[0].url
                         social1IconDefault = findMatchingUrl(social1Default)

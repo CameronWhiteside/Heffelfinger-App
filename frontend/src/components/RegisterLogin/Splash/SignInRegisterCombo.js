@@ -36,7 +36,7 @@ const SignInRegisterCombo = ({ newUserDefault }) => {
         e.preventDefault();
 
         if (newUser) {
-            console.log(`Registration Form`)
+
             if (password === confirmPassword) {
                 setValidationObject({ test: true });
                 return dispatch(sessionActions.signup({ email, firstName, lastName, password, confirmPassword }))
@@ -48,8 +48,7 @@ const SignInRegisterCombo = ({ newUserDefault }) => {
             }
             return setDatabaseErrors(['Confirm Password field must be the same as the Password field']);
         } else {
-            console.log(`Login`)
-            console.log({email, password})
+
             setValidationObject({ test: true });
 
             return dispatch(sessionActions.login({ email, password })).catch(
