@@ -9,9 +9,8 @@
     opacity: 60%;
 }
 
-.site-logo,
 .session-links{
-    width: 300px;
+    width: 500px;
     display: flex;
     align-items: center;
 }
@@ -21,7 +20,7 @@
 }
 
 .site-logo img{
-    width: 80%;
+    width: 100%;
 }
 
 .session-links{
@@ -33,9 +32,12 @@
 .text-links{
     width: 500px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding-left: 30px;
+}
+.text-links > *{
+    margin-right: 50px;
 }
 
 
