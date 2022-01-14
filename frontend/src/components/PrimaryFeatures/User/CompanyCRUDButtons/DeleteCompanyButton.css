@@ -1,0 +1,22 @@
+.delete-confirm.hidden{
+    transform: translate3d(-400px,0,0);
+    transition: var(--transition-explode);
+}
+
+.delete-company-button{
+    position: relative;
+    width: fit-content;
+    overflow: hidden;
+}
+
+.delete-company-button > .delete-confirm{
+    position: absolute;
+    background-color: var(--neutral-1000);
+    color: var(--primary-800);
+    border: 1px solid var(--primary-800);
+    box-shadow: none;
+    z-index: 3;
+    opacity: 1;
+    transition: var(--transition-easy);
+    cursor: pointer;
+}

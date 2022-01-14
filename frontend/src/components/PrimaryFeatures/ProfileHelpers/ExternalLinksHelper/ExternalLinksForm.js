@@ -283,7 +283,7 @@ const ExternalLinksForm = ({
         ]
 
 
-        try {
+        // try {
             // dispatch(addExternalLinks(submission))
             let submission = newLinks.filter(link => link.url)
             if (profileType === 'company') {
@@ -293,10 +293,13 @@ const ExternalLinksForm = ({
                 }
                 dispatch(loadCompanies())
             }
-            await setEditLinksMode(false)
-        } catch (e) {
-            console.log(e)
-        }
+            // setTimeout(() => {
+            //     console.log('we doing this now')
+            //     setEditLinksMode(false)
+            // }, 2000)
+        // } catch (e) {
+        //     console.log(e)
+        // }
     }
 
     return (
@@ -304,7 +307,7 @@ const ExternalLinksForm = ({
             <div className="form-container">
             <form
                 className="add-external-links"
-                onSubmit={handleSubmit}
+                onSubmit={(e)=>{handleSubmit(e).then(setEditLinksMode(false))}}
             >
                 <div className="all-inputs">
                         <FormInput

@@ -6,7 +6,7 @@ import ProfileFullPage from "../ProfileHelpers/ProfileFullPage";
 import { useSelector } from "react-redux";
 import EditCompanyButton from "./CompanyCRUDButtons/EditCompanyButton";
 import DeleteCompanyButton from "./CompanyCRUDButtons/DeleteCompanyButton";
-import AddCompanyForm from "./AddCompanyForm/AddCompanyForm";
+import AddCompanyForm from "./AddUserForm/AddCompanyForm";
 import EditLinksButton from "../ProfileHelpers/ProfileCRUD/EditLinksButton";
 import EditImageButton from '../ProfileHelpers/ProfileCRUD/EditImageButton'
 
