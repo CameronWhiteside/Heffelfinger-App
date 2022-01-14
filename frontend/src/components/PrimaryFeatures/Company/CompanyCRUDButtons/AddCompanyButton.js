@@ -22,7 +22,6 @@ const AddCompanyButton = () => {
             let res = await dispatch(addCompany(newCompany))
             let newCompanyId = res.id
 
-            console.log({newCompanyId})
             let newEmployee = {
                 userId: sessionUser.id,
                 companyId: newCompanyId,

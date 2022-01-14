@@ -8,7 +8,6 @@ import ProfileImage from "./ProfileImage"
 
 
 const ImageForm = ({
-    id,
     pageTitle,
     imageUrl,
     setImageUrl,
@@ -24,27 +23,16 @@ const ImageForm = ({
 
         dataObject.imageUrl = imageUrl
 
-        // let editedItem = {
-        //       id,
-        //       imageUrl: `${imageUrl}`,
-        //   }
-
         try {
             if (profileType === 'company') {
-                // name,
-                // headline,
-                // description,
                 dispatch(editCompany(dataObject))
-
             }
-            //   if (profileType === 'user') dispatch(editUser(editedItem))
-            //   if (profileType === 'event') dispatch(editEventCompany(editedItem))
-              setEditImageMode(false)
+
+            setEditImageMode(false)
+
           } catch (e) {
             let res = await e.json()
             console.log({e})
-            //   let errors = res.errors
-            //   setDatabaseErrors([...errors])
           }
     }
 

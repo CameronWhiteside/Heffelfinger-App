@@ -225,7 +225,7 @@ const ExternalLinksForm = ({
             {
                 url: social1,
                 icon: social1Icon,
-                primaryLink: false,
+                isPrimary: false,
                 primaryLinkName: null,
                 userId,
                 eventId,
@@ -234,7 +234,7 @@ const ExternalLinksForm = ({
             {
                 url: social2,
                 icon: social2Icon,
-                primaryLink: false,
+                isPrimary: false,
                 primaryLinkName: null,
                 userId,
                 eventId,
@@ -244,7 +244,7 @@ const ExternalLinksForm = ({
             {
                 url: social3,
                 icon: social3Icon,
-                primaryLink: false,
+                isPrimary: false,
                 primaryLinkName: null,
                 userId,
                 eventId,
@@ -254,7 +254,7 @@ const ExternalLinksForm = ({
             {
                 url: social4,
                 icon: social4Icon,
-                primaryLink: false,
+                isPrimary: false,
                 primaryLinkName: null,
                 userId,
                 eventId,
@@ -264,7 +264,7 @@ const ExternalLinksForm = ({
             {
                 url: social5,
                 icon: social5Icon,
-                primaryLink: false,
+                isPrimary: false,
                 primaryLinkName: null,
                 userId,
                 eventId,
@@ -274,7 +274,7 @@ const ExternalLinksForm = ({
             {
                 url: primaryExternalLink,
                 icon: null,
-                primaryLink: true,
+                isPrimary: true,
                 primaryLabel: primaryExternalLabel,
                 userId,
                 eventId,
@@ -289,11 +289,11 @@ const ExternalLinksForm = ({
             if (profileType === 'company') {
                 dispatch(deleteCompanyLinks(id))
                 for (let i = 0; i < submission.length; i++) {
-                    dispatch(addExternalLinks(submission[i]))
+                    await dispatch(addExternalLinks(submission[i]))
                 }
                 dispatch(loadCompanies())
             }
-            setEditLinksMode(false)
+            await setEditLinksMode(false)
         } catch (e) {
             console.log(e)
         }

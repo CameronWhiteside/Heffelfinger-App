@@ -35,9 +35,15 @@ const CompanyProfilePage = () => {
     isProfileOwner, defaultImageUrl
 
     if (dataObject) {
-        defaultName = dataObject.name
-        defaultHeadline = dataObject.headline
-        location = dataObject.location
+        if (dataObject.name !== ' ') {
+            defaultName = dataObject.name
+        }
+        if (dataObject.headline !== ' ') {
+            defaultHeadline = dataObject.headline
+        }
+        if (dataObject.location !== ' ') {
+            location = dataObject.location
+        }
         createdAt = dataObject.createdAt
         defaultDescription = dataObject.description
         defaultImageUrl = dataObject.imageUrl
@@ -80,7 +86,9 @@ const CompanyProfilePage = () => {
                     id={id}
                     dataObject={dataObject}
                     profileType='company'
-                    pageTitle={pageTitle}
+                    pageTitle={
+                        pageTitle
+                    }
                     imageUrl={imageUrl}
                     setImageUrl={setImageUrl}
                     imageSize='medium'

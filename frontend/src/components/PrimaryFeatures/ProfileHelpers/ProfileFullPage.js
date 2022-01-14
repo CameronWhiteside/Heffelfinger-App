@@ -21,12 +21,9 @@ import ImageForm from './ImageHelpers/ImageForm'
 
 import { linkMatch } from "./ExternalLinksHelper/ExternalLinksForm"
 
-//pass in CRUD form as TRUE and include as child element
 
 const ProfileFullPage = ({
     id,
-    // hasCrud,
-    // setHasCrud,
     editInfoMode,
     setEditInfoMode,
     editImageMode,
@@ -51,35 +48,10 @@ const ProfileFullPage = ({
     hasCompanies,
     hasTickets,
     children,
+    imageUrl,
+    setImageUrl
 }) => {
 
-    console.log({
-        id,
-        editInfoMode,
-        setEditInfoMode,
-        editImageMode,
-        setEditImageMode,
-        editLinksMode,
-        setEditLinksMode,
-        editEmployeesMode,
-        setEditEmployeesMode,
-        dataObject,
-        profileType,
-        pageTitle,
-        pageDescription,
-        imageSize,
-        pageShortInfo,
-        isProfileOwner,
-        hasTags,
-        tagsAlias,
-        tagsSize,
-        ctaType,
-        hasUsers,
-        hasEvents,
-        hasCompanies,
-        hasTickets,
-        children
-    })
 
     const findMatchingUrl = (str) => {
         for (let i = 0; i < linkMatch.length; i++) {
@@ -113,6 +85,7 @@ const ProfileFullPage = ({
                     if (fullLinksArray[i].isPrimary) {
                         primaryExternalLinkDefault = fullLinksArray[i].url
                         primaryExternalLabelDefault = fullLinksArray[i].primaryLabel
+                        console.log(`found the primary`, fullLinksArray[i])
                     } else {
                         linksArray.push(fullLinksArray[i])
                     }
@@ -147,7 +120,7 @@ const ProfileFullPage = ({
                 }
             }
 
-    const [imageUrl, setImageUrl] = useState(dataObject.imageUrl)
+    // const [imageUrl, setImageUrl] = useState(dataObject.imageUrl)
     const [social1, setSocial1] = useState(social1Default)
     const [social2, setSocial2] = useState(social2Default)
     const [social3, setSocial3] = useState(social3Default)
