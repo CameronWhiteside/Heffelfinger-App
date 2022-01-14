@@ -19,17 +19,14 @@ export const DeleteCompanyButton = ({ entry }) => {
     const handleDelete = () => {
 
         const currentPlace = location.pathname
-        try {
-            dispatch(deleteCompany(entry['id']))
-                .then(dispatch(loadCompanies()))
-                .then(() => {
-                    if (currentPlace !== '/companies') {
-                        history.push('/companies')
+
+        dispatch(deleteCompany(entry['id']))
+        dispatch(loadCompanies()).then(() => {
+            if (currentPlace !== '/companies') {
+            history.push('/companies')
                     }
-                })
-        } catch (e) {
-            console.log(e)
-        }
+        }).catch((error)=> console.error(error))
+ 
     }
 
     return (
