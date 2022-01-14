@@ -114,7 +114,7 @@ function Navigation({ isLoaded }){
   // {!loggedIn && <NavLink to='/singup'>Sign Up</NavLink>}
 
   return (
-    <div className='navigation glass'>
+    <div className='navigation'>
       <div className='text-links'>
         {/* <NavLink exact to="/">Home</NavLink> */}
         <NavLink exact to="/users">Users</NavLink>

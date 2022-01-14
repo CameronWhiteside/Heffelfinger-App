@@ -2,8 +2,6 @@ import './ProfileImage.css'
 
 const ProfileImage = ({ imageUrl, size, defaultName }) => {
 
-    console.log({imageUrl, defaultName})
-
     return (
         <>
             {imageUrl &&

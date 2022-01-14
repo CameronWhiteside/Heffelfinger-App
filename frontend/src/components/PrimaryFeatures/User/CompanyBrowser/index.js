@@ -23,7 +23,6 @@ const CompanyBrowser = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log('browser use effect running')
         dispatch(loadCompanies())
     }, [dispatch])
 
