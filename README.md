@@ -12,7 +12,7 @@ heroku run npm run sequelize db:seed:all
 
 # Heffelfinger Business Studios
 
-<a href="https://recipeople.herokuapp.com/">Live Site</a>  |  <a href="https://github.com/MeiMeiYS/group-9-best-group/wiki"> Project Wiki</a> | <a href="https://github.com/MeiMeiYS/group-9-best-group/issue">Report Bug</a>
+<a href="https://heffelfinger.herokuapp.com/">Live Site</a>  |  <a href="https://github.com/CameronWhiteside/Heffelfinger-App/wiki"> Project Wiki</a> | <a href="https://github.com/CameronWhiteside/Heffelfinger-App/wiki">Report Bug</a>
 
 Heffelfinger Business Studios is a virtual coworking space where entrepreneurs can connect, build their team, and organize events to share ideas.
 
