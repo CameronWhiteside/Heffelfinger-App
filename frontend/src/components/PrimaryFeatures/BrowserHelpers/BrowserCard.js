@@ -21,8 +21,6 @@ export const BrowserCard = ( { children, renderOrder, entry, hasUsers, usersAlia
 
     let id = entry.id
 
-
-    //account for different 'name' variable aliases
     let name
     if (entry.name) name = entry.name
     if (entry.firstName) name = entry.firstName
@@ -50,7 +48,7 @@ export const BrowserCard = ( { children, renderOrder, entry, hasUsers, usersAlia
     if (!entry.Users || users.length < 1) users = false
 
     let companies
-    if (hasCompanies) companies = entry.Company
+    if (hasCompanies) companies = entry.Companies
 
     let tags
     if (entry.Tag) tags = entry.Tag
@@ -76,15 +74,15 @@ export const BrowserCard = ( { children, renderOrder, entry, hasUsers, usersAlia
                     <div className='browser-card-tiny-preview'>
                     {users && <h6 className='user-alias'>{usersAlias}</h6>}
                     {users && <TinyUserPreview type='users' users={users} />}
-                    {companiesAlias &&  <h6 className='company-alias'>{companiesAlias}</h6>}
-                    {companies && <TinyCompanyPreview type='companies' companies={companies} />}
+                    {companies && (companies.length > 0) &&  <h6 className='company-alias'>{companiesAlias}</h6>}
+                    {companies && (companies.length > 0) && <TinyCompanyPreview type='companies' companies={companies} />}
                     </div>
                     <div className='tagList'>
                         {tags && <StaticTagList tags={tags} />}
                     </div>
                 </NavLink>
             <div className='browser-card-menu-adjuster'>
-               
+
                 <DropDownMenu entry={entry}>
                         {children}
                 </DropDownMenu>

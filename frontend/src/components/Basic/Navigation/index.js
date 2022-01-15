@@ -117,7 +117,7 @@ function Navigation({ isLoaded }){
     <div className='navigation'>
       <div className='text-links'>
         {/* <NavLink exact to="/">Home</NavLink> */}
-        {/* <NavLink exact to="/users">Users</NavLink> */}
+        <NavLink exact to="/users">Users</NavLink>
         <NavLink exact to="/companies">Projects</NavLink>
         {/* <NavLink exact to="/events">Events</NavLink> */}
         <NavLink exact to="/about">About</NavLink>

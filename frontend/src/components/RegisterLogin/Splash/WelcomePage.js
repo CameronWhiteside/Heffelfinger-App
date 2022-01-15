@@ -38,11 +38,11 @@ const WelcomePage = ({ newUserDefault }) => {
                                             </div>
                                         </div>
                                     </NavLink>
-                                    <NavLink to='/users' disabled>
+                                    <NavLink to='/users'>
                                         <div className="badge-link users-badge">
-                                            <div className="coming-soon-icon">
+                                            {/* <div className="coming-soon-icon">
                                                 <div/>
-                                        </div>
+                                        </div> */}
                                         </div>
                                     </NavLink>
                                     <div>

@@ -12,7 +12,12 @@ const BroswerGrid = ({ children, entries, maxEntries = entries.length, hasUsers,
 
     let returnedEntries = entries.slice(0, maxEntries)
 
-    let renderedEntries = returnedEntries.filter(entry => entry.name && entry.name.length > 1)
+    let renderedEntries = returnedEntries
+    let filterTest = returnedEntries.filter(entry => entry.name && entry.name.length > 1)
+    if (renderedEntries.length
+        && renderedEntries[0].name
+        && renderedEntries[0].name.length > 1) returnedEntries = filterTest
+
     let totalEntries = returnedEntries.length
 
     return (

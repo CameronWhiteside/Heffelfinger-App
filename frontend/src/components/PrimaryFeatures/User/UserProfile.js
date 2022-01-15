@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams, useLocation, useHistory } from "react-router-dom";
-import { loadCompanies } from "../../../store/company";
+import { loadUsers } from "../../../store/user";
 import ProfileFullPage from "../ProfileHelpers/ProfileFullPage";
 import { useSelector } from "react-redux";
-import EditCompanyButton from "./CompanyCRUDButtons/EditCompanyButton";
-import DeleteCompanyButton from "./CompanyCRUDButtons/DeleteCompanyButton";
-import AddCompanyForm from "./AddUserForm/AddCompanyForm";
+import EditUserButton from "./UserCRUDButtons/EditUserButton";
+import DeleteUserButton from "./UserCRUDButtons/DeleteUserButton";
+import AddUserForm from "./AddUserForm/AddUserForm";
 import EditLinksButton from "../ProfileHelpers/ProfileCRUD/EditLinksButton";
 import EditImageButton from '../ProfileHelpers/ProfileCRUD/EditImageButton'
 
-const CompanyProfilePage = () => {
+const UserProfilePage = () => {
 
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -18,47 +18,49 @@ const CompanyProfilePage = () => {
     // let dataObject
 
     const dataObject = useSelector(state => {
-        return state.company[id]
+        return state.user[id]
     })
 
-    // dataObject = companyState[id]
+    // dataObject = userState[id]
 
     useEffect(() => {
-         dispatch(loadCompanies()).then(res => console.log('dispatch response', res))
+         dispatch(loadUsers()).then(res => console.log('dispatch response', res))
     }, [dispatch])
 
 
     const sessionUser = useSelector(state => state.session.user);
 
 
-    let defaultName, defaultHeadline, location, createdAt, defaultDescription, year, shortInfo, requirementsObject,
-    isProfileOwner, defaultImageUrl
+    let defaultName, defaultLocation, createdAt, defaultBiography, year, shortInfo,
+        isProfileOwner, defaultImageUrl
 
     if (dataObject) {
-        if (dataObject.name !== ' ') {
-            defaultName = dataObject.name
-        }
-        if (dataObject.headline !== ' ') {
-            defaultHeadline = dataObject.headline
-        }
+
+        console.log({dataObject})
+
         if (dataObject.location !== ' ') {
-            location = dataObject.location
+            defaultLocation = dataObject.location
         }
+        if (dataObject.biography !== ' ') {
+            defaultBiography = dataObject.biography
+        }
+
+        defaultName = `${dataObject.firstName} ${dataObject.lastName}`
         createdAt = dataObject.createdAt
-        defaultDescription = dataObject.description
         defaultImageUrl = dataObject.imageUrl
-        year = createdAt.slice(0, 4);
-        createdAt = `On board since ${year}`
-        if (dataObject.Users && sessionUser) {
-            isProfileOwner = dataObject.Users.map(user => user.id).includes(sessionUser.id)
+        // year = createdAt.slice(0, 4);
+        // createdAt = `On board since ${year}`
+        if (dataObject && sessionUser) {
+            isProfileOwner = (dataObject.id === sessionUser.id)
         }
     }
 
-    const StatefulCompany = () => {
+
+    const StatefulUser = () => {
 
             const [pageTitle, setPageTitle] = useState(defaultName);
-            const [description, setDescription] = useState(defaultDescription);
-            const [headline, setHeadline] = useState(defaultHeadline);
+            const [biography, setBiography] = useState(defaultBiography);
+            const [location, setLocation] = useState(defaultLocation);
             const [imageUrl, setImageUrl] = useState(defaultImageUrl);
             const [validationObject, setValidationObject] = useState({ test: true });
             const [databaseErrors, setDatabaseErrors] = useState([])
@@ -67,22 +69,21 @@ const CompanyProfilePage = () => {
             const [editLinksMode, setEditLinksMode] = useState()
             const [editEmployeesMode, setEditEmployeesMode] = useState()
 
-            shortInfo = [headline, location, createdAt].filter(el => !(!el)).join(' · ')
+            shortInfo = [location, createdAt].filter(el => !(!el)).join(' · ')
 
             const [editInfoMode, setEditInfoMode] = useState(
-                    !defaultName || defaultName.length < 2 ||
-                    !defaultDescription || defaultDescription.length < 2 ||
-                    !defaultHeadline || defaultHeadline.length < 2
+                    !defaultBiography || defaultBiography.length < 2 ||
+                    !defaultLocation || defaultLocation.length < 2
             )
 
 
 
         return (
-            <div className="company-profile">
+            <div className="user-profile">
                 <ProfileFullPage
                     id={id}
                     dataObject={dataObject}
-                    profileType='company'
+                    profileType='user'
                     pageTitle={
                         pageTitle
                     }
@@ -90,25 +91,28 @@ const CompanyProfilePage = () => {
                     setImageUrl={setImageUrl}
                     imageSize='medium'
                     pageShortInfo={shortInfo}
-                    pageDescription={description}
+                    pageDescription={biography}
                     externalLinksArray={[]}
                     isProfileOwner={isProfileOwner}
                     hasTags={false}
                     tagsAlias='Tags'
                     tagsSize='small'
                     ctaType={false}
-                    hasUsers={true}
+                    hasUsers={false}
                     usersAlias='Contributors'
                     usersSize='medium'
-                    hasEvents={true}
+                    hasEvents={false}
                     eventsAlias='Events'
                     eventsSize='medium'
-                    hasCompanies={false}
-                    companiesAlias={false}
-                    companiesSize={false}
-                    hasTickets={false}
-                    ticketsAlias={false}
-                    ticketsSize={false}
+                    // hasUsers={false}
+                    // usersAlias={false}
+                    // usersSize={false}
+                    hasTickets={true}
+                    ticketsAlias='Attended Events'
+                    ticketsSize='medium'
+                    hasCompanies={true}
+                    companiesAlias='Projects'
+                    companySize='medium'
 
                     editInfoMode={editInfoMode}
                     setEditInfoMode={setEditInfoMode}
@@ -120,18 +124,18 @@ const CompanyProfilePage = () => {
                     setEditEmployeesMode={setEditEmployeesMode}
 
                 >
-                    <EditCompanyButton entry={dataObject} setEditInfoMode={setEditInfoMode} />
+                    <EditUserButton entry={dataObject} setEditInfoMode={setEditInfoMode} />
                     <EditImageButton entry={dataObject} setEditImageMode={setEditImageMode} />
                     <EditLinksButton entry={dataObject} setEditLinksMode={setEditLinksMode} />
-                    <DeleteCompanyButton entry={dataObject} />
-                    <AddCompanyForm
+                    <DeleteUserButton entry={dataObject} />
+                    <AddUserForm
                         id={id}
                         name={pageTitle}
                         setName={setPageTitle}
-                        description={description}
-                        setDescription={setDescription}
-                        headline={headline}
-                        setHeadline={setHeadline}
+                        biography={biography}
+                        setBiography={setBiography}
+                        location={location}
+                        setLocation={setLocation}
                         validationObject={validationObject}
                         setValidationObject={setValidationObject}
                         databaseErrors={databaseErrors}
@@ -148,11 +152,11 @@ const CompanyProfilePage = () => {
     return (
         <>
             {dataObject &&
-                <StatefulCompany/>
+                <StatefulUser/>
             }
         </>
     )
 }
 
 
-export default CompanyProfilePage
+export default UserProfilePage

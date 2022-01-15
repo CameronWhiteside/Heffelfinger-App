@@ -1,32 +1,32 @@
-import { editCompany, deleteCompany } from "../../../../store/company"
+import { editUser, deleteUser } from "../../../../store/user"
 import { useDispatch } from 'react-redux'
 
 
-export const CompanyOwnerButtons = ({ company }) => {
+export const UserOwnerButtons = ({ user }) => {
 
     const dispatch = useDispatch();
 
 
     return (
-        <span className="company-actions">
+        <span className="user-actions">
             <button
             className="edit-button icon-holder"
-            onClick={() => dispatch(editCompany(company.id))}
+            onClick={() => dispatch(editUser(user.id))}
             >
-                    Edit Company
+                    Edit User
             </button>
             <button
                 className="delete-button icon-holder"
                 onClick={() => {
 
-                    dispatch(deleteCompany(company['id']))
+                    dispatch(deleteUser(user['id']))
                 }}
             >
-                Delete Company
+                Delete User
             </button>
         </span>
     );
 }
 
 
-export default CompanyOwnerButtons
+export default UserOwnerButtons

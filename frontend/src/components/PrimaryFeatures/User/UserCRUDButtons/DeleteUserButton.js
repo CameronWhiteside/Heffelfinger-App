@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteCompany } from "../../../../store/company"
-import './DeleteCompanyButton.css'
+import { deleteUser } from "../../../../store/user"
+import './DeleteUserButton.css'
 import { toggleClass } from "../../../utils"
 import { useLocation, Redirect, useHistory } from 'react-router-dom'
 
 
-export const DeleteCompanyButton = ({ entry }) => {
+export const DeleteUserButton = ({ entry }) => {
 
     const location = useLocation()
     const history = useHistory();
@@ -19,14 +19,14 @@ export const DeleteCompanyButton = ({ entry }) => {
     const handleDelete = () => {
 
         const currentPlace = location.pathname
-        dispatch(deleteCompany(entry['id']))
-        if (currentPlace !== '/companies') {
-            history.push('/companies')
+        dispatch(deleteUser(entry['id']))
+        if (currentPlace !== '/users') {
+            history.push('/users')
         }
     }
 
     return (
-        <div keep='true' className="delete-company-button">
+        <div keep='true' className="delete-user-button">
                     <button
                         className="delete-confirm hidden"
                         onMouseOut={(e) => {
@@ -41,7 +41,7 @@ export const DeleteCompanyButton = ({ entry }) => {
                             toggleClass(e.target.previousElementSibling, 'hidden')
                         }}
                     >
-                        DELETE PROJECT
+                        DELETE ACCOUNT
                     </button>
 
                 </div>
@@ -50,4 +50,4 @@ export const DeleteCompanyButton = ({ entry }) => {
 }
 
 
-export default DeleteCompanyButton
+export default DeleteUserButton

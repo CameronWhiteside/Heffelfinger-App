@@ -13,6 +13,8 @@ import WelcomePage from "./components/RegisterLogin/Splash/WelcomePage";
 // import SocialLinksForm from "./components/PrimaryFeatures/ProfileHelpers/ExternalLinksHelper/SocialLinksHelper/SocialLinksForm";
 // import ExternalLinksForm from "./components/PrimaryFeatures/ProfileHelpers/ExternalLinksHelper/ExternalLinksForm";
 import AboutPage from './components/RegisterLogin/Splash/AboutPage'
+import UserBrowser from "./components/PrimaryFeatures/User/UserBrowser/index.js";
+import UserProfilePage from "./components/PrimaryFeatures/User/UserProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +40,12 @@ function App() {
           </Route>
           <Route path="/companies/:id">
             <CompanyProfilePage />
+          </Route>
+          <Route exact path="/users">
+            <UserBrowser />
+          </Route>
+          <Route path="/users/:id">
+            <UserProfilePage />
           </Route>
           <Route path="/signup">
             <WelcomePage newUserDefault={true} />

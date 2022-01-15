@@ -3,13 +3,13 @@
     transition: var(--transition-explode);
 }
 
-.delete-company-button{
+.delete-user-button{
     position: relative;
     width: fit-content;
     overflow: hidden;
 }
 
-.delete-company-button > .delete-confirm{
+.delete-user-button > .delete-confirm{
     position: absolute;
     background-color: var(--neutral-1000);
     color: var(--primary-800);

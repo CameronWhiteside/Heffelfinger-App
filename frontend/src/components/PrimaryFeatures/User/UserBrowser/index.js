@@ -1,51 +1,53 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import CompanyDetails from '../CompanyDetails'
+import UserDetails from '../UserDetails'
 
-import { loadCompanies } from '../../../../store/company';
+import { loadUsers } from '../../../../store/user';
 
-import './CompanyBrowser.css'
+import './UserBrowser.css'
 
-import EditCompanyButton from '../CompanyCRUDButtons/EditCompanyButton';
-import DeleteCompanyButton from '../CompanyCRUDButtons/DeleteCompanyButton';
+import EditUserButton from '../UserCRUDButtons/EditUserButton';
+import DeleteUserButton from '../UserCRUDButtons/DeleteUserButton';
 import BrowserInfoArea from '../../BrowserHelpers/BrowserInfoArea';
 import BrowserGrid from '../../BrowserHelpers/BrowserGrid';
-import ViewCompanyButton from '../CompanyCRUDButtons/ViewCompanyButton';
-import AddCompanyButton from '../CompanyCRUDButtons/AddCompanyButton';
+import ViewUserButton from '../UserCRUDButtons/ViewUserButton';
+import AddUserButton from '../UserCRUDButtons/AddUserButton';
 import BrowserQuickStatsArea from '../../BrowserHelpers/BrowserQuickStats';
 import BrowserCTAArea from '../../BrowserHelpers/BrowserCTAArea';
 
 
 
-const CompanyBrowser = () => {
+const UserBrowser = () => {
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(loadCompanies())
+        dispatch(loadUsers())
     }, [dispatch])
 
-    const companyState = useSelector(state => {
-        return state.company
+    const userState = useSelector(state => {
+        return state.user
     })
+
+    console.log({userState})
 
     const sessionUser = useSelector(state => state.session.user);
 
-    const companiesArr =
-        //remove all non-number keys that got added to the company state erroneously
-        Object.entries(companyState)
+    const usersArr =
+        //remove all non-number keys that got added to the user state erroneously
+        Object.entries(userState)
             .filter(pair => parseInt(pair[0]))
             .map(pair => pair[1])
 
     const title = `
-        LAUNCHPAD
+        HUMAN PERSONS
     `
 
     const bodyCopy = `Venture hearts of the stars dream of the mind's eye the sky calls to us Sea of Tranquility? Brain is the seed of intelligence laws of physics consciousness extraplanetary concept of the number one great turbulent clouds? The only home we've ever known tingling of the spine rich in heavy atoms great turbulent clouds made in the interiors of collapsing stars two ghostly white figures in coveralls and helmets are softly dancing and billions upon billions upon billions`
 
     return (
-        <div className='company-browser'>
+        <div className='user-browser'>
             <div className='browser-left-col'>
                 <BrowserQuickStatsArea
                     title={title}
@@ -57,20 +59,17 @@ const CompanyBrowser = () => {
 
                 </BrowserInfoArea>
 
-                <BrowserCTAArea>
-                    {sessionUser && <AddCompanyButton />}
-                </BrowserCTAArea>
             </div>
             <div className='browser-right-col'>
             <BrowserGrid
-                entries={companiesArr}
-                hasUsers={true}
-                    usersAlias={'Contributors'}
-                    urlPath={'companies'}
+                entries={usersArr}
+                hasCompanies={true}
+                companiesAlias={'Projects'}
+                urlPath={'users'}
             >
-                {/* <ViewCompanyButton /> */}
-                {/* <EditCompanyButton />
-                <DeleteCompanyButton /> */}
+                {/* <ViewUserButton /> */}
+                {/* <EditUserButton />
+                <DeleteUserButton /> */}
                      {/* <i class="fas fa-user-check"></i> */}
                 </BrowserGrid>
             </div>
@@ -79,4 +78,4 @@ const CompanyBrowser = () => {
 
 }
 
-export default CompanyBrowser
+export default UserBrowser

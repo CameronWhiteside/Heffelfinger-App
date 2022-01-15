@@ -5,7 +5,7 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth');
 
 //Import DB Models
-const { User, Ticket, Company, CompanyRole } = require('../../db/models');
+const { User, Ticket, Company, CompanyRole, ExternalLinks, Event } = require('../../db/models');
 
 //Import Validation Middleware
 const { validateSignup } = require('../../utils/validations/users')
@@ -37,8 +37,19 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.get('/:userId(\\d+)', asyncHandler(async (req, res) => {
     const id = req.params.userId
-  const foundUser = await User.findByPk(id, { include: [{ model: Company, include: CompanyRole }, { model: Ticket, include: {model: Event, include: Company}}]})
+  const foundUser = await User.findByPk(id, { include: [{ model: Company, include: CompanyRole }, { model: Ticket, include: {model: Event, include: Company}}, ExternalLinks]})
     return res.json(foundUser)
+}))
+
+
+router.put('/:userId(\\d+)', asyncHandler(async (req, res) => {
+  const id = req.params.userId
+  const {location, biography} = req.body
+  const udpatedUser = await User.update({
+    location,
+    biography
+  }, { where: { id }})
+    return res.json(udpatedUser)
 }))
 
 router.delete('/:userId(\\d+)', asyncHandler(async (req, res) => {

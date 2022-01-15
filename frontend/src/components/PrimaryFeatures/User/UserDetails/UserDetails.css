@@ -1,15 +1,15 @@
-.company-details {
+.user-details {
     display: flex;
     width: 400px;
     justify-content: space-between;
     align-items: center;
 }
 
-.company-details > * {
+.user-details > * {
     width: fit-content;
 }
 
-.company-actions{
+.user-actions{
     display: flex;
     height: fit-content;
     justify-content: center;

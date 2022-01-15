@@ -32,7 +32,7 @@ const CompanyProfilePage = () => {
     const sessionUser = useSelector(state => state.session.user);
 
 
-    let defaultName, defaultHeadline, location, createdAt, defaultDescription, year, shortInfo, requirementsObject,
+    let defaultName, defaultHeadline, createdAt, defaultDescription, year, shortInfo, requirementsObject,
     isProfileOwner, defaultImageUrl
 
     if (dataObject) {
@@ -42,11 +42,10 @@ const CompanyProfilePage = () => {
         if (dataObject.headline !== ' ') {
             defaultHeadline = dataObject.headline
         }
-        if (dataObject.location !== ' ') {
-            location = dataObject.location
+        if (dataObject.description !== ' ') {
+            defaultDescription = dataObject.description
         }
         createdAt = dataObject.createdAt
-        defaultDescription = dataObject.description
         defaultImageUrl = dataObject.imageUrl
         year = createdAt.slice(0, 4);
         createdAt = `On board since ${year}`
@@ -68,7 +67,7 @@ const CompanyProfilePage = () => {
             const [editLinksMode, setEditLinksMode] = useState()
             const [editEmployeesMode, setEditEmployeesMode] = useState()
 
-            shortInfo = [headline, location, createdAt].filter(el => !(!el)).join(' · ')
+            shortInfo = [headline, createdAt].filter(el => !(!el)).join(' · ')
 
             const [editInfoMode, setEditInfoMode] = useState(
                     !defaultName || defaultName.length < 2 ||

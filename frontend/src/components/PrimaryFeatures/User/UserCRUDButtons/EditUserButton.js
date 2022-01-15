@@ -1,12 +1,11 @@
-import { editCompany } from "../../../../store/company"
+import { editUser } from "../../../../store/user"
 import { useDispatch, useSelector } from 'react-redux'
 
-import './EditCompanyButton.css'
+import './EditUserButton.css'
 
-export const EditCompanyButton = ({ entry, setEditInfoMode }) => {
+export const EditUserButton = ({ entry, setEditInfoMode }) => {
 
         const dispatch = useDispatch();
-
         const sessionUser = useSelector(state => state.session.user);
         let hasPermission = false
         if (entry && entry.Users && sessionUser && entry.Users.map(user => user.id).includes(sessionUser.id)) hasPermission = true;
@@ -14,9 +13,9 @@ export const EditCompanyButton = ({ entry, setEditInfoMode }) => {
 
 
     return (
-         <div className="edit-company-button">
+         <div className="edit-user-button">
                 <button
-                    // onClick={() => dispatch(editCompany(entry.id))}
+                    // onClick={() => dispatch(editUser(entry.id))}
                 onClick={() => setEditInfoMode(true)}
                 >
                     Edit Profile
@@ -26,4 +25,4 @@ export const EditCompanyButton = ({ entry, setEditInfoMode }) => {
 }
 
 
-export default EditCompanyButton
+export default EditUserButton

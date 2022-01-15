@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session';
 import company from './company'
 import externallink from './externallinks'
+import user from './user'
 
 const rootReducer = combineReducers({
   session,
   company,
-  externallink
+  externallink,
+  user
 });
 
 let enhancer;

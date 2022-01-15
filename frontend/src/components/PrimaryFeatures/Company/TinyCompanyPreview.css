@@ -2,17 +2,27 @@
     display: flex;
     flex-direction: row;
     position: relative;
+    align-items: center;
+    justify-content: center;
 }
 
-.tiny-company-preview > a > * {
-    margin: 3px;
+.tiny-company-preview .profile-image-container {
+    margin: 0px 5px 5px;
+    z-index: 2;
+    box-shadow: var(--glass-box-shadow-light);
+    transition: var(--transition-explode);
+}
+
+
+.tiny-company-preview .profile-image-container {
+    margin: 0px 5px 5px;
     z-index: 2;
     transition: var(--transition-explode);
-
 }
 
 
-.tiny-company-preview > a > *:hover {
-    margin: 3px;
-    top: -3px;
+
+.tiny-company-preview .profile-image-container:hover{
+   transform: translate3d(0, -2px, 0) scale(1.03);
+   box-shadow: var(--glass-box-shadow);
 }
