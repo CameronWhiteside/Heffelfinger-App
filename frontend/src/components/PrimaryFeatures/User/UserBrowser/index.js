@@ -30,7 +30,7 @@ const UserBrowser = () => {
         return state.user
     })
 
-    console.log({userState})
+    // console.log({userState})
 
     const sessionUser = useSelector(state => state.session.user);
 

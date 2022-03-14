@@ -43,7 +43,6 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 router.delete('/companies/:companyId(\\d+)', asyncHandler(async (req, res) => {
     const companyId = req.params.companyId
-    console.log(`ATTEMPTING DESTRUCTION and the id is thissssss ${companyId}.`)
     let destruction = await ExternalLink.destroy({
         where: {
             companyId

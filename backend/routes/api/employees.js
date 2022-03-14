@@ -39,7 +39,6 @@ const router = express.Router();
 
 
 router.post('/', asyncHandler(async (req, res) => {
-    console.log('we made it!')
     const { companyId, userId, companyRoleId } = req.body
     const newEmployee = await Employee.create({companyId, userId, companyRoleId})
     return res.json({newEmployee})

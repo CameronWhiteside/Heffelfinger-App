@@ -18,7 +18,7 @@ const GetTicket = () => {
                     TICKET BUTTON
            </button>
            <button onClick={() =>
-                console.log(`sold out`)
+
             }>
                     SOLD OUT
            </button>

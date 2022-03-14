@@ -104,7 +104,7 @@ export const deleteCompany = (id) => async (dispatch) => {
 }
 
 export const deleteCompanyLinks = (id) => async (dispatch) => {
-    console.log(`THE ID IS DEFINTED AND IT IS ${id}`)
+    // console.log(`THE ID IS DEFINTED AND IT IS ${id}`)
     const response = await csrfFetch(`/api/externallinks/companies/${id}`, {
         method: 'DELETE',
     });

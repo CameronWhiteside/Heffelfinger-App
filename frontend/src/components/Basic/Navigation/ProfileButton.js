@@ -15,7 +15,6 @@ function LogInMenu() {
   let helloName = user.firstName
 
   useEffect(() => {
-    console.log('testing')
     helloName = user.firstName
   },[user])
 

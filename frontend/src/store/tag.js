@@ -90,8 +90,8 @@ const tagReducer = (state = {} , action) => {
             return newState;
 
         case ADD_TAG:
-            console.log({ action })
-            console.log(Object.keys(newState))
+            // console.log({ action })
+            // console.log(Object.keys(newState))
             newState = { ...newState, [action.newTag.id]: action.newTag }
             return newState
 

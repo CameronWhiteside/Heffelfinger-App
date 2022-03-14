@@ -1,14 +1,17 @@
 .user-browser{
     display: flex;
+    width: 100%;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding-top: 25px;
 }
 
 
 .user-browser > .browser-left-col,
 .user-browser > .browser-right-col {
-    height: calc(100vh - 178px);
+    display: flex;
+    width: calc(100vw - 178px);
     box-shadow: none;
     /* margin-right: -10px; */
     border-radius: calc(var(--glass-border-radius) * 2);
@@ -19,11 +22,10 @@
     position: relative;
     box-sizing: border-box;
     margin: 20px 10px;
-
 }
 
 .user-browser > .browser-left-col > div {
-    width: 400px;
+    /* width: 400px; */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -32,6 +34,60 @@
     justify-content: center;
     align-items: center;
 }
+
+.user-browser .browser-quick-stats-area{
+    width: 40%;
+}
+
+.user-browser .browser-info-area{
+    width: 55%;
+}
+
+.user-browser .browser-grid{
+    max-width: 100%;
+    height:  calc(100vh - 400px);
+
+}
+
+.user-browser .browser-card{
+    height: 120px;
+    max-width: 530px;
+}
+
+.user-browser .browser-card  .browser-card-image-area{
+    top: 0px;
+    margin-bottom: 0px;
+}
+
+.user-browser .browser-card-tiny-preview h6 {
+    display: none;
+}
+
+.user-browser .browser-card > a{
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.user-browser .browser-card > a .browser-card-overlay{
+    display: none;
+}
+
+.user-browser .browser-card > a .tiny-company-preview{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+}
+
+.user-browser .browser-card > a .browser-card-tiny-preview{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
 
 /* .user-browser > .browser-right-col > .browser-grid {
     display: flex;

@@ -6,7 +6,6 @@ const { secret, expiresIn } = jwtConfig;
 
 const restrict = (...roles) => (req, _, next) => {
   const user = req.session.user
-  console.log('~~~~~~~~~~~~this is the user~~~~~~~~~~~~~~~~~:', user )
   if (!user.SiteRoles.some(role => roles.includes(role))) {
     return next();
   } else {

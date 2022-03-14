@@ -29,12 +29,11 @@ const AddCompanyButton = () => {
             }
 
             let employeeRes = await dispatch(addEmployee(newEmployee))
-            console.log(employeeRes)
 
 
             history.push(`/companies/${res.id}`)
         } catch (e) {
-            console.log({ e })
+
         }
     }
 

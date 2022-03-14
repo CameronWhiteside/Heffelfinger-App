@@ -47,10 +47,10 @@ export const deleteUserLinksAction = (id) => {
 
 
 export const loadUsers = () => async (dispatch) => {
-    console.log(`this is happening`)
+    // console.log(`this is happening`)
     const response = await csrfFetch('/api/users/');
     const users = await response.json();
-    console.log((users))
+    // console.log((users))
     dispatch(loadUsersAction(users))
     return users
 
@@ -92,7 +92,7 @@ export const deleteUser = (id) => async (dispatch) => {
 }
 
 export const deleteUserLinks = (id) => async (dispatch) => {
-    console.log(`THE ID IS DEFINTED AND IT IS ${id}`)
+    // console.log(`THE ID IS DEFINTED AND IT IS ${id}`)
     const response = await csrfFetch(`/api/externallinks/users/${id}`, {
         method: 'DELETE',
     });

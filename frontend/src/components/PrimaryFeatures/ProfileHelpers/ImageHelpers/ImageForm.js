@@ -32,7 +32,7 @@ const ImageForm = ({
 
           } catch (e) {
             let res = await e.json()
-            console.log({e})
+            // console.log({e})
           }
     }
 

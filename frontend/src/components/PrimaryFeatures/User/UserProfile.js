@@ -24,7 +24,8 @@ const UserProfilePage = () => {
     // dataObject = userState[id]
 
     useEffect(() => {
-         dispatch(loadUsers()).then(res => console.log('dispatch response', res))
+        dispatch(loadUsers())
+            // .then(res => console.log('dispatch response', res))
     }, [dispatch])
 
 
